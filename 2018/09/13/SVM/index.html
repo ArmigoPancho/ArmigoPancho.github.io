@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="SVM," />
 
 
 
@@ -79,13 +79,18 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="Hello,Armigo!">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="1.SVM总体简单介绍首先，分类的时候我们通常有时候遇到一个分类情况是，多类数据交融，无法通过简单的线性分类器区分。那SVM（Support Vector Machine）就是把数据映射到高维，然后根据支持向量找出一个最佳分类面，使得数据可以分开。这就是支持向量机干的事情。参考下面视频：   2.硬间隔SVM首先清楚四个概念：超平面，函数间隔，几何间隔，支持向量。 （1）超平面：在二维空间里面是：">
+<meta name="keywords" content="SVM">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Bonjour!">
+<meta property="og:url" content="http://yoursite.com/2018/09/13/SVM/index.html">
 <meta property="og:site_name" content="Hello,Armigo!">
+<meta property="og:description" content="1.SVM总体简单介绍首先，分类的时候我们通常有时候遇到一个分类情况是，多类数据交融，无法通过简单的线性分类器区分。那SVM（Support Vector Machine）就是把数据映射到高维，然后根据支持向量找出一个最佳分类面，使得数据可以分开。这就是支持向量机干的事情。参考下面视频：   2.硬间隔SVM首先清楚四个概念：超平面，函数间隔，几何间隔，支持向量。 （1）超平面：在二维空间里面是：">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-09-13T07:32:04.820Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello,Armigo!">
+<meta name="twitter:title" content="Bonjour!">
+<meta name="twitter:description" content="1.SVM总体简单介绍首先，分类的时候我们通常有时候遇到一个分类情况是，多类数据交融，无法通过简单的线性分类器区分。那SVM（Support Vector Machine）就是把数据映射到高维，然后根据支持向量找出一个最佳分类面，使得数据可以分开。这就是支持向量机干的事情。参考下面视频：   2.硬间隔SVM首先清楚四个概念：超平面，函数间隔，几何间隔，支持向量。 （1）超平面：在二维空间里面是：">
 
 
 
@@ -115,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/09/13/SVM/"/>
 
 
 
 
 
-  <title>Hello,Armigo!</title>
+  <title>Bonjour! | Hello,Armigo!</title>
   
 <script>
   window.fbAsyncInit = function() {
@@ -158,8 +163,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -252,9 +256,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -284,9 +288,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/09/13/SVM/" itemprop="url">Bonjour!</a></h1>
+          <h1 class="post-title" itemprop="name headline">Bonjour!</h1>
         
 
         <div class="post-meta">
@@ -350,6 +352,11 @@
           
 
           
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
 
           
 
@@ -368,9 +375,7 @@
       
 
       
-        
-          
-            <h2 id="1-SVM总体简单介绍"><a href="#1-SVM总体简单介绍" class="headerlink" title="1.SVM总体简单介绍"></a>1.SVM总体简单介绍</h2><p>首先，分类的时候我们通常有时候遇到一个分类情况是，多类数据交融，无法通过简单的线性分类器区分。那SVM（Support Vector Machine）就是把数据映射到高维，然后根据支持向量找出一个最佳分类面，使得数据可以分开。这就是支持向量机干的事情。参考下面视频：</p>
+        <h2 id="1-SVM总体简单介绍"><a href="#1-SVM总体简单介绍" class="headerlink" title="1.SVM总体简单介绍"></a>1.SVM总体简单介绍</h2><p>首先，分类的时候我们通常有时候遇到一个分类情况是，多类数据交融，无法通过简单的线性分类器区分。那SVM（Support Vector Machine）就是把数据映射到高维，然后根据支持向量找出一个最佳分类面，使得数据可以分开。这就是支持向量机干的事情。参考下面视频：</p>
 <iframe height="500" width="660" position="relative" src="https://v.qq.com/x/page/k05170ntgzc.html" frameborder="0" allowfullscreen><br></iframe>
 
 <h2 id="2-硬间隔SVM"><a href="#2-硬间隔SVM" class="headerlink" title="2.硬间隔SVM"></a>2.硬间隔SVM</h2><p>首先清楚四个概念：超平面，函数间隔，几何间隔，支持向量。</p>
@@ -380,8 +385,6 @@
 <hr>
 <p>提一下，这个网站使用hexo+Github pages做的，参考链接：<a href="http://www.xuyankun.cn/2017/05/06/pages/" target="_blank" rel="noopener">http://www.xuyankun.cn/2017/05/06/pages/</a></p>
 
-          
-        
       
     </div>
     
@@ -396,14 +399,20 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/SVM/" rel="tag"># SVM</a>
+          
+        </div>
+      
+
+      
+      
+      
 
       
 
       
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -413,10 +422,11 @@
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -424,6 +434,20 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+      <div class="fb-comments"
+           data-href="http://yoursite.com/2018/09/13/SVM/"
+           data-numposts="10"
+           data-width="100%"
+           data-colorscheme="light">
+      </div>
+    </div>
+
+  
+
+
 
         </div>
         
@@ -444,8 +468,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -509,6 +542,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-SVM总体简单介绍"><span class="nav-number">1.</span> <span class="nav-text">1.SVM总体简单介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-硬间隔SVM"><span class="nav-number">2.</span> <span class="nav-text">2.硬间隔SVM</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#（1）超平面："><span class="nav-number">2.1.</span> <span class="nav-text">（1）超平面：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（2）函数间隔："><span class="nav-number">2.2.</span> <span class="nav-text">（2）函数间隔：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（3）几何间隔"><span class="nav-number">2.3.</span> <span class="nav-text">（3）几何间隔</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -682,6 +731,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
@@ -699,6 +752,18 @@
       <script id="dsq-count-scr" src="https://.disqus.com/count.js" async></script>
     
 
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://yoursite.com/2018/09/13/SVM/';
+          this.page.identifier = '2018/09/13/SVM/';
+          this.page.title = 'Bonjour!';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
     
 
   
@@ -747,26 +812,6 @@
   
 
   
-  
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-          processEscapes: true,
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-        }
-      });
-    </script>
-
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-      });
-    </script>
-    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
 
