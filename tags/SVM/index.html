@@ -81,7 +81,7 @@
 
 <meta property="og:type" content="website">
 <meta property="og:title" content="Hello,Armigo!">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:url" content="http://yoursite.com/tags/SVM/index.html">
 <meta property="og:site_name" content="Hello,Armigo!">
 <meta property="og:locale" content="zh-Hans">
 <meta name="twitter:card" content="summary">
@@ -115,13 +115,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/"/>
+  <link rel="canonical" href="http://yoursite.com/tags/SVM/"/>
 
 
 
 
 
-  <title>Hello,Armigo!</title>
+  <title>标签: SVM | Hello,Armigo!</title>
   
 
 
@@ -140,8 +140,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -234,170 +233,53 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
-    
+
+  
+  
+  
+  <div class="post-block tag">
+
+    <div id="posts" class="posts-collapse">
+      <div class="collection-title">
+        <h1>SVM<small>标签</small>
+        </h1>
+      </div>
+
       
-
-  
-
-  
-  
-  
+        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/13/SVM/">
+    <header class="post-header">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="HuangCheng">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/0.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hello,Armigo!">
-    </span>
-
-    
-      <header class="post-header">
-
+      <h2 class="post-title">
         
+            <a class="post-title-link" href="/2018/09/13/SVM/" itemprop="url">
+              
+                <span itemprop="name">Bonjour!</span>
+              
+            </a>
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/09/13/SVM/" itemprop="url">Bonjour!</a></h1>
-        
+      </h2>
 
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-13T15:27:24+08:00">
-                2018-09-13
-              </time>
-            
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2018-09-13T15:27:24+08:00"
+              content="2018-09-13" >
+          09-13
+        </time>
+      </div>
 
-            
+    </header>
+  </article>
 
-            
-          </span>
 
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/机器学习/" itemprop="url" rel="index">
-                    <span itemprop="name">机器学习</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/09/13/SVM/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/09/13/SVM/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="1-SVM总体简单介绍"><a href="#1-SVM总体简单介绍" class="headerlink" title="1.SVM总体简单介绍"></a>1.SVM总体简单介绍</h2><p>首先，分类的时候我们通常有时候遇到一个分类情况是，多类数据交融，无法通过简单的线性分类器区分。那SVM（Support Vector Machine）就是把数据映射到高维，然后根据支持向量找出一个最佳分类面，使得数据可以分开。这就是支持向量机干的事情。参考下面视频：</p>
-<iframe height="500" width="600" position="relative" src="https://v.qq.com/x/page/k05170ntgzc.html" frameborder="0" allowfullscreen><br></iframe>
-
-<h2 id="2-硬间隔SVM"><a href="#2-硬间隔SVM" class="headerlink" title="2.硬间隔SVM"></a>2.硬间隔SVM</h2><p>首先清楚四个概念：超平面，函数间隔，几何间隔，支持向量。</p>
-<h3 id="超平面"><a href="#超平面" class="headerlink" title="超平面"></a>超平面</h3><p>在二维空间里面是：Ax+By+C=0 ,是一条直线。<br>在三维空间里面是：Ax+By+Cz+D=0，是一个平面。<br>在三维以上：Ax1+Bx2+Cx3+Dx4+Ex5+Fx6+….+K=0 =&gt; 可看作是2个n维向量W和X的内积：W^TX+b = 0,b可以认为是截距，代表了  到原点的距离，W是法向量，代表了超平面的方向。这就是它的定义了。</p>
-<h3 id="函数间隔"><a href="#函数间隔" class="headerlink" title="函数间隔"></a>函数间隔</h3><p>定义为：预测函数与实际类标的乘积。我们下面提到的都是简化版的情况，即只讨论在平面情况下的分类。有一些类标y,只有正例和反例：1或-1，预测的值是：W^TX+b，函数间隔就是把这2个乘起来：$$\hat{γ}=y^{i}(W^{T}X^{i}+b)$$，γ上面有一个hat的就表示函数间隔。发现$y^{i}$和$(W^{T}X^{i}+b)$是同号的话就是分类正确了。如果真实类标y^{i}=1，要令$(W^{T}X^{i}+b)$远大于0，这样才越准确，如果真实类标$y^{i}=-1$,则要$(W^{T}X^{i}+b)$远远小于0才越准确。就是说函数间隔可以看作是描述分类准确与否的一个指标。</p>
-<h3 id="几何间隔"><a href="#几何间隔" class="headerlink" title="几何间隔"></a>几何间隔</h3><p>几何间隔对比函数间隔是一个更好的指标，因为，若超平面是W^TX+b = 0的情况下，同时放大W和b的值为原来的n倍，后发现，函数间隔$y^{i}(W^{T}X^{i}+b)$变大了 n倍，但是超平面W^TX+b=0没有变化，这就是函数间隔的缺点。先来看看下面的图片：<br><img src="/2018/09/13/SVM/1.png" alt="图片1"><br>可以看到，超平面L把数据很好的分开来，其中有某个样本A(xi,yi)，B点在超平面上面，单位向量W除以自己的摸||W||，得到单位长度为W/||W||,有一个γi与向量AB的长度一样，则B点位置的x就等于A点的Xi减去AB的长度（AB带有方向性），而AB=γi*单位长度：<br>x = xi - γi*(W/||W||),又因为B点的x在超平面L上，满足L的表达式，于是有：$$W^{T}(X^{i}-γ^{i}\frac{W}{||w||})+b=0$$简化提出γi后得到几何间隔的表达式：<br>$$γ^{i}=y^{i}[\frac{W}{||w||}X^{i}+\frac{b}{||w||}]$$可以知道，2点：第一：当||W||=1，$\hat{γ^{i}}=γ^{i}$，第二：几何间隔就等于函数间隔除以一个||W||：$γ^{i}=\frac{(\hat{γ^{i}})}{||w||}$</p>
-<h3 id="支持向量"><a href="#支持向量" class="headerlink" title="支持向量"></a>支持向量</h3><p><img src="/2018/09/13/SVM/1.jpg" alt="图片2"><br>SVM的目标是在多个分类中找到最佳的超平面，看上面的图，外面的直线上面的点，就是支持向量，这些点与超平面最近且与超平面保持一定的函数距离。中间的虚线就是我们要找的最佳的超平面，这样的超平面可以确保就算是有些点在直线上面或者里面，也可以很好地区分。</p>
-<h2 id="3-最优间隔分类器问题"><a href="#3-最优间隔分类器问题" class="headerlink" title="3.最优间隔分类器问题"></a>3.最优间隔分类器问题</h2><p>从上面图可知，2条直线之间的距离越大越好，即几何间隔越大越好，这样可以使更多的数据很好的分开来。同时，找到唯一的最好超平面，所有样本点与超平面有一定的函数间隔：</p>
-
-          
-        
       
     </div>
-    
-    
-    
 
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
   </div>
   
   
   
-  </article>
-
-
-    
-  </section>
 
   
 
