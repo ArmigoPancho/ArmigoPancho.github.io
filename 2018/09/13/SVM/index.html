@@ -89,7 +89,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2018/09/13/SVM/1.png">
 <meta property="og:image" content="http://yoursite.com/2018/09/13/SVM/1.jpg">
-<meta property="og:updated_time" content="2018-09-17T13:57:10.140Z">
+<meta property="og:updated_time" content="2018-09-17T14:05:55.823Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Bonjour!">
 <meta name="twitter:description" content="1.SVM总体简单介绍首先，分类的时候我们通常有时候遇到一个分类情况是，多类数据交融，无法通过简单的线性分类器区分。那SVM（Support Vector Machine）就是把数据映射到高维，然后根据支持向量找出一个最佳分类面，使得数据可以分开。这就是支持向量机干的事情。参考下面视频：    2.硬间隔SVM首先清楚四个概念：超平面，函数间隔，几何间隔，支持向量。 （1）超平面在二维空间里面是：">
@@ -377,15 +377,15 @@
 & \begin{array}{r@{\quad}r@{}l@{\quad}l}
 s.t.&y(W^{T}X+b)>=\hat{γ}\\
 \end{array} 
-\end{align*}</script><p>发现上面的优化问题是非凸优化，所以为了简化问题，思路是先把此问题转化为对偶问题，然后通过求解对偶问题的解，来解出原问题的解。这就是基本思路。为了简化计算，可以把函数间隔\hat{γ}令为1，因为函数间隔扩大n倍时，底下的||W||也扩大n倍，所以并不影响优化。上面分母变成常数1后，问题可以转为最小化分子的问题：</p>
+\end{align*}</script><p>发现上面的优化问题是非凸优化，所以为了简化问题，思路是先把此问题转化为对偶问题，然后通过求解对偶问题的解，来解出原问题的解。这就是基本思路。为了简化计算，可以把函数间隔$\hat{γ}$令为1，因为函数间隔扩大n倍时，底下的||W||也扩大n倍，所以并不影响优化。上面分母变成常数1后，问题可以转为最小化分子的问题。||W||加了1/2的平方是便于后面求导，无碍：</p>
 <script type="math/tex; mode=display">\begin{align*}
 &\min_{w,b}\quad \frac{1}{2}||w||^{2}\\
 & \begin{array}{r@{\quad}r@{}l@{\quad}l}
 s.t.&y^{i}(W^{T}X^{i}+b)>=1\\
 \end{array} 
 \end{align*}</script><p>根据凸优化理论，该问题可以通过拉格朗日函数将目标函数转化为无约束的目标函数进行求解：</p>
-<script type="math/tex; mode=display">L(w,b,α)=\frac{1}{2}||w||^{2}-\sum\limits_{i=1}^{m}α_{i}(y^{i}(W^{T}X^{i}+b-1))</script><p>对αi和b分别求导后得：</p>
-<script type="math/tex; mode=display">W=\sum\limits_{i=1}^{m}α_{i}y^{i}X^{i}</script><script type="math/tex; mode=display">\sum\limits_{i=1}^{m}α_{i}y^{i}=0</script>
+<script type="math/tex; mode=display">L(w,b,α)=\frac{1}{2}||w||^{2}-\sum\limits_{i=1}^{m}α_{i}(y^{i}(W^{T}X^{i}+b)-1)</script><p>L对αi和b分别求导并令为0后得：</p>
+<script type="math/tex; mode=display">W=\sum\limits_{i=1}^{m}α_{i}y^{i}x^{i}</script><script type="math/tex; mode=display">\sum\limits_{i=1}^{m}α_{i}y^{i}=0</script>
       
     </div>
     
