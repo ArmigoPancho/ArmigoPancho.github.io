@@ -89,7 +89,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2018/09/13/SVM/1.png">
 <meta property="og:image" content="http://yoursite.com/2018/09/13/SVM/1.jpg">
-<meta property="og:updated_time" content="2018-09-17T14:05:55.823Z">
+<meta property="og:updated_time" content="2018-09-17T14:12:19.753Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Bonjour!">
 <meta name="twitter:description" content="1.SVM总体简单介绍首先，分类的时候我们通常有时候遇到一个分类情况是，多类数据交融，无法通过简单的线性分类器区分。那SVM（Support Vector Machine）就是把数据映射到高维，然后根据支持向量找出一个最佳分类面，使得数据可以分开。这就是支持向量机干的事情。参考下面视频：    2.硬间隔SVM首先清楚四个概念：超平面，函数间隔，几何间隔，支持向量。 （1）超平面在二维空间里面是：">
@@ -385,7 +385,8 @@ s.t.&y^{i}(W^{T}X^{i}+b)>=1\\
 \end{array} 
 \end{align*}</script><p>根据凸优化理论，该问题可以通过拉格朗日函数将目标函数转化为无约束的目标函数进行求解：</p>
 <script type="math/tex; mode=display">L(w,b,α)=\frac{1}{2}||w||^{2}-\sum\limits_{i=1}^{m}α_{i}(y^{i}(W^{T}X^{i}+b)-1)</script><p>L对αi和b分别求导并令为0后得：</p>
-<script type="math/tex; mode=display">W=\sum\limits_{i=1}^{m}α_{i}y^{i}x^{i}</script><script type="math/tex; mode=display">\sum\limits_{i=1}^{m}α_{i}y^{i}=0</script>
+<script type="math/tex; mode=display">W=\sum\limits_{i=1}^{m}α_{i}y^{i}x^{i}</script><script type="math/tex; mode=display">\sum\limits_{i=1}^{m}α_{i}y^{i}=0</script><p>然后把上面的2个式子代入L：</p>
+<script type="math/tex; mode=display">\sum\limits_{i=1}^{m}α_{i}-\frac{1}{2}\sum_{i=1}^{m}\sum_{j=1}^my^{i}y^{j}α_{i}α_{j}<x^{i},x^{j}></script>
       
     </div>
     
