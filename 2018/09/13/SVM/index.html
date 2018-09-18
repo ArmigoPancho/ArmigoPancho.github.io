@@ -89,7 +89,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2018/09/13/SVM/1.png">
 <meta property="og:image" content="http://yoursite.com/2018/09/13/SVM/1.jpg">
-<meta property="og:updated_time" content="2018-09-18T02:22:36.504Z">
+<meta property="og:updated_time" content="2018-09-18T02:28:46.117Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Bonjour!">
 <meta name="twitter:description" content="1.SVM总体简单介绍首先，分类的时候我们通常有时候遇到一个分类情况是，多类数据交融，无法通过简单的线性分类器区分。那SVM（Support Vector Machine）就是把数据映射到高维，然后根据支持向量找出一个最佳分类面，使得数据可以分开。这就是支持向量机干的事情。参考下面视频：    2.硬间隔SVM首先清楚四个概念：超平面，函数间隔，几何间隔，支持向量。 （1）超平面在二维空间里面是：">
@@ -386,7 +386,7 @@ s.t.&y^{i}(W^{T}X^{i}+b)>=1\\
 \end{align*}</script><p>根据凸优化理论，该问题可以通过拉格朗日函数将目标函数转化为无约束的目标函数进行求解：</p>
 <script type="math/tex; mode=display">L(w,b,α)=\frac{1}{2}||w||^{2}-\sum\limits_{i=1}^{m}α_{i}(y^{i}(W^{T}X^{i}+b)-1)</script><p>L对αi和b分别求导并令为0后得：</p>
 <script type="math/tex; mode=display">W=\sum\limits_{i=1}^{m}α_{i}y^{i}x^{i}</script><script type="math/tex; mode=display">\sum\limits_{i=1}^{m}α_{i}y^{i}=0</script><p>然后把上面的2个式子代入L：</p>
-<script type="math/tex; mode=display">L=\sum\limits_{i=1}^{m}α_{i}-\frac{1}{2}\sum_{i=1}^{m}\sum_{j=1}^my^{i}y^{j}α_{i}α_{j}<x^{i},x^{j}>=T(α)& \label{eq1}</script><p>可以令上面L为新的T(α)函数，后面的<x^{i},x^{j}>就是xi和xj的内积表达式。</x^{i},x^{j}></p>
+<script type="math/tex; mode=display">L=\sum\limits_{i=1}^{m}α_{i}-\frac{1}{2}\sum_{i=1}^{m}\sum_{j=1}^my^{i}y^{j}α_{i}α_{j}<x^{i},x^{j}>=T(α)\label{eq1}</script><p>可以令上面L为新的T(α)函数，后面的尖括号里面的就是xi和xj的内积表达式。</p>
 <h2 id="4-对偶问题"><a href="#4-对偶问题" class="headerlink" title="4.对偶问题"></a>4.对偶问题</h2><h3 id="4-1原始问题"><a href="#4-1原始问题" class="headerlink" title="4.1原始问题"></a>4.1原始问题</h3><p>先来看原始问题，什么是原始问题？假设$f(x),c_i(x),h_j(x)$是定义在$R^n$上的连续可微函数，考虑约束最优化问题时候：</p>
 <script type="math/tex; mode=display">\begin{align} 
      \min_{x \in R^n}\quad &f(x) \\
@@ -394,7 +394,9 @@ s.t.&y^{i}(W^{T}X^{i}+b)>=1\\
      &h_j(x) = 0 , j=1,2,\ldots,k
     \end{align}</script><p>上面就是一个有约束条件的原始问题。我们一般的思路就是一脑子求导=0，然后解出x代入原式即可(因为极值处的斜率为0 )。可是这里有约束条件，怎么办？于是拉格朗日先生便一跃而出，他说可以干掉这个纸老虎。看看他怎么解决的？</p>
 <script type="math/tex; mode=display">\mathcal{L}(x,\alpha,\beta) = f(x) + \sum_{i=0}^k \alpha_ic_i(x) + \sum_{j=1}^l \beta_jh_j(x)</script><p>没错，他也是一股脑的把所有式子塞到一起，起个名字叫做<strong>广义拉格朗日函数</strong>。其中的α和β都是参数，特别要求αi&gt;=0。<br>直接把上面式子求导代入原式即可。就是上面公式(1)的求解结果。发现上面的式子是若满足约束条件，则L的最大值：</p>
-<script type="math/tex; mode=display">\theta_P(x) = \max_{\alpha,\beta:\alpha_i \ge 0}\mathcal{L}(x,\alpha,\beta)</script>
+<script type="math/tex; mode=display">\theta_P(x) = \max_{\alpha,\beta:\alpha_i \ge 0}\mathcal{L}(x,\alpha,\beta)</script><p>发现原始问题就等价于最小化上面的式子：</p>
+<p>$$$$</p>
+
       
     </div>
     
