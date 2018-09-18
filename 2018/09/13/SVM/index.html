@@ -89,7 +89,9 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2018/09/13/SVM/1.png">
 <meta property="og:image" content="http://yoursite.com/2018/09/13/SVM/1.jpg">
-<meta property="og:updated_time" content="2018-09-18T13:20:27.051Z">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/ib3ibslZIrCuB1gu0vAmib9uoA4WOCZfiaa2ibZcte0icusVicdwMLRibbbrE8UD5rR9M7GyapokicxCNribzGkxaQTtSTsA/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/ib3ibslZIrCuB1gu0vAmib9uoA4WOCZfiaa2j7a5iatFtYdWUUo7LibvtHD6kFjIgQFjQKblCdC7Nw2hTpSLGCNB9Vkw/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:updated_time" content="2018-09-18T13:43:05.280Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Bonjour!">
 <meta name="twitter:description" content="1.SVM总体简单介绍首先，分类的时候我们通常有时候遇到一个分类情况是，多类数据交融，无法通过简单的线性分类器区分。那SVM（Support Vector Machine）就是把数据映射到高维，然后根据支持向量找出一个最佳分类面，使得数据可以分开。这就是支持向量机干的事情。参考下面视频：    2.硬间隔SVM首先清楚四个概念：超平面，函数间隔，几何间隔，支持向量。 （1）超平面在二维空间里面是：">
@@ -366,7 +368,7 @@
 
 <h2 id="2-硬间隔SVM"><a href="#2-硬间隔SVM" class="headerlink" title="2.硬间隔SVM"></a>2.硬间隔SVM</h2><p>首先清楚四个概念：超平面，函数间隔，几何间隔，支持向量。</p>
 <h3 id="（1）超平面"><a href="#（1）超平面" class="headerlink" title="（1）超平面"></a>（1）超平面</h3><p>在二维空间里面是：Ax+By+C=0 ,是一条直线。<br>在三维空间里面是：Ax+By+Cz+D=0，是一个平面。<br>在三维以上：Ax1+Bx2+Cx3+Dx4+Ex5+Fx6+….+K=0 =&gt; 可看作是2个n维向量W和X的内积：W^TX+b = 0,b可以认为是截距，代表了  到原点的距离，W是法向量，代表了超平面的方向。这就是它的定义了。</p>
-<h3 id="（2）函数间隔"><a href="#（2）函数间隔" class="headerlink" title="（2）函数间隔"></a>（2）函数间隔</h3><p>定义为：预测函数与实际类标的乘积。我们下面提到的都是简化版的情况，即只讨论在平面情况下的分类。有一些类标y,只有正例和反例：1或-1，预测的值是：W^TX+b，函数间隔就是把这2个乘起来：<script type="math/tex">\hat{γ}=y^{i}(W^{T}X^{i}+b)</script>，γ上面有一个hat的就表示函数间隔。发现$y^{i}$和$(W^{T}X^{i}+b)$是同号的话就是分类正确了。如果真实类标y^{i}=1，要令$(W^{T}X^{i}+b)$远大于0，这样才越准确，如果真实类标$y^{i}=-1$,则要$(W^{T}X^{i}+b)$远远小于0才越准确。就是说函数间隔可以看作是描述分类准确与否的一个指标。</p>
+<h3 id="（2）函数间隔"><a href="#（2）函数间隔" class="headerlink" title="（2）函数间隔"></a>（2）函数间隔</h3><p>定义为：预测函数与实际类标的乘积。我们下面提到的都是简化版的情况，即只讨论在平面情况下的分类。有一些类标y,只有正例和反例：1或-1，预测的值是：W^TX+b，函数间隔就是把这2个乘起来：\hat{γ}=y^{i}(W^{T}X^{i}+b)，γ上面有一个hat的就表示函数间隔。发现y^{i}和(W^{T}X^{i}+b)是同号的话就是分类正确了。如果真实类标y^{i}=1，要令(W^{T}X^{i}+b)远大于0，这样才越准确，如果真实类标y^{i}=-1,则要(W^{T}X^{i}+b)远远小于0才越准确。就是说函数间隔可以看作是描述分类准确与否的一个指标。</p>
 <h3 id="（3）几何间隔"><a href="#（3）几何间隔" class="headerlink" title="（3）几何间隔"></a>（3）几何间隔</h3><p>几何间隔对比函数间隔是一个更好的指标，因为，若超平面是W^TX+b = 0的情况下，同时放大W和b的值为原来的n倍，后发现，函数间隔$y^{i}(W^{T}X^{i}+b)$变大了 n倍，但是超平面W^TX+b=0没有变化，这就是函数间隔的缺点。先来看看下面的图片：<br><img src="/2018/09/13/SVM/1.png" alt="图片1"><br>可以看到，超平面L把数据很好的分开来，其中有某个样本A(xi,yi)，B点在超平面上面，单位向量W除以自己的摸||W||，得到单位长度为W/||W||,有一个γi与向量AB的长度一样，则B点位置的x就等于A点的Xi减去AB的长度（AB带有方向性），而AB=γi*单位长度：x = xi - γi*(W/||W||),又因为B点的x在超平面L上，满足L的表达式，于是有：</p>
 <script type="math/tex; mode=display">W^{T}(X^{i}-γ^{i}\frac{W}{||w||})+b=0</script><p>简化提出γi后得到几何间隔的表达式：</p>
 <script type="math/tex; mode=display">γ^{i}=y^{i}[\frac{W}{||w||}X^{i}+\frac{b}{||w||}]</script><p>可以知道，2点：<br>第一：当||W||=1，$\hat{γ^{i}}=γ^{i}$<br>第二：几何间隔就等于函数间隔除以一个||W||：$γ^{i}=\frac{\hat{γ^{i}}}{||w||}$</p>
@@ -408,7 +410,7 @@ s.t.&y^{i}(W^{T}X^{i}+b)>=1\\
 &c_i(x)\le0,i=1,2,\ldots,k\quad\quad  (c)\\
 &h_j(x^*)=0,j=1,2,\ldots,l\quad\quad (d)
 \end{align}</script><p>前三个求偏导是保证驻点的存在，后面的式子(a)、(b)是拉格朗日乘子需要满足的约束，(c)、(d)是原始问题的约束条件。特别注意当$\alpha_i*&gt;0时，由对偶互补条件可知时，由KKT对偶互补条件可知:c_i(x*)=0$，这个后面会用到。</p>
-<h2 id="5-SVM软间隔最大化"><a href="#5-SVM软间隔最大化" class="headerlink" title="5.SVM软间隔最大化"></a>5.SVM软间隔最大化</h2><p>第3章节主要讲的是硬间隔最大化，那什么是软间隔最大化？硬间隔呢就是支持向量不能超过第二幅图的直线，顶多在线上面，但是软间隔可以容忍少量的支持向量落在直线内，于是我们的约束条件yi(W^TX+b)&gt;=1就要修改为yi(W^TX+b)&gt;=1-ξi，即允许部分支持向量间隔不足1,ξi&gt;=0。我们原始的最大化约束问题转为：</p>
+<h2 id="5-软间隔SVM"><a href="#5-软间隔SVM" class="headerlink" title="5.软间隔SVM"></a>5.软间隔SVM</h2><p>第3章节主要讲的是硬间隔最大化，那什么是软间隔最大化？硬间隔呢就是支持向量不能超过第二幅图的直线，顶多在线上面，但是软间隔可以容忍少量的支持向量落在直线内，于是我们的约束条件yi(W^TX+b)&gt;=1就要修改为yi(W^TX+b)&gt;=1-ξi，即允许部分支持向量间隔不足1,ξi&gt;=0。我们原始的最大化约束问题转为：</p>
 <script type="math/tex; mode=display">
 \begin{align} 
      \min_{w,b}\quad &\frac{1}{2}||w||^{2}+C\sum\limits_{i=1}^{m}ξ_i\\
@@ -426,7 +428,12 @@ C - α_i - u_i = 0</script><p>把上面三个式子代入公式（4），可得�
      \max\quad &\sum\limits_{i=1}^{m}α_i-\frac{1}{2}\sum_{i=1}^m\sum_{j=1}^my^iy^jα_iα_j<x_i,x_j>\\
      s.t.\quad&\sum_{i=1}^mα_iy_i=0\\
      & 0\leα_i\le C
-    \end{align}</script><p>有上式可求出α，再由α求出W和b。公式（5）可求出W，而b是所有支持向量满足yi(w^T^xi+b)=1的值b的均值。</p>
+    \end{align}</script><p>有上式可求出α，再由α求出W和b。公式（5）可求出W，而b是所有支持向量满足yi(w^T^xi+b)=1的值b的均值。由KKT条件：</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/ib3ibslZIrCuB1gu0vAmib9uoA4WOCZfiaa2ibZcte0icusVicdwMLRibbbrE8UD5rR9M7GyapokicxCNribzGkxaQTtSTsA/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img"></p>
+<p>上面第一个式子正是由于αi&gt;0,由KKT推断yi(W^T^Xi+b)-1+ξi=0所得。可知：满足<img src="https://mmbiz.qpic.cn/mmbiz_png/ib3ibslZIrCuB1gu0vAmib9uoA4WOCZfiaa2j7a5iatFtYdWUUo7LibvtHD6kFjIgQFjQKblCdC7Nw2hTpSLGCNB9Vkw/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img">的样本点(xs,ys)，即为<strong>支持向量</strong>。详细请点击底部的参考1。</p>
+<hr>
+<p>参考链接：</p>
+<p><a href="https://mp.weixin.qq.com/s?__biz=MzU4MzA3ODczNw==&amp;mid=2247483783&amp;idx=1&amp;sn=fc9bee870fd3640417b6ee4e773e64ad&amp;chksm=fdafc7b9cad84eaff684742be49ba1177e69f69ff2f9f5e51c8e3b8ddab258742d679125df82&amp;token=798908339&amp;lang=zh_CN&amp;scene=21#wechat_redirect" target="_blank" rel="noopener">参考1</a></p>
 
       
     </div>
@@ -590,7 +597,7 @@ C - α_i - u_i = 0</script><p>把上面三个式子代入公式（4），可得�
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-SVM总体简单介绍"><span class="nav-number">1.</span> <span class="nav-text">1.SVM总体简单介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-硬间隔SVM"><span class="nav-number">2.</span> <span class="nav-text">2.硬间隔SVM</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#（1）超平面"><span class="nav-number">2.1.</span> <span class="nav-text">（1）超平面</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（2）函数间隔"><span class="nav-number">2.2.</span> <span class="nav-text">（2）函数间隔</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（3）几何间隔"><span class="nav-number">2.3.</span> <span class="nav-text">（3）几何间隔</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（4）支持向量"><span class="nav-number">2.4.</span> <span class="nav-text">（4）支持向量</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-最优间隔分类器问题"><span class="nav-number">3.</span> <span class="nav-text">3.最优间隔分类器问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-对偶问题"><span class="nav-number">4.</span> <span class="nav-text">4.对偶问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1原始问题"><span class="nav-number">4.1.</span> <span class="nav-text">4.1原始问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2对偶问题"><span class="nav-number">4.2.</span> <span class="nav-text">4.2对偶问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3KKT条件"><span class="nav-number">4.3.</span> <span class="nav-text">4.3KKT条件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-SVM软间隔最大化"><span class="nav-number">5.</span> <span class="nav-text">5.SVM软间隔最大化</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-SVM总体简单介绍"><span class="nav-number">1.</span> <span class="nav-text">1.SVM总体简单介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-硬间隔SVM"><span class="nav-number">2.</span> <span class="nav-text">2.硬间隔SVM</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#（1）超平面"><span class="nav-number">2.1.</span> <span class="nav-text">（1）超平面</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（2）函数间隔"><span class="nav-number">2.2.</span> <span class="nav-text">（2）函数间隔</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（3）几何间隔"><span class="nav-number">2.3.</span> <span class="nav-text">（3）几何间隔</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（4）支持向量"><span class="nav-number">2.4.</span> <span class="nav-text">（4）支持向量</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-最优间隔分类器问题"><span class="nav-number">3.</span> <span class="nav-text">3.最优间隔分类器问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-对偶问题"><span class="nav-number">4.</span> <span class="nav-text">4.对偶问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1原始问题"><span class="nav-number">4.1.</span> <span class="nav-text">4.1原始问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2对偶问题"><span class="nav-number">4.2.</span> <span class="nav-text">4.2对偶问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3KKT条件"><span class="nav-number">4.3.</span> <span class="nav-text">4.3KKT条件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-软间隔SVM"><span class="nav-number">5.</span> <span class="nav-text">5.软间隔SVM</span></a></li></ol></div>
             
 
           </div>
