@@ -378,7 +378,7 @@ s.t.&y^{i}(W^{T}X^{i}+b)>=1\\
 \end{align*}</script><p>根据凸优化理论，该问题可以通过拉格朗日函数将目标函数转化为无约束的目标函数进行求解：</p>
 <script type="math/tex; mode=display">L(w,b,α)=\frac{1}{2}||w||^{2}-\sum\limits_{i=1}^{m}α_{i}(y^{i}(W^{T}X^{i}+b)-1)</script><p>L对αi和b分别求导并令为0后得：</p>
 <script type="math/tex; mode=display">W=\sum\limits_{i=1}^{m}α_{i}y^{i}x^{i}</script><script type="math/tex; mode=display">\sum\limits_{i=1}^{m}α_{i}y^{i}=0</script><p>然后把上面的2个式子代入L：</p>
-<script type="math/tex; mode=display">L=\sum\limits_{i=1}^{m}α_{i}-\frac{1}{2}\sum_{i=1}^{m}\sum_{j=1}^my^{i}y^{j}α_{i}α_{j}<x^{i},x^{j}>=T(α)\quad\quad(1)</script><p>可以令上面L为新的T(α)函数，后面的尖括号里面的就是xi和xj的内积表达式。</p>
+<script type="math/tex; mode=display">L=\sum\limits_{i=1}^{m}α_{i}-\frac{1}{2}\sum_{i=1}^{m}\sum_{j=1}^my^{i}y^{j}α_{i}α_{j}<x^{i},x^{j}>\quad\quad(1)</script><p>可以令上面L为新的T(α)函数，后面的尖括号里面的就是xi和xj的内积表达式。</p>
 <h2 id="4-对偶问题"><a href="#4-对偶问题" class="headerlink" title="4.对偶问题"></a>4.对偶问题</h2><h3 id="4-1原始问题"><a href="#4-1原始问题" class="headerlink" title="4.1原始问题"></a>4.1原始问题</h3><p>先来看原始问题，什么是原始问题？假设f(x),c_i(x),h_j(x)是定义在R^n上的连续可微函数，考虑约束最优化问题时候：</p>
 <script type="math/tex; mode=display">\begin{align} 
 ​     \min_{x \in R^n}\quad &f(x) \\
@@ -399,7 +399,7 @@ s.t.&y^{i}(W^{T}X^{i}+b)>=1\\
 &\alpha_i^*\ge0,i=1,2,\ldots,k\quad\quad\quad(b)\\
 &c_i(x)\le0,i=1,2,\ldots,k\quad\quad  (c)\\
 &h_j(x^*)=0,j=1,2,\ldots,l\quad\quad (d)
-\end{align}</script><p>前三个求偏导是保证驻点的存在，后面的式子(a)、(b)是拉格朗日乘子需要满足的约束，(c)、(d)是原始问题的约束条件。特别注意当$\alpha_i*&gt;0时，由对偶互补条件可知时，由KKT对偶互补条件可知:c_i(x*)=0$，这个后面会用到。</p>
+\end{align}</script><p>前三个求偏导是保证驻点的存在，后面的式子(a)、(b)是拉格朗日乘子需要满足的约束，(c)、(d)是原始问题的约束条件。特别注意当$\alpha_i*&gt;0时，由对偶互补条件可知时，由KKT对偶互补条件可知:c_i(_X*)=0$，这个后面会用到。</p>
 <h2 id="5-软间隔SVM"><a href="#5-软间隔SVM" class="headerlink" title="5.软间隔SVM"></a>5.软间隔SVM</h2><p>第3章节主要讲的是硬间隔最大化，那什么是软间隔最大化？硬间隔呢就是支持向量不能超过第二幅图的直线，顶多在线上面，但是软间隔可以容忍少量的支持向量落在直线内，于是我们的约束条件yi(W^TX+b)&gt;=1就要修改为yi(W^TX+b)&gt;=1-ξi，即允许部分支持向量间隔不足1,ξi&gt;=0。我们原始的最大化约束问题转为：</p>
 <script type="math/tex; mode=display">
 \begin{align} 
@@ -418,9 +418,9 @@ C - α_i - u_i = 0</script><p>把上面三个式子代入公式（4），可得�
      \max\quad &\sum\limits_{i=1}^{m}α_i-\frac{1}{2}\sum_{i=1}^m\sum_{j=1}^my^iy^jα_iα_j<x_i,x_j>\\
      s.t.\quad&\sum_{i=1}^mα_iy_i=0\\
      & 0\leα_i\le C
-    \end{align}</script><p>有上式可求出α，再由α求出W和b。公式（5）可求出W，而b是所有支持向量满足yi(w^T^xi+b)=1的值b的均值。由KKT条件：</p>
+    \end{align}</script><p>有上式可求出α，再由α求出W和b。公式（5）可求出W，而b是所有支持向量满足yi(w^Txi+b)=1的值b的均值。由KKT条件：</p>
 <p><img src="https://mmbiz.qpic.cn/mmbiz_png/ib3ibslZIrCuB1gu0vAmib9uoA4WOCZfiaa2ibZcte0icusVicdwMLRibbbrE8UD5rR9M7GyapokicxCNribzGkxaQTtSTsA/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img"></p>
-<p>上面第一个式子正是由于αi&gt;0,由KKT推断yi(W^T^Xi+b)-1+ξi=0所得。可知：满足<img src="https://mmbiz.qpic.cn/mmbiz_png/ib3ibslZIrCuB1gu0vAmib9uoA4WOCZfiaa2j7a5iatFtYdWUUo7LibvtHD6kFjIgQFjQKblCdC7Nw2hTpSLGCNB9Vkw/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img">的样本点(xs,ys)，即为<strong>支持向量</strong>。详细请点击底部的参考1。</p>
+<p>上面第一个式子正是由于αi&gt;0,由KKT推断yi(W^TXi+b)-1+ξi=0所得。可知：满足<img src="https://mmbiz.qpic.cn/mmbiz_png/ib3ibslZIrCuB1gu0vAmib9uoA4WOCZfiaa2j7a5iatFtYdWUUo7LibvtHD6kFjIgQFjQKblCdC7Nw2hTpSLGCNB9Vkw/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img">的样本点(xs,ys)，即为<strong>支持向量</strong>。详细请点击底部的参考1。</p>
 <hr>
 <p>参考链接：</p>
 <p><a href="https://mp.weixin.qq.com/s?__biz=MzU4MzA3ODczNw==&amp;mid=2247483783&amp;idx=1&amp;sn=fc9bee870fd3640417b6ee4e773e64ad&amp;chksm=fdafc7b9cad84eaff684742be49ba1177e69f69ff2f9f5e51c8e3b8ddab258742d679125df82&amp;token=798908339&amp;lang=zh_CN&amp;scene=21#wechat_redirect" target="_blank" rel="noopener">参考1</a></p>
