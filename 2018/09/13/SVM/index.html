@@ -89,7 +89,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2018/09/13/SVM/1.png">
 <meta property="og:image" content="http://yoursite.com/2018/09/13/SVM/1.jpg">
-<meta property="og:updated_time" content="2018-09-18T02:59:54.423Z">
+<meta property="og:updated_time" content="2018-09-18T03:05:10.009Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Bonjour!">
 <meta name="twitter:description" content="1.SVM总体简单介绍首先，分类的时候我们通常有时候遇到一个分类情况是，多类数据交融，无法通过简单的线性分类器区分。那SVM（Support Vector Machine）就是把数据映射到高维，然后根据支持向量找出一个最佳分类面，使得数据可以分开。这就是支持向量机干的事情。参考下面视频：    2.硬间隔SVM首先清楚四个概念：超平面，函数间隔，几何间隔，支持向量。 （1）超平面在二维空间里面是：">
@@ -397,7 +397,7 @@ s.t.&y^{i}(W^{T}X^{i}+b)>=1\\
 <script type="math/tex; mode=display">\theta_P(x) = \max_{\alpha,\beta:\alpha_i \ge 0}\mathcal{L}(x,\alpha,\beta)</script><p>发现原始问题就等价于最小化上面的式子：</p>
 <script type="math/tex; mode=display">
 \begin{align*}
-&\min_{x}max\quad \mathcal{L}(x,\alpha,\beta)=&\min_{x} \theta_P(x)=min_{x} f(x)
+&\min_{x}max\quad \mathcal{L}(x,\alpha,\beta)=&\min_{x} \theta_P(x)=min_{x} f(x) \\
 \end{array} 
 \end{align*}</script>
       
