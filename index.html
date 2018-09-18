@@ -421,7 +421,15 @@ C - α_i - u_i = 0</script><p>把上面三个式子代入公式（4），可得�
     \end{align}</script><p>有上式可求出α，再由α求出W和b。公式（5）可求出W，而b是所有支持向量满足yi(w^Txi+b)=1的值b的均值。由KKT条件：</p>
 <p><img src="https://mmbiz.qpic.cn/mmbiz_png/ib3ibslZIrCuB1gu0vAmib9uoA4WOCZfiaa2ibZcte0icusVicdwMLRibbbrE8UD5rR9M7GyapokicxCNribzGkxaQTtSTsA/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img"></p>
 <p>上面第一个式子正是由于αi&gt;0,由KKT推断yi(W^TXi+b)-1+ξi=0所得。可知：满足<img src="https://mmbiz.qpic.cn/mmbiz_png/ib3ibslZIrCuB1gu0vAmib9uoA4WOCZfiaa2j7a5iatFtYdWUUo7LibvtHD6kFjIgQFjQKblCdC7Nw2hTpSLGCNB9Vkw/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img">的样本点(xs,ys)，即为<strong>支持向量</strong>。详细请点击底部的参考1。</p>
-<hr>
+<h3 id="5-1核函数"><a href="#5-1核函数" class="headerlink" title="5.1核函数"></a>5.1核函数</h3><p>对于线性可分数据用硬间隔和软间隔可以区分数据，但对于非线性的数据怎么办？于是，我们的核函数粉墨登场（这里引用原意：演员化妆演戏）。它干的事情直观感受就是上面最开始的视频里干的部分事：把非线性的数据映射到线性可分的维度里面。来，举个栗子八。╭(╯^╰)╮，^_^哪个比较萌？跑题了。就是我们有一组非线性的2维模型：</p>
+<script type="math/tex; mode=display">
+f(X_1,X_2) = A_0+A_1X_1+A_2X_2+A_3X_1^2+A_4X_2^2+A_5X_1^3+A_6X_2^3</script><p>若令：</p>
+<script type="math/tex; mode=display">
+X_1=X_1,X_2=X_2,X_1^2=X_3,X_2^2=X_4,X_1^3=X_5,X_2^3=X_6</script><p>则可以转化为6维模型：</p>
+<script type="math/tex; mode=display">
+f(X_1,X_2，X_3，X_4，X_5，X_6) = A_0+A_1X_1+A_2X_2+A_3X_3+A_4X_4+A_5X_5+A_6X_6</script><p>就是说：低维度不可分的数据模型可以映射到高维度后，变成线性可分的模型。下面的核函数就是干的这个事情，就是有核函数k(x,z)把低维度的φ(xi)和φ(zj)之间的内积在低纬度计算掉：</p>
+<script type="math/tex; mode=display">
+k(x,z)=φ(x)φ(z)</script><h2 id="6-SMO算法"><a href="#6-SMO算法" class="headerlink" title="6.SMO算法"></a>6.SMO算法</h2><hr>
 <p>参考链接：</p>
 <p><a href="https://mp.weixin.qq.com/s?__biz=MzU4MzA3ODczNw==&amp;mid=2247483783&amp;idx=1&amp;sn=fc9bee870fd3640417b6ee4e773e64ad&amp;chksm=fdafc7b9cad84eaff684742be49ba1177e69f69ff2f9f5e51c8e3b8ddab258742d679125df82&amp;token=798908339&amp;lang=zh_CN&amp;scene=21#wechat_redirect" target="_blank" rel="noopener">参考1</a></p>
 
