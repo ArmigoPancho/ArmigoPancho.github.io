@@ -387,7 +387,8 @@ s.t.&y^{i}(W^{T}X^{i}+b)>=1\\
     \end{align}</script><p>上面就是一个有约束条件的原始问题。我们一般的思路就是一脑子求导=0，然后解出x代入原式即可(因为极值处的斜率为0 )。可是这里有约束条件，怎么办？于是拉格朗日先生便一跃而出，他说可以干掉这个纸老虎。看看他怎么解决的？</p>
 <script type="math/tex; mode=display">\mathcal{L}(x,\alpha,\beta) = f(x) + \sum_{i=0}^k \alpha_ic_i(x) + \sum_{j=1}^l \beta_jh_j(x)</script><p>没错，他也是一股脑的把所有式子塞到一起，起个名字叫做<strong>广义拉格朗日函数</strong>。其中的α和β都是参数，特别要求αi&gt;=0。直接把上面式子求导代入原式即可。就是上面公式(1)的求解结果。发现上面的式子若不满足约束条件，就至无穷大了，<strong>若满足约束条件</strong>，则令L的最大值为：</p>
 <script type="math/tex; mode=display">\theta_P(x) = \max_{\alpha,\beta:\alpha_i \ge 0}\mathcal{L}(x,\alpha,\beta)</script><p>发现原始问题就等价于最小化上面的式子：</p>
-<script type="math/tex; mode=display">&\min_{x}max\quad \mathcal{L}(x,\alpha,\beta)=&\min_{x} \theta_P(x)=min_{x} f(x)</script>
+<script type="math/tex; mode=display">\min_{x}max \mathcal{L}(x,\alpha,\beta)=min_{x} \theta_P(x)=min_{x} f(x)</script><h3 id="4-2对偶问题"><a href="#4-2对偶问题" class="headerlink" title="4.2对偶问题"></a>4.2对偶问题</h3><p>上面先最小化再最大化问题，对偶问题就是先最大化再最小化问题，即对偶问题为：</p>
+<script type="math/tex; mode=display">\max_{\alpha,\beta:\alpha_i\ge0}\theta_D(\alpha,\beta)=\max_{\alpha,\beta:\alpha_i\ge0}\min_x\mathcal{L}(x,\alpha,\beta)</script>
           
         
       
