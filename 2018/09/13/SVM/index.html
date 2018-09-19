@@ -93,7 +93,7 @@
 <meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/ib3ibslZIrCuB1gu0vAmib9uoA4WOCZfiaa2j7a5iatFtYdWUUo7LibvtHD6kFjIgQFjQKblCdC7Nw2hTpSLGCNB9Vkw/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
 <meta property="og:image" content="http://yoursite.com/2018/09/13/SVM/SMO3.JPG">
 <meta property="og:image" content="http://yoursite.com/2018/09/13/SVM/SMO2.JPG">
-<meta property="og:updated_time" content="2018-09-19T11:53:53.434Z">
+<meta property="og:updated_time" content="2018-09-19T12:49:44.643Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Bonjour!">
 <meta name="twitter:description" content="1.SVM总体简单介绍首先，分类的时候我们通常有时候遇到一个分类情况是，多类数据交融，无法通过简单的线性分类器区分。那SVM（Support Vector Machine）就是把数据映射到高维，然后根据支持向量找出一个最佳分类面，使得数据可以分开。这就是支持向量机干的事情。参考下面视频：    2.硬间隔SVM首先清楚四个概念：超平面，函数间隔，几何间隔，支持向量。 （1）超平面在二维空间里面是：">
@@ -437,7 +437,7 @@ C - α_i - u_i = 0</script><p>把上面三个式子代入公式（4），可得�
     \end{align}</script><p>有上式可求出α，再由α求出W和b。公式（5）可求出W，而b是所有支持向量满足$y_i(W^TX_i+b)=1$的值b的均值。由KKT条件：</p>
 <p><img src="https://mmbiz.qpic.cn/mmbiz_png/ib3ibslZIrCuB1gu0vAmib9uoA4WOCZfiaa2ibZcte0icusVicdwMLRibbbrE8UD5rR9M7GyapokicxCNribzGkxaQTtSTsA/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img"></p>
 <p>上面第一个式子正是由于αi&gt;0,由KKT推断$y_i(W^TX_i+b)-1+ξ_i=0$所得。可知：满足<img src="https://mmbiz.qpic.cn/mmbiz_png/ib3ibslZIrCuB1gu0vAmib9uoA4WOCZfiaa2j7a5iatFtYdWUUo7LibvtHD6kFjIgQFjQKblCdC7Nw2hTpSLGCNB9Vkw/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img">的样本点(xs,ys)，即为<strong>支持向量</strong>。详细请点击底部的参考1。</p>
-<h3 id="5-1核函数"><a href="#5-1核函数" class="headerlink" title="5.1核函数"></a>5.1核函数</h3><p>对于线性可分数据用硬间隔和软间隔可以区分数据，但对于非线性的数据怎么办？于是，我们的核函数粉墨登场（这里引用原意：演员化妆演戏）。它干的事情直观感受就是上面最开始的视频里干的部分事：把非线性的数据映射到线性可分的维度里面。来，举个栗子八。╭(╯^╰)╮，^_^哪个比较萌？跑题了。就是我们有一组非线性的2维模型：</p>
+<h3 id="5-1核函数"><a href="#5-1核函数" class="headerlink" title="5.1核函数"></a>5.1核函数</h3><p>对于线性可分数据用硬间隔和软间隔可以区分数据，但对于非线性的数据怎么办？于是，我们的核函数粉墨登场（这里引用原意：演员化妆演戏）。它干的事情直观感受就是上面最开始的视频里干的部分事：把非线性的数据映射到线性可分的维度里面。来，举个栗子八。就是我们有一组非线性的2维模型：</p>
 <script type="math/tex; mode=display">
 f(X_1,X_2) = A_0+A_1X_1+A_2X_2+A_3X_1^2+A_4X_2^2+A_5X_1^3+A_6X_2^3</script><p>若令：</p>
 <script type="math/tex; mode=display">
@@ -487,7 +487,7 @@ E_i = \sum_{S}α_iy_ik_{ij}+b^{new}-y_i</script><p>最终的b是：</p>
 b = y_s-\sum_{S}α_iy_ik(x_i,x_s)</script><p>即所有支持向量的b的均值即为最终的b值。</p>
 <h3 id="6-3求分类超平面"><a href="#6-3求分类超平面" class="headerlink" title="6.3求分类超平面"></a>6.3求分类超平面</h3><p>即为：</p>
 <script type="math/tex; mode=display">
-\sum_{i=1}^mα_iy_ik(x_i,x_s)+b=0</script><h2 id="7-总结"><a href="#7-总结" class="headerlink" title="7.总结"></a>7.总结</h2><p>SMO算法部分强烈推荐参考：<a href="https://mp.weixin.qq.com/s?__biz=MzU4MzA3ODczNw==&amp;mid=2247483841&amp;idx=1&amp;sn=a449dcff326b4c79adaeecc37c4ab079&amp;chksm=fdafc7ffcad84ee93e795bf344992073ff30f4a03e6cbb8552c1a9bfde1a6c9bce00625272a7&amp;token=441068658&amp;lang=zh_CN&amp;scene=21#wechat_redirect" target="_blank" rel="noopener">点击此处</a>，我的多数都是来自于此。这篇讲解的非常仔细，比我不知高到哪里去了。最后参考链接第5个是他这个系列的总体，一共5部分，包括代码实现。非常感谢那些乐于分享知识的人。这篇写了整整2天，算上搭建blog的话有一个礼拜了，也算是对最近的一个梳理和总结吧。最后，推荐一款Markdown编辑器：<a href="https://www.typora.io/" target="_blank" rel="noopener">Typora</a>,做到了所谓的“所见即所得”，这是我听过的世界上最好的宣传语o(<em>￣︶￣</em>)o，Au revoir, chère amie。</p>
+\sum_{i=1}^mα_iy_ik(x_i,x_s)+b=0</script><h2 id="7-总结"><a href="#7-总结" class="headerlink" title="7.总结"></a>7.总结</h2><p>SMO算法部分强烈推荐参考：<a href="https://mp.weixin.qq.com/s?__biz=MzU4MzA3ODczNw==&amp;mid=2247483841&amp;idx=1&amp;sn=a449dcff326b4c79adaeecc37c4ab079&amp;chksm=fdafc7ffcad84ee93e795bf344992073ff30f4a03e6cbb8552c1a9bfde1a6c9bce00625272a7&amp;token=441068658&amp;lang=zh_CN&amp;scene=21#wechat_redirect" target="_blank" rel="noopener">点击此处</a>，我的多数都是来自于此。这篇讲解的非常仔细，比我不知高到哪里去了。最后参考链接第5个是他这个系列的总体，一共5部分，包括代码实现。非常感谢那些乐于分享知识的人。这篇写了整整2天，算上搭建blog的话有一个礼拜了，也算是对最近的一个梳理和总结吧。最后，推荐一款Markdown编辑器：<a href="https://www.typora.io/" target="_blank" rel="noopener">Typora</a>,做到了所谓的“所见即所得”，这是我听过的世界上最好的宣传语(≧∇≦)ﾉ，Au revoir, chère amie。</p>
 <hr>
 <p>参考链接：</p>
 <p><a href="https://mp.weixin.qq.com/s?__biz=MzU4MzA3ODczNw==&amp;mid=2247483783&amp;idx=1&amp;sn=fc9bee870fd3640417b6ee4e773e64ad&amp;chksm=fdafc7b9cad84eaff684742be49ba1177e69f69ff2f9f5e51c8e3b8ddab258742d679125df82&amp;token=798908339&amp;lang=zh_CN&amp;scene=21#wechat_redirect" target="_blank" rel="noopener">1.支持向量机Part2—线性支持向量机</a></p>
