@@ -394,15 +394,15 @@ s.t.&y^{i}(W^{T}X^{i}+b)>=1\\
 <script type="math/tex; mode=display">\min_{x}max \mathcal{L}(x,\alpha,\beta)=\min_{x} \theta_P(x)=\min_{x} f(x)\quad\quad(2)</script><p>因为αi&gt;=0,ci(x)&lt;=0,h(x)=0，所以θp的最大值是f(x)。</p>
 <h3 id="4-2对偶问题"><a href="#4-2对偶问题" class="headerlink" title="4.2对偶问题"></a>4.2对偶问题</h3><p>上面先最大化再最小化问题，对偶问题就是先最小化再最大化问题，即对偶问题为：</p>
 <script type="math/tex; mode=display">\max_{\alpha,\beta:\alpha_i\ge0}\theta_D(\alpha,\beta)=\max_{\alpha,\beta:\alpha_i\ge0}\min_x\mathcal{L}(x,\alpha,\beta)\quad\quad(3)</script><p>在一般情况下公式(2)要&gt;=公式(3),例如，对于同一个问题，x∈{0,1},y∈(0,1)，min max(1(x=y))&gt;=max min(1(x=y)),这里的1(x=y)为示性函数:若括号里的为真，则返回1，否则返回0。左边最大的1=1，再取最小值为1，右式最小的0=0，再取最大的值为0,1&gt;0，故可以看出左式&gt;=右式。感兴趣的可以自己搜下证明。那么，什么时候等式才成立呢？这是个好问题，答：满足KKT条件的时候。这样，我们就可以把原始问题转化为对偶问题，通过解出对偶问题的参数，也就解出原始问题的部分参数，这样就简化了计算。</p>
-<h3 id="4-3KKT条件"><a href="#4-3KKT条件" class="headerlink" title="4.3KKT条件"></a>4.3KKT条件</h3><p>对于KKT条件,由定理：对于原始问题和对偶问题，假设函数f(x)和c_i(x)是凸函数，h_i(x)是仿射函数（即由一阶多项式构成的函数，f(x)=Ax + b, A是矩阵，x，b是向量）；并且假设不等式约束c_i(x)是严格可行的，即存在x，对所有i有c_i(x)&lt;0，则x*,α*,β*分别是原始问题和对偶问题的最优解的<strong>充分必要条件</strong>是x*,α*,β*满足下面的Karush-Kuhn-Tucker(KKT)条件：</p>
+<h3 id="4-3KKT条件"><a href="#4-3KKT条件" class="headerlink" title="4.3KKT条件"></a>4.3KKT条件</h3><p>对于KKT条件,由定理：对于原始问题和对偶问题，假设函数f(x)和c_i(x)是凸函数，h_i(x)是仿射函数（即由一阶多项式构成的函数，f(x)=Ax + b, A是矩阵，x，b是向量）；并且假设不等式约束$c_i(x)$是严格可行的，即存在x，对所有i有$c_i(x)&lt;0$，则$x^<em>,α^</em>,β^<em>$分别是原始问题和对偶问题的最优解的<strong>充分必要条件</strong>是$x^</em>,α^<em>,β^</em>$满足下面的Karush-Kuhn-Tucker(KKT)条件：</p>
 <script type="math/tex; mode=display">\begin{align}
 & \nabla_xL(x^*,\alpha^*,\beta^*)=0\\
 &\nabla_\alpha L(x^*,\alpha^*,\beta^*)=0\\
 &\nabla_\beta L(x^*,\alpha^*,\beta^*)=0\\
 &\alpha_i^*c_i(x)=0,i=1,2,\ldots,k\quad\quad(a)\\
-&\alpha_i^*\ge0,i=1,2,\ldots,k\quad\quad\quad(b)\\
-&c_i(x)\le0,i=1,2,\ldots,k\quad\quad  (c)\\
-&h_j(x^*)=0,j=1,2,\ldots,l\quad\quad (d)
+&\alpha_i^*\ge0,i=1,2,\ldots,k\quad\quad\quad\quad(b)\\
+&c_i(x)\le0,i=1,2,\ldots,k\quad\quad\quad  (c)\\
+&h_j(x^*)=0,j=1,2,\ldots,l\quad\quad\quad(d)
 \end{align}</script><p>前三个求偏导是保证驻点的存在，后面的式子(a)、(b)是拉格朗日乘子需要满足的约束，(c)、(d)是原始问题的约束条件。特别注意当$\alpha_i^<em>&gt;0$时，由对偶互补条件可知时，由KKT对偶互补条件可知:$c_i(x^</em>)=0$，这个后面会用到。</p>
 <h2 id="5-软间隔SVM"><a href="#5-软间隔SVM" class="headerlink" title="5.软间隔SVM"></a>5.软间隔SVM</h2><p>第3章节主要讲的是硬间隔最大化，那什么是软间隔最大化？硬间隔呢就是支持向量不能超过第二幅图的直线，顶多在线上面，但是软间隔可以容忍少量的支持向量落在直线内，于是我们的约束条件yi(W^TX+b)&gt;=1就要修改为yi(W^TX+b)&gt;=1-ξi，即允许部分支持向量间隔不足1,ξi&gt;=0。我们原始的最大化约束问题转为：</p>
 <script type="math/tex; mode=display">
@@ -420,7 +420,7 @@ C - α_i - u_i = 0</script><p>把上面三个式子代入公式（4），可得�
 <script type="math/tex; mode=display">
 \begin{align} 
      \max\quad &\sum\limits_{i=1}^{m}α_i-\frac{1}{2}\sum_{i=1}^m\sum_{j=1}^my^iy^jα_iα_j<x_i,x_j>\\
-     s.t.\quad&\sum_{i=1}^mα_iy_i=0\\
+     s.t.\quad&\sum_{i=1}^mα_iy_i=0\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad(6)\\
      & 0\leα_i\le C
     \end{align}</script><p>有上式可求出α，再由α求出W和b。公式（5）可求出W，而b是所有支持向量满足yi(w^Txi+b)=1的值b的均值。由KKT条件：</p>
 <p><img src="https://mmbiz.qpic.cn/mmbiz_png/ib3ibslZIrCuB1gu0vAmib9uoA4WOCZfiaa2ibZcte0icusVicdwMLRibbbrE8UD5rR9M7GyapokicxCNribzGkxaQTtSTsA/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img"></p>
@@ -442,10 +442,11 @@ k(x,z)=φ(x)φ(z)</script><p>常见的核函数有：</p>
 \kappa(x,x_i) = x \cdot x_i</script><p>线性核，主要用于线性可分的情况，我们可以看到特征空间到输入空间的维度是一样的，其参数少速度快，对于线性可分数据，其分类效果很理想，因此我们通常首先尝试用线性核函数来做分类，看看效果如何，如果不行再换别的。</p>
 <p>（3）多项式核函数（Polynomial kernel function）</p>
 <script type="math/tex; mode=display">
-\kappa(x, x_i) = ((x\cdot x_i) + 1)^d</script><p>多项式核函数可以实现将低维的输入空间映射到高纬的特征空间，但是多项式核函数的参数多，当多项式的阶数比较高的时候，核矩阵的元素值将趋于无穷大或者无穷小，计算复杂度会大到无法计算。这几个核函数可以优先使用高斯核函数，据说Andrew Ng只用高斯核函数，可见性能确实优越。</p>
+\kappa(x, x_i) = ((x\cdot x_i) + 1)^d</script><p>多项式核函数可以实现将低维的输入空间映射到高纬的特征空间，但是多项式核函数的参数多，当多项式的阶数比较高的时候，核矩阵的元素值将趋于无穷大或者无穷小，计算复杂度会大到无法计算。这几个核函数可以优先使用高斯核函数，据说Andrew Ng只用高斯核函数，可见性能确实优越。当然，还是要根据自己的模型找最适合的核函数。还有很多核函数就不介绍了，感兴趣的自行搜索。</p>
 <h2 id="6-SMO算法"><a href="#6-SMO算法" class="headerlink" title="6.SMO算法"></a>6.SMO算法</h2><hr>
 <p>参考链接：</p>
-<p><a href="https://mp.weixin.qq.com/s?__biz=MzU4MzA3ODczNw==&amp;mid=2247483783&amp;idx=1&amp;sn=fc9bee870fd3640417b6ee4e773e64ad&amp;chksm=fdafc7b9cad84eaff684742be49ba1177e69f69ff2f9f5e51c8e3b8ddab258742d679125df82&amp;token=798908339&amp;lang=zh_CN&amp;scene=21#wechat_redirect" target="_blank" rel="noopener">参考1</a></p>
+<p><a href="https://mp.weixin.qq.com/s?__biz=MzU4MzA3ODczNw==&amp;mid=2247483783&amp;idx=1&amp;sn=fc9bee870fd3640417b6ee4e773e64ad&amp;chksm=fdafc7b9cad84eaff684742be49ba1177e69f69ff2f9f5e51c8e3b8ddab258742d679125df82&amp;token=798908339&amp;lang=zh_CN&amp;scene=21#wechat_redirect" target="_blank" rel="noopener">1.支持向量机Part2—线性支持向量机</a></p>
+<p><a href="https://blog.csdn.net/batuwuhanpei/article/details/52354822" target="_blank" rel="noopener">2.svm常用核函数</a></p>
 
           
         
