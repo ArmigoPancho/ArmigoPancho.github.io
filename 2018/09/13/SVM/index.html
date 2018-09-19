@@ -91,7 +91,9 @@
 <meta property="og:image" content="http://yoursite.com/2018/09/13/SVM/1.jpg">
 <meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/ib3ibslZIrCuB1gu0vAmib9uoA4WOCZfiaa2ibZcte0icusVicdwMLRibbbrE8UD5rR9M7GyapokicxCNribzGkxaQTtSTsA/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
 <meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/ib3ibslZIrCuB1gu0vAmib9uoA4WOCZfiaa2j7a5iatFtYdWUUo7LibvtHD6kFjIgQFjQKblCdC7Nw2hTpSLGCNB9Vkw/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
-<meta property="og:updated_time" content="2018-09-19T04:17:43.672Z">
+<meta property="og:image" content="http://yoursite.com/2018/09/13/SVM/C:/Users/asus1/Documents/Tencent%20Files/1906354590/FileRecv/MobileFile/SMO3.JPG">
+<meta property="og:image" content="http://yoursite.com/2018/09/13/SVM/C:/Users/asus1/Documents/Tencent%20Files/1906354590/FileRecv/MobileFile/SMO2.JPG">
+<meta property="og:updated_time" content="2018-09-19T09:39:28.137Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Bonjour!">
 <meta name="twitter:description" content="1.SVM总体简单介绍首先，分类的时候我们通常有时候遇到一个分类情况是，多类数据交融，无法通过简单的线性分类器区分。那SVM（Support Vector Machine）就是把数据映射到高维，然后根据支持向量找出一个最佳分类面，使得数据可以分开。这就是支持向量机干的事情。参考下面视频：    2.硬间隔SVM首先清楚四个概念：超平面，函数间隔，几何间隔，支持向量。 （1）超平面在二维空间里面是：">
@@ -392,7 +394,7 @@ s.t.&y^{i}(W^{T}X^{i}+b)>=1\\
 \end{align*}</script><p>根据凸优化理论，该问题可以通过拉格朗日函数将目标函数转化为无约束的目标函数进行求解：</p>
 <script type="math/tex; mode=display">L(w,b,α)=\frac{1}{2}||w||^{2}-\sum\limits_{i=1}^{m}α_{i}(y^{i}(W^{T}X^{i}+b)-1)</script><p>L对αi和b分别求导并令为0后得：</p>
 <script type="math/tex; mode=display">W=\sum\limits_{i=1}^{m}α_{i}y^{i}x^{i}</script><script type="math/tex; mode=display">\sum\limits_{i=1}^{m}α_{i}y^{i}=0</script><p>然后把上面的2个式子代入L：</p>
-<script type="math/tex; mode=display">L=\sum\limits_{i=1}^{m}α_{i}-\frac{1}{2}\sum_{i=1}^{m}\sum_{j=1}^my^{i}y^{j}α_{i}α_{j}<x^{i},x^{j}>\quad\quad(1)</script><p>可以令上面L为新的T(α)函数，后面的尖括号里面的就是xi和xj的内积表达式。</p>
+<script type="math/tex; mode=display">L=\sum\limits_{i=1}^{m}α_{i}-\frac{1}{2}\sum_{i=1}^{m}\sum_{j=1}^my^{i}y^{j}α_{i}α_{j}<x^{i},x^{j}>\quad\quad(1)</script><p>可以令上面L为新的W(α)函数，后面的尖括号里面的就是xi和xj的内积表达式。</p>
 <h2 id="4-对偶问题"><a href="#4-对偶问题" class="headerlink" title="4.对偶问题"></a>4.对偶问题</h2><h3 id="4-1原始问题"><a href="#4-1原始问题" class="headerlink" title="4.1原始问题"></a>4.1原始问题</h3><p>先来看原始问题，什么是原始问题？假设f(x),c_i(x),h_j(x)是定义在R^n上的连续可微函数，考虑约束最优化问题时候：</p>
 <script type="math/tex; mode=display">\begin{align} 
 ​     \min_{x \in R^n}\quad &f(x) \\
@@ -404,7 +406,7 @@ s.t.&y^{i}(W^{T}X^{i}+b)>=1\\
 <script type="math/tex; mode=display">\min_{x}max \mathcal{L}(x,\alpha,\beta)=\min_{x} \theta_P(x)=\min_{x} f(x)\quad\quad(2)</script><p>因为αi&gt;=0,ci(x)&lt;=0,h(x)=0，所以θp的最大值是f(x)。</p>
 <h3 id="4-2对偶问题"><a href="#4-2对偶问题" class="headerlink" title="4.2对偶问题"></a>4.2对偶问题</h3><p>上面先最大化再最小化问题，对偶问题就是先最小化再最大化问题，即对偶问题为：</p>
 <script type="math/tex; mode=display">\max_{\alpha,\beta:\alpha_i\ge0}\theta_D(\alpha,\beta)=\max_{\alpha,\beta:\alpha_i\ge0}\min_x\mathcal{L}(x,\alpha,\beta)\quad\quad(3)</script><p>在一般情况下公式(2)要&gt;=公式(3),例如，对于同一个问题，x∈{0,1},y∈(0,1)，min max(1(x=y))&gt;=max min(1(x=y)),这里的1(x=y)为示性函数:若括号里的为真，则返回1，否则返回0。左边最大的1=1，再取最小值为1，右式最小的0=0，再取最大的值为0,1&gt;0，故可以看出左式&gt;=右式。感兴趣的可以自己搜下证明。那么，什么时候等式才成立呢？这是个好问题，答：满足KKT条件的时候。这样，我们就可以把原始问题转化为对偶问题，通过解出对偶问题的参数，也就解出原始问题的部分参数，这样就简化了计算。</p>
-<h3 id="4-3KKT条件"><a href="#4-3KKT条件" class="headerlink" title="4.3KKT条件"></a>4.3KKT条件</h3><p>对于KKT条件,由定理：对于原始问题和对偶问题，假设函数f(x)和c_i(x)是凸函数，h_i(x)是仿射函数（即由一阶多项式构成的函数，f(x)=Ax + b, A是矩阵，x，b是向量）；并且假设不等式约束$c_i(x)$是严格可行的，即存在x，对所有i有$c_i(x)&lt;0$，则$x^<em>$,$α^</em>$,$β^<em>$分别是原始问题和对偶问题的最优解的<strong>充分必要条件</strong>是$x^</em>$,$α^<em>$,$β^</em>$满足下面的Karush-Kuhn-Tucker(KKT)条件：</p>
+<h3 id="4-3KKT条件"><a href="#4-3KKT条件" class="headerlink" title="4.3KKT条件"></a>4.3KKT条件</h3><p>对于KKT条件,由定理：对于原始问题和对偶问题，假设函数f(x)和c_i(x)是凸函数，h_i(x)是仿射函数（即由一阶多项式构成的函数，f(x)=Ax + b, A是矩阵，x，b是向量）；并且假设不等式约束$c_i(x)$是严格可行的，即存在x，对所有i有$c_i(x)&lt;0$，则x*,α*,β*分别是原始问题和对偶问题的最优解的<strong>充分必要条件</strong>是x*,α*,β*满足下面的Karush-Kuhn-Tucker(KKT)条件：</p>
 <script type="math/tex; mode=display">\begin{align}
 & \nabla_xL(x^*,\alpha^*,\beta^*)=0\\
 &\nabla_\alpha L(x^*,\alpha^*,\beta^*)=0\\
@@ -413,7 +415,7 @@ s.t.&y^{i}(W^{T}X^{i}+b)>=1\\
 &\alpha_i^*\ge0,i=1,2,\ldots,k\quad\quad\quad\quad(b)\\
 &c_i(x)\le0,i=1,2,\ldots,k\quad\quad\quad  (c)\\
 &h_j(x^*)=0,j=1,2,\ldots,l\quad\quad\quad(d)
-\end{align}</script><p>前三个求偏导是保证驻点的存在，后面的式子(a)、(b)是拉格朗日乘子需要满足的约束，(c)、(d)是原始问题的约束条件。特别注意当αi*&gt;0时，由对偶互补条件可知时，由KKT对偶互补条件可知:ci(x)=0，这个后面会用到。</p>
+\end{align}</script><p>前三个求偏导是保证驻点的存在，后面的式子(a)、(b)是拉格朗日乘子需要满足的约束，(c)、(d)是原始问题的约束条件。特别注意当αi*&gt;0时，由KKT对偶互补条件可知:ci(x)=0，这个后面会用到。</p>
 <h2 id="5-软间隔SVM"><a href="#5-软间隔SVM" class="headerlink" title="5.软间隔SVM"></a>5.软间隔SVM</h2><p>第3章节主要讲的是硬间隔最大化，那什么是软间隔最大化？硬间隔呢就是支持向量不能超过第二幅图的直线，顶多在线上面，但是软间隔可以容忍少量的支持向量落在直线内，于是我们的约束条件yi(W^TX+b)&gt;=1就要修改为yi(W^TX+b)&gt;=1-ξi，即允许部分支持向量间隔不足1,ξi&gt;=0。我们原始的最大化约束问题转为：</p>
 <script type="math/tex; mode=display">
 \begin{align} 
@@ -453,17 +455,41 @@ k(x,z)=φ(x)φ(z)</script><p>常见的核函数有：</p>
 <p>（3）多项式核函数（Polynomial kernel function）</p>
 <script type="math/tex; mode=display">
 \kappa(x, x_i) = ((x\cdot x_i) + 1)^d</script><p>多项式核函数可以实现将低维的输入空间映射到高纬的特征空间，但是多项式核函数的参数多，当多项式的阶数比较高的时候，核矩阵的元素值将趋于无穷大或者无穷小，计算复杂度会大到无法计算。这几个核函数可以优先使用高斯核函数，据说Andrew Ng只用高斯核函数，可见性能确实优越。当然，还是要根据自己的模型找最适合的核函数。还有很多核函数就不介绍了，感兴趣的自行搜索。</p>
-<h2 id="6-SMO算法"><a href="#6-SMO算法" class="headerlink" title="6.SMO算法"></a>6.SMO算法</h2><p>了解了核函数后，上面式子（6）对偶问题的内积换成核函数后，提个负号出来整体变为最小化问题就等价于：</p>
+<h2 id="6-SMO算法"><a href="#6-SMO算法" class="headerlink" title="6.SMO算法"></a>6.SMO算法</h2><h3 id="6-1求解-α-1-α-2"><a href="#6-1求解-α-1-α-2" class="headerlink" title="6.1求解$α_1,α_2$"></a>6.1求解$α_1,α_2$</h3><p>了解了核函数后，上面式子（6）对偶问题的内积换成核函数后，提个负号出来整体变为最小化问题就等价于：</p>
 <script type="math/tex; mode=display">
 \begin{align} 
      \min_\alpha\quad &\frac{1}{2}\sum_{i=1}^m\sum_{j=1}^my_iy_jα_iα_jk(x_i,x_j)-\sum\limits_{i=1}^{m}α_i\\
      s.t.\quad&\sum_{i=1}^mα_iy_i=0\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad(7)\\
      & 0\leα_i\le C,i=1,2,...,m
-    \end{align}</script><p>SVM的“核“是什么呢？就是<strong>SMO（Sequential Minimal Optimization</strong>）算法，他是用来求α的，前面说过：求出了α，就可以求出W和b,接着超平面也就找到了。它的主要思想就是：α有m个变量，但是直接根据优化问题来求解很困难。所以，SMO算法每次只对2个变量更新，其他变量看成是常数。</p>
+    \end{align}</script><p>SVM的“核“是什么呢？就是<strong>SMO（Sequential Minimal Optimization</strong>）算法，他是用来求α的，前面说过：求出了α，就可以求出W和b,接着超平面也就找到了。它的主要思想就是：α有m个变量，但是直接根据优化问题来求解很困难。所以，SMO算法每次只对2个变量更新，其他变量看成是常数，而常数项可以在优化目标中省略。</p>
+<p><img src="/2018/09/13/SVM/C:/Users\asus1\Documents\Tencent Files\1906354590\FileRecv\MobileFile\SMO3.JPG" alt="SMO3"></p>
+<p>上面的是具体α求解步骤，稍微讲解一下，公式展开来自公式（7）。min后面优化目标这么长，不要吓坏了，只是把α1和α2变量部分展开来，其余看作常数。下面的限制条件原本是$\sum_{i=1}^mα_iy_i=0$，因为$y_i$只能取-1和1，所以就看作是m个正负$α_i$相加=0，拿出2个变量：α1和α2出来玩玩，其余的和为常数-k。<strong>需要注意的是2个相同$y_i$的乘积为1，这里都会用到以简化计算。</strong>然后得到第1部分的优化目标和约束条件。(图中的$α_2^{new,uncut}$不对，应该是$α_2^{new,unc}$，后面的其实是unclip)</p>
+<p>第2部分，是讲解的α的整个迭代过程。过程上面图片有，讲一下L和H的范围是怎么来的。以左边双红线图为例：α本身就有限制[0,C]，故有图中的正方形。坐标轴的横坐标是α1，纵坐标是α2,由α1-α2=K可得2条红色的线，因为已经限制了α1和α2的范围，只能在方框中。可得到线①、线②。可知线①的α2范围是[-K,C]，线②的α2范围是[0,C-K]，再把α1-α2=K代入即可得到L，H的范围。另一种情况也一样可得。</p>
+<p><img src="/2018/09/13/SVM/C:/Users\asus1\Documents\Tencent Files\1906354590\FileRecv\MobileFile\SMO2.JPG" alt="SMO2"></p>
+<p>这一步主要是求解未经剪辑的α2，思路是先简化优化目标函数W(α1，α2)，然后代入α1和α2的关系式消去α1，使得表达式全部是关于α2。接着W（α2）对α2求导=0即可。最后可以得到迭代式子：</p>
+<script type="math/tex; mode=display">
+α_2^{new,unc} = α_2^{old} + \frac{y_2(E_1-E_2)}{k_{11}+k_{22}+k_{12}}</script><h3 id="6-2求解b"><a href="#6-2求解b" class="headerlink" title="6.2求解b"></a>6.2求解b</h3><p>当$0&lt;α_1^{new}&lt;C$时,根据KKT条件$y_i(W^TX_i+b)=1\$:</p>
+<script type="math/tex; mode=display">
+y_1(\sum_{j=1}^{m}α_jy_jk_{1j}+b_1)=1\\
+y_1\cdot y_1(\sum_{j=1}^{m}α_jy_jk_{1j}+b_1)=1\cdot y_1 \\
+即为：\sum_{j=1}^{m}α_jy_jk_{1j}+b_1-y_1=0\\
+迭代得：b_1^{new}=y_1-α_1^{new}y_1k_{11}-α_2^{new}y_2k_{12}-\sum_{j=3}^{m}α_jy_jk_{1j}\\
+本轮迭代中E_1:
+E_1=g(x_1)-y_1\\
+y_1代入上面的b_1^{new}可得：\\
+b_1^{new}=b^{old}-E_1+y_1k_{11}(α_1^{old}-α_1^{new})+y_2k_{12}(α_2^{old}-α_2^{new})\\
+b_2^{new}同理：\\
+b_2^{new}=b^{old}-E_2+y_1k_{12}(α_1^{old}-α_1^{new})+y_2k_{22}(α_2^{old}-α_2^{new})\\
+故：b^{new}=\frac{b_1^{new}+b_2^{new}}{2}</script><p>最后更新Ei为下一轮迭代做准备:</p>
+<script type="math/tex; mode=display">
+E_i = \sum_{S}α_iy_ik_{ij}+b^{new}-y_i</script><h2 id="7-总结"><a href="#7-总结" class="headerlink" title="7.总结"></a>7.总结</h2><p>SMO算法部分强烈推荐参考：<a href="https://mp.weixin.qq.com/s?__biz=MzU4MzA3ODczNw==&amp;mid=2247483841&amp;idx=1&amp;sn=a449dcff326b4c79adaeecc37c4ab079&amp;chksm=fdafc7ffcad84ee93e795bf344992073ff30f4a03e6cbb8552c1a9bfde1a6c9bce00625272a7&amp;token=441068658&amp;lang=zh_CN&amp;scene=21#wechat_redirect" target="_blank" rel="noopener">点击此处</a>，我的多数都是来自于此。这篇讲解的非常仔细，比我不知高到哪里去了。最后参考链接第5个是他这个系列的总体，一共5部分，包括代码实现。非常感谢那些乐于分享知识的人。这篇写了整整2天，算上搭建blog的话有一个礼拜了，也算是对最近的一个梳理和总结吧。最后，推荐一款Markdown编辑器：<a href="https://www.typora.io/" target="_blank" rel="noopener">Typora</a>,做到了所谓的“所见即所得”，这是我听过的世界上最好的宣传语o(<em>￣︶￣</em>)o，Au revoir。</p>
 <hr>
 <p>参考链接：</p>
 <p><a href="https://mp.weixin.qq.com/s?__biz=MzU4MzA3ODczNw==&amp;mid=2247483783&amp;idx=1&amp;sn=fc9bee870fd3640417b6ee4e773e64ad&amp;chksm=fdafc7b9cad84eaff684742be49ba1177e69f69ff2f9f5e51c8e3b8ddab258742d679125df82&amp;token=798908339&amp;lang=zh_CN&amp;scene=21#wechat_redirect" target="_blank" rel="noopener">1.支持向量机Part2—线性支持向量机</a></p>
 <p><a href="https://blog.csdn.net/batuwuhanpei/article/details/52354822" target="_blank" rel="noopener">2.svm常用核函数</a></p>
+<p><a href="https://mp.weixin.qq.com/s/IYM58ts0kOn8T14ecErZyQ?" target="_blank" rel="noopener">3.从超平面到SVM（三）</a></p>
+<p><a href="http://open.163.com/movie/2008/1/C/6/M6SGF6VB4_M6SGJVMC6.html" target="_blank" rel="noopener">4.最优间隔分类器问题</a></p>
+<p><a href="https://mp.weixin.qq.com/s?__biz=MzU4MzA3ODczNw==&amp;mid=2247483872&amp;idx=1&amp;sn=c9a8f8f85d3495797f131934ac5727bf&amp;chksm=fdafc7decad84ec895533a2a7f4c31b951fe929ef63c6a0670819cd353908e0ef5dc056ad5a1&amp;mpshare=1&amp;scene=23&amp;srcid=0901Z2hAqC6sTOfiws3SCtz0#rd" target="_blank" rel="noopener">5.支持向量机Part5—Python实现</a></p>
 
       
     </div>
@@ -627,7 +653,7 @@ k(x,z)=φ(x)φ(z)</script><p>常见的核函数有：</p>
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-SVM总体简单介绍"><span class="nav-number">1.</span> <span class="nav-text">1.SVM总体简单介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-硬间隔SVM"><span class="nav-number">2.</span> <span class="nav-text">2.硬间隔SVM</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#（1）超平面"><span class="nav-number">2.1.</span> <span class="nav-text">（1）超平面</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（2）函数间隔"><span class="nav-number">2.2.</span> <span class="nav-text">（2）函数间隔</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（3）几何间隔"><span class="nav-number">2.3.</span> <span class="nav-text">（3）几何间隔</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（4）支持向量"><span class="nav-number">2.4.</span> <span class="nav-text">（4）支持向量</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-最优间隔分类器问题"><span class="nav-number">3.</span> <span class="nav-text">3.最优间隔分类器问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-对偶问题"><span class="nav-number">4.</span> <span class="nav-text">4.对偶问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1原始问题"><span class="nav-number">4.1.</span> <span class="nav-text">4.1原始问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2对偶问题"><span class="nav-number">4.2.</span> <span class="nav-text">4.2对偶问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3KKT条件"><span class="nav-number">4.3.</span> <span class="nav-text">4.3KKT条件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-软间隔SVM"><span class="nav-number">5.</span> <span class="nav-text">5.软间隔SVM</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1核函数"><span class="nav-number">5.1.</span> <span class="nav-text">5.1核函数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-SMO算法"><span class="nav-number">6.</span> <span class="nav-text">6.SMO算法</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-SVM总体简单介绍"><span class="nav-number">1.</span> <span class="nav-text">1.SVM总体简单介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-硬间隔SVM"><span class="nav-number">2.</span> <span class="nav-text">2.硬间隔SVM</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#（1）超平面"><span class="nav-number">2.1.</span> <span class="nav-text">（1）超平面</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（2）函数间隔"><span class="nav-number">2.2.</span> <span class="nav-text">（2）函数间隔</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（3）几何间隔"><span class="nav-number">2.3.</span> <span class="nav-text">（3）几何间隔</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（4）支持向量"><span class="nav-number">2.4.</span> <span class="nav-text">（4）支持向量</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-最优间隔分类器问题"><span class="nav-number">3.</span> <span class="nav-text">3.最优间隔分类器问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-对偶问题"><span class="nav-number">4.</span> <span class="nav-text">4.对偶问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1原始问题"><span class="nav-number">4.1.</span> <span class="nav-text">4.1原始问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2对偶问题"><span class="nav-number">4.2.</span> <span class="nav-text">4.2对偶问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3KKT条件"><span class="nav-number">4.3.</span> <span class="nav-text">4.3KKT条件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-软间隔SVM"><span class="nav-number">5.</span> <span class="nav-text">5.软间隔SVM</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1核函数"><span class="nav-number">5.1.</span> <span class="nav-text">5.1核函数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-SMO算法"><span class="nav-number">6.</span> <span class="nav-text">6.SMO算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#6-1求解-α-1-α-2"><span class="nav-number">6.1.</span> <span class="nav-text">6.1求解$α_1,α_2$</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-2求解b"><span class="nav-number">6.2.</span> <span class="nav-text">6.2求解b</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-总结"><span class="nav-number">7.</span> <span class="nav-text">7.总结</span></a></li></ol></div>
             
 
           </div>
