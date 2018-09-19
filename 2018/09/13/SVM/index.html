@@ -91,7 +91,7 @@
 <meta property="og:image" content="http://yoursite.com/2018/09/13/SVM/1.jpg">
 <meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/ib3ibslZIrCuB1gu0vAmib9uoA4WOCZfiaa2ibZcte0icusVicdwMLRibbbrE8UD5rR9M7GyapokicxCNribzGkxaQTtSTsA/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
 <meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/ib3ibslZIrCuB1gu0vAmib9uoA4WOCZfiaa2j7a5iatFtYdWUUo7LibvtHD6kFjIgQFjQKblCdC7Nw2hTpSLGCNB9Vkw/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
-<meta property="og:updated_time" content="2018-09-19T02:00:50.704Z">
+<meta property="og:updated_time" content="2018-09-19T02:22:07.463Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Bonjour!">
 <meta name="twitter:description" content="1.SVM总体简单介绍首先，分类的时候我们通常有时候遇到一个分类情况是，多类数据交融，无法通过简单的线性分类器区分。那SVM（Support Vector Machine）就是把数据映射到高维，然后根据支持向量找出一个最佳分类面，使得数据可以分开。这就是支持向量机干的事情。参考下面视频：    2.硬间隔SVM首先清楚四个概念：超平面，函数间隔，几何间隔，支持向量。 （1）超平面在二维空间里面是：">
@@ -371,7 +371,7 @@
 <h3 id="（2）函数间隔"><a href="#（2）函数间隔" class="headerlink" title="（2）函数间隔"></a>（2）函数间隔</h3><p>定义为：预测函数与实际类标的乘积。我们下面提到的都是简化版的情况，即只讨论在平面情况下的分类。有一些类标$y^i$,只有正例和反例：1或-1，预测的值是：$W^TX^i+b$，函数间隔就是把这2个乘起来：</p>
 <script type="math/tex; mode=display">
 \hat{γ}=y^{i}(W^{T}X^{i}+b)</script><p>，γ上面有一个hat的就表示函数间隔。发现$y^i$和 $(W^TX^i+b)$是同号的话就是分类正确了。如果真实类标$y^{i}=1$，要令$(W^{T}X^{i}+b)$远大于0，这样才越准确，如果真实类标$y^{i}=-1$,则要$(W^{T}X^{i}+b)$远远小于0才越准确。就是说函数间隔可以看作是描述分类准确与否的一个指标。</p>
-<h3 id="（3）几何间隔"><a href="#（3）几何间隔" class="headerlink" title="（3）几何间隔"></a>（3）几何间隔</h3><p>几何间隔对比函数间隔是一个更好的指标，因为，若超平面是$W^TX+b = 0$的情况下，同时放大W和b的值为原来的n倍，后发现，函数间隔$y^{i}(W^{T}X^{i}+b)$变大了 n倍，但是超平面$W^TX+b=0$没有变化，这就是函数间隔的缺点。先来看看下面的图片：<br><img src="/2018/09/13/SVM/1.png" alt="图片1"><br>可以看到，超平面L把数据很好的分开来，其中有某个样本$A(x_i,y_i)$，$B$点在超平面上面，单位向量$W$除以自己的模，得到单位长度为$\frac{W}{||W||}$。有一个$γ^i$与向量AB的长度一样，则$B$点位置的$x$就等于$A$点的$X_i$减去$AB$的长度（$AB$带有方向性），而$AB=γ_i<em>\frac{W}{||W||}$，既有：$x = x_i - γ_i</em>\frac{W}{||W||}$,又因为$B$点的$x$在超平面$L$上，满足$L$的表达式，于是有：</p>
+<h3 id="（3）几何间隔"><a href="#（3）几何间隔" class="headerlink" title="（3）几何间隔"></a>（3）几何间隔</h3><p>L几何间隔对比函数间隔是一个更好的指标，因为，若超平面是$W^TX+b = 0$的情况下，同时放大W和b的值为原来的n倍，后发现，函数间隔$y^{i}(W^{T}X^{i}+b)$变大了 n倍，但是超平面$W^TX+b=0$没有变化，这就是函数间隔的缺点。先来看看下面的图片：<br><img src="/2018/09/13/SVM/1.png" alt="图片1"><br>可以看到，超平面L把数据很好的分开来，其中有某个样本$A(x_i,y_i)$，$B$点在超平面上面，单位向量$W$除以自己的模，得到单位长度为$\frac{W}{||W||}$。有一个$γ^i$与向量AB的长度一样，则$B$点位置的$x$就等于$A$点的$X_i$减去$AB$的长度（$AB$带有方向性），而$AB=γ_i\cdot\frac{W}{||W||}$，既有：$x = x_i - γ_i\cdot\frac{W}{||W||}$,又因为$B$点的$x$在超平面L上，满足L的表达式，于是有：</p>
 <script type="math/tex; mode=display">
 W^{T}(X^{i}-γ^{i}\frac{W}{||w||})+b=0</script><p>简化提出$γ_i$后得到几何间隔的表达式：</p>
 <script type="math/tex; mode=display">
@@ -413,7 +413,7 @@ s.t.&y^{i}(W^{T}X^{i}+b)>=1\\
 &\alpha_i^*\ge0,i=1,2,\ldots,k\quad\quad\quad(b)\\
 &c_i(x)\le0,i=1,2,\ldots,k\quad\quad  (c)\\
 &h_j(x^*)=0,j=1,2,\ldots,l\quad\quad (d)
-\end{align}</script><p>前三个求偏导是保证驻点的存在，后面的式子(a)、(b)是拉格朗日乘子需要满足的约束，(c)、(d)是原始问题的约束条件。特别注意当$\alpha_i^<em>&gt;0$时，由对偶互补条件可知时，由KKT对偶互补条件可知:c_i(x^</em>)=0$，这个后面会用到。</p>
+\end{align}</script><p>前三个求偏导是保证驻点的存在，后面的式子(a)、(b)是拉格朗日乘子需要满足的约束，(c)、(d)是原始问题的约束条件。特别注意当$\alpha_i^<em>&gt;0$时，由对偶互补条件可知时，由KKT对偶互补条件可知:$c_i(x^</em>)=0$，这个后面会用到。</p>
 <h2 id="5-软间隔SVM"><a href="#5-软间隔SVM" class="headerlink" title="5.软间隔SVM"></a>5.软间隔SVM</h2><p>第3章节主要讲的是硬间隔最大化，那什么是软间隔最大化？硬间隔呢就是支持向量不能超过第二幅图的直线，顶多在线上面，但是软间隔可以容忍少量的支持向量落在直线内，于是我们的约束条件yi(W^TX+b)&gt;=1就要修改为yi(W^TX+b)&gt;=1-ξi，即允许部分支持向量间隔不足1,ξi&gt;=0。我们原始的最大化约束问题转为：</p>
 <script type="math/tex; mode=display">
 \begin{align} 
@@ -443,7 +443,17 @@ X_1=X_1,X_2=X_2,X_1^2=X_3,X_2^2=X_4,X_1^3=X_5,X_2^3=X_6</script><p>则可以转�
 <script type="math/tex; mode=display">
 f(X_1,X_2，X_3，X_4，X_5，X_6) = A_0+A_1X_1+A_2X_2+A_3X_3+A_4X_4+A_5X_5+A_6X_6</script><p>就是说：低维度不可分的数据模型可以映射到高维度后，变成线性可分的模型。下面的核函数就是干的这个事情，就是有核函数k(x,z)把低维度的φ(xi)和φ(zj)之间的内积在低纬度计算掉：</p>
 <script type="math/tex; mode=display">
-k(x,z)=φ(x)φ(z)</script><h2 id="6-SMO算法"><a href="#6-SMO算法" class="headerlink" title="6.SMO算法"></a>6.SMO算法</h2><hr>
+k(x,z)=φ(x)φ(z)</script><p>常见的核函数有：</p>
+<p>（1）高斯核函数（Gaussian Kernel）</p>
+<script type="math/tex; mode=display">
+\kappa(x, x_i) = exp(-\frac{||x - x_i||^2}{\delta^2})</script><p>高斯径向基函数是一种局部性强的核函数，其可以将一个样本映射到一个更高维的空间内，该核函数是应用最广的一个，无论大样本还是小样本都有比较好的性能，而且其相对于多项式核函数参数要少。</p>
+<p>（2）线性核函数（Exponential Kernel）</p>
+<script type="math/tex; mode=display">
+\kappa(x,x_i) = x \cdot x_i</script><p>线性核，主要用于线性可分的情况，我们可以看到特征空间到输入空间的维度是一样的，其参数少速度快，对于线性可分数据，其分类效果很理想，因此我们通常首先尝试用线性核函数来做分类，看看效果如何，如果不行再换别的。</p>
+<p>（3）多项式核函数（Polynomial kernel function）</p>
+<script type="math/tex; mode=display">
+\kappa(x, x_i) = ((x\cdot x_i) + 1)^d</script><p>多项式核函数可以实现将低维的输入空间映射到高纬的特征空间，但是多项式核函数的参数多，当多项式的阶数比较高的时候，核矩阵的元素值将趋于无穷大或者无穷小，计算复杂度会大到无法计算。这几个核函数可以优先使用高斯核函数，据说Andrew Ng只用高斯核函数，可见性能确实优越。</p>
+<h2 id="6-SMO算法"><a href="#6-SMO算法" class="headerlink" title="6.SMO算法"></a>6.SMO算法</h2><hr>
 <p>参考链接：</p>
 <p><a href="https://mp.weixin.qq.com/s?__biz=MzU4MzA3ODczNw==&amp;mid=2247483783&amp;idx=1&amp;sn=fc9bee870fd3640417b6ee4e773e64ad&amp;chksm=fdafc7b9cad84eaff684742be49ba1177e69f69ff2f9f5e51c8e3b8ddab258742d679125df82&amp;token=798908339&amp;lang=zh_CN&amp;scene=21#wechat_redirect" target="_blank" rel="noopener">参考1</a></p>
 
