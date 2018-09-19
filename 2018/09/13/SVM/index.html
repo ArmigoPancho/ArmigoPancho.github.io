@@ -93,7 +93,7 @@
 <meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/ib3ibslZIrCuB1gu0vAmib9uoA4WOCZfiaa2j7a5iatFtYdWUUo7LibvtHD6kFjIgQFjQKblCdC7Nw2hTpSLGCNB9Vkw/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
 <meta property="og:image" content="http://yoursite.com/2018/09/13/SVM/SMO3.JPG">
 <meta property="og:image" content="http://yoursite.com/2018/09/13/SVM/SMO2.JPG">
-<meta property="og:updated_time" content="2018-09-19T11:26:11.853Z">
+<meta property="og:updated_time" content="2018-09-19T11:53:53.434Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Bonjour!">
 <meta name="twitter:description" content="1.SVM总体简单介绍首先，分类的时候我们通常有时候遇到一个分类情况是，多类数据交融，无法通过简单的线性分类器区分。那SVM（Support Vector Machine）就是把数据映射到高维，然后根据支持向量找出一个最佳分类面，使得数据可以分开。这就是支持向量机干的事情。参考下面视频：    2.硬间隔SVM首先清楚四个概念：超平面，函数间隔，几何间隔，支持向量。 （1）超平面在二维空间里面是：">
@@ -263,7 +263,7 @@
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/13/SVM/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="HuangCheng">
+      <meta itemprop="name" content="Armigo">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/0.png">
     </span>
@@ -434,7 +434,7 @@ C - α_i - u_i = 0</script><p>把上面三个式子代入公式（4），可得�
      \max_\alpha\quad &\sum\limits_{i=1}^{m}α_i-\frac{1}{2}\sum_{i=1}^m\sum_{j=1}^my_iy_jα_iα_j<x_i,x_j>\\
      s.t.\quad&\sum_{i=1}^mα_iy_i=0\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad(6)\\
      & 0\leα_i\le C,i=1,2,\dots,m
-    \end{align}</script><p>有上式可求出α，再由α求出W和b。公式（5）可求出W，而b是所有支持向量满足yi(w^Txi+b)=1的值b的均值。由KKT条件：</p>
+    \end{align}</script><p>有上式可求出α，再由α求出W和b。公式（5）可求出W，而b是所有支持向量满足$y_i(W^TX_i+b)=1$的值b的均值。由KKT条件：</p>
 <p><img src="https://mmbiz.qpic.cn/mmbiz_png/ib3ibslZIrCuB1gu0vAmib9uoA4WOCZfiaa2ibZcte0icusVicdwMLRibbbrE8UD5rR9M7GyapokicxCNribzGkxaQTtSTsA/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img"></p>
 <p>上面第一个式子正是由于αi&gt;0,由KKT推断$y_i(W^TX_i+b)-1+ξ_i=0$所得。可知：满足<img src="https://mmbiz.qpic.cn/mmbiz_png/ib3ibslZIrCuB1gu0vAmib9uoA4WOCZfiaa2j7a5iatFtYdWUUo7LibvtHD6kFjIgQFjQKblCdC7Nw2hTpSLGCNB9Vkw/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img">的样本点(xs,ys)，即为<strong>支持向量</strong>。详细请点击底部的参考1。</p>
 <h3 id="5-1核函数"><a href="#5-1核函数" class="headerlink" title="5.1核函数"></a>5.1核函数</h3><p>对于线性可分数据用硬间隔和软间隔可以区分数据，但对于非线性的数据怎么办？于是，我们的核函数粉墨登场（这里引用原意：演员化妆演戏）。它干的事情直观感受就是上面最开始的视频里干的部分事：把非线性的数据映射到线性可分的维度里面。来，举个栗子八。╭(╯^╰)╮，^_^哪个比较萌？跑题了。就是我们有一组非线性的2维模型：</p>
@@ -590,10 +590,10 @@ b = y_s-\sum_{S}α_iy_ik(x_i,x_s)</script><p>即所有支持向量的b的均值�
             
               <img class="site-author-image" itemprop="image"
                 src="/images/0.png"
-                alt="HuangCheng" />
+                alt="Armigo" />
             
-              <p class="site-author-name" itemprop="name">HuangCheng</p>
-              <p class="site-description motion-element" itemprop="description">GOOD!</p>
+              <p class="site-author-name" itemprop="name">Armigo</p>
+              <p class="site-description motion-element" itemprop="description">Pour un poisson salé, le plus important est heureux!</p>
           </div>
 
           <nav class="site-state motion-element">
@@ -682,7 +682,7 @@ b = y_s-\sum_{S}α_iy_ik(x_i,x_s)</script><p>即所有支持向量的b的均值�
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">HuangCheng</span>
+  <span class="author" itemprop="copyrightHolder">Armigo</span>
 
   
 </div>
