@@ -91,7 +91,7 @@
 <meta property="og:image" content="http://yoursite.com/2018/09/13/SVM/1.jpg">
 <meta property="og:image" content="http://yoursite.com/2018/09/13/SVM/SMO3.JPG">
 <meta property="og:image" content="http://yoursite.com/2018/09/13/SVM/SMO2.JPG">
-<meta property="og:updated_time" content="2018-09-20T00:33:16.468Z">
+<meta property="og:updated_time" content="2018-09-20T01:03:17.920Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Bonjour!">
 <meta name="twitter:description" content="1.SVM总体简单介绍首先，分类的时候我们通常有时候遇到一个分类情况是，多类数据交融，无法通过简单的线性分类器区分。那SVM（Support Vector Machine）就是把数据映射到高维，然后根据支持向量找出一个最佳分类面，使得数据可以分开。这就是支持向量机干的事情。参考下面视频：    2.硬间隔SVM首先清楚四个概念：超平面，函数间隔，几何间隔，支持向量。 （1）超平面在二维空间里面是：">
@@ -486,7 +486,8 @@ E_i = \sum_{S}α_iy_ik_{ij}+b^{new}-y_i</script><p>最终的b是：</p>
 b = y_s-\sum_{S}α_iy_ik(x_i,x_s)</script><p>即所有支持向量的b的均值即为最终的b值。</p>
 <h3 id="6-3求分类超平面"><a href="#6-3求分类超平面" class="headerlink" title="6.3求分类超平面"></a>6.3求分类超平面</h3><p>即为：</p>
 <script type="math/tex; mode=display">
-\sum_{i=1}^mα_iy_ik(x_i,x_s)+b=0</script><h2 id="7-总结"><a href="#7-总结" class="headerlink" title="7.总结"></a>7.总结</h2><p>SMO算法部分强烈推荐参考：<a href="https://mp.weixin.qq.com/s?__biz=MzU4MzA3ODczNw==&amp;mid=2247483841&amp;idx=1&amp;sn=a449dcff326b4c79adaeecc37c4ab079&amp;chksm=fdafc7ffcad84ee93e795bf344992073ff30f4a03e6cbb8552c1a9bfde1a6c9bce00625272a7&amp;token=441068658&amp;lang=zh_CN&amp;scene=21#wechat_redirect" target="_blank" rel="noopener">点击此处</a>，我的多数都是来自于此。这篇讲解的非常仔细，比我不知高到哪里去了。最后参考链接第5个是他这个系列的总体，一共5部分，包括代码实现。非常感谢那些乐于分享知识的人。这篇写了整整2天，算上搭建blog的话有一个礼拜了，也算是对最近的一个梳理和总结吧。最后，推荐一款Markdown编辑器：<a href="https://www.typora.io/" target="_blank" rel="noopener">Typora</a>,做到了所谓的“所见即所得”，这是我听过的世界上最好的宣传语(≧∇≦)ﾉ，Au revoir, chère amie。</p>
+\sum_{i=1}^mα_iy_ik(x_i,x_s)+b=0</script><h2 id="7-总结"><a href="#7-总结" class="headerlink" title="7.总结"></a>7.总结</h2><p>SMO算法部分强烈推荐参考：<a href="https://mp.weixin.qq.com/s?__biz=MzU4MzA3ODczNw==&amp;mid=2247483841&amp;idx=1&amp;sn=a449dcff326b4c79adaeecc37c4ab079&amp;chksm=fdafc7ffcad84ee93e795bf344992073ff30f4a03e6cbb8552c1a9bfde1a6c9bce00625272a7&amp;token=441068658&amp;lang=zh_CN&amp;scene=21#wechat_redirect" target="_blank" rel="noopener">点击此处</a>，我的多数都是来自于此。这篇讲解的非常仔细，比我不知高到哪里去了。最后参考链接第5个是他这个系列的总体，一共5部分，包括代码实现。SVM优点：泛化错误率低，计算开销不大，结果易解释。<br>缺点：对参数调节和核函数的选择敏感，原始分类器不加修改仅适用于处理二类问题。适用数据类型：数值型和标称型数据。</p>
+<p>非常感谢那些乐于分享知识的人。这篇写了整整2天，算上搭建blog的话有一个礼拜了，也算是对最近的一个梳理和总结吧。最后，推荐一款Markdown编辑器：<a href="https://www.typora.io/" target="_blank" rel="noopener">Typora</a>,做到了所谓的“所见即所得”，这是我听过的世界上最好的宣传语(≧∇≦)ﾉ，Au revoir, chère amie。</p>
 <hr>
 <p>参考链接：</p>
 <p><a href="https://mp.weixin.qq.com/s?__biz=MzU4MzA3ODczNw==&amp;mid=2247483783&amp;idx=1&amp;sn=fc9bee870fd3640417b6ee4e773e64ad&amp;chksm=fdafc7b9cad84eaff684742be49ba1177e69f69ff2f9f5e51c8e3b8ddab258742d679125df82&amp;token=798908339&amp;lang=zh_CN&amp;scene=21#wechat_redirect" target="_blank" rel="noopener">1.支持向量机Part2—线性支持向量机</a></p>
