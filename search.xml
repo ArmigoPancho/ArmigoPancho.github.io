@@ -1,22 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[blog]]></title>
-    <url>%2F2018%2F11%2F19%2Fblog%2F</url>
-    <content type="text"><![CDATA[**线性空间的定义**]]></content>
-      <categories>
-        <category>线性空间</category>
-      </categories>
-      <tags>
-        <tag>-线性空间 -数乘 -加法</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[blog]]></title>
-    <url>%2F2018%2F11%2F19%2F%E7%BA%BF%E6%80%A7%E7%A9%BA%E9%97%B4%E5%AE%9A%E4%B9%89%2F</url>
-    <content type="text"></content>
-  </entry>
-  <entry>
     <title><![CDATA[逻辑回归和python3实现]]></title>
     <url>%2F2018%2F11%2F10%2F%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92%2F</url>
     <content type="text"><![CDATA[1.逻辑回归笔记​ 逻辑回归就是在线性回归的基础上套一个分类函数，当然也可以不用线性回归。下面是我根据周志华的逻辑回归写的笔记。具体请参考周志华的《机器学习》P57-60。第1张图是说明了逻辑回归的预测模型，第2张图是优化目标L的由来，第3张图是详细的求出一阶导数和二阶导数。我觉得这里一阶导数和二阶导数周志华这里写的不好，矩阵计算写的不清晰明朗。当然这也是自己基础不牢靠所致，共勉吧。如下： 图1：得到两个后验概率的表达式P0和P1，用极大似然估计法找出优化目标L。 图2：再把P0，P1和转化后等价的似然项代入对数似然L,简化后即可得最终优化目标L。 图3：L对2个参数的求导。 最后由牛顿法得到迭代参数公式和优化目标L。 ​ 在之前计算的时候出现了奇异矩阵，即矩阵的行列式值为0，想了下可能是之前的数据之间存在线性相关性，所以导致矩阵的秩不满秩，所以也就不可逆了，即变成了奇异矩阵。若我不做实验，就不会知道奇异矩阵，也就记不起来以前的秩了。想着一些小算法，可以重复造轮子，但是复杂的算法就算了，没必要。人生奇美，怎可废！ ​ 2.python3实现用的python3.5.1+pycharm,将就着看吧。只用了5个样本，准确率不高的，简单的实现了预测，没有深究。下面是伪代码： 上面的终止条件就是人为设定的次数或者是优化目标L达到可接受的范围，否则一直迭代。 具体实现如下,代码在这里排列的不好，但是可以运行： 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849from numpy import *from math import *import numpy as npfrom numpy.linalg import invdef sigmoid(x): return 1./(1.+np.exp(-x))def logistic_regression(): # 牛顿方法构建Logistic Regression , 对西瓜是否为好瓜或坏进行分类, #Y &lt;&lt;--预测为-- Sigmoid(w1*x1+w2*x2 + bias) X = np.array([[0.697,0.774,0.634,0.666,0.243], [0.46,0.376,0.264,0.091,0.267], [1,1,1,1,1]]) Y =np.array([1,1,1,0,0]) beta = np.array([[0], [0], [1]]) maxCycles = 20 #迭代次数 j = 0 #累积次数 old_L = 0 while j &lt;= maxCycles: #循环20次后者损失函数已经达到合理小的范围就停止迭代 beta_T_x = dot(beta.T[0], X) # 计算β_TX L = 0 # 损失函数 for i in range(5): L = L +(-Y[i]*beta_T_x[i] + log(1 + exp(beta_T_x[i]))) if abs(L-old_L)&lt;= 0.00001: break print('最优化目标L=',L) old_L = L grad = 0 # 一阶导数 H = 0 # 二阶导数 # 计算5个训练样本的优化目标,公式（3.27) for i in range(5): # 梯度: ∂L(β)/∂β，P60公式（3.30）。 grad = grad - dot(array([X[:,i]]).T,(Y[i] - array([[exp(beta_T_x[i])/(1+exp(beta_T_x[i]))]]))) #X[i]是横向量，需要转制，grad结果是1个数 H = H + dot(array([X[:,i]]).T,array([X[:,i]]).T.T)*((exp(beta_T_x[i])/(1+exp(beta_T_x[i]))) * (1-exp(beta_T_x[i])/(1+exp(beta_T_x[i])))) beta = beta - dot(inv(H),grad) #参数迭代公式（3.29） j += 1 #预测部分 print('beta=', beta) x1 = float(input('请输入西瓜的密度:')) x2 = float(input('请输入西瓜的含糖率:')) z = beta[0][0] * x1 + beta[1][0] * x2 + beta[2][0] print('预测值为：',sigmoid(z)) f = sigmoid(z) if(f==1): #P66公式（3.47)正、反例的比值&gt;观测的正反比例即认为正例，否则反例 print('分类器预测此为好瓜。') else: print('分类器预测此为坏瓜。')logistic_regression() 预测结果如下：]]></content>
@@ -24,8 +8,8 @@
         <category>机器学习</category>
       </categories>
       <tags>
-        <tag>Logistic Regression</tag>
         <tag>机器学习</tag>
+        <tag>Logistic Regression</tag>
         <tag>逻辑回归</tag>
       </tags>
   </entry>
@@ -37,8 +21,8 @@
         <category>机器学习</category>
       </categories>
       <tags>
-        <tag>机器学习</tag>
         <tag>SVM</tag>
+        <tag>机器学习</tag>
       </tags>
   </entry>
 </search>
