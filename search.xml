@@ -9,8 +9,6 @@
       </categories>
       <tags>
         <tag>线性空间定义</tag>
-        <tag>数乘法</tag>
-        <tag>加法</tag>
       </tags>
   </entry>
   <entry>
@@ -21,8 +19,8 @@
         <category>机器学习</category>
       </categories>
       <tags>
-        <tag>Logistic Regression</tag>
         <tag>机器学习</tag>
+        <tag>Logistic Regression</tag>
         <tag>逻辑回归</tag>
       </tags>
   </entry>
@@ -34,8 +32,8 @@
         <category>机器学习</category>
       </categories>
       <tags>
-        <tag>机器学习</tag>
         <tag>SVM</tag>
+        <tag>机器学习</tag>
       </tags>
   </entry>
 </search>
