@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[线性空间的定义]]></title>
     <url>%2F2018%2F11%2F19%2F%E7%BA%BF%E6%80%A7%E7%A9%BA%E9%97%B4%E5%AE%9A%E4%B9%89%2F</url>
-    <content type="text"><![CDATA[做了一个关于线性空间的思维导图，纯粹练练思维导图的作图技术。希望有启发。 Demain试试pdf版本。]]></content>
+    <content type="text"><![CDATA[做了一个关于线性空间的思维导图，纯粹练练思维导图的作图技术。希望有启发。]]></content>
       <categories>
         <category>矩阵分析</category>
       </categories>
@@ -21,8 +21,8 @@
         <category>机器学习</category>
       </categories>
       <tags>
-        <tag>机器学习</tag>
         <tag>Logistic Regression</tag>
+        <tag>机器学习</tag>
         <tag>逻辑回归</tag>
       </tags>
   </entry>
@@ -34,8 +34,8 @@
         <category>机器学习</category>
       </categories>
       <tags>
-        <tag>SVM</tag>
         <tag>机器学习</tag>
+        <tag>SVM</tag>
       </tags>
   </entry>
 </search>
