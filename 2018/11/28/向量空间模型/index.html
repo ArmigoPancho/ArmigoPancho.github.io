@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Hello,Armigo!">
 <meta property="og:description" content="1.词袋模型(bag of words)​    简单理解下词带模型，顾名思义就是一个袋里装了很多单词，可知特点：（1）假设词语无序  （2）假设词与词之间独立。Bag-of-words模型是信息检索领域常用的文档表示方法。忽略了它的单词顺序和语法、句法等要素，将其仅仅看作是若干个词汇的集合。 它具体是如何表示的？如下有一个句子： I  have a pear and a strawberry.">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-29T02:06:56.853Z">
+<meta property="og:updated_time" content="2018-11-29T02:16:31.675Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="向量空间模型（VSM）">
 <meta name="twitter:description" content="1.词袋模型(bag of words)​    简单理解下词带模型，顾名思义就是一个袋里装了很多单词，可知特点：（1）假设词语无序  （2）假设词与词之间独立。Bag-of-words模型是信息检索领域常用的文档表示方法。忽略了它的单词顺序和语法、句法等要素，将其仅仅看作是若干个词汇的集合。 它具体是如何表示的？如下有一个句子： I  have a pear and a strawberry.">
@@ -402,10 +402,14 @@
 <p>第2：计算每个项的贡献度：Q =[Q_1,Q_2,Q_3,…,Q_m] ,这里的Q_i是每个项的贡献度，名字不一，也可以理解为每一项（每个词）的比重，权重。计算贡献度的方法不一。</p>
 <p>于是每个文档便由一组词向量和对应的贡献度向量表示而成。</p>
 <h2 id="2-2TF-IDF方法"><a href="#2-2TF-IDF方法" class="headerlink" title="2.2TF-IDF方法"></a>2.2TF-IDF方法</h2><p>其实就是第2步的算法不同，这里的TF-IDF分为TF（每一项的频率：Term Frequency）和IDF（逆文档率：Inverse Document Frequency），<strong>这里的TF，就是每个词在文档中的频次比例。</strong>如下：</p>
-<script type="math/tex; mode=display">TF =\frac{N_i}{M},N_i是第i个词在某一篇文档的频次，M是该文档的总词量。</script><p><strong>IDF就是这个词在哪些文档出现了</strong>，因为语料库由K篇文档组成，每篇文档M个词。计算如下：</p>
-<script type="math/tex; mode=display">IDF =log(\frac{K}{L+1}),K表示语料库有k篇文档，L表示包含该词的文档数量，L+1防止分母为0。</script><p>发现：$log_a^b$（底数a&gt;1）函数是单调增函数，且定义域在(0,1]时值域为负值。由于概率是在[0,1]的，倒数就是大于等于1，这里分母取不到0，倒数就不会是正无穷 ，log(b)值就是一个正数，并且b越大IDF就越大。这里其实K/L是某个词的在语料库中的文档率的倒数。所以当K和L的比值越大，IDF就越大，说明K和L比例差的越大，对我们越有利。比如有20篇文档，若一个词在所有文档中出现了1次，K/(L+1)=20/(1+1)=10,log(10)=3.32，相对其他来说是一个蛮大的比重。那这个词对我们来说也确实是重要的，在做文档相似度的时候作用就很大，因为只要这个词出现说明该词有很好的区分性。相反，若K/L的比值很小，比如K/(L+1)=1时，log1=0,比重就很小。为什么该词比重需要设置的小？因为K/(L+1)==1，说明K和L相近，即这个词在每个文档都出现，那这个词很可能是介词、连词等没有区分性的词，比如’the’，’for’,’的’，’在’这些词很大概率出现在所有文档中，所以不重要，权重就小。当然，也可以通过设置停用词的方法来筛掉这些词，这个是数据预处理的部分了。</p>
+<script type="math/tex; mode=display">
+TF =\frac{N_i}{M},N_i是第i个词在某一篇文档的频次，M是该文档的总词量。</script><p><strong>IDF就是这个词在哪些文档出现了</strong>，因为语料库由K篇文档组成，每篇文档M个词。计算如下：</p>
+<script type="math/tex; mode=display">
+IDF =log(\frac{K}{L+1}),K表示语料库有k篇文档，L表示包含该词的文档数量，L+1防止分母为0。</script><p>发现：$log_a^b​$（底数a&gt;1）函数是单调增函数，且定义域在(0,1]时值域为负值。由于概率是在[0,1]的，倒数就是大于等于1，这里分母取不到0，倒数就不会是正无穷 ，log(b)值就是一个正数，并且b越大IDF就越大。这里其实K/L是某个词的在语料库中的文档率的倒数。所以当K和L的比值越大，IDF就越大，说明K和L比例差的越大，对我们越有利。比如有20篇文档，若一个词在所有文档中出现了1次，K/(L+1)=20/(1+1)=10,log(10)=3.32，相对其他来说是一个蛮大的比重。那这个词对我们来说也确实是重要的，在做文档相似度的时候作用就很大，因为只要这个词出现说明该词有很好的区分性。相反，若K/L的比值很小，比如K/(L+1)=1时，log1=0,比重就很小。为什么该词比重需要设置的小？因为K/(L+1)==1，说明K和L相近，即这个词在每个文档都出现，那这个词很可能是介词、连词等没有区分性的词，比如’the’，’for’,’的’，’在’这些词很大概率出现在所有文档中，所以不重要，权重就小。当然，也可以通过设置停用词的方法来筛掉这些词，这个是数据预处理的部分了。</p>
 <p>那TF-IDF计算公式如下：</p>
-<script type="math/tex; mode=display">TF-IDF =\frac{N_i}{M}*log(\frac{K}{L+1})=\frac{N_i}{M}*log(\frac{1}{D_i}),D_i是某个词出现在所有文档的中的频次比例。</script><p>比如语料库中共有10篇文档，每篇800词。某一篇文档中的”战斗机” 和 “的”都出现了20次，但是”战斗机” 在2篇文档中出现，而”的”在9篇文档中出现，”的”字符的IDF=TF*log1=0，这样算下来”战斗机” 的TF-IDF的值肯定比0大，故”战斗机” 这个词更加重要。然后排序后，可以取前n个重要的词放入分类器做分类也可，计算相似度也可。</p>
+<script type="math/tex; mode=display">
+TF-IDF =\frac{N_i}{M}*log(\frac{K}{L+1})=\frac{N_i}{M}*log(\frac{1}{D_i}),D_i是某个词出现在所有文档的中的频次比例。</script><p>比如语料库中共有10篇文档，每篇800词。某一篇文档中的”战斗机” 和 “的”都出现了20次，但是”战斗机” 在2篇文档中出现，而”的”在9篇文档中出现，”的”字符的IDF=TF*log1=0，这样算下来”战斗机” 的TF-IDF的值肯定比0大，故”战斗机” 这个词更加重要。然后排序后，可以取前n个重要的词放入分类器做分类也可，计算相似度也可。其实，TF-IDF计算方法类似于交叉熵，贡献度的计算法子还有很多，按下不表。</p>
+<p>BOW和VSM两者的区别其实很小，我自己看来，就在于贡献度不一。</p>
 <p>参考：</p>
 <p><a href="https://zhuanlan.zhihu.com/p/29933242" target="_blank" rel="noopener">1.词袋模型简介</a></p>
 <p><a href="https://blog.csdn.net/kangguang/article/details/79520848" target="_blank" rel="noopener">2.逆文档频率法</a></p>
