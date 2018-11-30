@@ -79,20 +79,20 @@
 
 
 
-<meta name="description" content="1.词袋模型(bag of words)​    简单理解下词带模型，顾名思义就是一个袋里装了很多单词，可知特点：（1）假设词语无序  （2）假设词与词之间独立。Bag-of-words模型是信息检索领域常用的文档表示方法。忽略了它的单词顺序和语法、句法等要素，将其仅仅看作是若干个词汇的集合。 它具体是如何表示的？如下有一个句子： I  have a pear and a strawberry.">
+<meta name="description" content="1.词袋模型(BOW)​    简单理解下词带模型，顾名思义就是一个袋里装了很多单词，可知特点：（1）假设词语无序  （2）假设词与词之间独立。Bag-of-words模型是信息检索领域常用的文档表示方法。忽略了它的单词顺序和语法、句法等要素，将其仅仅看作是若干个词汇的集合。 它具体是如何表示的？如下有一个句子： I  have a pear and a strawberry.   于是可以构建一">
 <meta name="keywords" content="向量空间模型,词袋模型,信息熵">
 <meta property="og:type" content="article">
 <meta property="og:title" content="向量空间模型（VSM）">
 <meta property="og:url" content="http://yoursite.com/2018/11/28/向量空间模型/index.html">
 <meta property="og:site_name" content="Hello,Armigo!">
-<meta property="og:description" content="1.词袋模型(bag of words)​    简单理解下词带模型，顾名思义就是一个袋里装了很多单词，可知特点：（1）假设词语无序  （2）假设词与词之间独立。Bag-of-words模型是信息检索领域常用的文档表示方法。忽略了它的单词顺序和语法、句法等要素，将其仅仅看作是若干个词汇的集合。 它具体是如何表示的？如下有一个句子： I  have a pear and a strawberry.">
+<meta property="og:description" content="1.词袋模型(BOW)​    简单理解下词带模型，顾名思义就是一个袋里装了很多单词，可知特点：（1）假设词语无序  （2）假设词与词之间独立。Bag-of-words模型是信息检索领域常用的文档表示方法。忽略了它的单词顺序和语法、句法等要素，将其仅仅看作是若干个词汇的集合。 它具体是如何表示的？如下有一个句子： I  have a pear and a strawberry.   于是可以构建一">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2018/11/28/向量空间模型/条件熵.png">
 <meta property="og:image" content="http://yoursite.com/2018/11/28/向量空间模型/证明.png">
-<meta property="og:updated_time" content="2018-11-30T01:18:07.416Z">
+<meta property="og:updated_time" content="2018-11-30T09:10:08.749Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="向量空间模型（VSM）">
-<meta name="twitter:description" content="1.词袋模型(bag of words)​    简单理解下词带模型，顾名思义就是一个袋里装了很多单词，可知特点：（1）假设词语无序  （2）假设词与词之间独立。Bag-of-words模型是信息检索领域常用的文档表示方法。忽略了它的单词顺序和语法、句法等要素，将其仅仅看作是若干个词汇的集合。 它具体是如何表示的？如下有一个句子： I  have a pear and a strawberry.">
+<meta name="twitter:description" content="1.词袋模型(BOW)​    简单理解下词带模型，顾名思义就是一个袋里装了很多单词，可知特点：（1）假设词语无序  （2）假设词与词之间独立。Bag-of-words模型是信息检索领域常用的文档表示方法。忽略了它的单词顺序和语法、句法等要素，将其仅仅看作是若干个词汇的集合。 它具体是如何表示的？如下有一个句子： I  have a pear and a strawberry.   于是可以构建一">
 <meta name="twitter:image" content="http://yoursite.com/2018/11/28/向量空间模型/条件熵.png">
 
 
@@ -394,13 +394,13 @@
       
 
       
-        <h1 id="1-词袋模型-bag-of-words"><a href="#1-词袋模型-bag-of-words" class="headerlink" title="1.词袋模型(bag of words)"></a>1.词袋模型(bag of words)</h1><p>​    简单理解下词带模型，顾名思义就是一个袋里装了很多单词，可知特点：（1）假设词语无序  （2）假设词与词之间独立。Bag-of-words模型是<strong>信息检索领域常用的文档表示方法</strong>。忽略了它的单词顺序和语法、句法等要素，将其仅仅看作是若干个词汇的集合。</p>
+        <h1 id="1-词袋模型-BOW"><a href="#1-词袋模型-BOW" class="headerlink" title="1.词袋模型(BOW)"></a>1.词袋模型(BOW)</h1><p>​    简单理解下词带模型，顾名思义就是一个袋里装了很多单词，可知特点：（1）假设词语无序  （2）假设词与词之间独立。Bag-of-words模型是<strong>信息检索领域常用的文档表示方法</strong>。忽略了它的单词顺序和语法、句法等要素，将其仅仅看作是若干个词汇的集合。</p>
 <p>它具体是如何表示的？如下有一个句子：</p>
 <p>I  have a pear and a strawberry.  </p>
 <p>于是可以构建一个字典，如下：</p>
 <p>{“i”:0,”have”:1,”a”:2,”pear”:3,”and”:4,”strawberry”:5} ，这个字典里面的字符可表示出所有的词，且唯一。但是字典里面词的顺序和原句子词序并不相关，这里只是特例。于是可以建立一个词向量如下：</p>
 <p>[1,1,2,1,1,1] ，这里是字典里面的词在原句子里出现的次数的统计，一一对应。于是若有若干句子组成一篇文档，则可以构建一个对应的字典，然后有一个N维的向量来表示这篇文档（词频的统计）。若要比较2篇文档相似度，也可以比较2个向量之间的余弦相似度。</p>
-<h1 id="2-向量空间模型"><a href="#2-向量空间模型" class="headerlink" title="2.向量空间模型"></a>2.向量空间模型</h1><h2 id="2-1VSM概念"><a href="#2-1VSM概念" class="headerlink" title="2.1VSM概念"></a>2.1VSM概念</h2><p>​    向量空间模型（Vector Space Model）和词袋模型很像（个别说是一样的），都是把一个文档表示成向量的模式，而向量空间模型运用较为广泛的是TF-IDF方法。</p>
+<h1 id="2-向量空间模型-VSM"><a href="#2-向量空间模型-VSM" class="headerlink" title="2.向量空间模型(VSM)"></a>2.向量空间模型(VSM)</h1><h2 id="2-1VSM概念"><a href="#2-1VSM概念" class="headerlink" title="2.1VSM概念"></a>2.1VSM概念</h2><p>​    向量空间模型（Vector Space Model）和词袋模型很像（个别说是一样的），都是把一个文档表示成向量的模式，而向量空间模型运用较为广泛的是TF-IDF方法。</p>
 <p>第1：把一篇文档表示成词向量：D=[W_1,W_2,W_3,…,W_m],某D文档中有m个项。这里可以是的单个词，可以是词组等等。</p>
 <p>第2：计算每个项的贡献度：Q =[Q_1,Q_2,Q_3,…,Q_m] ,这里的Q_i是每个项的贡献度，名字不一，也可以理解为每一项（每个词）的比重，权重。计算贡献度的方法不一。</p>
 <p>于是每个文档便由一组词向量和对应的贡献度向量表示而成。</p>
@@ -410,7 +410,7 @@ TF =\frac{N_i}{M},N_i是第i个词在某一篇文档的频次，M是该文档的
 <script type="math/tex; mode=display">
 IDF =log(\frac{K}{L+1}),K表示语料库有k篇文档，L表示包含该词的文档数量，L+1防止分母为0。</script><p>那TF-IDF计算公式如下：</p>
 <script type="math/tex; mode=display">
-TF-IDF =\frac{N_i}{M}*log(\frac{K}{L+1})=\frac{N_i}{M}*log(\frac{1}{D_i}),D_i是某个词出现在所有文档的中的频次比例。</script><p>发现：$log_a^b$（底数a&gt;1）函数是单调增函数，且定义域在(0,1]时值域为负值，大于1时为单调正数。由于概率是在[0,1]的，倒数就是大于等于1，这里分母取不到0，倒数就不会是正无穷 ，log(b)值就是一个正数，并且b越大IDF就越大。这里其实K/L是某个词的在语料库中的文档率的倒数。所以当K和L的比值越大，IDF就越大，说明K和L比例差的越大，对我们越有利。比如有20篇文档，若一个词在所有文档中出现了1次，K/(L+1)=20/(1+1)=10,log(10)=3.32，相对其他来说是一个蛮大的比重。那这个词对我们来说也确实是重要的，在做文档相似度的时候作用就很大，因为只要这个词出现说明该词有很好的区分性。相反，若K/L的比值很小，比如K/(L+1)=1时，log1=0,比重就很小。为什么该词比重需要设置的小？因为K/(L+1)==1，说明K和L相近，即这个词在每个文档都出现，那这个词很可能是介词、连词等没有区分性的词，比如’the’，’for’,’的’，’在’这些词很大概率出现在所有文档中，所以不重要，权重就小。当然，也可以通过设置停用词的方法来筛掉这些词，这个是数据预处理的部分了。</p>
+TF-IDF =\frac{N_i}{M}*log(\frac{K}{L+1})=\frac{N_i}{M}*log(\frac{1}{D_i}),D_i是某个词出现在所有文档的中的频次比例。</script><p>发现：$log_a^b​$（底数a&gt;1）函数是单调增函数，且定义域在(0,1]时值域为负值，大于1时为单调正数。由于概率是在[0,1]的，倒数就是大于等于1，这里分母取不到0，倒数就不会是正无穷 ，log(b)值就是一个正数，并且b越大IDF就越大。这里其实K/L是某个词的在语料库中的文档率的倒数。所以当K和L的比值越大，IDF就越大，说明K和L比例差的越大，对我们越有利。比如有20篇文档，若一个词在所有文档中出现了1次，K/(L+1)=20/(1+1)=10,log(10)=3.32，相对其他来说是一个蛮大的比重。那这个词对我们来说也确实是重要的，在做文档相似度的时候作用就很大，因为只要这个词出现说明该词有很好的区分性。相反，若K/L的比值很小，比如K/(L+1)=1时，log1=0,比重就很小。为什么该词比重需要设置的小？因为K/(L+1)==1，说明K和L相近，即这个词在每个文档都出现，那这个词很可能是介词、连词等没有区分性的词，比如’the’，’for’,’的’，’在’这些词很大概率出现在所有文档中，所以不重要，权重就小。当然，也可以通过设置停用词的方法来筛掉这些词，这个是数据预处理的部分了。</p>
 <p>比如语料库中共有10篇文档，每篇800词。某一篇文档中的”战斗机” 和 “的”都出现了20次，但是”战斗机” 在2篇文档中出现，而”的”在9篇文档中出现，”的”字符的IDF=TF*log1=0，这样算下来”战斗机” 的TF-IDF的值肯定比0大，故”战斗机” 这个词更加重要。然后排序后，可以取前n个重要的词放入分类器做分类也可，计算相似度也可。其实，TF-IDF计算方法类似于交叉熵，贡献度的计算法子还有很多，按下不表。</p>
 <p>BOW和VSM两者的区别其实很小，我自己看来，就在于贡献度不一。</p>
 <h2 id="2-3熵的计算方法"><a href="#2-3熵的计算方法" class="headerlink" title="2.3熵的计算方法"></a>2.3熵的计算方法</h2><p>这里其实也算是特征选择，本文只给出了特征选择的计算方法。特征选择是一个系统的工程，有自己的方法和技术。本文特指章节2.1里面第2步骤中贡献度的计算方法。</p>
@@ -425,12 +425,17 @@ H(X)=-\sum\limits_{x\in\mathcal{X}}p(x)\log p(x)</script><p>作用： 用来度�
 <p><img src="/2018/11/28/向量空间模型/条件熵.png" alt="显示图片1"></p>
 <p>下面证明 <strong>条件熵=联合熵-单独的熵</strong>：$H(Y|X)=H(X,Y)-H(X)$：</p>
 <p><img src="/2018/11/28/向量空间模型/证明.png" alt="证明"></p>
-<p>举个栗子吧： <a href="https://zhuanlan.zhihu.com/p/32401995" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/32401995</a>  ,这篇便有。</p>
+<p>举个栗子吧： <a href="https://zhuanlan.zhihu.com/p/26551798" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/26551798</a> ,这篇便有。</p>
 <p>（3）<strong>信息增益（Information Gain）</strong></p>
 <p>IG=熵 - 条件熵即为：</p>
 <script type="math/tex; mode=display">
-Grain(Y,X)=H(Y)-H(Y|X)</script><p>参考：</p>
-<p><a href="https://zhuanlan.zhihu.com/p/29933242" target="_blank" rel="noopener">1.词袋模型简介</a></p>
+Grain(Y,X)=H(Y)-H(Y|X)</script><p>例子请参考周志华《机器学习》P75。</p>
+<p>（4）交叉熵</p>
+<p><strong>交叉熵又叫KL散度，是用来衡量2个概率分布的差异程度</strong>。交叉熵即KL散度的计算公式：</p>
+<script type="math/tex; mode=display">
+D_{KL}(p||q)=\sum_{i=1}^np(x_i)log(\frac{p(x_i)}{q(x_i)}) \tag{1}</script><p>这里的p是真实分布，比如我们遇到一个复杂的p分布，要做的事就是用一个简单的分布q来代替复杂的、不好计算的真实分布p，KL散度就是用来衡量这2个分布的差异。发现log后面p(xi)和q(xi)越接近时候，KL散度值近乎为0。就是说KL散度值越小，两个分布越接近，即可以用后面的q分布来代替真实分布p。在变分推断里会遇到这个概念，我等只能敬而远之。交叉熵在部分问题时候，也可以做为loss函数。比如：<a href="https://blog.csdn.net/tsyccnh/article/details/79163834" target="_blank" rel="noopener">https://blog.csdn.net/tsyccnh/article/details/79163834</a>  </p>
+<p>大致把熵过了一遍，说的好不如做得好，还是多实践吧。Vouloir c’est pouvoir(有志者，事竟成。—《后汉书·耿弇传》).</p>
+<h1 id="3-参考"><a href="#3-参考" class="headerlink" title="3.参考"></a>3.参考</h1><p><a href="https://zhuanlan.zhihu.com/p/29933242" target="_blank" rel="noopener">1.词袋模型简介</a></p>
 <p><a href="https://blog.csdn.net/kangguang/article/details/79520848" target="_blank" rel="noopener">2.逆文档频率法</a></p>
 
       
@@ -613,7 +618,7 @@ Grain(Y,X)=H(Y)-H(Y|X)</script><p>参考：</p>
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-词袋模型-bag-of-words"><span class="nav-text">1.词袋模型(bag of words)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-向量空间模型"><span class="nav-text">2.向量空间模型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1VSM概念"><span class="nav-text">2.1VSM概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2TF-IDF方法"><span class="nav-text">2.2TF-IDF方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3熵的计算方法"><span class="nav-text">2.3熵的计算方法</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-词袋模型-BOW"><span class="nav-text">1.词袋模型(BOW)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-向量空间模型-VSM"><span class="nav-text">2.向量空间模型(VSM)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1VSM概念"><span class="nav-text">2.1VSM概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2TF-IDF方法"><span class="nav-text">2.2TF-IDF方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3熵的计算方法"><span class="nav-text">2.3熵的计算方法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-参考"><span class="nav-text">3.参考</span></a></li></ol></div>
             
 
           </div>
