@@ -89,7 +89,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2018/11/28/向量空间模型/条件熵.png">
 <meta property="og:image" content="http://yoursite.com/2018/11/28/向量空间模型/证明.png">
-<meta property="og:updated_time" content="2018-12-01T02:37:35.499Z">
+<meta property="og:updated_time" content="2018-12-01T02:47:58.816Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="向量空间模型（VSM）">
 <meta name="twitter:description" content="1.词袋模型(BOW)​    简单理解下词带模型，顾名思义就是一个袋里装了很多单词，可知特点：（1）假设词语无序  （2）假设词与词之间独立。Bag-of-words模型是信息检索领域常用的文档表示方法。忽略了它的单词顺序和语法、句法等要素，将其仅仅看作是若干个词汇的集合。 它具体是如何表示的？如下有一个句子： I  have a pear and a strawberry.   于是可以构建一">
@@ -434,7 +434,7 @@ Grain(Y,X)=H(Y)-H(Y|X)</script><p>例子请参考周志华《机器学习》P75�
 <p><strong>交叉熵又叫KL散度，是用来衡量2个概率分布的差异程度</strong>。交叉熵即KL散度的计算公式：</p>
 <script type="math/tex; mode=display">
 D_{KL}(p||q)=\sum_{i=1}^np(x_i)log(\frac{p(x_i)}{q(x_i)}) \tag{1}</script><p>这里的p是真实分布，比如我们遇到一个复杂的p分布，要做的事就是用一个简单的分布q来代替复杂的、不好计算的真实分布p，KL散度就是用来衡量这2个分布的差异。发现log后面p(xi)和q(xi)越接近时候，KL散度值近乎为0。就是说KL散度值越小，两个分布越接近，即可以用后面的q分布来代替真实分布p。在变分推断里会遇到这个概念，我等只能敬而远之。交叉熵在部分问题时候，也可以做为loss函数。比如：<a href="https://blog.csdn.net/tsyccnh/article/details/79163834" target="_blank" rel="noopener">https://blog.csdn.net/tsyccnh/article/details/79163834</a>  </p>
-<p>大致把熵过了一遍，说的好不如做得好，还是多实践吧。Vouloir c’est pouvoir（(有志者，事竟成。）。</p>
+<p>大致把熵过了一遍，说的好不如做得好，还是多实践吧。<strong>$Vouloir\ \ c’est\ \ pouvoir$</strong>（有志者，事竟成）。</p>
 <h1 id="3-参考"><a href="#3-参考" class="headerlink" title="3.参考"></a>3.参考</h1><p><a href="https://zhuanlan.zhihu.com/p/29933242" target="_blank" rel="noopener">1.词袋模型简介</a></p>
 <p><a href="https://blog.csdn.net/kangguang/article/details/79520848" target="_blank" rel="noopener">2.逆文档频率法</a></p>
 
