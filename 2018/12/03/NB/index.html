@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="机器学习,Logistic Regression,逻辑回归," />
+  <meta name="keywords" content="Naive Bayes,多项式朴素贝叶斯," />
 
 
 
@@ -79,24 +79,18 @@
 
 
 
-<meta name="description" content="1.逻辑回归笔记​    逻辑回归就是在线性回归的基础上套一个分类函数，当然也可以不用线性回归。下面是我根据周志华的逻辑回归写的笔记。具体请参考周志华的《机器学习》P57-60。第1张图是说明了逻辑回归的预测模型，第2张图是优化目标L的由来，第3张图是详细的求出一阶导数和二阶导数。我觉得这里一阶导数和二阶导数周志华这里写的不好，矩阵计算写的不清晰明朗。当然这也是自己基础不牢靠所致，共勉吧。如下：">
-<meta name="keywords" content="机器学习,Logistic Regression,逻辑回归">
+<meta name="description" content="1.朴素贝叶斯公式1.1概念简述废话不多说，先上朴素贝叶斯公式（Naive Bayes）公式：  P(c_i|x) = \frac{P(x|c_i)P(c_i)}{\sum_i P(x|c_i)P(c_i)}其中，$P(c_i)$是先验概率（Prior probability），就是在条件x发生之前对类c有一个经验上的估计值，这个估计值是主观的、人为的，但是也是依据一定实际观察或者经验所得。由于主">
+<meta name="keywords" content="Naive Bayes,多项式朴素贝叶斯">
 <meta property="og:type" content="article">
-<meta property="og:title" content="逻辑回归和python3实现">
-<meta property="og:url" content="http://yoursite.com/2018/11/10/逻辑回归/index.html">
+<meta property="og:title" content="朴素贝叶斯模型">
+<meta property="og:url" content="http://yoursite.com/2018/12/03/NB/index.html">
 <meta property="og:site_name" content="Hello,Armigo!">
-<meta property="og:description" content="1.逻辑回归笔记​    逻辑回归就是在线性回归的基础上套一个分类函数，当然也可以不用线性回归。下面是我根据周志华的逻辑回归写的笔记。具体请参考周志华的《机器学习》P57-60。第1张图是说明了逻辑回归的预测模型，第2张图是优化目标L的由来，第3张图是详细的求出一阶导数和二阶导数。我觉得这里一阶导数和二阶导数周志华这里写的不好，矩阵计算写的不清晰明朗。当然这也是自己基础不牢靠所致，共勉吧。如下：">
+<meta property="og:description" content="1.朴素贝叶斯公式1.1概念简述废话不多说，先上朴素贝叶斯公式（Naive Bayes）公式：  P(c_i|x) = \frac{P(x|c_i)P(c_i)}{\sum_i P(x|c_i)P(c_i)}其中，$P(c_i)$是先验概率（Prior probability），就是在条件x发生之前对类c有一个经验上的估计值，这个估计值是主观的、人为的，但是也是依据一定实际观察或者经验所得。由于主">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2018/11/10/逻辑回归/1.JPG">
-<meta property="og:image" content="http://yoursite.com/2018/11/10/逻辑回归/2.JPG">
-<meta property="og:image" content="http://yoursite.com/2018/11/10/逻辑回归/3.JPG">
-<meta property="og:image" content="http://yoursite.com/2018/11/10/逻辑回归/伪代码.png">
-<meta property="og:image" content="http://yoursite.com/2018/11/10/逻辑回归/结果.png">
-<meta property="og:updated_time" content="2018-11-12T03:55:55.929Z">
+<meta property="og:updated_time" content="2018-12-04T14:08:32.611Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="逻辑回归和python3实现">
-<meta name="twitter:description" content="1.逻辑回归笔记​    逻辑回归就是在线性回归的基础上套一个分类函数，当然也可以不用线性回归。下面是我根据周志华的逻辑回归写的笔记。具体请参考周志华的《机器学习》P57-60。第1张图是说明了逻辑回归的预测模型，第2张图是优化目标L的由来，第3张图是详细的求出一阶导数和二阶导数。我觉得这里一阶导数和二阶导数周志华这里写的不好，矩阵计算写的不清晰明朗。当然这也是自己基础不牢靠所致，共勉吧。如下：">
-<meta name="twitter:image" content="http://yoursite.com/2018/11/10/逻辑回归/1.JPG">
+<meta name="twitter:title" content="朴素贝叶斯模型">
+<meta name="twitter:description" content="1.朴素贝叶斯公式1.1概念简述废话不多说，先上朴素贝叶斯公式（Naive Bayes）公式：  P(c_i|x) = \frac{P(x|c_i)P(c_i)}{\sum_i P(x|c_i)P(c_i)}其中，$P(c_i)$是先验概率（Prior probability），就是在条件x发生之前对类c有一个经验上的估计值，这个估计值是主观的、人为的，但是也是依据一定实际观察或者经验所得。由于主">
 
 
 
@@ -126,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/11/10/逻辑回归/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/12/03/NB/"/>
 
 
 
 
 
-  <title>逻辑回归和python3实现 | Hello,Armigo!</title>
+  <title>朴素贝叶斯模型 | Hello,Armigo!</title>
   
 
 
@@ -293,7 +287,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/10/逻辑回归/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/03/NB/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Armigo">
@@ -310,7 +304,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">逻辑回归和python3实现</h1>
+          <h1 class="post-title" itemprop="name headline">朴素贝叶斯模型</h1>
         
 
         <div class="post-meta">
@@ -322,8 +316,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-10T20:47:41+08:00">
-                2018-11-10
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-03T20:54:19+08:00">
+                2018-12-03
               </time>
             
 
@@ -363,8 +357,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/11/10/逻辑回归/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/11/10/逻辑回归/" itemprop="commentCount"></span>
+                <a href="/2018/12/03/NB/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/12/03/NB/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -397,23 +391,80 @@
       
 
       
-        <h1 id="1-逻辑回归笔记"><a href="#1-逻辑回归笔记" class="headerlink" title="1.逻辑回归笔记"></a>1.逻辑回归笔记</h1><p>​    逻辑回归就是在线性回归的基础上套一个分类函数，当然也可以不用线性回归。下面是我根据周志华的逻辑回归写的笔记。具体请参考周志华的《机器学习》P57-60。第1张图是说明了逻辑回归的预测模型，第2张图是优化目标L的由来，第3张图是详细的求出一阶导数和二阶导数。我觉得这里一阶导数和二阶导数周志华这里写的不好，矩阵计算写的不清晰明朗。当然这也是自己基础不牢靠所致，共勉吧。如下：</p>
-<p>图1：得到两个后验概率的表达式P0和P1，用极大似然估计法找出优化目标L。</p>
-<p>图2：再把P0，P1和转化后等价的似然项代入对数似然L,简化后即可得最终优化目标L。</p>
-<p>图3：L对2个参数的求导。</p>
-<p>最后由牛顿法得到迭代参数公式和优化目标L。</p>
-<p>​    在之前计算的时候出现了奇异矩阵，即矩阵的行列式值为0，想了下可能是之前的数据之间存在线性相关性，所以导致矩阵的秩不满秩，所以也就不可逆了，即变成了奇异矩阵。若我不做实验，就不会知道奇异矩阵，也就记不起来以前的秩了。想着一些小算法，可以重复造轮子，但是复杂的算法就算了，没必要。人生奇美，怎可废！</p>
-<p><img src="/2018/11/10/逻辑回归/1.JPG" alt="显示图片1">                                                                                                                                                                                                                                                                                 </p>
-<p>​                                                                                                                                                       </p>
-<p><img src="/2018/11/10/逻辑回归/2.JPG" alt="图片1"></p>
-<p><img src="/2018/11/10/逻辑回归/3.JPG" alt="图片1"></p>
-<h1 id="2-python3实现"><a href="#2-python3实现" class="headerlink" title="2.python3实现"></a>2.python3实现</h1><p>用的python3.5.1+pycharm,将就着看吧。只用了5个样本，准确率不高的，简单的实现了预测，没有深究。下面是伪代码：</p>
-<p><img src="/2018/11/10/逻辑回归/伪代码.png" alt="图片4"></p>
-<p>上面的终止条件就是人为设定的次数或者是优化目标L达到可接受的范围，否则一直迭代。</p>
-<p>具体实现如下,代码在这里排列的不好，但是可以运行：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> numpy <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> math <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> numpy.linalg <span class="keyword">import</span> inv</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sigmoid</span><span class="params">(x)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">1.</span>/(<span class="number">1.</span>+np.exp(-x))</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">logistic_regression</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="comment"># 牛顿方法构建Logistic Regression , 对西瓜是否为好瓜或坏进行分类,</span></span><br><span class="line">    <span class="comment">#Y &lt;&lt;--预测为-- Sigmoid(w1*x1+w2*x2 + bias)</span></span><br><span class="line">    X = np.array([[<span class="number">0.697</span>,<span class="number">0.774</span>,<span class="number">0.634</span>,<span class="number">0.666</span>,<span class="number">0.243</span>],</span><br><span class="line">            [<span class="number">0.46</span>,<span class="number">0.376</span>,<span class="number">0.264</span>,<span class="number">0.091</span>,<span class="number">0.267</span>],</span><br><span class="line">            [<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>]])</span><br><span class="line"></span><br><span class="line">    Y =np.array([<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>])</span><br><span class="line">    beta = np.array([[<span class="number">0</span>], [<span class="number">0</span>], [<span class="number">1</span>]])</span><br><span class="line">    maxCycles = <span class="number">20</span> <span class="comment">#迭代次数</span></span><br><span class="line">    j = <span class="number">0</span>  <span class="comment">#累积次数</span></span><br><span class="line">    old_L = <span class="number">0</span></span><br><span class="line">    <span class="keyword">while</span> j &lt;= maxCycles:   <span class="comment">#循环20次后者损失函数已经达到合理小的范围就停止迭代</span></span><br><span class="line">        beta_T_x = dot(beta.T[<span class="number">0</span>], X)  <span class="comment"># 计算β_TX</span></span><br><span class="line">        L = <span class="number">0</span>  <span class="comment"># 损失函数</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">5</span>):</span><br><span class="line">            L = L +(-Y[i]*beta_T_x[i] + log(<span class="number">1</span> + exp(beta_T_x[i])))</span><br><span class="line">        <span class="keyword">if</span> abs(L-old_L)&lt;= <span class="number">0.00001</span>: <span class="keyword">break</span></span><br><span class="line">        print(<span class="string">'最优化目标L='</span>,L)</span><br><span class="line">        old_L = L</span><br><span class="line">        grad = <span class="number">0</span>  <span class="comment"># 一阶导数</span></span><br><span class="line">        H = <span class="number">0</span>  <span class="comment"># 二阶导数</span></span><br><span class="line">        <span class="comment"># 计算5个训练样本的优化目标,公式（3.27)</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">5</span>):</span><br><span class="line">        <span class="comment"># 梯度: ∂L(β)/∂β，P60公式（3.30）。</span></span><br><span class="line">            grad =  grad - dot(array([X[:,i]]).T,(Y[i] - array([[exp(beta_T_x[i])/(<span class="number">1</span>+exp(beta_T_x[i]))]])))  <span class="comment">#X[i]是横向量，需要转制，grad结果是1个数</span></span><br><span class="line">            H  = H + dot(array([X[:,i]]).T,array([X[:,i]]).T.T)*((exp(beta_T_x[i])/(<span class="number">1</span>+exp(beta_T_x[i]))) * (<span class="number">1</span>-exp(beta_T_x[i])/(<span class="number">1</span>+exp(beta_T_x[i]))))</span><br><span class="line">        beta = beta - dot(inv(H),grad)      <span class="comment">#参数迭代公式（3.29）</span></span><br><span class="line">        j += <span class="number">1</span></span><br><span class="line">    <span class="comment">#预测部分</span></span><br><span class="line">    print(<span class="string">'beta='</span>, beta)</span><br><span class="line">    x1 = float(input(<span class="string">'请输入西瓜的密度:'</span>))</span><br><span class="line">    x2 = float(input(<span class="string">'请输入西瓜的含糖率:'</span>))</span><br><span class="line">    z = beta[<span class="number">0</span>][<span class="number">0</span>] * x1 + beta[<span class="number">1</span>][<span class="number">0</span>] * x2 + beta[<span class="number">2</span>][<span class="number">0</span>]</span><br><span class="line">    print(<span class="string">'预测值为：'</span>,sigmoid(z))</span><br><span class="line">    f = sigmoid(z)</span><br><span class="line">    <span class="keyword">if</span>(f==<span class="number">1</span>):      <span class="comment">#P66公式（3.47)正、反例的比值&gt;观测的正反比例即认为正例，否则反例</span></span><br><span class="line">        print(<span class="string">'分类器预测此为好瓜。'</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        print(<span class="string">'分类器预测此为坏瓜。'</span>)</span><br><span class="line">logistic_regression()</span><br></pre></td></tr></table></figure>
-<p>预测结果如下：</p>
-<p><img src="/2018/11/10/逻辑回归/结果.png" alt="图片1"></p>
+        <h1 id="1-朴素贝叶斯公式"><a href="#1-朴素贝叶斯公式" class="headerlink" title="1.朴素贝叶斯公式"></a>1.朴素贝叶斯公式</h1><h2 id="1-1概念简述"><a href="#1-1概念简述" class="headerlink" title="1.1概念简述"></a>1.1概念简述</h2><p>废话不多说，先上朴素贝叶斯公式（Naive Bayes）公式：</p>
+<script type="math/tex; mode=display">
+P(c_i|x) = \frac{P(x|c_i)P(c_i)}{\sum_i P(x|c_i)P(c_i)}</script><p>其中，$P(c_i)$是<strong>先验概率</strong>（Prior probability），就是在条件x发生之前对类c有一个经验上的估计值，这个估计值是主观的、人为的，但是也是依据一定实际观察或者经验所得。由于主观的猜测值没有令人信服的证明，所以被频率学派所疑虑。比如我们可以猜想对抛1次硬币得到正面的概率为0.5，因为不是正面就是反面（假设没有竖立情况），这就是根据的经验值，因为你并没有去做大量（无穷）的实验来证明。</p>
+<p>$P(c_i|x)$是<strong>后验概率</strong>（Posterior probability）。比如有十个不透明盒子，只有一个盒子里有球，则猜中有球的概率为1/10。当事件 x：打开一个盒子发现没有球，发生后，此时若再打开一个盒子有球的概率就变成了1/9。后验概率是建立在先验概率的基础上，通过贝叶斯公式建立起来的。它是一种“知果求因”的思路，这里的“原因”即打开后发现没有球，“结果”的概率是1/9。</p>
+<p>$P(x|c_i)$是<strong>似然函数</strong>（Likelyhood），在机器学习中更多的时候它表示了第i个类C中出现属性x的概率，我们希望是使得类c中出现属性x的概率越大越好，因为反过来$P(c_i|x)$概率也越大。统计学中似然函数用符号$f(x|\theta)$，其中θ是需要估计的参数θ(事先假设已经确定有唯一θ)，x是随机变量x，是假设参数θ已知后我们观察到的样本应该是什么样子的，即在此参数θ下样本似然真实样本的程度，旨在最大化下面的似然函数以求需要估计的参数θ：</p>
+<script type="math/tex; mode=display">
+L(\theta) = \prod_{i=1}^{n} f(x_i|\theta)</script><p>上面就是大名鼎鼎的<strong>最大似然估计</strong>（MLE），是用来估计参数的方法，还有一种叫<a href="https://blog.csdn.net/zhengyikuangge/article/details/80934547" target="_blank" rel="noopener"><strong>矩估计</strong></a>。最大似然估计和矩估计都是频率学派的经典方法。最大似然估计就是每个变量对应似然函数$f(x_i|\theta)$的乘积结果最大化即可停止，可获估计的参数θ。关于参数估计深入一点，有一个<em>置信区间和可信区间</em>区别，假设我们以一批样本可能服从高斯分布，通过多个样本X估计得到参数μ、σ后，<strong>置信区间</strong>表示有90%的置信程度是当前样本下的高斯分布是以这组参数μ、σ而构造，<strong>这里的置信区间只与样本相关，与参数θ无关</strong>，<em>频率学派</em> 认为模型的参数是固定的,不会随着样本的变化而变化，只是当前样本产生的某个参数可信度或大或小，抽样越多，频率越接近于真实概率，估计得到的参数越可信，即假定参数是唯一的，只是我们不知道，通过不断的抽样去估计这个参数罢了。而<strong>可信区间</strong>表示我们有很多个这样的参数，这些参数组成一个可信区间，从中抽取一个概率大一点的使用，比如90%下的参数。置信区间只有一组或一个参数，而可信区间有多组或多个参数。再提一下<em>贝叶斯学派</em> 观点：贝叶斯学派则认为参数不是唯一的，是一个随机变量，服从一个先验分布，而样本是固定的，通过先验分布、后验分布来获取参数。</p>
+<p>分母部分$\sum_i{P(x|c_i)P(c_i)}$叫做”<strong>证据因子</strong>“（Evidence )，以保证各类别的后验概率总和为1从而满足概率条件，表示各个类别的出现属性x的概率总和。<strong>发现贝叶斯公式后验概率与分子部分成正比</strong>：</p>
+<script type="math/tex; mode=display">
+P(c_i|x)∝P(x|c_i)P(c_i)</script><h2 id="1-2贝叶斯例子"><a href="#1-2贝叶斯例子" class="headerlink" title="1.2贝叶斯例子"></a>1.2贝叶斯例子</h2><p><strong>例子1：</strong></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">症状</th>
+<th style="text-align:center">职业</th>
+<th style="text-align:center">疾病</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">打喷嚏</td>
+<td style="text-align:center">护士</td>
+<td style="text-align:center">感冒</td>
+</tr>
+<tr>
+<td style="text-align:center">打喷嚏</td>
+<td style="text-align:center">农夫</td>
+<td style="text-align:center">过敏</td>
+</tr>
+<tr>
+<td style="text-align:center">头疼</td>
+<td style="text-align:center">建筑工人</td>
+<td style="text-align:center">脑震荡</td>
+</tr>
+<tr>
+<td style="text-align:center">头疼</td>
+<td style="text-align:center">建筑工人</td>
+<td style="text-align:center">感冒</td>
+</tr>
+<tr>
+<td style="text-align:center">打喷嚏</td>
+<td style="text-align:center">教师</td>
+<td style="text-align:center">感冒</td>
+</tr>
+<tr>
+<td style="text-align:center">头疼</td>
+<td style="text-align:center">教师</td>
+<td style="text-align:center">脑震荡</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>某个医院早上收了六个门诊病人，如上表，现在又来了第七个病人，是一个打喷嚏的建筑工人。请问他患上感冒的概率有多大？ 根据公式$P(c_i|x) = \frac{P(x|c_i)P(c_i)}{\sum_i P(x|c_i)P(c_i)}$  可知：</p>
+<script type="math/tex; mode=display">
+P(感冒|打喷嚏，建筑工人)=\frac{P(打喷嚏，建筑工人|感冒)*P(感冒)}{P(打喷嚏，建筑工人)}</script><p>假设打喷嚏和建筑工人是独立的，则公式变为：</p>
+<script type="math/tex; mode=display">
+P(感冒|打喷嚏，建筑工人)=\frac{P(打喷嚏|感冒)*P(建筑工人|感冒)*P(感冒)}{P(打喷嚏)*P(建筑工人)}</script><p>其中：$P(感冒)=\frac{1}{2}$，$P(打喷嚏|感冒)=\frac{2}{3}$，$P(建筑工人|感冒)=\frac{1}{3}$，$P(打喷嚏)<em>P(建筑工人)=\frac{1}{2}</em>\frac{1}{3}=\frac{1}{6}$ ，代入上式子即可得：</p>
+<script type="math/tex; mode=display">
+P(感冒|打喷嚏，建筑工人)=\frac{\frac{2}{3}*\frac{1}{3}*{\frac{1}{2}}}{\frac{1}{6}}=\frac{2}{3}\approx0.666</script><p>说明此打喷嚏的建筑工人患感冒的概率为60.6%，依次计算打喷嚏、建筑工人的条件下患过敏、脑震荡的概率，然后有三个类别的后验概率，取最大的值作为该情况的预测值即可，这种模型常用于文本分类等。</p>
+<p><strong>例子2：</strong></p>
+<blockquote>
+<p>一种癌症，得了这个癌症的人被检测出为阳性的几率为90%，未得这种癌症的人被检测出阴性的几率为90%，而人群中得这种癌症的几率为1%，一个人被检测出阳性，问这个人得癌症的几率为多少？<br>猛地一看，被检查出阳性，而且得癌症的话阳性的概率是90%，概率蛮大的，算下来看看。</p>
+</blockquote>
+<p>我们用$A$表示事件 “测出为阳性”, 用$B_1$表示“得癌症”, $B_2$表示“未得癌症”。根据题目，我们知道如下信息:</p>
+<script type="math/tex; mode=display">
+P(A|B_{1}) = 0.9, P(A|B_{2}) = 0.1, P(B_{1}) = 0.01, P(B_{2}) = 0.99</script><p>那么我们现在想得到的是已知为阳性的情况下，得癌症的几率$P(B_{1},A)：$ </p>
+<script type="math/tex; mode=display">
+P(B_{1},A) = P(B_{1}) \cdot P(A|B_{1}) = 0.01 \times 0.9 = 0.009</script><p>表示1000人中只有9个人检测为阳性的是真的得癌症的。再来看看检测出阳性但是没有得癌症的概率：</p>
+<script type="math/tex; mode=display">
+P(B_{2},A) = P(B_{2}) \cdot P(A|B_{2}) = 0.99 \times 0.1 = 0.099</script><p>即1000人中间只有99个人检测为阳性但是没有得癌症的。那么在检测出阳性的前提下得癌症的概率，即把上面得值归一化即可：</p>
+<script type="math/tex; mode=display">
+P(B_{1}|A)=\frac{0.009}{0.099 + 0.009} \approx 0.083</script><p>显然，检测为阳性不得癌症的概率约是0.917，那么我们检测为阳性后，也不必万念俱灰，至少Thomas Bayes告诉你，你还有救。在这点上，他果然是上帝。</p>
+<h1 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h1><p>例子1来源：<a href="http://www.ruanyifeng.com/blog/2013/12/naive_bayes_classifier.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2013/12/naive_bayes_classifier.html</a></p>
 
       
     </div>
@@ -431,11 +482,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/机器学习/" rel="tag"># 机器学习</a>
+            <a href="/tags/Naive-Bayes/" rel="tag"># Naive Bayes</a>
           
-            <a href="/tags/Logistic-Regression/" rel="tag"># Logistic Regression</a>
-          
-            <a href="/tags/逻辑回归/" rel="tag"># 逻辑回归</a>
+            <a href="/tags/多项式朴素贝叶斯/" rel="tag"># 多项式朴素贝叶斯</a>
           
         </div>
       
@@ -448,8 +497,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/09/13/SVM/" rel="next" title="Bonjour!">
-                <i class="fa fa-chevron-left"></i> Bonjour!
+              <a href="/2018/11/28/向量空间模型/" rel="next" title="向量空间模型（VSM）">
+                <i class="fa fa-chevron-left"></i> 向量空间模型（VSM）
               </a>
             
           </div>
@@ -457,10 +506,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/11/19/线性空间定义/" rel="prev" title="线性空间的定义">
-                线性空间的定义 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -599,7 +644,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-逻辑回归笔记"><span class="nav-text">1.逻辑回归笔记</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-python3实现"><span class="nav-text">2.python3实现</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-朴素贝叶斯公式"><span class="nav-text">1.朴素贝叶斯公式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1概念简述"><span class="nav-text">1.1概念简述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2贝叶斯例子"><span class="nav-text">1.2贝叶斯例子</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考："><span class="nav-text">参考：</span></a></li></ol></div>
             
 
           </div>
@@ -1178,6 +1223,26 @@
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.staticfile.org/MathJax/MathJax-2.6-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
 
