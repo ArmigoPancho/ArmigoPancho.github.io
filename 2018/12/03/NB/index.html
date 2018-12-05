@@ -79,20 +79,20 @@
 
 
 
-<meta name="description" content="1.朴素贝叶斯公式1.1概念简述有三个条件概率公式，如下：  \begin{align*} 　　&amp;(1)条件概率公式: P(A|B)=P(AB)/P(B)\ ，其中P(B)&amp;gt;0  \\ 　　&amp;(2)乘法公式：P(A∩B)=P(AB)=P(A|B)P(B)=P(B|A)P(A)\\    &amp;\quad\ 推广：P(A1A2...An-1An)=P(A1)P(A2|A1)P(A3|A1A2)...P(">
+<meta name="description" content="1.朴素贝叶斯公式1.1概念简述有三个条件概率公式，如下：  \begin{align*} 　　&amp;(1)条件概率公式: P(A|B)=P(AB)/P(B)\ ，其中P(B)&amp;gt;0  \\ 　　&amp;(2)乘法公式：P(A∩B)=P(AB)=P(A|B)P(B)=P(B|A)P(A)\\    &amp;\quad\ 推广：P(A1A2...An)=P(A1)P(A2|A1)P(A3|A1A2)...P(An|A">
 <meta name="keywords" content="Naive Bayes,多项式朴素贝叶斯">
 <meta property="og:type" content="article">
 <meta property="og:title" content="朴素贝叶斯模型">
 <meta property="og:url" content="http://yoursite.com/2018/12/03/NB/index.html">
 <meta property="og:site_name" content="Hello,Armigo!">
-<meta property="og:description" content="1.朴素贝叶斯公式1.1概念简述有三个条件概率公式，如下：  \begin{align*} 　　&amp;(1)条件概率公式: P(A|B)=P(AB)/P(B)\ ，其中P(B)&amp;gt;0  \\ 　　&amp;(2)乘法公式：P(A∩B)=P(AB)=P(A|B)P(B)=P(B|A)P(A)\\    &amp;\quad\ 推广：P(A1A2...An-1An)=P(A1)P(A2|A1)P(A3|A1A2)...P(">
+<meta property="og:description" content="1.朴素贝叶斯公式1.1概念简述有三个条件概率公式，如下：  \begin{align*} 　　&amp;(1)条件概率公式: P(A|B)=P(AB)/P(B)\ ，其中P(B)&amp;gt;0  \\ 　　&amp;(2)乘法公式：P(A∩B)=P(AB)=P(A|B)P(B)=P(B|A)P(A)\\    &amp;\quad\ 推广：P(A1A2...An)=P(A1)P(A2|A1)P(A3|A1A2)...P(An|A">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2018/12/03/NB/F:/Hexo_blog/source/_posts/NB/1.jpg">
 <meta property="og:image" content="http://yoursite.com/2018/12/03/NB/F:/Hexo_blog/source/_posts/NB/2.png">
-<meta property="og:updated_time" content="2018-12-05T03:57:21.535Z">
+<meta property="og:updated_time" content="2018-12-05T04:00:25.076Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="朴素贝叶斯模型">
-<meta name="twitter:description" content="1.朴素贝叶斯公式1.1概念简述有三个条件概率公式，如下：  \begin{align*} 　　&amp;(1)条件概率公式: P(A|B)=P(AB)/P(B)\ ，其中P(B)&amp;gt;0  \\ 　　&amp;(2)乘法公式：P(A∩B)=P(AB)=P(A|B)P(B)=P(B|A)P(A)\\    &amp;\quad\ 推广：P(A1A2...An-1An)=P(A1)P(A2|A1)P(A3|A1A2)...P(">
+<meta name="twitter:description" content="1.朴素贝叶斯公式1.1概念简述有三个条件概率公式，如下：  \begin{align*} 　　&amp;(1)条件概率公式: P(A|B)=P(AB)/P(B)\ ，其中P(B)&amp;gt;0  \\ 　　&amp;(2)乘法公式：P(A∩B)=P(AB)=P(A|B)P(B)=P(B|A)P(A)\\    &amp;\quad\ 推广：P(A1A2...An)=P(A1)P(A2|A1)P(A3|A1A2)...P(An|A">
 <meta name="twitter:image" content="http://yoursite.com/2018/12/03/NB/F:/Hexo_blog/source/_posts/NB/1.jpg">
 
 
@@ -399,7 +399,7 @@
 \begin{align*}
 　　&(1)条件概率公式: P(A|B)=P(AB)/P(B)\ ，其中P(B)>0  \\
 　　&(2)乘法公式：P(A∩B)=P(AB)=P(A|B)P(B)=P(B|A)P(A)\\
-   &\quad\ 推广：P(A1A2...An-1An)=P(A1)P(A2|A1)P(A3|A1A2)...P(An|A1A2...An-1)\\
+   &\quad\ 推广：P(A1A2...An)=P(A1)P(A2|A1)P(A3|A1A2)...P(An|A1...An-1)\\
 　 &(3)全概率公式：P(A)=\sum_{i=1}^{n}P(A|B_{i})P(B_{i})
 　　\end{align*}</script><p> （1）条件概率公式设A,B是两个事件，且P(B)&gt;0,则在事件B发生的条件下，计算事件A发生的条件概率。在条件概率中，最本质的变化是<strong>样本空间缩小了</strong>——由原来的整个样本空间缩小到了给定条件的样本空间。</p>
 <p><img src="/2018/12/03/NB/F:/Hexo_blog\source\_posts\NB\1.jpg" alt=""></p>
