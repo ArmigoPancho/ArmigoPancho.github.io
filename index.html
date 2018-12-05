@@ -389,9 +389,12 @@
       
         
           
-          1.朴素贝叶斯公式1.1概念简述废话不多说，先上朴素贝叶斯公式（Naive Bayes）公式：
+          1.朴素贝叶斯公式1.1概念简述有三个条件概率公式，如下：
 
-P(c_i|x) = \frac{P(x|c_i)P(c_i)}{\sum_i P(x|c_i)P(c_i)}其中，$P(c_i)$是先验概率（Prior probability），就是在条件x发生之前
+\begin{align*}
+　　&(1)条件概率公式: P(A|B)=P(AB)/P(B)\ ，其中P(B)>0  \\
+　　&(2)乘法公式：P(A∩B)=P(AB)=P(A|B)P(B)=P(B|A)P(A)\\
+   &\quad
           ...
           <!--noindex-->
           <div class="post-button text-center">
