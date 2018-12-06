@@ -89,7 +89,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2018/12/03/NB/1.jpg">
 <meta property="og:image" content="http://yoursite.com/2018/12/03/NB/2.png">
-<meta property="og:updated_time" content="2018-12-05T12:50:05.695Z">
+<meta property="og:updated_time" content="2018-12-06T03:09:01.049Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="朴素贝叶斯模型">
 <meta name="twitter:description" content="1.朴素贝叶斯公式1.1概念简述有三个条件概率公式，如下：  \begin{align*} 　　&amp;(1)条件概率公式: P(A|B)=P(AB)/P(B)\ ，其中P(B)&amp;gt;0  \\ 　　&amp;(2)乘法公式：P(A∩B)=P(AB)=P(A|B)P(B)=P(B|A)P(A)\\    &amp;\quad\ 推广：P(A1A2...An)=P(A1)P(A2|A1)P(A3|A1A2)...P(An|A">
@@ -464,9 +464,9 @@ P(c_i|x)∝P(x|c_i)P(c_i)</script><h2 id="1-2贝叶斯例子"><a href="#1-2贝�
 </div>
 <p>某个医院早上收了六个门诊病人，如上表，现在又来了第七个病人，是一个打喷嚏的建筑工人。请问他患上感冒的概率有多大？ 根据公式$P(c_i|x) = \frac{P(x|c_i)P(c_i)}{P(c_i)}$  可知：</p>
 <script type="math/tex; mode=display">
-P(感冒|打喷嚏，建筑工人)=\frac{P(打喷嚏，建筑工人|感冒)*P(感冒)}{P(打喷嚏，建筑工人)}</script><p>假设打喷嚏和建筑工人是<strong>相互独立</strong>的，则公式变为：</p>
+P(感冒|打喷嚏，建筑工人)=\frac{P(打喷嚏，建筑工人|感冒)\ast P(感冒)}{P(打喷嚏，建筑工人)}</script><p>假设打喷嚏和建筑工人是<strong>相互独立</strong>的，则公式变为：</p>
 <script type="math/tex; mode=display">
-P(感冒|打喷嚏，建筑工人)=\frac{P(打喷嚏|感冒)*P(建筑工人|感冒)*P(感冒)}{P(打喷嚏)*P(建筑工人)}</script><p>其中：$P(感冒)=\frac{1}{2}$，$P(打喷嚏|感冒)=\frac{2}{3}$，$P(建筑工人|感冒)=\frac{1}{3}$，$P(打喷嚏)<em>P(建筑工人)=\frac{1}{2}</em>\frac{1}{3}=\frac{1}{6}$ ，代入上式子即可得：</p>
+P(感冒|打喷嚏，建筑工人)=\frac{P(打喷嚏|感冒)\ast P(建筑工人|感冒)\ast P(感冒)}{P(打喷嚏)\ast P(建筑工人)}</script><p>其中：$P(感冒)=\frac{1}{2}$，$P(打喷嚏|感冒)=\frac{2}{3}$，$P(建筑工人|感冒)=\frac{1}{3}$，$P(打喷嚏)  \ast P(建筑工人)=\frac{1}{2}\ast\frac{1}{3}=\frac{1}{6}$ ，代入上式子即可得：</p>
 <script type="math/tex; mode=display">
 P(感冒|打喷嚏，建筑工人)=\frac{\frac{2}{3}*\frac{1}{3}*{\frac{1}{2}}}{\frac{1}{6}}=\frac{2}{3}\approx0.666</script><p>说明此打喷嚏的建筑工人患感冒的概率为60.6%，依次计算打喷嚏、建筑工人的条件下患过敏、脑震荡的概率，然后有三个类别的后验概率，取最大的值作为该情况的预测值即可，这种模型常用于文本分类等。</p>
 <p><strong>例子2：</strong></p>
@@ -483,9 +483,9 @@ P(B_{2},A) = P(B_{2}) \cdot P(A|B_{2}) = 0.99 \times 0.1 = 0.099</script><p>即1
 <script type="math/tex; mode=display">
 P(B_{1}|A)=\frac{0.009}{0.099 + 0.009} \approx 0.083</script><p>显然，检测为阳性不得癌症的概率约是0.917，那么我们检测为阳性后，也不必万念俱灰，至少Thomas Bayes告诉你，你还有救。在这点上，他果然是上帝。</p>
 <p>通过例子知道，贝叶斯的分母可以有2种计算方式，一种是以每个事件都是独立的，连乘积的形式；另一种是全概率公式展开的形式，依据不同情况活用。<strong>具体的算法流程请参考</strong>：<a href="https://blog.csdn.net/dataningwei/article/details/54140537" target="_blank" rel="noopener">https://blog.csdn.net/dataningwei/article/details/54140537</a> ，注意到此链接中因为分母对每类后验概率一样，所以后验概率与分子成正比，所以直接最大化分子部分即可。</p>
-<h1 id="2-多项式朴素贝叶斯"><a href="#2-多项式朴素贝叶斯" class="headerlink" title="2.多项式朴素贝叶斯"></a>2.多项式朴素贝叶斯</h1><h1 id="3-参考"><a href="#3-参考" class="headerlink" title="3.参考"></a>3.参考</h1><p>（1）朴素贝叶斯理论推导与三种常见模型：<a href="https://blog.csdn.net/u012162613/article/details/48323777" target="_blank" rel="noopener">https://blog.csdn.net/u012162613/article/details/48323777</a> </p>
-<p>（2）例子1来源：<a href="http://www.ruanyifeng.com/blog/2013/12/naive_bayes_classifier.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2013/12/naive_bayes_classifier.html</a></p>
-<p>（3）贝叶斯和MCMC博客：<a href="http://www.xuyankun.cn/2017/05/13/bayes/" target="_blank" rel="noopener">http://www.xuyankun.cn/2017/05/13/bayes/</a></p>
+<h1 id="2-多项式朴素贝叶斯"><a href="#2-多项式朴素贝叶斯" class="headerlink" title="2.多项式朴素贝叶斯"></a>2.多项式朴素贝叶斯</h1><h1 id="3-参考"><a href="#3-参考" class="headerlink" title="3.参考"></a>3.参考</h1><p>（1）贝叶斯的三种模型： <a href="https://blog.csdn.net/u012162613/article/details/48323777" target="_blank" rel="noopener">https://blog.csdn.net/u012162613/article/details/48323777</a> </p>
+<p>（2）例子1来源： <a href="http://www.ruanyifeng.com/blog/2013/12/naive_bayes_classifier.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2013/12/naive_bayes_classifier.html</a></p>
+<p>（3）贝叶斯和MCMC博客： <a href="http://www.xuyankun.cn/2017/05/13/bayes/" target="_blank" rel="noopener">http://www.xuyankun.cn/2017/05/13/bayes/</a></p>
 
       
     </div>
