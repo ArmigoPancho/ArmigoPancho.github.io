@@ -89,7 +89,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2018/12/03/NB/1.jpg">
 <meta property="og:image" content="http://yoursite.com/2018/12/03/NB/2.png">
-<meta property="og:updated_time" content="2018-12-07T12:43:58.806Z">
+<meta property="og:updated_time" content="2018-12-07T12:51:57.657Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="朴素贝叶斯模型">
 <meta name="twitter:description" content="1.朴素贝叶斯公式1.1概念简述简介下三个重要的条件概率的公式：  \begin{align*} 　　&amp;(1)条件概率公式: P(A|B)=P(AB)/P(B)\ ，其中P(B)&amp;gt;0  \\ 　　&amp;(2)乘法公式：P(A∩B)=P(AB)=P(A|B)P(B)=P(B|A)P(A)\\    &amp;\quad\ 推广：P(A1A2...An)=P(A1)P(A2|A1)P(A3|A1A2)...P(A">
@@ -501,10 +501,10 @@ P(x_{i}|c_{k})=\frac{N_{c_{k},x_{i}}+\alpha}{N_{c_{k}}+n\alpha}</script><p>$N_{c
 <p>（1）朴素贝叶斯的假设前提有两个第一个为：各特征彼此独立；第二个：对被解释变量的影响一致，不能进行变量筛选。贝叶斯显然是没有独立的前提，即各个特征之间可以有依赖的，也可以独立。</p>
 <p>（2）GaussianNB、MultinomialNB和BernoulliNB的似然函数的计算方式不同。<strong>GaussianNB就是似然函数$P( x_{i} | c_{k})$为高斯分布的朴素贝叶斯，MultinomialNB就是似然函数为多项式分布的朴素贝叶斯，而BernoulliNB就是似然函数为伯努利分布的朴素贝叶斯。</strong></p>
 <p>一般来说，如果样本特征的分布大部分是连续值，使用GaussianNB会比较好。如果如果样本特征的分大部分是多元离散值，使用MultinomialNB比较合适。而如果样本特征是二元离散值或者很稀疏的多元离散值，应该使用BernoulliNB。</p>
-<h1 id="4-参考"><a href="#4-参考" class="headerlink" title="4.参考"></a>4.参考</h1><p>（1）贝叶斯的三种模型： <a href="https://blog.csdn.net/u012162613/article/details/48323777" target="_blank" rel="noopener">https://blog.csdn.net/u012162613/article/details/48323777</a> </p>
-<p>（2）例子1来源： <a href="http://www.ruanyifeng.com/blog/2013/12/naive_bayes_classifier.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2013/12/naive_bayes_classifier.html</a></p>
-<p>（3）贝叶斯和MCMC博客： <a href="http://www.xuyankun.cn/2017/05/13/bayes/" target="_blank" rel="noopener">http://www.xuyankun.cn/2017/05/13/bayes/</a></p>
-<p>（4）贝叶斯网络与朴素贝叶斯的区别：  <a href="https://blog.csdn.net/weixin_38438451/article/details/82849802" target="_blank" rel="noopener">https://blog.csdn.net/weixin_38438451/article/details/82849802</a></p>
+<h1 id="4-参考"><a href="#4-参考" class="headerlink" title="4.参考"></a>4.参考</h1><p>（1）<a href="https://blog.csdn.net/u012162613/article/details/48323777" target="_blank" rel="noopener">贝叶斯的三种模型</a></p>
+<p>（2）<a href="http://www.ruanyifeng.com/blog/2013/12/naive_bayes_classifier.html" target="_blank" rel="noopener">例子1来源</a></p>
+<p>（3）<a href="http://www.xuyankun.cn/2017/05/13/bayes/" target="_blank" rel="noopener">贝叶斯和MCMC博客</a></p>
+<p>（4）<a href="https://blog.csdn.net/weixin_38438451/article/details/82849802" target="_blank" rel="noopener">贝叶斯网络与朴素贝叶斯的区别</a></p>
 
       
     </div>
