@@ -79,20 +79,20 @@
 
 
 
-<meta name="description" content="1.朴素贝叶斯公式1.1概念简述有三个条件概率公式，如下：  \begin{align*} 　　&amp;(1)条件概率公式: P(A|B)=P(AB)/P(B)\ ，其中P(B)&amp;gt;0  \\ 　　&amp;(2)乘法公式：P(A∩B)=P(AB)=P(A|B)P(B)=P(B|A)P(A)\\    &amp;\quad\ 推广：P(A1A2...An)=P(A1)P(A2|A1)P(A3|A1A2)...P(An|A">
+<meta name="description" content="1.朴素贝叶斯公式1.1概念简述简介下三个重要的条件概率的公式：  \begin{align*} 　　&amp;(1)条件概率公式: P(A|B)=P(AB)/P(B)\ ，其中P(B)&amp;gt;0  \\ 　　&amp;(2)乘法公式：P(A∩B)=P(AB)=P(A|B)P(B)=P(B|A)P(A)\\    &amp;\quad\ 推广：P(A1A2...An)=P(A1)P(A2|A1)P(A3|A1A2)...P(A">
 <meta name="keywords" content="Naive Bayes,多项式朴素贝叶斯">
 <meta property="og:type" content="article">
 <meta property="og:title" content="朴素贝叶斯模型">
 <meta property="og:url" content="http://yoursite.com/2018/12/03/NB/index.html">
 <meta property="og:site_name" content="Hello,Armigo!">
-<meta property="og:description" content="1.朴素贝叶斯公式1.1概念简述有三个条件概率公式，如下：  \begin{align*} 　　&amp;(1)条件概率公式: P(A|B)=P(AB)/P(B)\ ，其中P(B)&amp;gt;0  \\ 　　&amp;(2)乘法公式：P(A∩B)=P(AB)=P(A|B)P(B)=P(B|A)P(A)\\    &amp;\quad\ 推广：P(A1A2...An)=P(A1)P(A2|A1)P(A3|A1A2)...P(An|A">
+<meta property="og:description" content="1.朴素贝叶斯公式1.1概念简述简介下三个重要的条件概率的公式：  \begin{align*} 　　&amp;(1)条件概率公式: P(A|B)=P(AB)/P(B)\ ，其中P(B)&amp;gt;0  \\ 　　&amp;(2)乘法公式：P(A∩B)=P(AB)=P(A|B)P(B)=P(B|A)P(A)\\    &amp;\quad\ 推广：P(A1A2...An)=P(A1)P(A2|A1)P(A3|A1A2)...P(A">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2018/12/03/NB/1.jpg">
 <meta property="og:image" content="http://yoursite.com/2018/12/03/NB/2.png">
-<meta property="og:updated_time" content="2018-12-06T03:09:01.049Z">
+<meta property="og:updated_time" content="2018-12-07T08:47:52.255Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="朴素贝叶斯模型">
-<meta name="twitter:description" content="1.朴素贝叶斯公式1.1概念简述有三个条件概率公式，如下：  \begin{align*} 　　&amp;(1)条件概率公式: P(A|B)=P(AB)/P(B)\ ，其中P(B)&amp;gt;0  \\ 　　&amp;(2)乘法公式：P(A∩B)=P(AB)=P(A|B)P(B)=P(B|A)P(A)\\    &amp;\quad\ 推广：P(A1A2...An)=P(A1)P(A2|A1)P(A3|A1A2)...P(An|A">
+<meta name="twitter:description" content="1.朴素贝叶斯公式1.1概念简述简介下三个重要的条件概率的公式：  \begin{align*} 　　&amp;(1)条件概率公式: P(A|B)=P(AB)/P(B)\ ，其中P(B)&amp;gt;0  \\ 　　&amp;(2)乘法公式：P(A∩B)=P(AB)=P(A|B)P(B)=P(B|A)P(A)\\    &amp;\quad\ 推广：P(A1A2...An)=P(A1)P(A2|A1)P(A3|A1A2)...P(A">
 <meta name="twitter:image" content="http://yoursite.com/2018/12/03/NB/1.jpg">
 
 
@@ -394,7 +394,7 @@
       
 
       
-        <h1 id="1-朴素贝叶斯公式"><a href="#1-朴素贝叶斯公式" class="headerlink" title="1.朴素贝叶斯公式"></a>1.朴素贝叶斯公式</h1><h2 id="1-1概念简述"><a href="#1-1概念简述" class="headerlink" title="1.1概念简述"></a>1.1概念简述</h2><p>有三个条件概率公式，如下：</p>
+        <h1 id="1-朴素贝叶斯公式"><a href="#1-朴素贝叶斯公式" class="headerlink" title="1.朴素贝叶斯公式"></a>1.朴素贝叶斯公式</h1><h2 id="1-1概念简述"><a href="#1-1概念简述" class="headerlink" title="1.1概念简述"></a>1.1概念简述</h2><p>简介下三个重要的条件概率的公式：</p>
 <script type="math/tex; mode=display">
 \begin{align*}
 　　&(1)条件概率公式: P(A|B)=P(AB)/P(B)\ ，其中P(B)>0  \\
@@ -483,9 +483,28 @@ P(B_{2},A) = P(B_{2}) \cdot P(A|B_{2}) = 0.99 \times 0.1 = 0.099</script><p>即1
 <script type="math/tex; mode=display">
 P(B_{1}|A)=\frac{0.009}{0.099 + 0.009} \approx 0.083</script><p>显然，检测为阳性不得癌症的概率约是0.917，那么我们检测为阳性后，也不必万念俱灰，至少Thomas Bayes告诉你，你还有救。在这点上，他果然是上帝。</p>
 <p>通过例子知道，贝叶斯的分母可以有2种计算方式，一种是以每个事件都是独立的，连乘积的形式；另一种是全概率公式展开的形式，依据不同情况活用。<strong>具体的算法流程请参考</strong>：<a href="https://blog.csdn.net/dataningwei/article/details/54140537" target="_blank" rel="noopener">https://blog.csdn.net/dataningwei/article/details/54140537</a> ，注意到此链接中因为分母对每类后验概率一样，所以后验概率与分子成正比，所以直接最大化分子部分即可。</p>
-<h1 id="2-多项式朴素贝叶斯"><a href="#2-多项式朴素贝叶斯" class="headerlink" title="2.多项式朴素贝叶斯"></a>2.多项式朴素贝叶斯</h1><h1 id="3-参考"><a href="#3-参考" class="headerlink" title="3.参考"></a>3.参考</h1><p>（1）贝叶斯的三种模型： <a href="https://blog.csdn.net/u012162613/article/details/48323777" target="_blank" rel="noopener">https://blog.csdn.net/u012162613/article/details/48323777</a> </p>
+<h1 id="2-多项式朴素贝叶斯"><a href="#2-多项式朴素贝叶斯" class="headerlink" title="2.多项式朴素贝叶斯"></a>2.多项式朴素贝叶斯</h1><p><strong>朴素贝叶斯模型最大的特点是基于贝叶斯公式和特征的条件概率是独立的，</strong>这就给我们很大的简化空间和计算的方便。多项式朴素贝叶斯（Multinomial Naive Bayes） 比如对于文本分类来说，我们的目标就是<strong>获得最大的某一类的后验概率</strong>，这里我们假设<strong>每个特征之间是独立</strong>的：</p>
+<script type="math/tex; mode=display">
+f(x)=argmax_{c_{k}}\ P(c_{k}|x)=argmax_{c_{k}} \frac{P(c_{k})\prod_{i=1}^{n}P(x_{i}|c_{k})}{\sum_{k}P(c_{k})\prod_{i=1}^{n}P(x_{i}|c_{k})}</script><p>由于所有类的分子一样，所以直接做大化分母即可：</p>
+<script type="math/tex; mode=display">
+f(x)=argmax \ P(c_{k})\ast\prod_{i=1}^{n}P(x_{i}|c_{k})</script><p>对于$P(c_k),P(x_{i}|c_{k})$计算方法如下：</p>
+<script type="math/tex; mode=display">
+P(c_{k})=\frac{N_{c_{k}}+\alpha}{N+k\alpha}</script><p>N是总的样本个数，k是总的类别个数，$N_{c_k}$是类别为$c_k$的样本个数，$α$是平滑值。</p>
+<script type="math/tex; mode=display">
+P(x_{i}|c_{k})=\frac{N_{c_{k},x_{i}}+\alpha}{N_{c_{k}}+n\alpha}</script><p>$N_{c_{k}}$是第k类$c_{k}$的样本个数，n是特征x的取值个数，$N_{c_{k},x_{i}}$是类别为$c_k$的样本中，第i维特征的值是$x_i$的样本个数，$α$是平滑值。因为若在预测时候，若预测中有特征没有出现在训练集中，那么$P(x_{i}|c_{k})$是0，所以整个乘积都是0,这样就没有意义了。为了防止概率为0，加上一个平滑，让它较好的反映原始概率。</p>
+<blockquote>
+<p><strong>当α=1时，称作Laplace平滑，当0&lt;α&lt;1时，称作Lidstone平滑，α=0时不做平滑。</strong></p>
+</blockquote>
+<p>例子可以参考这篇文章： <a href="https://blog.csdn.net/u012162613/article/details/48323777" target="_blank" rel="noopener">https://blog.csdn.net/u012162613/article/details/48323777</a> ，里面还有其他2种模式的解释，不错哦。</p>
+<h1 id="3-NB和其他NB的区别"><a href="#3-NB和其他NB的区别" class="headerlink" title="3.NB和其他NB的区别"></a>3.NB和其他NB的区别</h1><p><strong>相同点</strong>：都是以贝叶斯模型为基础。</p>
+<p><strong>朴素贝叶斯和各个贝叶斯之间的区别</strong>：</p>
+<p>（1）朴素贝叶斯的假设前提有两个第一个为：各特征彼此独立；第二个：对被解释变量的影响一致，不能进行变量筛选。贝叶斯显然是没有独立的前提，即各个特征之间可以有依赖的，也可以独立。</p>
+<p>（2）GaussianNB、MultinomialNB和BernoulliNB的似然函数的计算方式不同。<strong>GaussianNB就是似然函数$P( x_{i} | c_{k})$为高斯分布的朴素贝叶斯，MultinomialNB就是似然函数为多项式分布的朴素贝叶斯，而BernoulliNB就是似然函数为伯努利分布的朴素贝叶斯。</strong></p>
+<p>一般来说，如果样本特征的分布大部分是连续值，使用GaussianNB会比较好。如果如果样本特征的分大部分是多元离散值，使用MultinomialNB比较合适。而如果样本特征是二元离散值或者很稀疏的多元离散值，应该使用BernoulliNB。</p>
+<h1 id="4-参考"><a href="#4-参考" class="headerlink" title="4.参考"></a>4.参考</h1><p>（1）贝叶斯的三种模型： <a href="https://blog.csdn.net/u012162613/article/details/48323777" target="_blank" rel="noopener">https://blog.csdn.net/u012162613/article/details/48323777</a> </p>
 <p>（2）例子1来源： <a href="http://www.ruanyifeng.com/blog/2013/12/naive_bayes_classifier.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2013/12/naive_bayes_classifier.html</a></p>
 <p>（3）贝叶斯和MCMC博客： <a href="http://www.xuyankun.cn/2017/05/13/bayes/" target="_blank" rel="noopener">http://www.xuyankun.cn/2017/05/13/bayes/</a></p>
+<p>（4）贝叶斯网络与朴素贝叶斯的区别：<a href="https://blog.csdn.net/weixin_38438451/article/details/82849802" target="_blank" rel="noopener">https://blog.csdn.net/weixin_38438451/article/details/82849802</a></p>
 
       
     </div>
@@ -665,7 +684,7 @@ P(B_{1}|A)=\frac{0.009}{0.099 + 0.009} \approx 0.083</script><p>显然，检测�
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-朴素贝叶斯公式"><span class="nav-text">1.朴素贝叶斯公式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1概念简述"><span class="nav-text">1.1概念简述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2贝叶斯公式（Naive-Bayes）"><span class="nav-text">1.2贝叶斯公式（Naive Bayes）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2贝叶斯例子"><span class="nav-text">1.2贝叶斯例子</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-多项式朴素贝叶斯"><span class="nav-text">2.多项式朴素贝叶斯</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-参考"><span class="nav-text">3.参考</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-朴素贝叶斯公式"><span class="nav-text">1.朴素贝叶斯公式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1概念简述"><span class="nav-text">1.1概念简述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2贝叶斯公式（Naive-Bayes）"><span class="nav-text">1.2贝叶斯公式（Naive Bayes）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2贝叶斯例子"><span class="nav-text">1.2贝叶斯例子</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-多项式朴素贝叶斯"><span class="nav-text">2.多项式朴素贝叶斯</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-NB和其他NB的区别"><span class="nav-text">3.NB和其他NB的区别</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-参考"><span class="nav-text">4.参考</span></a></li></ol></div>
             
 
           </div>
