@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="机器学习,Logistic Regression,逻辑回归," />
+  <meta name="keywords" content="D3.JS," />
 
 
 
@@ -79,24 +79,25 @@
 
 
 
-<meta name="description" content="1.逻辑回归笔记​    逻辑回归就是在线性回归的基础上套一个分类函数，当然也可以不用线性回归。下面是我根据周志华的逻辑回归写的笔记。具体请参考周志华的《机器学习》P57-60。第1张图是说明了逻辑回归的预测模型，第2张图是优化目标L的由来，第3张图是详细的求出一阶导数和二阶导数。我觉得这里一阶导数和二阶导数周志华这里写的不好，矩阵计算写的不清晰明朗。当然这也是自己基础不牢靠所致，共勉吧。如下：">
-<meta name="keywords" content="机器学习,Logistic Regression,逻辑回归">
+<meta name="description" content="1.可缩放矢量图形（SVG） SVG（Scalable Vector Graphics） 可被非常多的工具读取和修改（比如记事本）,由于使用xml格式定义，所以可以直接被当作文本文件打开，看里面的数据 SVG 与 JPEG 和 GIF 图像比起来，尺寸更小，且可压缩性更强，SVG 图就相当于保存了关键的数据点，比如要显示一个圆，需要知道圆心和半径，那么SVG 就只保存圆心坐标和半径数据，而平常我们">
+<meta name="keywords" content="D3.JS">
 <meta property="og:type" content="article">
-<meta property="og:title" content="逻辑回归和python3实现">
-<meta property="og:url" content="http://yoursite.com/2018/11/10/逻辑回归/index.html">
+<meta property="og:title" content="D3.JS">
+<meta property="og:url" content="http://yoursite.com/2018/12/08/D3.JS/index.html">
 <meta property="og:site_name" content="Hello,Armigo!">
-<meta property="og:description" content="1.逻辑回归笔记​    逻辑回归就是在线性回归的基础上套一个分类函数，当然也可以不用线性回归。下面是我根据周志华的逻辑回归写的笔记。具体请参考周志华的《机器学习》P57-60。第1张图是说明了逻辑回归的预测模型，第2张图是优化目标L的由来，第3张图是详细的求出一阶导数和二阶导数。我觉得这里一阶导数和二阶导数周志华这里写的不好，矩阵计算写的不清晰明朗。当然这也是自己基础不牢靠所致，共勉吧。如下：">
+<meta property="og:description" content="1.可缩放矢量图形（SVG） SVG（Scalable Vector Graphics） 可被非常多的工具读取和修改（比如记事本）,由于使用xml格式定义，所以可以直接被当作文本文件打开，看里面的数据 SVG 与 JPEG 和 GIF 图像比起来，尺寸更小，且可压缩性更强，SVG 图就相当于保存了关键的数据点，比如要显示一个圆，需要知道圆心和半径，那么SVG 就只保存圆心坐标和半径数据，而平常我们">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2018/11/10/逻辑回归/1.JPG">
-<meta property="og:image" content="http://yoursite.com/2018/11/10/逻辑回归/2.JPG">
-<meta property="og:image" content="http://yoursite.com/2018/11/10/逻辑回归/3.JPG">
-<meta property="og:image" content="http://yoursite.com/2018/11/10/逻辑回归/伪代码.png">
-<meta property="og:image" content="http://yoursite.com/2018/11/10/逻辑回归/结果.png">
-<meta property="og:updated_time" content="2018-11-12T03:55:55.929Z">
+<meta property="og:image" content="http://yoursite.com/2018/12/08/D3.JS/circle.png">
+<meta property="og:image" content="http://yoursite.com/2018/12/08/D3.JS/rect.png">
+<meta property="og:image" content="http://yoursite.com/2018/12/08/D3.JS/3.png">
+<meta property="og:image" content="http://yoursite.com/2018/12/08/D3.JS/title.png">
+<meta property="og:image" content="http://yoursite.com/2018/12/08/D3.JS/table.png">
+<meta property="og:image" content="http://yoursite.com/2018/12/08/D3.JS/WEB.PNG">
+<meta property="og:updated_time" content="2018-12-13T07:27:50.735Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="逻辑回归和python3实现">
-<meta name="twitter:description" content="1.逻辑回归笔记​    逻辑回归就是在线性回归的基础上套一个分类函数，当然也可以不用线性回归。下面是我根据周志华的逻辑回归写的笔记。具体请参考周志华的《机器学习》P57-60。第1张图是说明了逻辑回归的预测模型，第2张图是优化目标L的由来，第3张图是详细的求出一阶导数和二阶导数。我觉得这里一阶导数和二阶导数周志华这里写的不好，矩阵计算写的不清晰明朗。当然这也是自己基础不牢靠所致，共勉吧。如下：">
-<meta name="twitter:image" content="http://yoursite.com/2018/11/10/逻辑回归/1.JPG">
+<meta name="twitter:title" content="D3.JS">
+<meta name="twitter:description" content="1.可缩放矢量图形（SVG） SVG（Scalable Vector Graphics） 可被非常多的工具读取和修改（比如记事本）,由于使用xml格式定义，所以可以直接被当作文本文件打开，看里面的数据 SVG 与 JPEG 和 GIF 图像比起来，尺寸更小，且可压缩性更强，SVG 图就相当于保存了关键的数据点，比如要显示一个圆，需要知道圆心和半径，那么SVG 就只保存圆心坐标和半径数据，而平常我们">
+<meta name="twitter:image" content="http://yoursite.com/2018/12/08/D3.JS/circle.png">
 
 
 
@@ -126,13 +127,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/11/10/逻辑回归/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/12/08/D3.JS/"/>
 
 
 
 
 
-  <title>逻辑回归和python3实现 | Hello,Armigo!</title>
+  <title>D3.JS | Hello,Armigo!</title>
   
 
 
@@ -293,7 +294,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/10/逻辑回归/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/08/D3.JS/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Armigo">
@@ -310,7 +311,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">逻辑回归和python3实现</h1>
+          <h1 class="post-title" itemprop="name headline">D3.JS</h1>
         
 
         <div class="post-meta">
@@ -322,8 +323,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-10T20:47:41+08:00">
-                2018-11-10
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-08T13:44:05+08:00">
+                2018-12-08
               </time>
             
 
@@ -345,8 +346,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/机器学习/" itemprop="url" rel="index">
-                    <span itemprop="name">机器学习</span>
+                  <a href="/categories/可视化工具/" itemprop="url" rel="index">
+                    <span itemprop="name">可视化工具</span>
                   </a>
                 </span>
 
@@ -363,8 +364,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/11/10/逻辑回归/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/11/10/逻辑回归/" itemprop="commentCount"></span>
+                <a href="/2018/12/08/D3.JS/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/12/08/D3.JS/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -397,23 +398,42 @@
       
 
       
-        <h1 id="1-逻辑回归笔记"><a href="#1-逻辑回归笔记" class="headerlink" title="1.逻辑回归笔记"></a>1.逻辑回归笔记</h1><p>​    逻辑回归就是在线性回归的基础上套一个分类函数，当然也可以不用线性回归。下面是我根据周志华的逻辑回归写的笔记。具体请参考周志华的《机器学习》P57-60。第1张图是说明了逻辑回归的预测模型，第2张图是优化目标L的由来，第3张图是详细的求出一阶导数和二阶导数。我觉得这里一阶导数和二阶导数周志华这里写的不好，矩阵计算写的不清晰明朗。当然这也是自己基础不牢靠所致，共勉吧。如下：</p>
-<p>图1：得到两个后验概率的表达式P0和P1，用极大似然估计法找出优化目标L。</p>
-<p>图2：再把P0，P1和转化后等价的似然项代入对数似然L,简化后即可得最终优化目标L。</p>
-<p>图3：L对2个参数的求导。</p>
-<p>最后由牛顿法得到迭代参数公式和优化目标L。</p>
-<p>​    在之前计算的时候出现了奇异矩阵，即矩阵的行列式值为0，想了下可能是之前的数据之间存在线性相关性，所以导致矩阵的秩不满秩，所以也就不可逆了，即变成了奇异矩阵。若我不做实验，就不会知道奇异矩阵，也就记不起来以前的秩了。想着一些小算法，可以重复造轮子，但是复杂的算法就算了，没必要。人生奇美，怎可废！</p>
-<p><img src="/2018/11/10/逻辑回归/1.JPG" alt="显示图片1">                                                                                                                                                                                                                                                                                 </p>
-<p>​                                                                                                                                                       </p>
-<p><img src="/2018/11/10/逻辑回归/2.JPG" alt="图片1"></p>
-<p><img src="/2018/11/10/逻辑回归/3.JPG" alt="图片1"></p>
-<h1 id="2-python3实现"><a href="#2-python3实现" class="headerlink" title="2.python3实现"></a>2.python3实现</h1><p>用的python3.5.1+pycharm,将就着看吧。只用了5个样本，准确率不高的，简单的实现了预测，没有深究。下面是伪代码：</p>
-<p><img src="/2018/11/10/逻辑回归/伪代码.png" alt="图片4"></p>
-<p>上面的终止条件就是人为设定的次数或者是优化目标L达到可接受的范围，否则一直迭代。</p>
-<p>具体实现如下,代码在这里排列的不好，但是可以运行：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> numpy <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> math <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> numpy.linalg <span class="keyword">import</span> inv</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sigmoid</span><span class="params">(x)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">1.</span>/(<span class="number">1.</span>+np.exp(-x))</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">logistic_regression</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="comment"># 牛顿方法构建Logistic Regression , 对西瓜是否为好瓜或坏进行分类,</span></span><br><span class="line">    <span class="comment">#Y &lt;&lt;--预测为-- Sigmoid(w1*x1+w2*x2 + bias)</span></span><br><span class="line">    X = np.array([[<span class="number">0.697</span>,<span class="number">0.774</span>,<span class="number">0.634</span>,<span class="number">0.666</span>,<span class="number">0.243</span>],</span><br><span class="line">            [<span class="number">0.46</span>,<span class="number">0.376</span>,<span class="number">0.264</span>,<span class="number">0.091</span>,<span class="number">0.267</span>],</span><br><span class="line">            [<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>]])</span><br><span class="line"></span><br><span class="line">    Y =np.array([<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>])</span><br><span class="line">    beta = np.array([[<span class="number">0</span>], [<span class="number">0</span>], [<span class="number">1</span>]])</span><br><span class="line">    maxCycles = <span class="number">20</span> <span class="comment">#迭代次数</span></span><br><span class="line">    j = <span class="number">0</span>  <span class="comment">#累积次数</span></span><br><span class="line">    old_L = <span class="number">0</span></span><br><span class="line">    <span class="keyword">while</span> j &lt;= maxCycles:   <span class="comment">#循环20次后者损失函数已经达到合理小的范围就停止迭代</span></span><br><span class="line">        beta_T_x = dot(beta.T[<span class="number">0</span>], X)  <span class="comment"># 计算β_TX</span></span><br><span class="line">        L = <span class="number">0</span>  <span class="comment"># 损失函数</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">5</span>):</span><br><span class="line">            L = L +(-Y[i]*beta_T_x[i] + log(<span class="number">1</span> + exp(beta_T_x[i])))</span><br><span class="line">        <span class="keyword">if</span> abs(L-old_L)&lt;= <span class="number">0.00001</span>: <span class="keyword">break</span></span><br><span class="line">        print(<span class="string">'最优化目标L='</span>,L)</span><br><span class="line">        old_L = L</span><br><span class="line">        grad = <span class="number">0</span>  <span class="comment"># 一阶导数</span></span><br><span class="line">        H = <span class="number">0</span>  <span class="comment"># 二阶导数</span></span><br><span class="line">        <span class="comment"># 计算5个训练样本的优化目标,公式（3.27)</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">5</span>):</span><br><span class="line">        <span class="comment"># 梯度: ∂L(β)/∂β，P60公式（3.30）。</span></span><br><span class="line">            grad =  grad - dot(array([X[:,i]]).T,(Y[i] - array([[exp(beta_T_x[i])/(<span class="number">1</span>+exp(beta_T_x[i]))]])))  <span class="comment">#X[i]是横向量，需要转制，grad结果是1个数</span></span><br><span class="line">            H  = H + dot(array([X[:,i]]).T,array([X[:,i]]).T.T)*((exp(beta_T_x[i])/(<span class="number">1</span>+exp(beta_T_x[i]))) * (<span class="number">1</span>-exp(beta_T_x[i])/(<span class="number">1</span>+exp(beta_T_x[i]))))</span><br><span class="line">        beta = beta - dot(inv(H),grad)      <span class="comment">#参数迭代公式（3.29）</span></span><br><span class="line">        j += <span class="number">1</span></span><br><span class="line">    <span class="comment">#预测部分</span></span><br><span class="line">    print(<span class="string">'beta='</span>, beta)</span><br><span class="line">    x1 = float(input(<span class="string">'请输入西瓜的密度:'</span>))</span><br><span class="line">    x2 = float(input(<span class="string">'请输入西瓜的含糖率:'</span>))</span><br><span class="line">    z = beta[<span class="number">0</span>][<span class="number">0</span>] * x1 + beta[<span class="number">1</span>][<span class="number">0</span>] * x2 + beta[<span class="number">2</span>][<span class="number">0</span>]</span><br><span class="line">    print(<span class="string">'预测值为：'</span>,sigmoid(z))</span><br><span class="line">    f = sigmoid(z)</span><br><span class="line">    <span class="keyword">if</span>(f==<span class="number">1</span>):      <span class="comment">#P66公式（3.47)正、反例的比值&gt;观测的正反比例即认为正例，否则反例</span></span><br><span class="line">        print(<span class="string">'分类器预测此为好瓜。'</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        print(<span class="string">'分类器预测此为坏瓜。'</span>)</span><br><span class="line">logistic_regression()</span><br></pre></td></tr></table></figure>
-<p>预测结果如下：</p>
-<p><img src="/2018/11/10/逻辑回归/结果.png" alt="图片1"></p>
+        <h1 id="1-可缩放矢量图形（SVG）"><a href="#1-可缩放矢量图形（SVG）" class="headerlink" title="1.可缩放矢量图形（SVG）"></a>1.可缩放矢量图形（SVG）</h1><ul>
+<li>SVG（Scalable Vector Graphics） 可被非常多的工具读取和修改（比如记事本）,由于使用xml格式定义，所以可以直接被当作文本文件打开，看里面的数据</li>
+<li>SVG 与 JPEG 和 GIF 图像比起来，尺寸更小，且可压缩性更强，SVG 图就相当于保存了关键的数据点，比如要显示一个圆，需要知道圆心和半径，那么SVG 就只保存圆心坐标和半径数据，而平常我们用的位图都是以像素点的形式根据图片大小保存对应个数的像素点，因而SVG尺寸更小</li>
+<li>SVG 是可伸缩的，平常使用的位图拉伸会发虚，压缩会变形，而SVG格式图片保存数据进行运算展示，不管多大多少，可以不失真显示。作图例子如下：</li>
+</ul>
+<p>（1）平面上一个圈圈：包涵圈和圈内、圈外。发现这个可缩放的矢量图是在SVG模块里面再添加一个circle模块的：’’svgCircleTutorial’’是svg的id名字、xmlns是XML命名空间，区别开在不同文件中的相同的标志、height=”250”是SVG的高度；cx=”55” cy=”55”表示坐标（55,55）、r是半径、fill是填充圈内颜色、stroke是轮廓的颜色、stroke-width是轮廓宽度。把下面代码保存到txt文件，修改文件名字为circle.html 用任意浏览器打开即可显示下图。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">svg</span> <span class="attr">id</span>=<span class="string">"svgCircleTutorial"</span> <span class="attr">height</span>=<span class="string">"250"</span> <span class="attr">xmlns</span>=<span class="string">"http://www.w3.org/2000/svg"</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">circle</span> <span class="attr">id</span>=<span class="string">"myCircle"</span> <span class="attr">cx</span>=<span class="string">"100"</span> <span class="attr">cy</span>=<span class="string">"100"</span> <span class="attr">r</span>=<span class="string">"60"</span> <span class="attr">fill</span>=<span class="string">"#219E3E"</span> <span class="attr">stroke</span>=<span class="string">"#17301D"</span> <span class="attr">stroke-width</span>=<span class="string">"10"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">svg</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><img src="/2018/12/08/D3.JS/circle.png" alt="circle"></p>
+<p>（2）rect 元素的 width 和 height 属性可定义矩形的高度和宽度、style属性用来定义CSS属性、CSS 的 fill 属性定义矩形的填充颜色（rgb 值、颜色名或者十六进制值）、CSS 的 stroke-width 属性定义矩形边框的宽度、CSS 的 stroke 属性定义矩形边框的颜色，如下：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">svg</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">rect</span> <span class="attr">width</span>=<span class="string">"150"</span> <span class="attr">height</span>=<span class="string">"150"</span></span></span><br><span class="line"><span class="tag">  <span class="attr">style</span>=<span class="string">"fill:rgb(255,255,0);stroke-width:12;stroke:rgb(0,150,0)"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">svg</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><img src="/2018/12/08/D3.JS/rect.png" alt="rectangle"></p>
+<p>（3）路径：设置线段坐标和图像填充，fill为white时在背景也是白色的情况下只有楼梯线段了。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">svg</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">polyline</span> <span class="attr">points</span>=<span class="string">"0 40,40 40,40 80,80 80,80 120,120 120,120 160"</span> </span></span><br><span class="line"><span class="tag">  <span class="attr">style</span>=<span class="string">"fill:blue;</span></span></span><br><span class="line"><span class="tag"><span class="string">  stroke:gray;</span></span></span><br><span class="line"><span class="tag"><span class="string">  stroke-width:3"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">svg</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><img src="/2018/12/08/D3.JS/3.png" alt="坐标"></p>
+<h1 id="2-HTML例子"><a href="#2-HTML例子" class="headerlink" title="2.HTML例子"></a>2.HTML例子</h1><p>由于html也是前端的核心，暂时了解下，直接例子理解可能好些。</p>
+<p>（1）title和内容的位置不同：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>我是标题，我在title标签内，我显示在浏览器窗口最顶部<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">我是内容，后面是我的博客地址：</span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"http://www.armigo.fun"</span>&gt;</span>这是一个链接<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">下面是一张图片：<span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"http://pic.qiantucdn.com/58pic/18/06/80/21N58PICBfS_1024.jpg"</span> <span class="attr">width</span>=<span class="string">"787.2"</span> <span class="attr">height</span>=<span class="string">"492"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><img src="/2018/12/08/D3.JS/title.png" alt="title"></p>
+<p>（2）绘制表格：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">title</span>&gt;</span>菜鸟教程(runoob.com)<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span></span><br><span class="line">每个表格从一个 table 标签开始。</span><br><span class="line">每个表格行从 tr 标签开始。</span><br><span class="line">每个表格的数据从 td 标签开始。</span><br><span class="line"><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">h4</span>&gt;</span>一列:<span class="tag">&lt;/<span class="name">h4</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">table</span> <span class="attr">border</span>=<span class="string">"2"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">td</span>&gt;</span>100<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">h4</span>&gt;</span>一行三列:<span class="tag">&lt;/<span class="name">h4</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">table</span> <span class="attr">border</span>=<span class="string">"1"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">td</span>&gt;</span>100<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">td</span>&gt;</span>200<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">td</span>&gt;</span>300<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">h4</span>&gt;</span>2行3列<span class="tag">&lt;/<span class="name">h4</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">table</span> <span class="attr">border</span>=<span class="string">"1"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">td</span>&gt;</span>11<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">td</span>&gt;</span>22<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">td</span>&gt;</span>33<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">td</span>&gt;</span>14<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">td</span>&gt;</span>25<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">td</span>&gt;</span>36<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><img src="/2018/12/08/D3.JS/table.png" alt="table"></p>
+<p>（3）页面布局：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;<span class="name">title</span>&gt;</span>Armigo<span class="tag">&lt;/<span class="name">title</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"container"</span> <span class="attr">style</span>=<span class="string">"width:500px"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"header"</span> <span class="attr">style</span>=<span class="string">"background-color:#FFA500;"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h1</span> <span class="attr">style</span>=<span class="string">"margin-bottom:0;text-align:center"</span>&gt;</span>网页标题:(*´▽｀)ノノ<span class="tag">&lt;/<span class="name">h1</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"menu"</span> <span class="attr">style</span>=<span class="string">"background-color:#FFD700;height:200px;width:100px;float:right;"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">b</span>&gt;</span>菜单<span class="tag">&lt;/<span class="name">b</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">HTML<span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">SVG<span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">JavaScript<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"content"</span> <span class="attr">style</span>=<span class="string">"background-color:#EEEEEE;height:200px;width:400px;float:left;"</span>&gt;</span></span><br><span class="line">内容：你好帅！<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"footer"</span> <span class="attr">style</span>=<span class="string">"background-color:#FFA500;clear:both;text-align:center;"</span>&gt;</span></span><br><span class="line">版权 © ARMIGO.FUN<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><img src="/2018/12/08/D3.JS/WEB.PNG" alt="web"></p>
+<h1 id="3-CSS样式"><a href="#3-CSS样式" class="headerlink" title="3.CSS样式"></a>3.CSS样式</h1><ul>
+<li>CSS 指层叠样式表 (<strong>C</strong>ascading <strong>S</strong>tyle <strong>S</strong>heets)</li>
+<li>样式定义<strong>如何显示</strong> HTML 元素</li>
+<li>样式通常存储在<strong>样式表</strong>中</li>
+<li>把样式添加到 HTML 4.0 中，是为了<strong>解决内容与表现分离的问题</strong></li>
+<li><strong>外部样式表</strong>可以极大提高工作效率</li>
+<li>外部样式表通常存储在 <strong>CSS 文件</strong>中</li>
+<li>多个样式定义可<strong>层叠</strong>为一</li>
+</ul>
+<h1 id="4-D3-JS"><a href="#4-D3-JS" class="headerlink" title="4.D3.JS"></a>4.D3.JS</h1><p>D3 的全称是（Data-Driven Documents），顾名思义可以知道是一个被数据驱动的文档。说简单一点，其实就是一个 JavaScript 的函数库，使用它主要是用来做数据可视化的。</p>
+<p>（1）文字展示方式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">&lt;p1&gt;Hello World 1&lt;/p1&gt;</span><br><span class="line">&lt;br&gt;</span><br><span class="line">&lt;p2&gt;Hello World 2&lt;/p2&gt;</span><br><span class="line">&lt;script src=&quot;http://d3js.org/d3.v3.min.js&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">d3.select(&apos;body&apos;).selectAll(&apos;p&apos;);</span><br><span class="line">//选择&lt;body&gt;中所有的&lt;p&gt;，其文本内容为practise，选择集保存在变量 p 中</span><br><span class="line">var p=d3.select(&apos;body&apos;)</span><br><span class="line">        .select(&apos;p1&apos;)</span><br><span class="line">        .text(&apos;practise&apos;);</span><br><span class="line">//修改段落颜色和字体大小</span><br><span class="line">p.style(&quot;color&quot;,&quot;red&quot;)</span><br><span class="line"> .style(&quot;font-size&quot;,&quot;36px&quot;)</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -431,11 +451,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/机器学习/" rel="tag"># 机器学习</a>
-          
-            <a href="/tags/Logistic-Regression/" rel="tag"># Logistic Regression</a>
-          
-            <a href="/tags/逻辑回归/" rel="tag"># 逻辑回归</a>
+            <a href="/tags/D3-JS/" rel="tag"># D3.JS</a>
           
         </div>
       
@@ -448,8 +464,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/09/13/SVM/" rel="next" title="Bonjour!">
-                <i class="fa fa-chevron-left"></i> Bonjour!
+              <a href="/2018/12/03/NB/" rel="next" title="朴素贝叶斯模型">
+                <i class="fa fa-chevron-left"></i> 朴素贝叶斯模型
               </a>
             
           </div>
@@ -457,10 +473,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/11/19/线性空间定义/" rel="prev" title="线性空间的定义">
-                线性空间的定义 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -609,7 +621,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-逻辑回归笔记"><span class="nav-text">1.逻辑回归笔记</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-python3实现"><span class="nav-text">2.python3实现</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-可缩放矢量图形（SVG）"><span class="nav-text">1.可缩放矢量图形（SVG）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-HTML例子"><span class="nav-text">2.HTML例子</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-CSS样式"><span class="nav-text">3.CSS样式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-D3-JS"><span class="nav-text">4.D3.JS</span></a></li></ol></div>
             
 
           </div>
