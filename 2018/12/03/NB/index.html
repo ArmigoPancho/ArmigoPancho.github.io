@@ -91,7 +91,7 @@
 <meta property="og:image" content="http://yoursite.com/2018/12/03/NB/2.png">
 <meta property="og:image" content="http://yoursite.com/2018/12/03/NB/nb.JPG">
 <meta property="og:image" content="http://yoursite.com/2018/12/03/NB/mnb.JPG">
-<meta property="og:updated_time" content="2018-12-20T12:32:13.782Z">
+<meta property="og:updated_time" content="2018-12-20T12:37:54.574Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="朴素贝叶斯模型">
 <meta name="twitter:description" content="1.朴素贝叶斯公式1.1概念简述简介下三个重要的条件概率的公式：  \begin{align*} 　　&amp;(1)条件概率公式: P(A|B)=P(AB)/P(B)\ ，其中P(B)&amp;gt;0  \\ 　　&amp;(2)乘法公式：P(A∩B)=P(AB)=P(A|B)P(B)=P(B|A)P(A)\\    &amp;\quad\ 推广：P(A1A2...An)=P(A1)P(A2|A1)P(A3|A1A2)...P(A">
@@ -505,8 +505,7 @@ P(x_{i}|c_{k})=\frac{N_{c_{k},x_{i}}+\alpha}{N_{c_{k}}+n\alpha}</script><p>$N_{c
 <p><img src="/2018/12/03/NB/nb.JPG" alt="NB"></p>
 <p><strong>MNB算法图：</strong></p>
 <p><img src="/2018/12/03/NB/mnb.JPG" alt="MNB"></p>
-<pre><code>  可以看到上面第一张图中最下面**NB算法中**似然函数的表示，垃圾邮件中词的概率：P（某词 j|垃圾邮件=1）=词j在几个垃圾邮件中出现/垃圾邮件的总个数
-</code></pre><p>  <strong>第二张图中MNB算法的似然函数</strong>：P（词 j |1=垃圾）= 所有垃圾邮件中词j出现的次数/所有垃圾邮件的词总量  </p>
+<p>可以看到上面第一张图<strong>NB算法中</strong>最下面似然函数的表示，垃圾邮件中词的概率：P（某词 j|垃圾邮件=1）=词j在几个垃圾邮件中出现/垃圾邮件的总个数<br>  <strong>第二张图中MNB算法的似然函数</strong>：P（词 j |1=垃圾）= 所有垃圾邮件中词j出现的次数/所有垃圾邮件的词总量  </p>
 <p>可以发现似然函数不同。总结下：个别论文说是朴素贝叶斯只关心特征（词）出现还是不出现在一个类别中，但是多项式贝叶斯以每个特征（词）在样本集里的频次来决定类标。这样对NB和MNB有一个更加清晰的认识。</p>
 <p><strong>（3）朴素贝叶斯和各个贝叶斯之间的区别</strong>：</p>
 <blockquote>
