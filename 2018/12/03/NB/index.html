@@ -89,7 +89,9 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2018/12/03/NB/1.jpg">
 <meta property="og:image" content="http://yoursite.com/2018/12/03/NB/2.png">
-<meta property="og:updated_time" content="2018-12-07T12:52:28.412Z">
+<meta property="og:image" content="http://yoursite.com/2018/12/03/NB/NB.jpg">
+<meta property="og:image" content="http://yoursite.com/2018/12/03/NB/MNB.JPG">
+<meta property="og:updated_time" content="2018-12-19T14:14:18.057Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="朴素贝叶斯模型">
 <meta name="twitter:description" content="1.朴素贝叶斯公式1.1概念简述简介下三个重要的条件概率的公式：  \begin{align*} 　　&amp;(1)条件概率公式: P(A|B)=P(AB)/P(B)\ ，其中P(B)&amp;gt;0  \\ 　　&amp;(2)乘法公式：P(A∩B)=P(AB)=P(A|B)P(B)=P(B|A)P(A)\\    &amp;\quad\ 推广：P(A1A2...An)=P(A1)P(A2|A1)P(A3|A1A2)...P(A">
@@ -496,11 +498,25 @@ P(x_{i}|c_{k})=\frac{N_{c_{k},x_{i}}+\alpha}{N_{c_{k}}+n\alpha}</script><p>$N_{c
 <p><strong>当α=1时，称作Laplace平滑，当0&lt;α&lt;1时，称作Lidstone平滑，α=0时不做平滑。</strong></p>
 </blockquote>
 <p>例子可以参考这篇文章： <a href="https://blog.csdn.net/u012162613/article/details/48323777" target="_blank" rel="noopener">https://blog.csdn.net/u012162613/article/details/48323777</a> ，里面还有其他2种模式的解释，不错哦。</p>
-<h1 id="3-NB和其他NB的区别"><a href="#3-NB和其他NB的区别" class="headerlink" title="3.NB和其他NB的区别"></a>3.NB和其他NB的区别</h1><p><strong>相同点</strong>：都是以贝叶斯模型为基础。</p>
-<p><strong>朴素贝叶斯和各个贝叶斯之间的区别</strong>：</p>
+<h1 id="3-NB和其他NB的区别"><a href="#3-NB和其他NB的区别" class="headerlink" title="3.NB和其他NB的区别"></a>3.NB和其他NB的区别</h1><ul>
+<li><p><strong>相同点</strong>：都是以贝叶斯模型为基础。</p>
+</li>
+<li><p><strong>朴素贝叶斯和多项式贝叶斯的区别：</strong></p>
+<p>​    先看完此链接，有一个基本的认识： <a href="https://blog.csdn.net/gaotihong/article/details/78803197" target="_blank" rel="noopener">https://blog.csdn.net/gaotihong/article/details/78803197</a> ，主要对NB和MNB进行了概括，可以知道<strong>不同点有词向量的表示方式不同</strong>，NB是用0或1表示词在字典中出现与否，并且每个垃圾邮件的词向量一样长；但是MNB词向量是以每篇词长度为维度，词在字典中的序号为标记表示向量。另一个不同点我自己看的，在于<strong>似然函数的表示不同</strong>，我认为这才是真正的本质区别：</p>
+<p><img src="/2018/12/03/NB/NB.jpg" alt="NB"></p>
+</li>
+</ul>
+<p>  <img src="/2018/12/03/NB/MNB.JPG" alt="MNB"></p>
+<p>  可以看到上面第一张图中最下面<strong>NB算法中</strong>似然函数的表示，垃圾邮件中词的概率：P（某词 j|垃圾邮件=1）=词j在几个垃圾邮件中出现/垃圾邮件的总个数<br>  <strong>第二张图中MNB算法的似然函数</strong>：P（词 j |1=垃圾）= 所有垃圾邮件中词j出现的次数/所有垃圾邮件的词总量   </p>
+<p>  可以似然函数不同。总结下：个别论文说是朴素贝叶斯只关心特征（词）出现还是不出现在一个类别中，但是多项式贝叶斯以每个特征（词）在样本集里的频次来决定类标。这样对NB和MNB有一个更加清晰的认识。</p>
+<ul>
+<li><strong>朴素贝叶斯和各个贝叶斯之间的区别</strong>：</li>
+</ul>
+<blockquote>
 <p>（1）朴素贝叶斯的假设前提有两个第一个为：各特征彼此独立；第二个：对被解释变量的影响一致，不能进行变量筛选。贝叶斯显然是没有独立的前提，即各个特征之间可以有依赖的，也可以独立。</p>
 <p>（2）GaussianNB、MultinomialNB和BernoulliNB的似然函数的计算方式不同。<strong>GaussianNB就是似然函数$P( x_{i} | c_{k})$为高斯分布的朴素贝叶斯，MultinomialNB就是似然函数为多项式分布的朴素贝叶斯，而BernoulliNB就是似然函数为伯努利分布的朴素贝叶斯。</strong></p>
-<p>一般来说，如果样本特征的分布大部分是连续值，使用GaussianNB会比较好。如果如果样本特征的分大部分是多元离散值，使用MultinomialNB比较合适。而如果样本特征是二元离散值或者很稀疏的多元离散值，应该使用BernoulliNB。</p>
+<p>（3）一般来说，如果样本特征的分布大部分是连续值，使用GaussianNB会比较好。如果如果样本特征的分大部分是多元离散值，使用MultinomialNB比较合适。而如果样本特征是二元离散值或者很稀疏的多元离散值，应该使用BernoulliNB。</p>
+</blockquote>
 <h1 id="4-参考"><a href="#4-参考" class="headerlink" title="4.参考"></a>4.参考</h1><p>（1）<a href="https://blog.csdn.net/u012162613/article/details/48323777" target="_blank" rel="noopener">贝叶斯的三种模型</a></p>
 <p>（2）<a href="http://www.ruanyifeng.com/blog/2013/12/naive_bayes_classifier.html" target="_blank" rel="noopener">例子1来源</a></p>
 <p>（3）<a href="http://www.xuyankun.cn/2017/05/13/bayes/" target="_blank" rel="noopener">贝叶斯和MCMC博客</a></p>
