@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="word2vec," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -79,13 +79,12 @@
 
 
 
-<meta name="description" content="1.Word2vec向量是什么？1.1独热编码表示（One Hot Representation）Word2vec，由 Google 于 2013 年发表，是一种神经网络实现，可以学习单词的分布式表示。在此之前已经提出了用于学习单词表示的其他深度或循环神经网络架构，但是这些的主要问题是训练模型所需时长间。 Word2vec 相对于其他模型学习得快。Word2Vec 不需要标签来创建有意义的表示。这">
-<meta name="keywords" content="word2vec">
+<meta name="description" content="title:     Word2vecdate: 2019-03-04 21:48:44tags: [word2vec]mathjax: true categories: NLP1.Word2vec向量是什么？1.1独热编码表示（One Hot Representation）Word2vec，由 Google 于 2013 年发表，是一种神经网络实现，可以学习单词的分布式表示。在此之前已经提出了">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Word2vec">
+<meta property="og:title" content="Hello,Armigo!">
 <meta property="og:url" content="http://yoursite.com/2019/03/04/word2vec/index.html">
 <meta property="og:site_name" content="Hello,Armigo!">
-<meta property="og:description" content="1.Word2vec向量是什么？1.1独热编码表示（One Hot Representation）Word2vec，由 Google 于 2013 年发表，是一种神经网络实现，可以学习单词的分布式表示。在此之前已经提出了用于学习单词表示的其他深度或循环神经网络架构，但是这些的主要问题是训练模型所需时长间。 Word2vec 相对于其他模型学习得快。Word2Vec 不需要标签来创建有意义的表示。这">
+<meta property="og:description" content="title:     Word2vecdate: 2019-03-04 21:48:44tags: [word2vec]mathjax: true categories: NLP1.Word2vec向量是什么？1.1独热编码表示（One Hot Representation）Word2vec，由 Google 于 2013 年发表，是一种神经网络实现，可以学习单词的分布式表示。在此之前已经提出了">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2019/03/04/word2vec/one-hot.png">
 <meta property="og:image" content="http://yoursite.com/2019/03/04/word2vec/distributed.png">
@@ -97,10 +96,10 @@
 <meta property="og:image" content="http://yoursite.com/2019/03/04/word2vec/skip.png">
 <meta property="og:image" content="http://yoursite.com/2019/03/04/word2vec/6.png">
 <meta property="og:image" content="http://yoursite.com/2019/03/04/word2vec/s2.png">
-<meta property="og:updated_time" content="2019-03-07T13:16:44.015Z">
+<meta property="og:updated_time" content="2019-03-07T13:25:19.708Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Word2vec">
-<meta name="twitter:description" content="1.Word2vec向量是什么？1.1独热编码表示（One Hot Representation）Word2vec，由 Google 于 2013 年发表，是一种神经网络实现，可以学习单词的分布式表示。在此之前已经提出了用于学习单词表示的其他深度或循环神经网络架构，但是这些的主要问题是训练模型所需时长间。 Word2vec 相对于其他模型学习得快。Word2Vec 不需要标签来创建有意义的表示。这">
+<meta name="twitter:title" content="Hello,Armigo!">
+<meta name="twitter:description" content="title:     Word2vecdate: 2019-03-04 21:48:44tags: [word2vec]mathjax: true categories: NLP1.Word2vec向量是什么？1.1独热编码表示（One Hot Representation）Word2vec，由 Google 于 2013 年发表，是一种神经网络实现，可以学习单词的分布式表示。在此之前已经提出了">
 <meta name="twitter:image" content="http://yoursite.com/2019/03/04/word2vec/one-hot.png">
 
 
@@ -137,7 +136,7 @@
 
 
 
-  <title>Word2vec | Hello,Armigo!</title>
+  <title> | Hello,Armigo!</title>
   
 
 
@@ -315,7 +314,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Word2vec</h1>
+          <h1 class="post-title" itemprop="name headline"></h1>
         
 
         <div class="post-meta">
@@ -380,7 +379,9 @@
       
 
       
-        <h1 id="1-Word2vec向量是什么？"><a href="#1-Word2vec向量是什么？" class="headerlink" title="1.Word2vec向量是什么？"></a>1.Word2vec向量是什么？</h1><h2 id="1-1独热编码表示（One-Hot-Representation）"><a href="#1-1独热编码表示（One-Hot-Representation）" class="headerlink" title="1.1独热编码表示（One Hot Representation）"></a>1.1独热编码表示（One Hot Representation）</h2><p>Word2vec，由 Google 于 2013 年发表，是一种神经网络实现，可以学习单词的分布式表示。在此之前已经提出了用于学习单词表示的其他深度或循环神经网络架构，但是这些的主要问题是训练模型所需时长间。 Word2vec 相对于其他模型学习得快。Word2Vec 不需要标签来创建有意义的表示。这很有用，因为现实世界中的大多数数据都是未标记的。如果给网络足够的训练数据（数百亿个单词），它会产生特征极好的单词向量。具有相似含义的词出现在簇中，并且簇具有间隔，使得可以使用向量数学来再现诸如类比的一些词关系。着名的例子是，通过训练好的单词向量，“国王 - 男人 + 女人 = 女王”。上面kaggle对word2vec的介绍，看完还是不了解具体它做了什么。<br>理解Wordvec之前先了解One hot representation模式：向量中每一个元素都关联着词库中的一个单词，指定词的向量表示为：其在向量中对应的元素设置为1，其他的元素设置为0。比如下面图所示：只有1处表示当前单词queen，其他单词的位置都是0，one-hot就是这样子表示每一个单词。所以每个单词相互正交，所以也不会有单词之间的联系了。</p>
+        <hr>
+<p>title:     Word2vec<br>date: 2019-03-04 21:48:44<br>tags: [word2vec]<br>mathjax: true</p>
+<h2 id="categories-NLP"><a href="#categories-NLP" class="headerlink" title="categories: NLP"></a>categories: NLP</h2><h1 id="1-Word2vec向量是什么？"><a href="#1-Word2vec向量是什么？" class="headerlink" title="1.Word2vec向量是什么？"></a>1.Word2vec向量是什么？</h1><h2 id="1-1独热编码表示（One-Hot-Representation）"><a href="#1-1独热编码表示（One-Hot-Representation）" class="headerlink" title="1.1独热编码表示（One Hot Representation）"></a>1.1独热编码表示（One Hot Representation）</h2><p>Word2vec，由 Google 于 2013 年发表，是一种神经网络实现，可以学习单词的分布式表示。在此之前已经提出了用于学习单词表示的其他深度或循环神经网络架构，但是这些的主要问题是训练模型所需时长间。 Word2vec 相对于其他模型学习得快。Word2Vec 不需要标签来创建有意义的表示。这很有用，因为现实世界中的大多数数据都是未标记的。如果给网络足够的训练数据（数百亿个单词），它会产生特征极好的单词向量。具有相似含义的词出现在簇中，并且簇具有间隔，使得可以使用向量数学来再现诸如类比的一些词关系。着名的例子是，通过训练好的单词向量，“国王 - 男人 + 女人 = 女王”。上面kaggle对word2vec的介绍，看完还是不了解具体它做了什么。<br>理解Wordvec之前先了解One hot representation模式：向量中每一个元素都关联着词库中的一个单词，指定词的向量表示为：其在向量中对应的元素设置为1，其他的元素设置为0。比如下面图所示：只有1处表示当前单词queen，其他单词的位置都是0，one-hot就是这样子表示每一个单词。所以每个单词相互正交，所以也不会有单词之间的联系了。</p>
 <p><img src="/2019/03/04/word2vec/one-hot.png" alt=""></p>
 <p>再如考虑下面的三个特征：</p>
 <p>[“male”, “female”]</p>
@@ -412,12 +413,12 @@
 <p><img src="/2019/03/04/word2vec/skip.png" alt="skip-gram"></p>
 <p><strong>符号标记：</strong>一个中心词$x$；输出向量是$y^j$；V是输入单词矩阵（维度n x V）；$v_i$是$V$的第$i$列，表示单词$w_i$的输入向量；$U$代表输出矩阵（维度n x V）；$u_i$表示$U$的第$i$行，表示单词$w_i$的输出向量。</p>
 <p><strong>步骤1：</strong>生成输入向量的独热码x</p>
-<p><strong>步骤2：</strong>我们由上下文$v_c = V*x$得到嵌入词单向量</p>
-<p><strong>步骤3：</strong>由于没有平均值，只需设置$\hat{v}= v*c$</p>
-<p><strong>步骤4：</strong>用$ u = U<em>v_c=$来计算$u_{c-m}, . . . , u_{c-1}, u_{c+1}, . . . , u_{c+m}$，以此生成2</em>m个分数向量</p>
+<p><strong>步骤2：</strong>我们由上下文$v_c = V x$得到嵌入词单向量</p>
+<p><strong>步骤3：</strong>由于没有平均值，只需设置$\hat{v}= vc$</p>
+<p><strong>步骤4：</strong>用$ u = U v_c=$来计算$u_{c-m}, . . . , u_{c-1}, u_{c+1}, . . . , u_{c+m}$，以此生成2 x m个分数向量</p>
 <p><strong>步骤5：</strong>用公式$y = softmax(u)$把每一个分数转为概率</p>
 <p><strong>步骤6：</strong>用我们预测的概率向量$y^{(c-m)}, . . . , y^{(c-1)}, y^{(c+1)}, . . . , y^{(c+m)}$来和真实的独热码进行比较，越接近越好</p>
-<h3 id="2-2-2-隐层细节"><a href="#2-2-2-隐层细节" class="headerlink" title="2.2.2 隐层细节"></a>2.2.2 隐层细节</h3><p>训练模型的真正目的是获得模型基于训练数据<strong>学得的隐层权重</strong>。为了得到这些权重，我们首先要构建一个完整的神经网络作为我们的“Fake Task”。模型的输入如果为一个10000维的向量，那么输出也是一个10000维度（词汇表的大小）的向量，它包含了10000个概率，每一个概率代表着当前词是输入样本中output word的概率大小。由于<strong>输入向量$x$是one-hot编码</strong>，那么只有输入权重向量W中的非零元素才能对隐藏层产生输入。比如下面公式：</p>
+<h3 id="2-2-2-隐层细节"><a href="#2-2-2-隐层细节" class="headerlink" title="2.2.2 隐层细节"></a>2.2.2 隐层细节</h3><p>训练模型的真正目的是获得模型基于训练数据<strong>学得的隐层权重</strong>。为了得到这些权重，我们首先要构建一个完整的神经网络作为我们的“Fake Task”。模型的输入如果为一个10000维的向量，那么输出也是一个10000维度（词汇表的大小）的向量，它包含了10000个概率，每一个概率代表着当前词是输入样本中output word的概率大小。由于<strong>输入向量X是one-hot编码</strong>，那么只有输入权重向量W中的非零元素才能对隐藏层产生输入。比如下面公式：</p>
 <script type="math/tex; mode=display">
 h = x^TW=W_{k,.}:=v_{wI}\tag{$1$}</script><p>看不懂的话，看下图，由于左边的独热码矩阵在维度很高时候做相乘的操作时，非常消耗资源，我们这里只要根据独热码不为0的列号取输入矩阵W所对应的行，所以模型中的隐层权重矩阵便成了一个”查找表“（lookup table）。</p>
 <p><img src="/2019/03/04/word2vec/6.png" alt=""></p>
@@ -446,12 +447,6 @@ h = x^TW=W_{k,.}:=v_{wI}\tag{$1$}</script><p>看不懂的话，看下图，由�
     
 
     <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/word2vec/" rel="tag"># word2vec</a>
-          
-        </div>
       
 
       
@@ -576,7 +571,7 @@ h = x^TW=W_{k,.}:=v_{wI}\tag{$1$}</script><p>看不懂的话，看下图，由�
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -619,7 +614,7 @@ h = x^TW=W_{k,.}:=v_{wI}\tag{$1$}</script><p>看不懂的话，看下图，由�
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-Word2vec向量是什么？"><span class="nav-text">1.Word2vec向量是什么？</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1独热编码表示（One-Hot-Representation）"><span class="nav-text">1.1独热编码表示（One Hot Representation）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2分布式表示（Distributed-Representation）"><span class="nav-text">1.2分布式表示（Distributed Representation）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-神经网络语言模型"><span class="nav-text">2.神经网络语言模型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1CBOW模型（Continuous-Bag-of-Words-）"><span class="nav-text">2.1CBOW模型（Continuous Bag-of-Words ）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2Skip-Gram模型"><span class="nav-text">2.2Skip-Gram模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-1-Skip-Gram介绍"><span class="nav-text">2.2.1 Skip-Gram介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-2-隐层细节"><span class="nav-text">2.2.2 隐层细节</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-3模型优化目标"><span class="nav-text">2.2.3模型优化目标</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-参考"><span class="nav-text">3.参考</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#categories-NLP"><span class="nav-text">categories: NLP</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-Word2vec向量是什么？"><span class="nav-text">1.Word2vec向量是什么？</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1独热编码表示（One-Hot-Representation）"><span class="nav-text">1.1独热编码表示（One Hot Representation）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2分布式表示（Distributed-Representation）"><span class="nav-text">1.2分布式表示（Distributed Representation）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-神经网络语言模型"><span class="nav-text">2.神经网络语言模型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1CBOW模型（Continuous-Bag-of-Words-）"><span class="nav-text">2.1CBOW模型（Continuous Bag-of-Words ）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2Skip-Gram模型"><span class="nav-text">2.2Skip-Gram模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-1-Skip-Gram介绍"><span class="nav-text">2.2.1 Skip-Gram介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-2-隐层细节"><span class="nav-text">2.2.2 隐层细节</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-3模型优化目标"><span class="nav-text">2.2.3模型优化目标</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-参考"><span class="nav-text">3.参考</span></a></div>
             
 
           </div>
@@ -1198,26 +1193,6 @@ h = x^TW=W_{k,.}:=v_{wI}\tag{$1$}</script><p>看不懂的话，看下图，由�
   
 
   
-  
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-          processEscapes: true,
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-        }
-      });
-    </script>
-
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-      });
-    </script>
-    <script type="text/javascript" src="//cdn.staticfile.org/MathJax/MathJax-2.6-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
 
