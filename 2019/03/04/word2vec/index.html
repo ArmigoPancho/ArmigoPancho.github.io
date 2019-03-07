@@ -97,7 +97,7 @@
 <meta property="og:image" content="http://yoursite.com/2019/03/04/word2vec/skip.png">
 <meta property="og:image" content="http://yoursite.com/2019/03/04/word2vec/6.png">
 <meta property="og:image" content="http://yoursite.com/2019/03/04/word2vec/s2.png">
-<meta property="og:updated_time" content="2019-03-07T13:36:12.583Z">
+<meta property="og:updated_time" content="2019-03-07T13:38:31.815Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Word2vec">
 <meta name="twitter:description" content="1.Word2vec向量是什么？1.1独热编码表示（One Hot Representation）Word2vec，由 Google 于 2013 年发表，是一种神经网络实现，可以学习单词的分布式表示。在此之前已经提出了用于学习单词表示的其他深度或循环神经网络架构，但是这些的主要问题是训练模型所需时长间。 Word2vec 相对于其他模型学习得快。Word2Vec 不需要标签来创建有意义的表示。这">
@@ -448,7 +448,7 @@ h = x^TW=W_{k,.}:=v_{wI}\tag{$1$}</script><p>看不懂的话，看下图，由�
 <p>要是得周围词是最佳的词，就是所有预测出来单词的概率是最大，P(Wc-m,…,Wc+m | Wc)是概率在0-1之间，所以底数&gt;1的情况下，log(P(Wc-m,…,Wc+m | Wc))&lt;0，加上负号表示概率越小，损失越大，周围词就越不好。相反概率越大越好。由于所有输出单词都是假设独立的，所以每个单词概率简单的相乘就是总体的概率。第四个等号后面是用<strong><a href="https://blog.csdn.net/red_stone1/article/details/80687921" target="_blank" rel="noopener">softmax</a>函数</strong>对概率进行处理了。最后一步拆开来即可。在上面的优化目标下，这里采用随机梯度下降（Stochastic Gradient Descent）来计算未知参数的梯度。</p>
 <p><strong>简单的总体讲一下，就是三层网络模型，第一层是输入层，中间一层是隐藏结点，最后一层是输出层。模型需要训练的参数是输入权重和输出权重。</strong>建议看论文原文，skip-gram写的不好，没理解透。其实还有针对模型提出的3个训练方法，有兴趣的可以在<a href="http://www.cnblogs.com/pinard/p/7243513.html" target="_blank" rel="noopener">刘建平的这3篇博客</a>了解。</p>
 <h1 id="3-参考"><a href="#3-参考" class="headerlink" title="3.参考"></a>3.参考</h1><p>1.CBOW：<a href="https://www.zhihu.com/question/44832436/answer/266068967" target="_blank" rel="noopener">https://www.zhihu.com/question/44832436/answer/266068967</a></p>
-<p>2.CS 224D: Deep Learning for NLP1笔记： 百度网盘链接：<a href="https://pan.baidu.com/s/1UZygZEVFbPO5fcdncJDvow" target="_blank" rel="noopener">https://pan.baidu.com/s/1UZygZEVFbPO5fcdncJDvow</a><br>提取码：kxu1 </p>
+<p>2.CS224D笔记，百度网盘链接：<a href="https://pan.baidu.com/s/1UZygZEVFbPO5fcdncJDvow" target="_blank" rel="noopener">https://pan.baidu.com/s/1UZygZEVFbPO5fcdncJDvow</a><br>提取码：kxu1 </p>
 <p>3.刘建平的CBOW与Skip-Gram模型基础：<a href="https://www.cnblogs.com/pinard/p/7160330.html" target="_blank" rel="noopener">https://www.cnblogs.com/pinard/p/7160330.html</a>)</p>
 <p>4.skip介绍： <a href="http://mccormickml.com/2016/04/19/word2vec-tutorial-the-skip-gram-model/" target="_blank" rel="noopener">http://mccormickml.com/2016/04/19/word2vec-tutorial-the-skip-gram-model/</a> </p>
 <p>5.skip-gram视频，需要翻墙： <a href="https://www.youtube.com/watch?v=EHqXB6P1PzA" target="_blank" rel="noopener">https://www.youtube.com/watch?v=EHqXB6P1PzA</a></p>
