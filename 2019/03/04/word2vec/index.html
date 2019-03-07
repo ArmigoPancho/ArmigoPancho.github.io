@@ -97,7 +97,7 @@
 <meta property="og:image" content="http://yoursite.com/2019/03/04/word2vec/skip.png">
 <meta property="og:image" content="http://yoursite.com/2019/03/04/word2vec/6.png">
 <meta property="og:image" content="http://yoursite.com/2019/03/04/word2vec/s2.png">
-<meta property="og:updated_time" content="2019-03-07T13:32:12.015Z">
+<meta property="og:updated_time" content="2019-03-07T13:36:12.583Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Word2vec">
 <meta name="twitter:description" content="1.Word2vec向量是什么？1.1独热编码表示（One Hot Representation）Word2vec，由 Google 于 2013 年发表，是一种神经网络实现，可以学习单词的分布式表示。在此之前已经提出了用于学习单词表示的其他深度或循环神经网络架构，但是这些的主要问题是训练模型所需时长间。 Word2vec 相对于其他模型学习得快。Word2Vec 不需要标签来创建有意义的表示。这">
@@ -426,7 +426,7 @@
 <p><img src="/2019/03/04/word2vec/3.jpg" alt="3"></p>
 <p>（3）然后把所有每个分量Vi<strong>相加求平均值得到一个隐层向量V</strong>，维度是Nx1，行维度与W的行维度一致。</p>
 <p><img src="/2019/03/04/word2vec/4.jpg" alt="4"></p>
-<p>（4）初始化<strong>输出权重</strong>W’ （维度N x V），由W’ x V = U可得到我们的<strong>中间矩阵U</strong>，为后面的输出矩阵做准备。</p>
+<p>（4）初始化<strong>输出权重</strong>W’ （维度N x V），由W’ x V = U可得到我们的中间矩阵U，为后面的输出矩阵做准备。</p>
 <p><img src="/2019/03/04/word2vec/5.jpg" alt="5"></p>
 <p>（5）最后一步就是中间矩阵U输入到softmax分类函数里面去得到最后的输出向量y。其中的每一维斗代表着一个单词，概率最大的index所指示的单词为预测出的中间词（target word）。</p>
 <p>（6）预测出的中间词与true label的onehot做比较，误差越小越好。</p>
