@@ -1,0 +1,1209 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="word2vec," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="1.Word2vec向量是什么？1.1独热编码表示（One Hot Representation）Word2vec，由 Google 于 2013 年发表，是一种神经网络实现，可以学习单词的分布式表示。在此之前已经提出了用于学习单词表示的其他深度或循环神经网络架构，但是这些的主要问题是训练模型所需时长间。 Word2vec 相对于其他模型学习得快。Word2Vec 不需要标签来创建有意义的表示。这">
+<meta name="keywords" content="word2vec">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Word2vec">
+<meta property="og:url" content="http://yoursite.com/2019/03/04/word2vec/index.html">
+<meta property="og:site_name" content="Hello,Armigo!">
+<meta property="og:description" content="1.Word2vec向量是什么？1.1独热编码表示（One Hot Representation）Word2vec，由 Google 于 2013 年发表，是一种神经网络实现，可以学习单词的分布式表示。在此之前已经提出了用于学习单词表示的其他深度或循环神经网络架构，但是这些的主要问题是训练模型所需时长间。 Word2vec 相对于其他模型学习得快。Word2Vec 不需要标签来创建有意义的表示。这">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/2019/03/04/word2vec/one-hot.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/04/word2vec/distributed.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/04/word2vec/1.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/03/04/word2vec/2.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/03/04/word2vec/3.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/03/04/word2vec/4.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/03/04/word2vec/5.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/03/04/word2vec/skip.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/04/word2vec/6.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/04/word2vec/s2.png">
+<meta property="og:updated_time" content="2019-03-07T12:39:48.779Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Word2vec">
+<meta name="twitter:description" content="1.Word2vec向量是什么？1.1独热编码表示（One Hot Representation）Word2vec，由 Google 于 2013 年发表，是一种神经网络实现，可以学习单词的分布式表示。在此之前已经提出了用于学习单词表示的其他深度或循环神经网络架构，但是这些的主要问题是训练模型所需时长间。 Word2vec 相对于其他模型学习得快。Word2Vec 不需要标签来创建有意义的表示。这">
+<meta name="twitter:image" content="http://yoursite.com/2019/03/04/word2vec/one-hot.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/03/04/word2vec/"/>
+
+
+
+
+
+  <title>Word2vec | Hello,Armigo!</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hello,Armigo!</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/04/word2vec/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Armigo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/0.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hello,Armigo!">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Word2vec</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-04T21:48:44+08:00">
+                2019-03-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/03/04/word2vec/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/03/04/word2vec/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次阅读
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="1-Word2vec向量是什么？"><a href="#1-Word2vec向量是什么？" class="headerlink" title="1.Word2vec向量是什么？"></a>1.Word2vec向量是什么？</h1><h2 id="1-1独热编码表示（One-Hot-Representation）"><a href="#1-1独热编码表示（One-Hot-Representation）" class="headerlink" title="1.1独热编码表示（One Hot Representation）"></a>1.1独热编码表示（One Hot Representation）</h2><p>Word2vec，由 Google 于 2013 年发表，是一种神经网络实现，可以学习单词的分布式表示。在此之前已经提出了用于学习单词表示的其他深度或循环神经网络架构，但是这些的主要问题是训练模型所需时长间。 Word2vec 相对于其他模型学习得快。Word2Vec 不需要标签来创建有意义的表示。这很有用，因为现实世界中的大多数数据都是未标记的。如果给网络足够的训练数据（数百亿个单词），它会产生特征极好的单词向量。具有相似含义的词出现在簇中，并且簇具有间隔，使得可以使用向量数学来再现诸如类比的一些词关系。着名的例子是，通过训练好的单词向量，“国王 - 男人 + 女人 = 女王”。上面kaggle对word2vec的介绍，看完还是不了解具体它做了什么。<br>理解Wordvec之前先了解One hot representation模式：向量中每一个元素都关联着词库中的一个单词，指定词的向量表示为：其在向量中对应的元素设置为1，其他的元素设置为0。比如下面图所示：只有1处表示当前单词queen，其他单词的位置都是0，one-hot就是这样子表示每一个单词。所以每个单词相互正交，所以也不会有单词之间的联系了。</p>
+<p><img src="/2019/03/04/word2vec/one-hot.png" alt=""></p>
+<p>再如考虑下面的三个特征：</p>
+<p>[“male”, “female”]</p>
+<p>[“from Europe”, “from US”, “from Asia”]</p>
+<p>[“uses Firefox”, “uses Chrome”, “uses Safari”, “uses Internet Explorer”]</p>
+<p>将它换成独热编码后，应该是：<br> feature1=[01,10]<br> feature2=[001,010,100]<br> feature3=[0001,0010,0100,1000]</p>
+<p><strong>优点</strong>：一是解决了分类器不好处理离散数据的问题，二是在一定程度上也起到了扩充特征的作用。</p>
+<p><strong>缺点</strong>：在文本特征表示上有些缺点就非常突出了。首先，它是一个词袋模型，不考虑词与词之间的顺序（文本中词的顺序信息也是很重要的）；其次，它假设词与词相互独立（在大多数情况下，词与词是相互影响的）；最后，它得到的特征是离散稀疏的。</p>
+<h2 id="1-2分布式表示（Distributed-Representation）"><a href="#1-2分布式表示（Distributed-Representation）" class="headerlink" title="1.2分布式表示（Distributed Representation）"></a>1.2分布式表示（Distributed Representation）</h2><p>Distributed representation可以解决One hot representation的维度灾难和稀疏问题，它的思路是通过训练，将每个词都映射到一个较短的词向量上来。比如下图我们将词汇表里的词用”Royalty”,”Masculinity”, “Femininity”和”Age”4个维度来表示，King这个词对应的词向量可能是(0.99,0.99,0.05,0.7)(0.99,0.99,0.05,0.7)。当然在实际情况中，我们并不能对词向量的每个维度做一个很好的解释。</p>
+<p><img src="/2019/03/04/word2vec/distributed.png" alt="Distributed representation"></p>
+<p>有了上面的表示方式，我们就可以用向量来分析词语词之间的关系。比如下面一个有趣的公式：</p>
+<script type="math/tex; mode=display">
+\vec {King} - \vec {Man} + \vec {Woman} = \vec {Queen}</script><p>怎么训练得到合适的词向量呢？一个很常见的方法是使用神经网络语言模型。</p>
+<h1 id="2-神经网络语言模型"><a href="#2-神经网络语言模型" class="headerlink" title="2.神经网络语言模型"></a>2.神经网络语言模型</h1><p>神经网络语言模型采用的方法一般是一个三层的神经网络结构（当然也可以多层），分为输入层，隐藏层和输出层(<a href="https://blog.csdn.net/red_stone1/article/details/80687921" target="_blank" rel="noopener">softmax</a>层)。这个模型是如何定义数据的输入和输出呢？<strong>Word2vec模式中一般分为CBOW(Continuous Bag-of-Words 与Skip-Gram两种模型。</strong>CBOW模型根据<strong>中心词W(t)的周围词</strong>来预测中心词，Skip-gram模型则根据<strong>中心词W(t)</strong>来预测周围词。两者类似相反的过程。</p>
+<h2 id="2-1CBOW模型（Continuous-Bag-of-Words-）"><a href="#2-1CBOW模型（Continuous-Bag-of-Words-）" class="headerlink" title="2.1CBOW模型（Continuous Bag-of-Words ）"></a>2.1CBOW模型（Continuous Bag-of-Words ）</h2><p>先看一个网上的例子：</p>
+<p>假设我们现在的Corpus是这一个简单的只有四个单词的document：<br>{I drink coffee everyday}<br>我们选coffee作为中心词，window size设为2<br>也就是说，我们要根据”I”,”drink”和”everyday”三个周围词来预测一个中心单词，并且我们希望这个单词是coffee。</p>
+<p><img src="/2019/03/04/word2vec/1.jpg" alt="1"></p>
+<p>（1）首先，<strong>初始化周围词的独热码</strong>。”I”,”drink”和”everyday”三个周围词的独热码是作为输入层的3个向量（单词向量空间dim为1 x V），目标是预测”coffee”的独热码。上图中的window size：表示当前词与预测词在一个句子中的最大距离是多少，其他参数请参考：<a href="https://blog.csdn.net/szlcw1/article/details/52751314" target="_blank" rel="noopener">https://blog.csdn.net/szlcw1/article/details/52751314</a></p>
+<p><img src="/2019/03/04/word2vec/2.jpg" alt="2"></p>
+<p>（2）初始化<strong>输入权重</strong>矩阵W（单词向量空间dim为1 x V，W的维度是V x N，N为自己设定的数），再把所有one hot分别乘以共享的输入权重矩阵W<strong>得到向量Vi</strong>，图中的hi就是这里的Vi。</p>
+<p><img src="/2019/03/04/word2vec/3.jpg" alt="3"></p>
+<p>（3）然后把所有每个分量Vi<strong>相加求平均值得到一个隐层向量V</strong>，维度是Nx1，行维度与W的行维度一致。</p>
+<p><img src="/2019/03/04/word2vec/4.jpg" alt="4"></p>
+<p>（4）初始化<strong>输出权重</strong>W’ （维度N<em>V），由W’ x V = U可得到我们的<em>*中间矩阵U</em></em>，为后面的输出矩阵做准备。</p>
+<p><img src="/2019/03/04/word2vec/5.jpg" alt="5"></p>
+<p>（5）最后一步就是中间矩阵U输入到softmax分类函数里面去得到最后的输出向量y。其中的每一维斗代表着一个单词，概率最大的index所指示的单词为预测出的中间词（target word）。</p>
+<p>（6）预测出的中间词与true label的onehot做比较，误差越小越好。</p>
+<h2 id="2-2Skip-Gram模型"><a href="#2-2Skip-Gram模型" class="headerlink" title="2.2Skip-Gram模型"></a>2.2Skip-Gram模型</h2><h3 id="2-2-1-Skip-Gram介绍"><a href="#2-2-1-Skip-Gram介绍" class="headerlink" title="2.2.1 Skip-Gram介绍"></a>2.2.1 Skip-Gram介绍</h3><p>以下翻译自CS 224D: Deep Learning for NLP。Skip-Gram Model就是与CBOW相反的情况，根据某个中心词来预测周围c/2个词，就是向左c/2个词，向右c/2个词。总的框架如下图所示：</p>
+<p><img src="/2019/03/04/word2vec/skip.png" alt="skip-gram"></p>
+<p><strong>符号标记：</strong>一个中心词$x$；输出向量是$y^j$；V是输入单词矩阵（维度n x V）；$v_i$是$V$的第$i$列，表示单词$w_i$的输入向量；$U$代表输出矩阵（维度n x V）；$u_i$表示$U$的第$i$行，表示单词$w_i$的输出向量。</p>
+<p><strong>步骤1：</strong>生成输入向量的独热码x</p>
+<p><strong>步骤2：</strong>我们由上下文$v_c = V*x$得到嵌入词单向量</p>
+<p><strong>步骤3：</strong>由于没有平均值，只需设置$\hat{v}= v*c$</p>
+<p><strong>步骤4：</strong>用$ u = U<em>v_c=$来计算$u_{c-m}, . . . , u_{c-1}, u_{c+1}, . . . , u_{c+m}$，以此生成2</em>m个分数向量</p>
+<p><strong>步骤5：</strong>用公式$y = softmax(u)$把每一个分数转为概率</p>
+<p><strong>步骤6：</strong>用我们预测的概率向量$y^{(c-m)}, . . . , y^{(c-1)}, y^{(c+1)}, . . . , y^{(c+m)}$来和真实的独热码进行比较，越接近越好</p>
+<h3 id="2-2-2-隐层细节"><a href="#2-2-2-隐层细节" class="headerlink" title="2.2.2 隐层细节"></a>2.2.2 隐层细节</h3><p>训练模型的真正目的是获得模型基于训练数据<strong>学得的隐层权重</strong>。为了得到这些权重，我们首先要构建一个完整的神经网络作为我们的“Fake Task”。模型的输入如果为一个10000维的向量，那么输出也是一个10000维度（词汇表的大小）的向量，它包含了10000个概率，每一个概率代表着当前词是输入样本中output word的概率大小。由于<strong>输入向量$x$是one-hot编码</strong>，那么只有输入权重向量W中的非零元素才能对隐藏层产生输入。比如下面公式：</p>
+<script type="math/tex; mode=display">
+h = x^TW=W_{k,.}:=v_{wI}\tag{$1$}</script><p>看不懂的话，看下图，由于左边的独热码矩阵在维度很高时候做相乘的操作时，非常消耗资源，我们这里只要根据独热码不为0的列号取输入矩阵W所对应的行，所以模型中的隐层权重矩阵便成了一个”查找表“（lookup table）。</p>
+<p><img src="/2019/03/04/word2vec/6.png" alt=""></p>
+<h3 id="2-2-3模型优化目标"><a href="#2-2-3模型优化目标" class="headerlink" title="2.2.3模型优化目标"></a>2.2.3模型优化目标</h3><p>在CBOW中，我们需要设定一个目标函数来估计我们的模型。但是这里不同的是，因为这里假设是用朴素贝叶斯来断开概率之间的联系，就是说，这里假设中心词一旦给定，那所有输出的单词都是相互独立的。故有如下优化目标函数J：</p>
+<p><img src="/2019/03/04/word2vec/s2.png" alt=""></p>
+<p>要是得周围词是最佳的词，就是所有预测出来单词的概率是最大，P(Wc-m,…,Wc+m | Wc)是概率在0-1之间，所以底数&gt;1的情况下，log(P(Wc-m,…,Wc+m | Wc))&lt;0，加上负号表示概率越小，损失越大，周围词就越不好。相反概率越大越好。由于所有输出单词都是假设独立的，所以每个单词概率简单的相乘就是总体的概率。第四个等号后面是用<strong><a href="https://blog.csdn.net/red_stone1/article/details/80687921" target="_blank" rel="noopener">softmax</a>函数</strong>对概率进行处理了。最后一步拆开来即可。在上面的优化目标下，这里采用随机梯度下降（Stochastic Gradient Descent）来计算未知参数的梯度。</p>
+<p><strong>简单的总体讲一下，就是三层网络模型，第一层是输入层，中间一层是隐藏结点，最后一层是输出层。模型需要训练的参数是输入权重和输出权重。</strong>建议看论文原文，skip-gram写的不好，没理解透。其实还有针对模型提出的3个训练方法，有兴趣的可以在<a href="http://www.cnblogs.com/pinard/p/7243513.html" target="_blank" rel="noopener">刘建平的这3篇博客</a>了解。</p>
+<h1 id="3-参考"><a href="#3-参考" class="headerlink" title="3.参考"></a>3.参考</h1><ol>
+<li>CBOW：<a href="https://www.zhihu.com/question/44832436/answer/266068967" target="_blank" rel="noopener">https://www.zhihu.com/question/44832436/answer/266068967</a></li>
+<li>CS 224D: Deep Learning for NLP1笔记： 百度网盘链接：<a href="https://pan.baidu.com/s/1UZygZEVFbPO5fcdncJDvow" target="_blank" rel="noopener">https://pan.baidu.com/s/1UZygZEVFbPO5fcdncJDvow</a><br>提取码：kxu1 </li>
+<li>刘建平的CBOW与Skip-Gram模型基础：<a href="https://www.cnblogs.com/pinard/p/7160330.html" target="_blank" rel="noopener">https://www.cnblogs.com/pinard/p/7160330.html</a>)</li>
+<li>skip介绍： <a href="http://mccormickml.com/2016/04/19/word2vec-tutorial-the-skip-gram-model/" target="_blank" rel="noopener">http://mccormickml.com/2016/04/19/word2vec-tutorial-the-skip-gram-model/</a> </li>
+<li>skip-gram视频，需要翻墙： <a href="https://www.youtube.com/watch?v=EHqXB6P1PzA" target="_blank" rel="noopener">https://www.youtube.com/watch?v=EHqXB6P1PzA</a></li>
+</ol>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/word2vec/" rel="tag"># word2vec</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/02/27/Sentiment Analysis/" rel="next" title="情感分析案例">
+                <i class="fa fa-chevron-left"></i> 情感分析案例
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/0.png"
+                alt="Armigo" />
+            
+              <p class="site-author-name" itemprop="name">Armigo</p>
+              <p class="site-description motion-element" itemprop="description">Pour un poisson salé, le plus important est heureux!</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.zhihu.com/people/mou-mou-mou-49-9/activities" target="_blank" title="ZhiHu">
+                      
+                        <i class="fa fa-fw fa-globe"></i>ZhiHu</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-Word2vec向量是什么？"><span class="nav-text">1.Word2vec向量是什么？</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1独热编码表示（One-Hot-Representation）"><span class="nav-text">1.1独热编码表示（One Hot Representation）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2分布式表示（Distributed-Representation）"><span class="nav-text">1.2分布式表示（Distributed Representation）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-神经网络语言模型"><span class="nav-text">2.神经网络语言模型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1CBOW模型（Continuous-Bag-of-Words-）"><span class="nav-text">2.1CBOW模型（Continuous Bag-of-Words ）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2Skip-Gram模型"><span class="nav-text">2.2Skip-Gram模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-1-Skip-Gram介绍"><span class="nav-text">2.2.1 Skip-Gram介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-2-隐层细节"><span class="nav-text">2.2.2 隐层细节</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-3模型优化目标"><span class="nav-text">2.2.3模型优化目标</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-参考"><span class="nav-text">3.参考</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Armigo</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      访问人次
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three-waves.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'uLg1tJlQxJ5XwsDvzjI3tdRl-gzGzoHsz',
+        appKey: 'IttKXBNG1WAsU13RknBgeRrP',
+        placeholder: '来呀，快活呀≧∀≦',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+
+  
+
+</body>
+</html>
