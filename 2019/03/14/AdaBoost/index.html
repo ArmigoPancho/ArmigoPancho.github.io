@@ -90,12 +90,12 @@
 <meta property="og:image" content="http://yoursite.com/2019/03/14/AdaBoost/1.png">
 <meta property="og:image" content="http://yoursite.com/2019/03/14/AdaBoost/2.png">
 <meta property="og:image" content="http://yoursite.com/2019/03/14/AdaBoost/3.jpg">
-<meta property="og:image" content="http://yoursite.com/2019/03/14/AdaBoost/adaboost/3.png">
-<meta property="og:image" content="http://yoursite.com/2019/03/14/AdaBoost/adaboost/4.jpg">
-<meta property="og:image" content="http://yoursite.com/2019/03/14/AdaBoost/adaboost/5.jpg">
-<meta property="og:image" content="http://yoursite.com/2019/03/14/AdaBoost/adaboost/6.jpg">
-<meta property="og:image" content="http://yoursite.com/2019/03/14/AdaBoost/adaboost/算法.jpeg">
-<meta property="og:updated_time" content="2019-03-15T13:09:33.938Z">
+<meta property="og:image" content="http://yoursite.com/2019/03/14/AdaBoost/3.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/14/AdaBoost/4.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/03/14/AdaBoost/5.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/03/14/AdaBoost/6.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/03/14/AdaBoost/算法.JPEG">
+<meta property="og:updated_time" content="2019-03-15T13:15:57.724Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="AdaBoost简介">
 <meta name="twitter:description" content="1.基本概念 我们可以对集成学习的思想做一个概括。对于训练集数据，我们通过训练若干个个体学习器，通过一定的结合策略，就可以最终形成一个强学习器。  个体学习器 由一些异质集成的个体学习器由不同算法构成，通常叫做“组件学习器”，有时候直接叫做个体学习器。  基学习器 就是同质的（同一个算法或者相似算法）学习算法集成在一起个体学习器叫做“基学习器”。 比如下图三个基学习器通过一定的结合策略，组合成一个">
@@ -425,16 +425,16 @@
 <p>Boosting是一族可以将弱学习器提升为强学习器的算法。这族算法的工作机制类似：先从初始训练集训练出一个基学习器，使得先前的基学习器做错的训练样本在后面受到更加多的关注，然后基于调整过后的样本分布来训练下一个基学习器；如此往复进行，直到基学习器数目达到事先预定的数量T值，最终我们将这些T个基学习器进行加权结合。</p>
 <p><strong>注意2点：AdaBoost有两种权值的调整，一种是针对分类错误的样本，会把分错的样本在下一个基分类器训练前提高权重；另一个是针对基分类ht，对分类错误率较高的基分类器也会降低权重。</strong>参考下图：显然这是个串行的方式，每一次对样本有一个权重调整后再放入下一个弱学习器训练，权重是根据分类的误差率来调整的；最后把所有带权重的弱分类器线性总和即为我们集成的强分类器。有点三个臭裨将顶个诸葛亮的意思。</p>
 <p><img src="/2019/03/14/AdaBoost/3.jpg" alt=""></p>
-<h2 id="2-2-算法框架"><a href="#2-2-算法框架" class="headerlink" title="2.2  算法框架"></a>2.2  算法框架</h2><p><img src="/2019/03/14/AdaBoost/adaboost/3.png" alt=""></p>
+<h2 id="2-2-算法框架"><a href="#2-2-算法框架" class="headerlink" title="2.2  算法框架"></a>2.2  算法框架</h2><p><img src="/2019/03/14/AdaBoost/3.png" alt=""></p>
 <p>上面是周志华《机器学习》P174页的算法框架，大致和前面说的差不多但是会有疑惑的点是错误率如何来的？还有最后的αt和数据集Dt分布如何更新？针对这3个问题，有了第三小节。</p>
 <h2 id="2-3-公式推导"><a href="#2-3-公式推导" class="headerlink" title="2.3 公式推导"></a>2.3 公式推导</h2><p>参考自机器学习P175页，错误率就是每次样本分错权重的归一化值。对于第6行怎么来的，参考下图：由于是二分类问题，yi的预测值不是1就是-1，所以只分为2种情况，即预测准确的期望值和预测错误的期望值。</p>
-<p><img src="/2019/03/14/AdaBoost/adaboost/4.jpg" alt=""></p>
+<p><img src="/2019/03/14/AdaBoost/4.jpg" alt=""></p>
 <p>对于第7行怎么来的，看下图：这里参考了索引1，<a href="https://www.cnblogs.com/ScorpioLu/p/8295990.html" target="_blank" rel="noopener">点击这里访问</a>。但是他里面有2个错误，一个是红色虚线部分，一个最后求L的最后第2步，杠掉Wm,i部分。图中已更正!字丑，désolé。</p>
-<p><img src="/2019/03/14/AdaBoost/adaboost/5.jpg" alt=""></p>
-<p><img src="/2019/03/14/AdaBoost/adaboost/6.jpg" alt=""></p>
+<p><img src="/2019/03/14/AdaBoost/5.jpg" alt=""></p>
+<p><img src="/2019/03/14/AdaBoost/6.jpg" alt=""></p>
 <p>上图是对基分类器用另一种方式的写法。</p>
-<p>one more thing：很厉害的样子。</p>
-<p><img src="/2019/03/14/AdaBoost/adaboost/算法.jpeg" alt=""></p>
+<p>one more thing：热爱生活，并为之砥砺前行。</p>
+<p><img src="/2019/03/14/AdaBoost/算法.JPEG" alt=""></p>
 <h1 id="3-参考资料"><a href="#3-参考资料" class="headerlink" title="3.参考资料"></a>3.参考资料</h1><p>   1.AdaBoost原理详：<a href="https://www.cnblogs.com/ScorpioLu/p/8295990.html" target="_blank" rel="noopener">https://www.cnblogs.com/ScorpioLu/p/8295990.html</a></p>
 <ol>
 <li>老刘的博客：<a href="https://www.cnblogs.com/pinard/p/6133937.html?utm_source=tuicool&amp;utm_medium=referral" target="_blank" rel="noopener">https://www.cnblogs.com/pinard/p/6133937.html?utm_source=tuicool&amp;utm_medium=referral</a></li>
