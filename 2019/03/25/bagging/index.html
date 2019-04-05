@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Hello,Armigo!">
 <meta property="og:description" content="1.Bagging算法介绍1.1 思想介绍介绍完AdaBoost，来学习下Bagging算法，这是集成算法里面另一个集大成者，代表有随机森林等算法。先看看Bagging是什么。它是并行式集成学习最著名的代表作，基于自主采样法（bootstrap sampling）。给定m个样本的数据集，随机抽取一个样本放入采样集，再把样本放回初始数据集，使得下次再有可能抽到此样本。这样经过m次抽样得到含m个样本的">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-25T13:26:40.473Z">
+<meta property="og:updated_time" content="2019-04-05T11:44:31.356Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Bagging简介">
 <meta name="twitter:description" content="1.Bagging算法介绍1.1 思想介绍介绍完AdaBoost，来学习下Bagging算法，这是集成算法里面另一个集大成者，代表有随机森林等算法。先看看Bagging是什么。它是并行式集成学习最著名的代表作，基于自主采样法（bootstrap sampling）。给定m个样本的数据集，随机抽取一个样本放入采样集，再把样本放回初始数据集，使得下次再有可能抽到此样本。这样经过m次抽样得到含m个样本的">
@@ -395,12 +395,12 @@
 <h2 id="1-2-Bagging算法流程"><a href="#1-2-Bagging算法流程" class="headerlink" title="1.2 Bagging算法流程"></a>1.2 Bagging算法流程</h2><p>输入为样本集$D={(x_1,y_1),(x_2,y_2),…(x_m,y_m)}$，弱学习器算法, 弱分类器迭代次数T。输出为最终的强分类器$f(x)$</p>
 <p>1）对于$t=1,2…,T$：</p>
 <p>　　　　　　a)对训练集进行第$m$次随机采样，共采集$t$轮，得到包含$m$个样本的采样集$D_t$</p>
-<p>　　　　　　b)用采样集$Dt$训练第$t$个弱学习器$G_t(x)$</p>
+<p>　　　　　　b)用采样集$D_t$训练第$t$个弱学习器$G_t(x)$</p>
 <p>2) 如果是分类算法预测，则$T$个弱学习器投出最多票数的类别或者类别之一为最终类别。如果是回归算法，$T$个弱学习器得到的回归结果进行算术平均得到的值为最终的模型输出。</p>
 <h2 id="1-3-自助采样法的采样极限"><a href="#1-3-自助采样法的采样极限" class="headerlink" title="1.3 自助采样法的采样极限"></a>1.3 自助采样法的采样极限</h2><p>因为Bagging的子采样是放回采样，所以有部分是一直采不到的。我们简单计算一下这个”踩不到”的部分有多少。因为是有放回的采样，所以每次从m个样本中采样一个样本的概率是1/m，那踩不到的概率就是1-1/m，有这样m次采样，所以所有踩不到的概率是$(1-\frac{1}{m})^m$，由第二重要极限$\lim\limits_{m \rightarrow \infty} (1+\frac{1}{m})^m=e$ 知：</p>
 <script type="math/tex; mode=display">
 \lim\limits_{m \rightarrow \infty} (1-\frac{1}{m})^m=\lim\limits_{m \rightarrow \infty} [(1+\frac{1}{-m})^{（-m）}]^{-1}=\frac{1}{e}≈0.368</script><p>就是说有36.8%的样本会没有抽到，即没有用于训练。 <strong>顺便一提，假定基学习器的计算复杂度是$O(m)$，则Bagging的复杂度是$T(O(m)+O(s))$，但是参与投票/平均的过程$O(s)$和T都不是很大，所以训练一个Bagging集成和直接使用基学习器算法训练一个学习器的复杂度是同阶的。</strong>故Bagging是一个<strong>高效的集成学习算法</strong>。</p>
-<h1 id="2-随机森林"><a href="#2-随机森林" class="headerlink" title="2.随机森林"></a>2.随机森林</h1><p>随机森林（Random Forest）是是Bagging一个开展体。传统决策树在选择划分属性时是在当前节点的属性集合里面选择最优的一个属性；而在RF中，对基决策树的每个结点，<strong>先从该结点的属性集合中随机选择一个包含k个属性的子集，然后再从这个子集里面选择一个最优的属性用于划分。</strong>这里的k控制了随机性的引入程度。若k=d，则基决策树的构建与传统决策树一致，若令k=1,则随机选择一个属性用于划分；一般地，推荐使用$k=log_2d$。</p>
+<h1 id="2-随机森林"><a href="#2-随机森林" class="headerlink" title="2.随机森林"></a>2.随机森林</h1><p>随机森林（Random Forest）是Bagging一个开展体。传统决策树在选择划分属性时是在当前节点的属性集合里面选择最优的一个属性；而在RF中，对基决策树的每个结点，<strong>先从该结点的属性集合中随机选择一个包含k个属性的子集，然后再从这个子集里面选择一个最优的属性用于划分。</strong>这里的k控制了随机性的引入程度。若k=d，则基决策树的构建与传统决策树一致，若令k=1,则随机选择一个属性用于划分；一般地，推荐使用$k=log_2d$。</p>
 <p>随机森林简单、容易实现、计算开销小、性能也是优的。</p>
 <p>参考：</p>
 <ol>
@@ -409,6 +409,7 @@
 </ol>
 <hr>
 <p>总有一天，这世界会再次焕发光彩，我相信，一定会到来。</p>
+<p>test!</p>
 
       
     </div>
