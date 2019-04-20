@@ -1,0 +1,1182 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="夸夸机器人," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="1.简介​    按照网上的夸夸机器人进行了稍微的修改，按照微信性别来自动夸人。利用的是itchat API来自动回复的，没有技术含量。还看了一个用TF-IDF来匹配最相似的问题或者语料，然后匹配已经爬下来的夸夸回复，返回即可。这里只展示第一种，第二种不知道哪去了ozz 。这里是github地址，请点击这里 。 对了，操作步骤是：  按照文末的参考1安装各种包 修改夸夸群名字 若系统是Mac、Li">
+<meta name="keywords" content="夸夸机器人">
+<meta property="og:type" content="article">
+<meta property="og:title" content="夸夸机器人">
+<meta property="og:url" content="http://yoursite.com/2019/04/20/kuakua-robot/index.html">
+<meta property="og:site_name" content="Hello,Armigo!">
+<meta property="og:description" content="1.简介​    按照网上的夸夸机器人进行了稍微的修改，按照微信性别来自动夸人。利用的是itchat API来自动回复的，没有技术含量。还看了一个用TF-IDF来匹配最相似的问题或者语料，然后匹配已经爬下来的夸夸回复，返回即可。这里只展示第一种，第二种不知道哪去了ozz 。这里是github地址，请点击这里 。 对了，操作步骤是：  按照文末的参考1安装各种包 修改夸夸群名字 若系统是Mac、Li">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-04-20T13:21:19.744Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="夸夸机器人">
+<meta name="twitter:description" content="1.简介​    按照网上的夸夸机器人进行了稍微的修改，按照微信性别来自动夸人。利用的是itchat API来自动回复的，没有技术含量。还看了一个用TF-IDF来匹配最相似的问题或者语料，然后匹配已经爬下来的夸夸回复，返回即可。这里只展示第一种，第二种不知道哪去了ozz 。这里是github地址，请点击这里 。 对了，操作步骤是：  按照文末的参考1安装各种包 修改夸夸群名字 若系统是Mac、Li">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/04/20/kuakua-robot/"/>
+
+
+
+
+
+  <title>夸夸机器人 | Hello,Armigo!</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hello,Armigo!</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/20/kuakua-robot/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Armigo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/0.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hello,Armigo!">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">夸夸机器人</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-20T20:07:33+08:00">
+                2019-04-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/NLP/" itemprop="url" rel="index">
+                    <span itemprop="name">NLP</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/04/20/kuakua-robot/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/04/20/kuakua-robot/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次阅读
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="1-简介"><a href="#1-简介" class="headerlink" title="1.简介"></a>1.简介</h1><p>​    按照网上的夸夸机器人进行了稍微的修改，按照微信性别来自动夸人。利用的是<a href="https://itchat.readthedocs.io/zh/latest/" target="_blank" rel="noopener">itchat</a> API来自动回复的，没有技术含量。还看了一个用TF-IDF来匹配最相似的问题或者语料，然后匹配已经爬下来的夸夸回复，返回即可。这里只展示第一种，第二种不知道哪去了ozz 。这里是github地址，<a href="https://github.com/ArmigoPancho/mechine-learning-codes/blob/master/Kaggle%E5%85%A5%E9%97%A8%E6%AF%94%E8%B5%9B/%E5%A4%B8%E5%A4%B8%E6%9C%BA%E5%99%A8%E4%BA%BA/auto-admire-master/simple_admire.py" target="_blank" rel="noopener">请点击这里</a> 。</p>
+<p>对了，操作步骤是：</p>
+<ol>
+<li>按照文末的参考1安装各种包</li>
+<li>修改夸夸群名字</li>
+<li>若系统是Mac、Linux选择enableCmdQR=2，运行程序</li>
+<li>手机扫描run窗口的二维码，字体太大就调小点嘛，不知道？嘿嘿，不告诉你。</li>
+<li>然后我被自己的智商拉低了100个高度，因为我发现登录账号怎么发咒语”夸我”都不灵，原来是要群成员发”夸我”，然后扫描的账号才从夸夸语料中抽取一条自动回复群成员 == ，刚开始以为是真的有随机账号来回复任意成员，没想到这个不是的。</li>
+<li>然后就没了，尽情享受夸夸的乐趣吧！</li>
+</ol>
+<h1 id="2-代码展示"><a href="#2-代码展示" class="headerlink" title="2.代码展示"></a>2.代码展示</h1><p>插个代码，以防github打不开或者打开太慢（其实是凑个页面==），没错，github打开贼慢。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br><span class="line">298</span><br><span class="line">299</span><br><span class="line">300</span><br><span class="line">301</span><br><span class="line">302</span><br><span class="line">303</span><br><span class="line">304</span><br><span class="line">305</span><br><span class="line">306</span><br><span class="line">307</span><br><span class="line">308</span><br><span class="line">309</span><br><span class="line">310</span><br><span class="line">311</span><br><span class="line">312</span><br><span class="line">313</span><br><span class="line">314</span><br><span class="line">315</span><br><span class="line">316</span><br><span class="line">317</span><br><span class="line">318</span><br><span class="line">319</span><br><span class="line">320</span><br><span class="line">321</span><br><span class="line">322</span><br><span class="line">323</span><br><span class="line">324</span><br><span class="line">325</span><br><span class="line">326</span><br><span class="line">327</span><br><span class="line">328</span><br><span class="line">329</span><br><span class="line">330</span><br><span class="line">331</span><br><span class="line">332</span><br><span class="line">333</span><br><span class="line">334</span><br><span class="line">335</span><br><span class="line">336</span><br><span class="line">337</span><br><span class="line">338</span><br><span class="line">339</span><br><span class="line">340</span><br><span class="line">341</span><br><span class="line">342</span><br><span class="line">343</span><br><span class="line">344</span><br><span class="line">345</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> itchat, re</span><br><span class="line"><span class="keyword">from</span> itchat.content <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">    Constants</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line">REPLY = &#123;<span class="string">'夸我0'</span>: [<span class="string">'你真是太优秀！'</span>,</span><br><span class="line">                    <span class="string">'啥也不说了,夸！'</span>,</span><br><span class="line">                    <span class="string">'每天看到你心情好呢！'</span>,</span><br><span class="line">                    <span class="string">'你真是一位可爱的小天使啊！'</span>,</span><br><span class="line">                    <span class="string">'一看你就是美丽与善良的化身 夸！'</span>,</span><br><span class="line">                    <span class="string">'你上辈子一定拯救了银河系吧，优秀！'</span>,</span><br><span class="line">                    <span class="string">'德才兼备说的就是你这样的社会主义接班人！'</span>,</span><br><span class="line">                    <span class="string">'以后你就是夸夸群里的元老，就是夸夸之父，简称夸父！'</span>,</span><br><span class="line">                    <span class="string">'你这句话完美的表达了你想被夸的坚定信念，你一定是一个执着追求自己理想的人！'</span>,</span><br><span class="line">                    <span class="string">'我不知道该怎样表达你留在我心中最强最深的印象，是你丰满颀长的身材，白皙的皮肤。乌黑幽深的眼睛，小巧红润的嘴唇，但还有一种说不出，捉不到的丰仪在煽动着我的心。'</span>,</span><br><span class="line">                    <span class="string">'遇见你之后，再看别的女人，就好象在侮辱自己的眼睛!'</span>,</span><br><span class="line">                    <span class="string">'你笑起来的样子最为动人，两片薄薄的嘴唇在笑，长长的眼睛在笑，腮上两个陷得很举动的酒窝也在笑。'</span>,</span><br><span class="line">                    <span class="string">'你从小就流露出才华横溢的天资来。'</span>,</span><br><span class="line">                    <span class="string">'仲老，真佩服，满腹经纶!这果然是奥妙!'</span>,</span><br><span class="line">                    <span class="string">'这番讲话，既有好教训又说得妙趣横生，给我们官兵以极深刻的印象。'</span>,</span><br><span class="line">                    <span class="string">'大贤世居大邦，见多识广，而且荣列胶庠，自然才贯二酉，学富五车了。'</span>,</span><br><span class="line">                    <span class="string">'庾信，字子山，南阳新野人也。……幼而俊迈，聪敏绝伦，博览群书，尤善《春秋左氏传》。'</span>,</span><br><span class="line">                    <span class="string">'人皆言子建出口成章，臣未深信。主上可召入，以才试之。'</span>,</span><br><span class="line">                    <span class="string">'俱怀逸兴壮思飞，欲上青天揽明月。'</span>,</span><br><span class="line">                    <span class="string">'这学生天资聪颖，文思敏捷，下笔成章，将来未可限量。'</span>,</span><br><span class="line">                    <span class="string">'远近书疏，莫不手答，笔翰如流未尝壅滞。'</span>,</span><br><span class="line">                    <span class="string">'你像一片轻柔的云在我眼前飘来飘去，你清丽秀雅的脸上荡漾着春天般美丽的笑容。'</span>,</span><br><span class="line">                    <span class="string">'你是那样地美，美得象一首抒情诗。'</span>,</span><br><span class="line">                    <span class="string">'你那瓜子形的形，那么白净，弯弯的一双眉毛，那么修长;水汪汪的一对眼睛，那么明亮!'</span>,</span><br><span class="line">                    <span class="string">'你总是说话得体，举止大方。不要吝啬赞美!因为你的赞美，对他人是一种鼓励，一种信任。'</span>,</span><br><span class="line">                    <span class="string">'因为你的赞美，对朋友可以传递友谊，因为你的赞美，对爱人可以体会到温情。不要吝啬赞美!因为你的赞美，对他人是一种鼓励，一种信任。因为你的赞美，对朋友可以传递友谊，因为你的赞美，对爱人可以体会到温情。'</span>,</span><br><span class="line">                    <span class="string">'你表现的很勇敢，是一个真正的男子汉!'</span>,</span><br><span class="line">                    <span class="string">'你表现这么优秀，和你在一起的时候压力好大啊!'</span>,</span><br><span class="line">                    <span class="string">'你的形体真健美!'</span>,</span><br><span class="line">                    <span class="string">'你的眼睛真有神!'</span>,</span><br><span class="line">                    <span class="string">'你工作的样子很迷人!'</span>,</span><br><span class="line">                    <span class="string">'我对你的表现非常满意。'</span>,</span><br><span class="line">                    <span class="string">'你就好像是上品的西湖龙井，那种淡淡的苦涩是你的成熟，越品你越有味道。'</span>,</span><br><span class="line">                    <span class="string">'尽管你身材纤弱娇小，说话柔声细气，然而却很有力量，这是一种真正的精神美!'</span>,</span><br><span class="line">                    <span class="string">'你娉婷婉约的风姿，娇艳俏丽的容貌，妩媚得体的举止，优雅大方的谈吐，一开始就令我刮目相看。'</span>,</span><br><span class="line">                    <span class="string">'你全身充溢着少女的纯情和青春的风采。留给我印象最深的是你那双湖水般清澈的眸子，以及长长的、一闪一闪的睫毛。像是探询，像是关切，像是问候。'</span>,</span><br><span class="line">                    <span class="string">'你是花丛中的蝴蝶，是百合花中的蓓蕾。无论什么衣服穿到你的身上，总是那么端庄、好看。'</span>,</span><br><span class="line">                    <span class="string">'你也许没有一簇樱唇两排贝齿，但你的谈吐也应该高雅脱俗，机智过人。'</span>,</span><br><span class="line">                    <span class="string">'你有点像天上的月亮，也像那闪烁的星星，可惜我不是诗人，否则，当写一万首诗来形容你的美丽。'</span>,</span><br><span class="line">                    <span class="string">'你看上去真精神。'</span>,</span><br><span class="line">                    <span class="string">'你是一个成熟的人!'</span>,</span><br><span class="line">                    <span class="string">'你是一个顾家的好男人。'</span>,</span><br><span class="line">                    <span class="string">'你是一个很专情的男人!'</span>,</span><br><span class="line">                    <span class="string">'你是一个有责任、有担当的男人!'</span>,</span><br><span class="line">                    <span class="string">'你是一个有责任心的人!'</span>,</span><br><span class="line">                    <span class="string">'瀑布一般的长发，淡雅的连衣裙，标准的瓜子脸，聪明的杏仁眼，那稳重端庄的气质，再调皮的人见了你都会小心翼翼。'</span>,</span><br><span class="line">                    <span class="string">'其实，我最先认识你是在照片上。照片上的你托腮凝眸，若有所思。那份温柔、那份美感、那份妩媚，使我久久难以忘怀。'</span>,</span><br><span class="line">                    <span class="string">'进步真快!'</span>,</span><br><span class="line">                    <span class="string">'你的观察力很强!'</span>,</span><br><span class="line">                    <span class="string">'你的想法很有创意!'</span>,</span><br><span class="line">                    <span class="string">'你的作品真棒!'</span>,</span><br><span class="line">                    <span class="string">'你很有想法哦!'</span>,</span><br><span class="line">                    <span class="string">'你真大方!'</span>,</span><br><span class="line">                    <span class="string">'你真能干!'</span>,</span><br><span class="line">                    <span class="string">'你真幽默!'</span>,</span><br><span class="line">                    <span class="string">'你真有思想!'</span>,</span><br><span class="line">                    <span class="string">'你很有想象力哦!'</span>,</span><br><span class="line">                    <span class="string">'智慧女人是金子，气质女人是钻石，聪明女人是宝藏，可爱女人是名画，据我考证，你是世界上最大的宝藏，里面装满了金子钻石名画!'</span>,</span><br><span class="line">                    <span class="string">'只有莲花才能比得上你的圣洁，只有月亮才能比得上你的冰清。'</span>,</span><br><span class="line">                    <span class="string">'在人流中，我一眼就发现了你。我不敢说你是她们中最漂亮的一个，可是我敢说，你是她们中最出色的一个。'</span>,</span><br><span class="line">                    <span class="string">'在你那双又大又亮的眼睛里，我总能捕捉到你的宁静，你的热烈，你的聪颖，你的敏感。'</span>,</span><br><span class="line">                    <span class="string">'你也许没有若隐若现的酒窝，但你的微笑一定是月闭花羞，鱼沉雁落。'</span>,</span><br><span class="line">                    <span class="string">'你也许没有水汪汪亮晶晶的眼睛，但你的眼神也应该顾盼多情，勾魂摄魄。'</span>,</span><br><span class="line">                    <span class="string">'你很有责任感哦!'</span>,</span><br><span class="line">                    <span class="string">'你今天的表现令大家都很开心!'</span>,</span><br><span class="line">                    <span class="string">'你今天给了我很多的惊喜!'</span>,</span><br><span class="line">                    <span class="string">'你学的真快!'</span>,</span><br><span class="line">                    <span class="string">'你真棒!'</span>,</span><br><span class="line">                    <span class="string">'你真聪明!'</span>,</span><br><span class="line">                    <span class="string">'你真的很能干哦!'</span>,</span><br><span class="line">                    <span class="string">'你真可爱!'</span>,</span><br><span class="line">                    <span class="string">'你真是个聪明的孩子!'</span>,</span><br><span class="line">                    <span class="string">'你做的非常好!'</span>,</span><br><span class="line">                    <span class="string">'你做对了'</span>,</span><br><span class="line">                    <span class="string">'做得好极了!'</span>,</span><br><span class="line">                    <span class="string">'你最近进步很大，继续保持。'</span>,</span><br><span class="line">                    <span class="string">'你的学习成绩提升的很快，希望你下面能再接再厉，再创辉煌!'</span>,</span><br><span class="line">                    <span class="string">'遇见你之后，再看别的女人，就好象在侮辱自己的眼睛!'</span>,</span><br><span class="line">                    <span class="string">'漂亮女孩，天生就漂亮。白皙的皮肤，大大的眼睛，秀气的鼻子，饱满的小嘴，再加上一头可爱的"自来卷"，构成一幅天然的美丽图画。'</span>,</span><br><span class="line">                    <span class="string">'清澈明亮的瞳孔，弯弯的柳眉，长长的睫毛微微地颤动着，白皙无瑕的皮肤透出淡淡红粉，薄薄的双唇如玫瑰花瓣娇嫩欲滴。'</span>,</span><br><span class="line">                    <span class="string">'若说她年纪轻轻，怎生得如此身段，且有一张勾魂摄魄的俏脸。'</span>,</span><br><span class="line">                    <span class="string">'那眼神优雅、娴静，双眼回盼流波，像是俏丽的江南女子;但又挂着一丝倔犟的波纹，又带着北国女儿的神韵。'</span>,</span><br><span class="line">                    <span class="string">'清水出芙蓉，天然去雕饰。——李白'</span>,</span><br><span class="line">                    <span class="string">'同样是美女，这个女孩给人最深刻的印象是她眉宇之间有种超越了她年龄的惊人的美丽，淡淡的柳眉分明仔细的修饰过，长长的睫毛忽闪忽闪的象两把小刷子，亮得让人觉得刺目的一双漂亮到心悸的大眼睛，异常的灵动有神。'</span>,</span><br><span class="line">                    <span class="string">'细致乌黑的长发，常常披于双肩之上，略显柔美，有时松散的数着长发，显出一种别样的风采，突然由成熟变得可爱，让人新生喜爱怜惜之情，洁白的皮肤犹如刚剥壳的鸡蛋，大大的眼睛一闪一闪仿佛会说话，小小的红唇与皮肤的白色，更显分明，一对小酒窝均匀的分布在脸颊两侧，浅浅一笑，酒窝在脸颊若隐若现，可爱如天仙。'</span>,</span><br><span class="line">                    <span class="string">'皓腕胜雪，乌发如云，她的眼眸水光潋滟、媚眼如丝，一双勾魂的眼，只一眼，就完全沉溺其中不可自拔。高挺鼻子下的那张玫色小嘴微微张着，如同妖艳的玫瑰。她的面容如娇嫩清雅，犹如杯中之莲，绝色之姿灵气逼人。那美，用怎样的辞藻来形容都是苍白而无力，真是只可意会，不可言传。她静若处子，似不食人间烟火，动若脱兔，眉间微存的稚气带着无比的灵动。'</span>,</span><br><span class="line">                    <span class="string">'世上美人众多，肥环燕瘦，无一人有她那样独特的气质。孤傲、无畏、自信、有着一股不羁的野性，她是最璀璨的光华结晶，如同一团烈火，激烈且张狂地燃烧着。她让美丽不再只是容貌上，而是由心真正的散发出来，她紧抓着众人的眼。再加之，一袭冰蚕丝纱裙所衬托出的空灵气质，与在阳光照射下而形成的淡淡光晕，更若天女下凡，绝美无双!'</span>,</span><br><span class="line">                    <span class="string">'一张清爽的鹅蛋脸，一头柔顺的直发。高挺的鼻梁，粉玫色的唇瓣，精致的单眼皮搭配着纤长的眼睫，微敛住深褐色的眼眸，闪烁着快乐的光芒，但光芒的深处，是一股浓到化不开的孤寂。'</span>,</span><br><span class="line">                    <span class="string">'双眉有如柳叶刀裁，盈盈笑意眉上来，一句“云髻峨峨，修眉联娟”得以道出碧瑶云云细眉。'</span>,</span><br><span class="line">                    <span class="string">'双目似有千情万怨，道不尽也诉不完，一句“巧笑倩兮，美目盼兮”可能描述碧瑶盈盈眼波。'</span>,</span><br><span class="line">                    <span class="string">'她那双大大的眼睛，闪烁着聪颖的光辉，像两颗朗朗的星星。'</span>,</span><br><span class="line">                    <span class="string">'她和她的哥哥一样，生就一副绝顶聪明的头脑，心灵得像窗纸，一点就透。'</span>,</span><br><span class="line">                    <span class="string">'聪明的人不是具有广博知识的人，而是掌握了有用知识的人。'</span>,</span><br><span class="line">                    <span class="string">'你那双乌黑晶亮的眼睛，骨碌碌地打转，显得很机灵懂事。'</span>,</span><br><span class="line">                    <span class="string">'别看你人小，心眼可灵啦，10个大人也比不上你，真是秤砣虽小能吊千斤。'</span>,</span><br><span class="line">                    <span class="string">'你是个聪明的孩子，精灵得像个小猴儿。'</span>,</span><br><span class="line">                    <span class="string">'别看阿墩胖得肥肉直打颤颤，动作却机警得像只与猎人周旋的豹子。'</span>,</span><br><span class="line">                    <span class="string">'她那双圆溜溜的大眼睛，镶了一圈乌黑闪亮的长睫毛，眨动之间，透出一股聪明伶俐劲儿。'</span>,</span><br><span class="line">                    <span class="string">'在午后的阳光下，没有丝毫红晕，清秀的脸上只显出了一种病态的苍白，却无时不流露出高贵淡雅的气质，配合你颀长纤细的身材。'</span></span><br><span class="line">                    <span class="string">'一张坏坏的笑脸，连两道浓浓的眉毛也泛起柔柔的涟漪，好像一直都带着笑意，弯弯的，像是夜空里皎洁的上弦月。白皙的皮肤衬托着淡淡桃红色的嘴唇，俊美突出的五官，完美的脸型，特别是左耳闪着炫目光亮的钻石耳钉，给你的阳光帅气中加入了一丝不羁。'</span>,</span><br><span class="line">                    <span class="string">'我和你在一起的时候压力好大啊!谁让你这么优秀啦!'</span>,</span><br><span class="line">                    <span class="string">'你乌灵的眼眸，倏地笼上层嗜血的寒意，仿若魔神降世一般，一双冰眸轻易贯穿人心，刺透心底最柔弱，舞衣的角落。'</span>,</span><br><span class="line">                    <span class="string">'你那红嘟嘟地脸蛋闪着光亮，像九月里熟透地苹果一样。'</span>,</span><br><span class="line">                    <span class="string">'你的耳朵白里透红，耳轮分明，外圈和里圈很匀称，像是一件雕刻出来地艺术品。'</span>,</span><br><span class="line">                    <span class="string">'你的眉毛时而紧紧地皱起，眉宇间形成一个问号;时而愉快地舒展，像个感叹号。'</span>,</span><br><span class="line">                    <span class="string">'浓密的眉毛叛逆地稍稍向上扬起，长而微卷的睫毛下，有着一双像朝露一样清澈的眼睛，英挺的鼻梁，像玫瑰花瓣一样粉嫩的嘴唇，还有白皙的皮肤。'</span>,</span><br><span class="line">                    <span class="string">'你有时候是不是特孤独?世界上这么优秀的人就只有你一个!'</span>,</span><br><span class="line">                    <span class="string">'你就好像是上品的西湖龙井那种淡淡的苦涩是你的成熟越品你越有味道。'</span>,</span><br><span class="line">                    <span class="string">'那个男子立体的五官刀刻般俊美，整个人发出一种威震天下的王者之气，邪恶而俊美的脸上此时噙着一抹放荡不拘的微笑。'</span>],</span><br><span class="line">            <span class="string">'夸我1'</span>: [<span class="string">'你真是太优秀！'</span>,</span><br><span class="line">                    <span class="string">'啥也不说了，夸！'</span>,</span><br><span class="line">                    <span class="string">'每天看到你心情好呢！'</span>,</span><br><span class="line">                    <span class="string">'你真是一位帅气的man！'</span>,</span><br><span class="line">                    <span class="string">'你上辈子一定拯救了银河系吧，优秀！'</span>,</span><br><span class="line">                    <span class="string">'德才兼备说的就是你这样的社会主义接班人！'</span>,</span><br><span class="line">                    <span class="string">'以后你就是夸夸群里的元老，就是夸夸之父，简称夸父！'</span>,</span><br><span class="line">                    <span class="string">'你这句话完美的表达了你想被夸的坚定信念，你一定是一个执着追求自己理想的人！'</span>,</span><br><span class="line">                    <span class="string">'你从小就流露出才华横溢的天资来。'</span>,</span><br><span class="line">                    <span class="string">'仲老，真佩服，满腹经纶!这果然是奥妙!'</span>,</span><br><span class="line">                    <span class="string">'这番讲话，既有好教训又说得妙趣横生，给我们以极深刻的印象。'</span>,</span><br><span class="line">                    <span class="string">'大贤世居大邦，见多识广，而且荣列胶庠，自然才贯二酉，学富五车了。'</span>,</span><br><span class="line">                    <span class="string">'庾信，字子山，南阳新野人也。……幼而俊迈，聪敏绝伦，博览群书，尤善《春秋左氏传》。'</span>,</span><br><span class="line">                    <span class="string">'人皆言子建出口成章，臣未深信。主上可召入，以才试之。'</span>,</span><br><span class="line">                    <span class="string">'俱怀逸兴壮思飞，欲上青天揽明月。'</span>,</span><br><span class="line">                    <span class="string">'这学生天资聪颖，文思敏捷，下笔成章，将来未可限量。'</span>,</span><br><span class="line">                    <span class="string">'远近书疏，莫不手答，笔翰如流未尝壅滞。'</span>,</span><br><span class="line">                    <span class="string">'你像一片轻柔的云在我眼前飘来飘去，你清丽秀雅的脸上荡漾着春天般美丽的笑容。'</span>,</span><br><span class="line">                    <span class="string">'因为你的赞美，对朋友可以传递友谊，因为你的赞美，对爱人可以体会到温情。不要吝啬赞美!因为你的赞美，对他人是一种鼓励，一种信任。因为你的赞美，对朋友可以传递友谊，因为你的赞美，对爱人可以体会到温情。'</span>,</span><br><span class="line">                    <span class="string">'你表现的很勇敢，是一个真正的男子汉!'</span>,</span><br><span class="line">                    <span class="string">'你表现这么优秀，和你在一起的时候压力好大啊!'</span>,</span><br><span class="line">                    <span class="string">'你的形体真健美!'</span>,</span><br><span class="line">                    <span class="string">'你的眼睛真有神!'</span>,</span><br><span class="line">                    <span class="string">'你工作的样子很迷人!'</span>,</span><br><span class="line">                    <span class="string">'我对你的表现非常满意。'</span>,</span><br><span class="line">                    <span class="string">'你就好像是上品的西湖龙井，那种淡淡的苦涩是你的成熟，越品你越有味道。'</span>,</span><br><span class="line">                    <span class="string">'你是一个成熟的人!'</span>,</span><br><span class="line">                    <span class="string">'你是一个顾家的好男人。'</span>,</span><br><span class="line">                    <span class="string">'你是一个很专情的男人!'</span>,</span><br><span class="line">                    <span class="string">'你是一个有责任、有担当的男人!'</span>,</span><br><span class="line">                    <span class="string">'你是一个有责任心的人!'</span>,</span><br><span class="line">                    <span class="string">'你进步真快!'</span>,</span><br><span class="line">                    <span class="string">'你的观察力很强!'</span>,</span><br><span class="line">                    <span class="string">'你的想法很有创意!'</span>,</span><br><span class="line">                    <span class="string">'你的作品真棒!'</span>,</span><br><span class="line">                    <span class="string">'你很有想法哦!'</span>,</span><br><span class="line">                    <span class="string">'你真大方!'</span>,</span><br><span class="line">                    <span class="string">'你真能干!'</span>,</span><br><span class="line">                    <span class="string">'你真幽默!'</span>,</span><br><span class="line">                    <span class="string">'你真有思想!'</span>,</span><br><span class="line">                    <span class="string">'你很有想象力哦!'</span>,</span><br><span class="line">                    <span class="string">'你很有责任感哦!'</span>,</span><br><span class="line">                    <span class="string">'你今天的表现令大家都很开心!'</span>,</span><br><span class="line">                    <span class="string">'你今天给了我很多的惊喜!'</span>,</span><br><span class="line">                    <span class="string">'你学的真快!'</span>,</span><br><span class="line">                    <span class="string">'你真棒!'</span>,</span><br><span class="line">                    <span class="string">'你真聪明!'</span>,</span><br><span class="line">                    <span class="string">'你真的很能干哦!'</span>,</span><br><span class="line">                    <span class="string">'你真可爱!'</span>,</span><br><span class="line">                    <span class="string">'你真是个聪明的孩子!'</span>,</span><br><span class="line">                    <span class="string">'你做的非常好!'</span>,</span><br><span class="line">                    <span class="string">'你做对了'</span>,</span><br><span class="line">                    <span class="string">'做得好极了!'</span>,</span><br><span class="line">                    <span class="string">'你最近进步很大，继续保持。'</span>,</span><br><span class="line">                    <span class="string">'你的学习成绩提升的很快，希望你下面能再接再厉，再创辉煌!'</span>,</span><br><span class="line">                    <span class="string">'你就好像是上品的西湖龙井那种淡淡的苦涩是你的成熟越品你越有味道。'</span>,</span><br><span class="line">                    <span class="string">'那个男子立体的五官刀刻般俊美，整个人发出一种威震天下的王者之气，邪恶而俊美的脸上此时噙着一抹放荡不拘的微笑。'</span>],</span><br><span class="line">            <span class="string">'夸我2'</span>: [<span class="string">'你真是太优秀！'</span>,</span><br><span class="line">                    <span class="string">'啥也不说了，夸！'</span>,</span><br><span class="line">                    <span class="string">'每天看到你心情好呢！'</span>,</span><br><span class="line">                    <span class="string">'你真是一位可爱的小天使啊！'</span>,</span><br><span class="line">                    <span class="string">'一看你就是美丽与善良的化身 夸！'</span>,</span><br><span class="line">                    <span class="string">'你上辈子一定拯救了银河系吧，优秀！'</span>,</span><br><span class="line">                    <span class="string">'德才兼备说的就是你这样的社会主义接班人！'</span>,</span><br><span class="line">                    <span class="string">'以后你就是夸夸群里的元老，就是夸夸之父，简称夸父！'</span>,</span><br><span class="line">                    <span class="string">'你这句话完美的表达了你想被夸的坚定信念，你一定是一个执着追求自己理想的人！'</span>,</span><br><span class="line">                    <span class="string">'我不知道该怎样表达你留在我心中最强最深的印象，是你丰满颀长的身材，白皙的皮肤。乌黑幽深的眼睛，小巧红润的嘴唇，但还有一种说不出，捉不到的丰仪在煽动着我的心。'</span>,</span><br><span class="line">                    <span class="string">'遇见你之后，眼睛就容不下其他女生了!'</span>,</span><br><span class="line">                    <span class="string">'你笑起来的样子最为动人，两片薄薄的嘴唇在笑，长长的眼睛在笑，腮上两个陷得很举动的酒窝也在笑。'</span>,</span><br><span class="line">                    <span class="string">'你从小就流露出才华横溢的天资来。'</span>,</span><br><span class="line">                    <span class="string">'庾信，字子山，南阳新野人也。……幼而俊迈，聪敏绝伦，博览群书，尤善《春秋左氏传》。'</span>,</span><br><span class="line">                    <span class="string">'人皆言子建出口成章，臣未深信。主上可召入，以才试之。'</span>,</span><br><span class="line">                    <span class="string">'俱怀逸兴壮思飞，欲上青天揽明月。'</span>,</span><br><span class="line">                    <span class="string">'这学生天资聪颖，文思敏捷，下笔成章，将来未可限量。'</span>,</span><br><span class="line">                    <span class="string">'远近书疏，莫不手答，笔翰如流未尝壅滞。'</span>,</span><br><span class="line">                    <span class="string">'你像一片轻柔的云在我眼前飘来飘去，你清丽秀雅的脸上荡漾着春天般美丽的笑容。'</span>,</span><br><span class="line">                    <span class="string">'你是那样地美，美得象一首抒情诗。'</span>,</span><br><span class="line">                    <span class="string">'你那瓜子形的形，那么白净，弯弯的一双眉毛，那么修长;水汪汪的一对眼睛，那么明亮!'</span>,</span><br><span class="line">                    <span class="string">'你总是说话得体，举止大方。不要吝啬赞美!因为你的赞美，对他人是一种鼓励，一种信任。'</span>,</span><br><span class="line">                    <span class="string">'因为你的赞美，对朋友可以传递友谊，因为你的赞美，对爱人可以体会到温情。不要吝啬赞美!因为你的赞美，对他人是一种鼓励，一种信任。因为你的赞美，对朋友可以传递友谊，因为你的赞美，对爱人可以体会到温情。'</span>,</span><br><span class="line">                    <span class="string">'你表现这么优秀，和你在一起的时候压力好大啊!'</span>,</span><br><span class="line">                    <span class="string">'你的眼睛真有神!'</span>,</span><br><span class="line">                    <span class="string">'你工作的样子很迷人!'</span>,</span><br><span class="line">                    <span class="string">'我对你的表现非常满意。'</span>,</span><br><span class="line">                    <span class="string">'尽管你身材纤弱娇小，说话柔声细气，然而却很有力量，这是一种真正的精神美!'</span>,</span><br><span class="line">                    <span class="string">'你娉婷婉约的风姿，娇艳俏丽的容貌，妩媚得体的举止，优雅大方的谈吐，一开始就令我刮目相看。'</span>,</span><br><span class="line">                    <span class="string">'你全身充溢着少女的纯情和青春的风采。留给我印象最深的是你那双湖水般清澈的眸子，以及长长的、一闪一闪的睫毛。像是探询，像是关切，像是问候。'</span>,</span><br><span class="line">                    <span class="string">'你是花丛中的蝴蝶，是百合花中的蓓蕾。无论什么衣服穿到你的身上，总是那么端庄、好看。'</span>,</span><br><span class="line">                    <span class="string">'你也许没有一簇樱唇两排贝齿，但你的谈吐也应该高雅脱俗，机智过人。'</span>,</span><br><span class="line">                    <span class="string">'你有点像天上的月亮，也像那闪烁的星星，可惜我不是诗人，否则，当写一万首诗来形容你的美丽。'</span>,</span><br><span class="line">                    <span class="string">'你看上去真精神。'</span>,</span><br><span class="line">                    <span class="string">'你是一个成熟的人!'</span>,</span><br><span class="line">                    <span class="string">'你是一个有责任心的人!'</span>,</span><br><span class="line">                    <span class="string">'瀑布一般的长发，淡雅的连衣裙，标准的瓜子脸，聪明的杏仁眼，那稳重端庄的气质，再调皮的人见了你都会小心翼翼。'</span>,</span><br><span class="line">                    <span class="string">'其实，我最先认识你是在照片上。照片上的你托腮凝眸，若有所思。那份温柔、那份美感、那份妩媚，使我久久难以忘怀。'</span>,</span><br><span class="line">                    <span class="string">'进步真快!'</span>,</span><br><span class="line">                    <span class="string">'你的观察力很强!'</span>,</span><br><span class="line">                    <span class="string">'你的想法很有创意!'</span>,</span><br><span class="line">                    <span class="string">'你的作品真棒!'</span>,</span><br><span class="line">                    <span class="string">'你很有想法哦!'</span>,</span><br><span class="line">                    <span class="string">'你真大方!'</span>,</span><br><span class="line">                    <span class="string">'你真能干!'</span>,</span><br><span class="line">                    <span class="string">'你真幽默!'</span>,</span><br><span class="line">                    <span class="string">'你真有思想!'</span>,</span><br><span class="line">                    <span class="string">'你很有想象力哦!'</span>,</span><br><span class="line">                    <span class="string">'智慧女人是金子，气质女人是钻石，聪明女人是宝藏，可爱女人是名画，据我考证，你是世界上最大的宝藏，里面装满了金子钻石名画!'</span>,</span><br><span class="line">                    <span class="string">'只有莲花才能比得上你的圣洁，只有月亮才能比得上你的冰清。'</span>,</span><br><span class="line">                    <span class="string">'在人流中，我一眼就发现了你。我不敢说你是她们中最漂亮的一个，可是我敢说，你是她们中最出色的一个。'</span>,</span><br><span class="line">                    <span class="string">'在你那双又大又亮的眼睛里，我总能捕捉到你的宁静，你的热烈，你的聪颖，你的敏感。'</span>,</span><br><span class="line">                    <span class="string">'你也许没有若隐若现的酒窝，但你的微笑一定是月闭花羞，鱼沉雁落。'</span>,</span><br><span class="line">                    <span class="string">'你也许没有水汪汪亮晶晶的眼睛，但你的眼神也应该顾盼多情，勾魂摄魄。'</span>,</span><br><span class="line">                    <span class="string">'你很有责任感哦!'</span>,</span><br><span class="line">                    <span class="string">'你今天的表现令大家都很开心!'</span>,</span><br><span class="line">                    <span class="string">'你今天给了我很多的惊喜!'</span>,</span><br><span class="line">                    <span class="string">'你学的真快!'</span>,</span><br><span class="line">                    <span class="string">'你真棒!'</span>,</span><br><span class="line">                    <span class="string">'你真聪明!'</span>,</span><br><span class="line">                    <span class="string">'你真的很能干哦!'</span>,</span><br><span class="line">                    <span class="string">'你真可爱!'</span>,</span><br><span class="line">                    <span class="string">'你真是个聪明的孩子!'</span>,</span><br><span class="line">                    <span class="string">'你做的非常好!'</span>,</span><br><span class="line">                    <span class="string">'你做对了'</span>,</span><br><span class="line">                    <span class="string">'做得好极了!'</span>,</span><br><span class="line">                    <span class="string">'你最近进步很大，继续保持。'</span>,</span><br><span class="line">                    <span class="string">'你的学习成绩提升的很快，希望你下面能再接再厉，再创辉煌!'</span>,</span><br><span class="line">                    <span class="string">'遇见你之后，再看别的女人，就好象在侮辱自己的眼睛!'</span>,</span><br><span class="line">                    <span class="string">'漂亮女孩，天生就漂亮。白皙的皮肤，大大的眼睛，秀气的鼻子，饱满的小嘴，再加上一头可爱的"自来卷"，构成一幅天然的美丽图画。'</span>,</span><br><span class="line">                    <span class="string">'清澈明亮的瞳孔，弯弯的柳眉，长长的睫毛微微地颤动着，白皙无瑕的皮肤透出淡淡红粉，薄薄的双唇如玫瑰花瓣娇嫩欲滴。'</span>,</span><br><span class="line">                    <span class="string">'那眼神优雅、娴静，双眼回盼流波，像是俏丽的江南女子;但又挂着一丝倔犟的波纹，又带着北国女儿的神韵。'</span>,</span><br><span class="line">                    <span class="string">'清水出芙蓉，天然去雕饰。'</span>,</span><br><span class="line">                    <span class="string">'同样是美女，这个女孩给人最深刻的印象是她眉宇之间有种超越了她年龄的惊人的美丽，淡淡的柳眉分明仔细的修饰过，长长的睫毛忽闪忽闪的象两把小刷子，亮得让人觉得刺目的一双漂亮到心悸的大眼睛，异常的灵动有神。'</span>,</span><br><span class="line">                    <span class="string">'细致乌黑的长发，常常披于双肩之上，略显柔美，有时松散的数着长发，显出一种别样的风采，突然由成熟变得可爱，让人新生喜爱怜惜之情，洁白的皮肤犹如刚剥壳的鸡蛋，大大的眼睛一闪一闪仿佛会说话，小小的红唇与皮肤的白色，更显分明，一对小酒窝均匀的分布在脸颊两侧，浅浅一笑，酒窝在脸颊若隐若现，可爱如天仙。'</span>,</span><br><span class="line">                    <span class="string">'世上美人众多，肥环燕瘦，无一人有她那样独特的气质。孤傲、无畏、自信、有着一股不羁的野性，她是最璀璨的光华结晶，如同一团烈火，激烈且张狂地燃烧着。她让美丽不再只是容貌上，而是由心真正的散发出来，她紧抓着众人的眼。再加之，一袭冰蚕丝纱裙所衬托出的空灵气质，与在阳光照射下而形成的淡淡光晕，更若天女下凡，绝美无双!'</span>,</span><br><span class="line">                    <span class="string">'一张清爽的鹅蛋脸，一头柔顺的直发。高挺的鼻梁，粉玫色的唇瓣，精致的单眼皮搭配着纤长的眼睫，微敛住深褐色的眼眸，闪烁着快乐的光芒，但光芒的深处，是一股浓到化不开的孤寂。'</span>,</span><br><span class="line">                    <span class="string">'双眉有如柳叶刀裁，盈盈笑意眉上来，一句“云髻峨峨，修眉联娟”得以道出碧瑶云云细眉。'</span>,</span><br><span class="line">                    <span class="string">'双目似有千情万怨，道不尽也诉不完，一句“巧笑倩兮，美目盼兮”可能描述碧瑶盈盈眼波。'</span>,</span><br><span class="line">                    <span class="string">'她那双大大的眼睛，闪烁着聪颖的光辉，像两颗朗朗的星星。'</span>,</span><br><span class="line">                    <span class="string">'聪明的人不是具有广博知识的人，而是掌握了有用知识的人。'</span>,</span><br><span class="line">                    <span class="string">'你那双乌黑晶亮的眼睛，骨碌碌地打转，显得很机灵懂事。'</span>,</span><br><span class="line">                    <span class="string">'她那双圆溜溜的大眼睛，镶了一圈乌黑闪亮的长睫毛，眨动之间，透出一股聪明伶俐劲儿。'</span>,</span><br><span class="line">                    <span class="string">'一张坏坏的笑脸，连两道浓浓的眉毛也泛起柔柔的涟漪，好像一直都带着笑意，弯弯的，像是夜空里皎洁的上弦月。白皙的皮肤衬托着淡淡桃红色的嘴唇，俊美突出的五官，完美的脸型，特别是左耳闪着炫目光亮的钻石耳钉，给你的阳光帅气中加入了一丝不羁。'</span>,                    <span class="string">'我和你在一起的时候压力好大啊!谁让你这么优秀啦!'</span>,</span><br><span class="line">                    <span class="string">'你乌灵的眼眸，倏地笼上层嗜血的寒意，仿若魔神降世一般，一双冰眸轻易贯穿人心，刺透心底最柔弱，舞衣的角落。'</span>,</span><br><span class="line">                    <span class="string">'你那红嘟嘟地脸蛋闪着光亮，像九月里熟透地苹果一样。'</span>,</span><br><span class="line">                    <span class="string">'你的耳朵白里透红，耳轮分明，外圈和里圈很匀称，像是一件雕刻出来地艺术品。'</span>],</span><br><span class="line">            <span class="string">'default'</span>: [<span class="string">'太棒了！'</span>,</span><br><span class="line">                         <span class="string">'真不错！'</span>,</span><br><span class="line">                         <span class="string">'好开心！'</span>,</span><br><span class="line">                         <span class="string">'嗯哪！'</span>,</span><br><span class="line">                         <span class="string">'没什么好说的了，我送你一道彩虹吧！'</span>]&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@itchat.msg_register([TEXT], isGroupChat=True)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">text_reply</span><span class="params">(msg)</span>:</span></span><br><span class="line">    <span class="comment"># group_name的值修改成你要夸的weixin群名</span></span><br><span class="line">    group_name = <span class="string">'桔子次苹果'</span></span><br><span class="line">    <span class="keyword">if</span> msg[<span class="string">'User'</span>][<span class="string">'NickName'</span>] == group_name:</span><br><span class="line">        print(<span class="string">'Message from: %s'</span> % msg[<span class="string">'User'</span>][<span class="string">'NickName'</span>])</span><br><span class="line">        <span class="comment"># 发送者的昵称</span></span><br><span class="line">        username = msg[<span class="string">'ActualNickName'</span>]</span><br><span class="line">        print(<span class="string">'Who sent it: %s'</span> % username)</span><br><span class="line">        match = re.search(<span class="string">'夸我'</span>, msg[<span class="string">'Text'</span>]) <span class="keyword">or</span> re.search(<span class="string">'求夸'</span>, msg[<span class="string">'Text'</span>])</span><br><span class="line">        user_info = itchat.search_friends(name=<span class="string">'&#123;&#125;'</span>.format(username))</span><br><span class="line">        print(<span class="string">'user_info type是：'</span>, type(user_info))</span><br><span class="line">        user_info_str = str(user_info)</span><br><span class="line">        print(<span class="string">'user_info变更后type是：'</span>, type(user_info))</span><br><span class="line">        print(<span class="string">'用户信息===='</span>, user_info)</span><br><span class="line">        print(<span class="string">'len(REPLY[\'夸我2\'])='</span>, len(REPLY[<span class="string">'夸我2'</span>]))</span><br><span class="line">        print(<span class="string">'匹配到性别为：'</span>, re.search(<span class="string">'\'Sex\': 1'</span>, user_info_str))</span><br><span class="line">        <span class="keyword">if</span> match:</span><br><span class="line">            <span class="comment">#  获取发消息人的性别，然后依据性别来夸人。未标注的就随机夸。</span></span><br><span class="line">            <span class="keyword">if</span> re.search(<span class="string">'\'Sex\': 1'</span>, user_info_str) <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">None</span>:</span><br><span class="line">                    print(<span class="string">'-+-+'</span> * <span class="number">5</span>)</span><br><span class="line">                    print(<span class="string">'Message content:%s'</span> % msg[<span class="string">'Content'</span>])</span><br><span class="line">                    print(<span class="string">'夸我 is: %s'</span> % (match <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">None</span>))</span><br><span class="line">                    randomIdx = random.randint(<span class="number">0</span>, len(REPLY[<span class="string">'夸我1'</span>]) - <span class="number">1</span>)</span><br><span class="line">                    itchat.send(<span class="string">'%s'</span> % (REPLY[<span class="string">'夸我1'</span>][randomIdx]), msg[<span class="string">'FromUserName'</span>])</span><br><span class="line">            <span class="keyword">elif</span> re.search(<span class="string">'\'Sex\': 2'</span>, user_info_str) <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">None</span>:</span><br><span class="line">                print(<span class="string">'-+-+'</span> * <span class="number">5</span>)</span><br><span class="line">                print(<span class="string">'Message content:%s'</span> % msg[<span class="string">'Content'</span>])</span><br><span class="line">                print(<span class="string">'夸我 is: %s'</span> % (match <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">None</span>))</span><br><span class="line">                randomIdx = random.randint(<span class="number">0</span>, len(REPLY[<span class="string">'夸我2'</span>]) - <span class="number">1</span>)</span><br><span class="line">                itchat.send( <span class="string">'%s'</span> % (REPLY[<span class="string">'夸我2'</span>][randomIdx]), msg[<span class="string">'FromUserName'</span>])</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                print(<span class="string">'-+-+'</span> * <span class="number">5</span>)</span><br><span class="line">                print(<span class="string">'Message content:%s'</span> % msg[<span class="string">'Content'</span>])</span><br><span class="line">                print(<span class="string">'夸我 is: %s'</span> % (match <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">None</span>))</span><br><span class="line">                randomIdx = random.randint(<span class="number">0</span>, len(REPLY[<span class="string">'夸我0'</span>]) - <span class="number">1</span>)</span><br><span class="line">                itchat.send(<span class="string">'%s'</span> % (REPLY[<span class="string">'夸我0'</span>][randomIdx]), msg[<span class="string">'FromUserName'</span>])</span><br><span class="line"></span><br><span class="line">        print(<span class="string">'isAt is:%s'</span> % msg[<span class="string">'isAt'</span>])</span><br><span class="line">        <span class="keyword">if</span> msg[<span class="string">'isAt'</span>]:</span><br><span class="line">            randomIdx = random.randint(<span class="number">0</span>, len(REPLY[<span class="string">'default'</span>]) - <span class="number">1</span>)</span><br><span class="line">            itchat.send(<span class="string">'@'</span> + <span class="string">'%s\n%s'</span> % (username, REPLY[<span class="string">'default'</span>][randomIdx]), msg[<span class="string">'FromUserName'</span>])</span><br><span class="line">            print(<span class="string">'-+-+'</span>*<span class="number">5</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># Windows系统，enableCmdQR=True</span></span><br><span class="line">itchat.auto_login(enableCmdQR=<span class="keyword">True</span>, hotReload=<span class="keyword">True</span>)</span><br><span class="line"><span class="comment"># 若操作系统是Mac、Linux，enableCmdQR=2</span></span><br><span class="line"><span class="comment"># itchat.auto_login(enableCmdQR=2, hotReload=True)</span></span><br><span class="line">itchat.run()</span><br><span class="line"></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string"># 获取好友列表</span></span><br><span class="line"><span class="string">friends = itchat.get_friends()[0:]</span></span><br><span class="line"><span class="string"># 男性</span></span><br><span class="line"><span class="string">male = 0</span></span><br><span class="line"><span class="string"># 女性</span></span><br><span class="line"><span class="string">female = 0</span></span><br><span class="line"><span class="string"># 未知性别</span></span><br><span class="line"><span class="string">other = 0</span></span><br><span class="line"><span class="string">for i in friends[1:]:</span></span><br><span class="line"><span class="string">    sex = i['Sex']</span></span><br><span class="line"><span class="string">    if sex == 1:</span></span><br><span class="line"><span class="string">        male += 1</span></span><br><span class="line"><span class="string">    elif sex == 2:</span></span><br><span class="line"><span class="string">        female += 1</span></span><br><span class="line"><span class="string">    else:</span></span><br><span class="line"><span class="string">        other += 1</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># 微信好友数量</span></span><br><span class="line"><span class="string">total = len(friends[1:])</span></span><br><span class="line"><span class="string">print("微信好友总数:%d" % (total))</span></span><br><span class="line"><span class="string">print("男性好友:%.2f%%" % (float(male) / total * 100))</span></span><br><span class="line"><span class="string">print("女性好友:%.2f%%" % (float(female) / total * 100))</span></span><br><span class="line"><span class="string">print("未知性别好友:%.2f%%" % (float(other) / total * 100))</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">'''</span></span><br></pre></td></tr></table></figure>
+<h1 id="3-参考"><a href="#3-参考" class="headerlink" title="3.参考"></a>3.参考</h1><p>1.参考blog：  <a href="https://www.cnblogs.com/geeksongs/p/10581302.html" target="_blank" rel="noopener">https://www.cnblogs.com/geeksongs/p/10581302.html</a></p>
+<p>2.itchart说明文档:  <a href="https://itchat.readthedocs.io/zh/latest/" target="_blank" rel="noopener">https://itchat.readthedocs.io/zh/latest/</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/夸夸机器人/" rel="tag"># 夸夸机器人</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/25/bagging/" rel="next" title="Bagging简介">
+                <i class="fa fa-chevron-left"></i> Bagging简介
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/0.png"
+                alt="Armigo" />
+            
+              <p class="site-author-name" itemprop="name">Armigo</p>
+              <p class="site-description motion-element" itemprop="description">Pour un poisson salé, le plus important est heureux!</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.zhihu.com/people/mou-mou-mou-49-9/activities" target="_blank" title="ZhiHu">
+                      
+                        <i class="fa fa-fw fa-globe"></i>ZhiHu</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-简介"><span class="nav-text">1.简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-代码展示"><span class="nav-text">2.代码展示</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-参考"><span class="nav-text">3.参考</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Armigo</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      访问人次
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three-waves.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'uLg1tJlQxJ5XwsDvzjI3tdRl-gzGzoHsz',
+        appKey: 'IttKXBNG1WAsU13RknBgeRrP',
+        placeholder: '来呀，快活呀≧∀≦',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+
+  
+
+</body>
+</html>
