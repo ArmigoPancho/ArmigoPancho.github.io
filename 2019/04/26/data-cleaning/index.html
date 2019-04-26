@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="数据清洗," />
 
 
 
@@ -79,16 +79,18 @@
 
 
 
-<meta name="description" content="Pour un poisson salé, le plus important est heureux!">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Hello,Armigo!">
-<meta property="og:url" content="http://yoursite.com/tags/机器学习/index.html">
+<meta name="description" content="1.简介简单的把参考的2个微信讲解看了遍，贴出来标记一下。主要对数据检查是否有重复的，对缺失值统计和删除，最后利用KNN回归预测Titanic缺失数据年龄，以进行补偿。github地址：请点击这里 ，直径奔向简单的数据清洗即可。当然实际的数据清洗不会这么理想和简单的，数据量也远远少于实际量。 稍微简单说下最后一部分，用KNN来补偿缺失的年龄： 1.先把数据简单的删去无用的特征和特征类型转换 2.再">
+<meta name="keywords" content="数据清洗">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基本的数据清洗">
+<meta property="og:url" content="http://yoursite.com/2019/04/26/data-cleaning/index.html">
 <meta property="og:site_name" content="Hello,Armigo!">
-<meta property="og:description" content="Pour un poisson salé, le plus important est heureux!">
+<meta property="og:description" content="1.简介简单的把参考的2个微信讲解看了遍，贴出来标记一下。主要对数据检查是否有重复的，对缺失值统计和删除，最后利用KNN回归预测Titanic缺失数据年龄，以进行补偿。github地址：请点击这里 ，直径奔向简单的数据清洗即可。当然实际的数据清洗不会这么理想和简单的，数据量也远远少于实际量。 稍微简单说下最后一部分，用KNN来补偿缺失的年龄： 1.先把数据简单的删去无用的特征和特征类型转换 2.再">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-04-26T12:48:40.169Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello,Armigo!">
-<meta name="twitter:description" content="Pour un poisson salé, le plus important est heureux!">
+<meta name="twitter:title" content="基本的数据清洗">
+<meta name="twitter:description" content="1.简介简单的把参考的2个微信讲解看了遍，贴出来标记一下。主要对数据检查是否有重复的，对缺失值统计和删除，最后利用KNN回归预测Titanic缺失数据年龄，以进行补偿。github地址：请点击这里 ，直径奔向简单的数据清洗即可。当然实际的数据清洗不会这么理想和简单的，数据量也远远少于实际量。 稍微简单说下最后一部分，用KNN来补偿缺失的年龄： 1.先把数据简单的删去无用的特征和特征类型转换 2.再">
 
 
 
@@ -118,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/tags/机器学习/"/>
+  <link rel="canonical" href="http://yoursite.com/2019/04/26/data-cleaning/"/>
 
 
 
 
 
-  <title>标签: 机器学习 | Hello,Armigo!</title>
+  <title>基本的数据清洗 | Hello,Armigo!</title>
   
 
 
@@ -143,7 +145,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -271,82 +273,192 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>机器学习<small>标签</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/26/data-cleaning/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Armigo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/0.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hello,Armigo!">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2018/11/10/逻辑回归/" itemprop="url">
-              
-                <span itemprop="name">逻辑回归和python3实现</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">基本的数据清洗</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-11-10T20:47:41+08:00"
-              content="2018-11-10" >
-          11-10
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-26T14:31:49+08:00">
+                2019-04-26
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/机器学习/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/04/26/data-cleaning/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/04/26/data-cleaning/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次阅读
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-        
+      
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/09/13/SVM/" itemprop="url">
-              
-                <span itemprop="name">Bonjour!</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-09-13T15:27:24+08:00"
-              content="2018-09-13" >
-          09-13
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+      
+        <h1 id="1-简介"><a href="#1-简介" class="headerlink" title="1.简介"></a>1.简介</h1><p>简单的把参考的2个微信讲解看了遍，贴出来标记一下。主要对数据检查是否有重复的，对缺失值统计和删除，最后利用KNN回归预测Titanic缺失数据年龄，以进行补偿。github地址：<a href="https://github.com/ArmigoPancho/mechine-learning-codes/tree/master/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0python%E4%BB%A3%E7%A0%81" target="_blank" rel="noopener">请点击这里</a> ，直径奔向简单的数据清洗即可。当然实际的数据清洗不会这么理想和简单的，数据量也远远少于实际量。</p>
+<p>稍微简单说下最后一部分，用KNN来补偿缺失的年龄：</p>
+<p>1.先把数据简单的删去无用的特征和特征类型转换</p>
+<p>2.再分成2部分数据：一份年龄所在行数据都不缺失的，另一份是年龄是缺失的</p>
+<p>3.KNN回归来把不缺失数据拿来训练：非年龄特征作为训练数据，年龄作为回归对象。然后到预测阶段，直接根据缺失数据的其他属性来回归预测实际年龄</p>
+<h1 id="2-代码"><a href="#2-代码" class="headerlink" title="2.代码"></a>2.代码</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> neighbors</span><br><span class="line"><span class="comment">#参考： https://www.jb51.net/article/60510.htm</span></span><br><span class="line"><span class="comment"># 1. https://mp.weixin.qq.com/s?__biz=MzU0MDQ1NjAzNg==&amp;mid=2247486609&amp;idx=1&amp;sn=2865ab86b1ab0abf3e50e109bbf0ad14&amp;chksm=fb39a99acc4e208c3bbcb410742adca7839408fc4bed9f4aa2446d4f500fcaa360e388e3c6c8&amp;mpshare=1&amp;scene=23&amp;srcid=#rd</span></span><br><span class="line"><span class="comment"># 2. https://mp.weixin.qq.com/s?__biz=MzU0MDQ1NjAzNg==&amp;mid=2247486622&amp;idx=1&amp;sn=d85a4866615f8a503151577abb28edcf&amp;chksm=fb39a995cc4e20835fec4a9dcb0ec9b0047265e24bc013e11e69a7b8c259deab0dbbf0e4f303&amp;mpshare=1&amp;scene=23&amp;srcid=#rd</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 读入外部数据</span></span><br><span class="line">data3 = pd.read_excel(io=<span class="string">r'data3.xlsx'</span>)   <span class="comment"># pandas 更新到0.24即可</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 1.查看数据的情况</span></span><br><span class="line">print(data3.shape)</span><br><span class="line">print(data3.dtypes)</span><br><span class="line"><span class="comment"># 数值型转字符型</span></span><br><span class="line">data3[<span class="string">'id'</span>] = data3[<span class="string">'id'</span>].astype(str)</span><br><span class="line"><span class="comment"># 字符型转数值型</span></span><br><span class="line">data3[<span class="string">'custom_amt'</span>] = data3[<span class="string">'custom_amt'</span>].str[<span class="number">1</span>:].astype(float)</span><br><span class="line"><span class="comment"># 字符型转日期型</span></span><br><span class="line">data3[<span class="string">'order_date'</span>] = pd.to_datetime(data3[<span class="string">'order_date'</span>], format = <span class="string">'%Y年%m月%d日'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 重新查看数据集的各变量类型</span></span><br><span class="line">print(data3.dtypes)</span><br><span class="line">print(data3.head())</span><br><span class="line"></span><br><span class="line"><span class="comment"># 判断数据中是否存在重复数据</span></span><br><span class="line">print(data3.duplicated().any())</span><br><span class="line"></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">需要说明的是，在使用duplicated“方法”对数据行作重复性判断时，会返回一个与原数据行数相同的序列（如果数据行没有重复，则对应False，否则对应True），为了得到最终的判断结果，需要再使用any“方法”（即序列中只要存在一个True，则返回True）。</span></span><br><span class="line"><span class="string">duplicated“方法”和drop_duplicates“方法”都有一个非常重要的参数，就是subset。</span></span><br><span class="line"><span class="string">默认情况下不设置该参数时，表示对数据的所有列进行重复性判断；如果需要按指定的变量做数据的重复性判断时，</span></span><br><span class="line"><span class="string">就可以使用该参数指定具体的变量列表。举例如下：'''</span></span><br><span class="line">df = pd.DataFrame(dict(name = [<span class="string">'张三'</span>,<span class="string">'李四'</span>,<span class="string">'王二'</span>,<span class="string">'张三'</span>,<span class="string">'赵五'</span>,<span class="string">'丁一'</span>,<span class="string">'王二'</span>],</span><br><span class="line">                      gender = [<span class="string">'男'</span>,<span class="string">'男'</span>,<span class="string">'女'</span>,<span class="string">'男'</span>,<span class="string">'女'</span>,<span class="string">'女'</span>,<span class="string">'男'</span>],</span><br><span class="line">                      age = [<span class="number">29</span>,<span class="number">25</span>,<span class="number">27</span>,<span class="number">29</span>,<span class="number">21</span>,<span class="number">22</span>,<span class="number">27</span>],</span><br><span class="line">                      income = [<span class="number">15600</span>,<span class="number">14000</span>,<span class="number">18500</span>,<span class="number">15600</span>,<span class="number">10500</span>,<span class="number">18000</span>,<span class="number">13000</span>],</span><br><span class="line">                      edu = [<span class="string">'本科'</span>,<span class="string">'本科'</span>,<span class="string">'硕士'</span>,<span class="string">'本科'</span>,<span class="string">'大专'</span>,<span class="string">'本科'</span>,<span class="string">'硕士'</span>]))</span><br><span class="line"><span class="comment"># 默认情况下，对数据的所有变量进行判断</span></span><br><span class="line">df.drop_duplicates()</span><br><span class="line">print(df)</span><br><span class="line">df.drop_duplicates(subset=[<span class="string">'name'</span>,<span class="string">'age'</span>],inplace=<span class="keyword">True</span>) <span class="comment"># name、age一样就判为一样的数据</span></span><br><span class="line">print(df,<span class="string">'\n####################################'</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="string">'''2.缺失值的简单处理有：删除法、替换法和插补法'''</span></span><br><span class="line"><span class="comment"># 判断各变量中是否存在缺失值</span></span><br><span class="line">print(data3.isnull().any(axis = <span class="number">0</span>))</span><br><span class="line"><span class="comment"># 各变量中缺失值的数量</span></span><br><span class="line">print(data3.isnull().sum(axis = <span class="number">0</span>))  <span class="comment"># axis为1代表统计行，0统计列</span></span><br><span class="line"><span class="comment">#缺失值比例</span></span><br><span class="line">print(data3.isnull().sum(axis=<span class="number">0</span>)/data3.shape[<span class="number">0</span>])</span><br><span class="line"><span class="comment"># 判断数据行中是否存在缺失值</span></span><br><span class="line">data3.isnull().any(axis = <span class="number">1</span>).any()</span><br><span class="line"><span class="comment"># 删除字段 -- 如删除缺失率非常高的edu特征</span></span><br><span class="line">print(data3.drop(labels = <span class="string">'edu'</span>, axis = <span class="number">1</span>, inplace=<span class="keyword">True</span>))</span><br><span class="line"><span class="comment"># 数据预览</span></span><br><span class="line">print(data3.head())</span><br><span class="line"><span class="comment"># 删除观测，-- 如删除age变量中所对应的缺失观测</span></span><br><span class="line">data3_new = data3.drop(labels = data3.index[data3[<span class="string">'age'</span>].isnull()], axis = <span class="number">0</span>)</span><br><span class="line"><span class="comment"># 查看数据的规模</span></span><br><span class="line">print(data3_new.shape)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 替换法处理缺失值</span></span><br><span class="line">data3.fillna(value = &#123;<span class="string">'gender'</span>: data3[<span class="string">'gender'</span>].mode()[<span class="number">0</span>], <span class="comment"># 使用性别的众数替换缺失性别</span></span><br><span class="line">                 <span class="string">'age'</span>:data3[<span class="string">'age'</span>].mean() <span class="comment"># 使用年龄的平均值替换缺失年龄</span></span><br><span class="line">                 &#125;,</span><br><span class="line">          inplace = <span class="keyword">True</span> <span class="comment"># 原地修改数据</span></span><br><span class="line">          )</span><br><span class="line"><span class="comment"># 再次查看各变量的缺失比例</span></span><br><span class="line">print(data3.isnull().sum(axis = <span class="number">0</span>))</span><br><span class="line"></span><br><span class="line"><span class="string">'''3.KNN插补缺失值：以年龄不缺失的其他5特征为训练模型，训练时拟合已有年龄的数据，然后预测（拟合）缺失部分的年龄。'''</span></span><br><span class="line"><span class="comment"># 读取数据</span></span><br><span class="line">titanic = pd.read_csv(<span class="string">'Titanic.csv'</span>)</span><br><span class="line"><span class="comment"># 删除缺失严重的Cabin变量</span></span><br><span class="line">titanic.drop(labels=<span class="string">'Cabin'</span>, axis = <span class="number">1</span>, inplace=<span class="keyword">True</span>)</span><br><span class="line"><span class="comment"># 根据Embarked变量，删除对应的缺失行</span></span><br><span class="line">titanic.dropna(subset=[<span class="string">'Embarked'</span>], inplace=<span class="keyword">True</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除无关紧要的变量（这些变量对后面预测年龄没有太多的帮助）</span></span><br><span class="line">titanic.drop(labels=[<span class="string">'PassengerId'</span>,<span class="string">'Name'</span>,<span class="string">'Ticket'</span>,<span class="string">'Embarked'</span>], axis = <span class="number">1</span>, inplace=<span class="keyword">True</span>)</span><br><span class="line"><span class="comment"># 将字符型的性别变量映射为数值变量</span></span><br><span class="line">titanic.Sex = titanic.Sex.map(&#123;<span class="string">'male'</span>:<span class="number">1</span>, <span class="string">'female'</span>:<span class="number">0</span>&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将数据拆分为两组，一是年龄缺失组，二是年龄非缺失组，后续基于非缺失值构建KNN模型，再对缺失组做预测</span></span><br><span class="line">nomissing = titanic.loc[~titanic.Age.isnull(),]</span><br><span class="line">missing = titanic.loc[titanic.Age.isnull(),]</span><br><span class="line"><span class="comment"># X是除了age的所有列的index，即属性名字</span></span><br><span class="line">X = nomissing.columns[nomissing.columns != <span class="string">'Age'</span>]</span><br><span class="line"><span class="comment"># 构建模型</span></span><br><span class="line">knn = neighbors.KNeighborsRegressor()</span><br><span class="line">print(<span class="string">'\n===========&gt;'</span>, nomissing[X].isnull().any(axis=<span class="number">1</span>).any(), nomissing[X].isnull().any,nomissing[X].isnull().sum(axis=<span class="number">0</span>))</span><br><span class="line"><span class="comment"># 模型拟合</span></span><br><span class="line">knn.fit(nomissing[X], nomissing.Age)</span><br><span class="line"><span class="comment"># 缺失表的年龄预测</span></span><br><span class="line">pred_age = knn.predict(missing[X])</span><br><span class="line">print(pred_age)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Titanic预测kaggle竞赛： https://www.jianshu.com/p/9b6ee1fb7a60?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=seo_notes&amp;utm_source=recommendation</span></span><br></pre></td></tr></table></figure>
+<h1 id="3-参考"><a href="#3-参考" class="headerlink" title="3.参考"></a>3.参考</h1><p>请点击：<a href="https://mp.weixin.qq.com/s?__biz=MzU0MDQ1NjAzNg==&amp;mid=2247486609&amp;idx=1&amp;sn=2865ab86b1ab0abf3e50e109bbf0ad14&amp;chksm=fb39a99acc4e208c3bbcb410742adca7839408fc4bed9f4aa2446d4f500fcaa360e388e3c6c8&amp;mpshare=1&amp;scene=23&amp;srcid=#rd" target="_blank" rel="noopener">参考1</a> 、<a href="https://mp.weixin.qq.com/s?__biz=MzU0MDQ1NjAzNg==&amp;mid=2247486622&amp;idx=1&amp;sn=d85a4866615f8a503151577abb28edcf&amp;chksm=fb39a995cc4e20835fec4a9dcb0ec9b0047265e24bc013e11e69a7b8c259deab0dbbf0e4f303&amp;mpshare=1&amp;scene=23&amp;srcid=#rd" target="_blank" rel="noopener">参考2</a></p>
+<hr>
+<p>$Je\ \ ponse\ , \ donc\ \ je\ \ suis .$</p>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/数据清洗/" rel="tag"># 数据清洗</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/04/20/kuakua-robot/" rel="next" title="夸夸机器人">
+                <i class="fa fa-chevron-left"></i> 夸夸机器人
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -354,6 +466,13 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
 
         </div>
         
@@ -374,8 +493,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -449,6 +577,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-简介"><span class="nav-text">1.简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-代码"><span class="nav-text">2.代码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-参考"><span class="nav-text">3.参考</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -622,6 +766,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
