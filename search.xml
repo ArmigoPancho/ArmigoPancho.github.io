@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[矩阵求导公式]]></title>
+    <title><![CDATA[矩阵求导简述]]></title>
     <url>%2F2019%2F05%2F05%2FMatrix-derivatives%2F</url>
-    <content type="text"><![CDATA[下面是2份矩阵求偏导的pdf，上传以便查看。 两个都有矩阵和向量相关的导数和偏导公式总结，按需查找即可。]]></content>
+    <content type="text"><![CDATA[下面是2份矩阵求偏导的pdf，上传以便查看。 上面两分pdf都有矩阵和向量相关的导数和偏导公式总结，按需查找即可。在下面找到的一份资料，也上传，这一份比较全面也复杂，若掌握了基本的ML求导求偏导就不在话下。]]></content>
       <categories>
         <category>矩阵分析</category>
       </categories>
