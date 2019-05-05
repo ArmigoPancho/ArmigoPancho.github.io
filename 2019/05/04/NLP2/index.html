@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="word2vec," />
 
 
 
@@ -79,16 +79,26 @@
 
 
 
-<meta name="description" content="Pour un poisson salé, le plus important est heureux!">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Hello,Armigo!">
-<meta property="og:url" content="http://yoursite.com/archives/2019/05/index.html">
+<meta name="description" content="首先说明的是，此为CS224n课程的笔记，有不到之处，望留言提出，thanks。之前也写过word2vec模型，奈何没理解透，这次再理解下 ==。 1.Skip-Gram模型的简单理解独热码和分布式表示词向量请看： 此链接。skip-gram说讲简单点就是用中心词去预测周围的左右m个词，它是基于神经网络和词向量模型构成，可以处理数十亿级别的词量，效果居然比以往好的出奇。预测周围t个词的概率是p(w">
+<meta name="keywords" content="word2vec">
+<meta property="og:type" content="article">
+<meta property="og:title" content="NLP2笔记">
+<meta property="og:url" content="http://yoursite.com/2019/05/04/NLP2/index.html">
 <meta property="og:site_name" content="Hello,Armigo!">
-<meta property="og:description" content="Pour un poisson salé, le plus important est heureux!">
+<meta property="og:description" content="首先说明的是，此为CS224n课程的笔记，有不到之处，望留言提出，thanks。之前也写过word2vec模型，奈何没理解透，这次再理解下 ==。 1.Skip-Gram模型的简单理解独热码和分布式表示词向量请看： 此链接。skip-gram说讲简单点就是用中心词去预测周围的左右m个词，它是基于神经网络和词向量模型构成，可以处理数十亿级别的词量，效果居然比以往好的出奇。预测周围t个词的概率是p(w">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/2019/05/04/NLP2/loss.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/04/NLP2/skipmodel.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/04/NLP2/p1.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/04/NLP2/dot.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/04/NLP2/skip2.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/04/NLP2/j.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/04/NLP2/偏导.png">
+<meta property="og:updated_time" content="2019-05-05T07:04:39.249Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello,Armigo!">
-<meta name="twitter:description" content="Pour un poisson salé, le plus important est heureux!">
+<meta name="twitter:title" content="NLP2笔记">
+<meta name="twitter:description" content="首先说明的是，此为CS224n课程的笔记，有不到之处，望留言提出，thanks。之前也写过word2vec模型，奈何没理解透，这次再理解下 ==。 1.Skip-Gram模型的简单理解独热码和分布式表示词向量请看： 此链接。skip-gram说讲简单点就是用中心词去预测周围的左右m个词，它是基于神经网络和词向量模型构成，可以处理数十亿级别的词量，效果居然比以往好的出奇。预测周围t个词的概率是p(w">
+<meta name="twitter:image" content="http://yoursite.com/2019/05/04/NLP2/loss.png">
 
 
 
@@ -118,13 +128,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/archives/2019/05/"/>
+  <link rel="canonical" href="http://yoursite.com/2019/05/04/NLP2/"/>
 
 
 
 
 
-  <title>归档 | Hello,Armigo!</title>
+  <title>NLP2笔记 | Hello,Armigo!</title>
   
 
 
@@ -143,7 +153,7 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -271,111 +281,199 @@
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
-
-      <span class="archive-page-counter">
-        
-        
-        
-          
-        
-        嗯..! 目前共计 17 篇日志。 继续努力。
-      </span>
-
-      
-
-        
-        
-        
-
-        
-          
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2019">2019</h1>
-          </div>
-        
-        
-
-        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/04/NLP2/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Armigo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/0.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hello,Armigo!">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2019/05/04/NLP2/" itemprop="url">
-              
-                <span itemprop="name">NLP2笔记</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">NLP2笔记</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-05-04T20:43:31+08:00"
-              content="2019-05-04" >
-          05-04
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-04T20:43:31+08:00">
+                2019-05-04
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CS224n笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">CS224n笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/05/04/NLP2/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/04/NLP2/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次阅读
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/05/03/find-celebrity/" itemprop="url">
-              
-                <span itemprop="name">名人问题</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-05-03T15:32:37+08:00"
-              content="2019-05-03" >
-          05-03
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
 
+      
+        <p>首先说明的是，此为<a href="https://www.bilibili.com/video/av41393758/?p=2" target="_blank" rel="noopener">CS224n课程</a>的笔记，有不到之处，望留言提出，thanks。之前也写过word2vec模型，奈何没理解透，这次再理解下 ==。</p>
+<h1 id="1-Skip-Gram模型的简单理解"><a href="#1-Skip-Gram模型的简单理解" class="headerlink" title="1.Skip-Gram模型的简单理解"></a>1.Skip-Gram模型的简单理解</h1><p>独热码和分布式表示词向量请看： <a href="http://www.armigo.fun/2019/03/04/word2vec/" target="_blank" rel="noopener">此链接</a>。<strong>skip-gram说讲简单点就是用中心词去预测周围的左右m个词</strong>，它是基于神经网络和词向量模型构成，可以处理数十亿级别的词量，效果居然比以往好的出奇。预测周围t个词的概率是p(w-t | wt)，损失函数如下：</p>
+<p><img src="/2019/05/04/NLP2/loss.png" alt="1"></p>
+<p>下面是skip-gram model的预测演示：</p>
+<p><img src="/2019/05/04/NLP2/skipmodel.png" alt="2"></p>
+<p>中心词预测周围词后的计算公式如下，就是下文的p(w_t+j | w_t;θ) 计算方式。</p>
+<p><img src="/2019/05/04/NLP2/p1.png" alt=""></p>
+<p>说下UoVc表示输出词向量Uo和中心词向量Vc的乘积值，这个值越大表示两个词越相似，相关性越强，也就越可能出现在中心词周围，然后归一化即可。即算出每个词与中心词的相似程度，再后面选一个最相似的即可（概率最大的）。</p>
+<p><img src="/2019/05/04/NLP2/dot.png" alt=""></p>
+<p>下面这一张是更加具体的演示：</p>
+<p><img src="/2019/05/04/NLP2/skip2.png" alt="4"></p>
+<p>显然，我们就是要使得周围词预测数来的概率最大化，即周围词p(w_t+j | w_t;θ) ，<strong>θ表示我们所有需要优化的参数</strong>，假设语料库是极大量的词，有T个单词，那就是把每一个中心词的前t个词和后t个词对应词的分布式表示（这里计算时候是概率）都乘起来最大化即可。第二个公式是为了最小化的同等变换。</p>
+<p><img src="/2019/05/04/NLP2/j.png" alt="3"></p>
+<p>现在就是要最小化上面负的对数似然函数。</p>
+<p>其中的P(w_t+j | w_t;θ) 就是通过P(O | C)得出来，对Uo和Vc分别求偏如下：</p>
+<p><img src="/2019/05/04/NLP2/偏导.png" alt=""></p>
+
+      
     </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/word2vec/" rel="tag"># word2vec</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/03/find-celebrity/" rel="next" title="名人问题">
+                <i class="fa fa-chevron-left"></i> 名人问题
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -383,6 +481,13 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
 
         </div>
         
@@ -403,8 +508,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -478,6 +592,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-Skip-Gram模型的简单理解"><span class="nav-text">1.Skip-Gram模型的简单理解</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -651,6 +781,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
@@ -1047,26 +1181,6 @@
   
 
   
-  
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-          processEscapes: true,
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-        }
-      });
-    </script>
-
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-      });
-    </script>
-    <script type="text/javascript" src="//cdn.staticfile.org/MathJax/MathJax-2.6-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
 
