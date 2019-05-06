@@ -94,7 +94,7 @@
 <meta property="og:image" content="http://yoursite.com/2019/05/04/NLP2/skip2.png">
 <meta property="og:image" content="http://yoursite.com/2019/05/04/NLP2/j.png">
 <meta property="og:image" content="http://yoursite.com/2019/05/04/NLP2/偏导.png">
-<meta property="og:updated_time" content="2019-05-05T08:26:46.908Z">
+<meta property="og:updated_time" content="2019-05-06T13:35:53.607Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="skip-gram模型理解二">
 <meta name="twitter:description" content="首先说明的是，此为CS224n课程的笔记，有不到之处，望留言提出，thanks。之前也写过word2vec模型，奈何没理解透，这次再理解下 ==。 1.Skip-Gram模型的简单理解1.1 简单理解独热码和分布式表示词向量和skip-gram简单介绍请看： 此链接。skip-gram说讲简单点就是用中心词去预测周围的左右m个词，它是基于神经网络和词向量模型构成，可以处理数十亿级别的词量，效果居然">
@@ -418,11 +418,11 @@
 <h2 id="1-3-模型做什么？"><a href="#1-3-模型做什么？" class="headerlink" title="1.3 模型做什么？"></a>1.3 模型做什么？</h2><p>针对Vc的求偏导，有一种解释：</p>
 <script type="math/tex; mode=display">
 \begin{align*}  
-\frac{∂J}{V_c}&=u_0-\sum_{x=1}^{V}\frac{exp(u_x^TV_c)}{\sum_{w=1}^{V}exp(u_w^TV_c)}u_{x}\\
+\frac{∂J}{∂V_c}&=u_0-\sum_{x=1}^{V}\frac{exp(u_x^TV_c)}{\sum_{w=1}^{V}exp(u_w^TV_c)}u_{x}\\
 &=u_{0}-\sum_{x=1}^{v} p(x | c) u_{x}
 \end{align*}</script><p><strong>$u_0$是实际输出的上下文向量，后面$p(x | c) $是后面$u_{x}$出现的似然概率的加权；$u_{x}$为期望向量，是上下文向量均值；模型做的事就是要使得$u_{0}-\sum_{x=1}^{v} p(x | c) u_{x}$越小越好。</strong></p>
 <h1 id="2-参考"><a href="#2-参考" class="headerlink" title="2.参考"></a>2.参考</h1><p>1.CS224n视频链接，中英文字幕： <a href="https://www.bilibili.com/video/av41393758?t=4704&amp;p=2" target="_blank" rel="noopener">https://www.bilibili.com/video/av41393758?t=4704&amp;p=2</a></p>
-<p>2.CS224n视频链接，纯英文字幕： <a href="https://www.bilibili.com/video/av13383754?t=207&amp;p=2" target="_blank" rel="noopener">https://www.bilibili.com/video/av13383754?t=207&amp;p=2</a></p>
+<p>2.CS224n视频链接，纯英文字幕： <a href="https://www.bilibili.com/video/av13383754?t=207&amp;p=2" target="_blank" rel="noopener">https://www.bilibili.com/video/av13383754?t=207&amp;p=2</a>    </p>
 
       
     </div>
