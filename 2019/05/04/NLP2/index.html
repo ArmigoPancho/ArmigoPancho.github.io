@@ -92,9 +92,10 @@
 <meta property="og:image" content="http://yoursite.com/2019/05/04/NLP2/p1.png">
 <meta property="og:image" content="http://yoursite.com/2019/05/04/NLP2/dot.png">
 <meta property="og:image" content="http://yoursite.com/2019/05/04/NLP2/skip2.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/04/NLP2/nlp2/ck.png">
 <meta property="og:image" content="http://yoursite.com/2019/05/04/NLP2/j.png">
 <meta property="og:image" content="http://yoursite.com/2019/05/04/NLP2/偏导.png">
-<meta property="og:updated_time" content="2019-05-06T13:35:53.607Z">
+<meta property="og:updated_time" content="2019-05-07T02:28:43.123Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="skip-gram模型理解二">
 <meta name="twitter:description" content="首先说明的是，此为CS224n课程的笔记，有不到之处，望留言提出，thanks。之前也写过word2vec模型，奈何没理解透，这次再理解下 ==。 1.Skip-Gram模型的简单理解1.1 简单理解独热码和分布式表示词向量和skip-gram简单介绍请看： 此链接。skip-gram说讲简单点就是用中心词去预测周围的左右m个词，它是基于神经网络和词向量模型构成，可以处理数十亿级别的词量，效果居然">
@@ -410,9 +411,11 @@
 <p><img src="/2019/05/04/NLP2/dot.png" alt="12"></p>
 <p>下面这一张是更加具体的演示：</p>
 <p><img src="/2019/05/04/NLP2/skip2.png" alt="4"></p>
+<p>下面一张图是对skip-gram的具像解释，比如一句话”I like deep learning and NLP.”第一个窗口以deep为中心词，划窗范围是左右2个词，就有了图中的划窗①，然后每次往后移动一个以’learning’为中心词再计算划窗②下周围词的概率。<strong>每个中心词在上图一个d x V维度的红色大矩阵里面有对应的位置的向量表示，每个周围词的向量表示在上图第二个V x d维的红色大矩阵里面取出来，2个直接拿出来代入下图的公式计算即可（输入每个词的独热码作用就是取出每个词在look-up table（look-up table就是矩阵d x V维度的第一个红色大矩阵W）里面中心词的对应词向量表示）。最后经过softmax函数处理再和真实类标比较减小误差，以优化2个红色矩阵里面的中心词和周围词矩阵表示，其实这2个红色矩阵就是类似BP算法里面的隐层权重，这里变为了中心词和周围词的向量表示。</strong></p>
+<p><img src="/2019/05/04/NLP2/nlp2/ck.png" alt="100"></p>
 <p>显然，我们就是要使得周围词预测数来的概率最大化，即周围词p(w_t+j | w_t;θ) ，<strong>θ表示我们所有需要优化的参数</strong>，假设语料库是极大量的词，有T个单词，那就是把每一个中心词的前t个词和后t个词对应词的分布式表示（这里计算时候是概率）都乘起来最大化即可。第二个公式是为了最小化的同等变换。</p>
 <p><img src="/2019/05/04/NLP2/j.png" alt="121"></p>
-<h2 id="1-2-模型求参方式"><a href="#1-2-模型求参方式" class="headerlink" title="1.2 模型求参方式"></a>1.2 模型求参方式</h2><p>现在就是要最小化上面负的对数似然函数，对于参数可以用梯度下降法来求参数，于是求导。</p>
+<h2 id="1-2-模型求参方式"><a href="#1-2-模型求参方式" class="headerlink" title="1.2 模型求参方式"></a>1.2 模型求参方式</h2><p>现在就是要最小化上面负的对数似然函数，对于参数可以用随机梯度下降法（<a href="https://www.cnblogs.com/guoyaohua/p/8542554.html" target="_blank" rel="noopener">SGD</a>）来求参数，于是求导。</p>
 <p>其中的P(w_t+j | w_t;θ) 就是通过P(O | C)得出来，对Uo和Vc分别求偏如下：</p>
 <p><img src="/2019/05/04/NLP2/偏导.png" alt="221"></p>
 <h2 id="1-3-模型做什么？"><a href="#1-3-模型做什么？" class="headerlink" title="1.3 模型做什么？"></a>1.3 模型做什么？</h2><p>针对Vc的求偏导，有一种解释：</p>
