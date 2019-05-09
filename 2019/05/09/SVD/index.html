@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="SVD," />
 
 
 
@@ -79,16 +79,20 @@
 
 
 
-<meta name="description" content="Pour un poisson salé, le plus important est heureux!">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Hello,Armigo!">
-<meta property="og:url" content="http://yoursite.com/tags/机器学习/index.html">
+<meta name="description" content="1.SVD前奏1.1奇异值分解(SVD)优缺点 优点：简化数据，去除噪声点，提高算法的结果； 缺点：数据的转换可能难以理解； 适用于数据类型：数值型。  1.2 特征值和特征向量的定义回顾特征值和特征向量的定义如下：  Ax=\lambda x其中矩阵$A$是一个$n×n$的实对称矩阵，$x$是一个$n$维向量，则我们说$λ$是矩阵$A$的一个特征值，而$x$是矩阵$A$的特征值$λ$所对应的特征">
+<meta name="keywords" content="SVD">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SVD">
+<meta property="og:url" content="http://yoursite.com/2019/05/09/SVD/index.html">
 <meta property="og:site_name" content="Hello,Armigo!">
-<meta property="og:description" content="Pour un poisson salé, le plus important est heureux!">
+<meta property="og:description" content="1.SVD前奏1.1奇异值分解(SVD)优缺点 优点：简化数据，去除噪声点，提高算法的结果； 缺点：数据的转换可能难以理解； 适用于数据类型：数值型。  1.2 特征值和特征向量的定义回顾特征值和特征向量的定义如下：  Ax=\lambda x其中矩阵$A$是一个$n×n$的实对称矩阵，$x$是一个$n$维向量，则我们说$λ$是矩阵$A$的一个特征值，而$x$是矩阵$A$的特征值$λ$所对应的特征">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/2019/05/09/SVD/1.png">
+<meta property="og:updated_time" content="2019-05-09T10:19:20.705Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello,Armigo!">
-<meta name="twitter:description" content="Pour un poisson salé, le plus important est heureux!">
+<meta name="twitter:title" content="SVD">
+<meta name="twitter:description" content="1.SVD前奏1.1奇异值分解(SVD)优缺点 优点：简化数据，去除噪声点，提高算法的结果； 缺点：数据的转换可能难以理解； 适用于数据类型：数值型。  1.2 特征值和特征向量的定义回顾特征值和特征向量的定义如下：  Ax=\lambda x其中矩阵$A$是一个$n×n$的实对称矩阵，$x$是一个$n$维向量，则我们说$λ$是矩阵$A$的一个特征值，而$x$是矩阵$A$的特征值$λ$所对应的特征">
+<meta name="twitter:image" content="http://yoursite.com/2019/05/09/SVD/1.png">
 
 
 
@@ -118,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/tags/机器学习/"/>
+  <link rel="canonical" href="http://yoursite.com/2019/05/09/SVD/"/>
 
 
 
 
 
-  <title>标签: 机器学习 | Hello,Armigo!</title>
+  <title>SVD | Hello,Armigo!</title>
   
 
 
@@ -143,7 +147,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -271,82 +275,215 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>机器学习<small>标签</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/09/SVD/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Armigo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/0.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hello,Armigo!">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2018/11/10/逻辑回归/" itemprop="url">
-              
-                <span itemprop="name">逻辑回归和python3实现</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">SVD</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-11-10T20:47:41+08:00"
-              content="2018-11-10" >
-          11-10
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-09T14:48:01+08:00">
+                2019-05-09
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/矩阵分析/" itemprop="url" rel="index">
+                    <span itemprop="name">矩阵分析</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/05/09/SVD/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/09/SVD/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次阅读
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-        
+      
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/09/13/SVM/" itemprop="url">
-              
-                <span itemprop="name">Bonjour!</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-09-13T15:27:24+08:00"
-              content="2018-09-13" >
-          09-13
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+      
+        <h1 id="1-SVD前奏"><a href="#1-SVD前奏" class="headerlink" title="1.SVD前奏"></a>1.SVD前奏</h1><h2 id="1-1奇异值分解-SVD-优缺点"><a href="#1-1奇异值分解-SVD-优缺点" class="headerlink" title="1.1奇异值分解(SVD)优缺点"></a>1.1奇异值分解(SVD)优缺点</h2><ol>
+<li>优点：简化数据，去除噪声点，提高算法的结果；</li>
+<li>缺点：数据的转换可能难以理解；</li>
+<li>适用于数据类型：数值型。</li>
+</ol>
+<h2 id="1-2-特征值和特征向量的定义回顾"><a href="#1-2-特征值和特征向量的定义回顾" class="headerlink" title="1.2 特征值和特征向量的定义回顾"></a>1.2 特征值和特征向量的定义回顾</h2><p>特征值和特征向量的定义如下：</p>
+<script type="math/tex; mode=display">
+Ax=\lambda x</script><p>其中矩阵$A$是一个$n×n$的实对称矩阵，$x$是一个$n$维向量，则我们说$λ$是矩阵$A$的一个特征值，而$x$是矩阵$A$的特征值$λ$所对应的特征向量。求出特征值和特征向量有什么好处呢？ 就是我们可以将矩阵A特征分解。如果我们求出了矩阵$A$的$n$个特征值$λ_1≤λ_2≤…≤λ_n$，以及这$n$个特征值所对应的特征向量${w_1,w_2,…w_n}$，，如果这$n$个特征向量线性无关，那么矩阵$A$就可以用下式的特征分解表示：</p>
+<script type="math/tex; mode=display">
+A=W\Sigma W^{-1}</script><p>其中$W$是这$n$个特征向量所张成的$n×n$维矩阵，而$Σ$为这$n$个特征值为主对角线的$n×n$维矩阵。一般我们会把$W$的这$n$个特征向量标准化，即满足$||wi||^2=1$， 或者说$w^T_iw_i=1$，此时$W$的$n$个特征向量为标准正交基，满足$W^TW=I$，即$W^T=W^{−1}$, 也就是说$W$为酉矩阵。于是上面的矩阵$A$可以表示为：</p>
+<script type="math/tex; mode=display">
+A=W\Sigma W^T</script><p>BUT，这个分解对矩阵$A$有要求，就是矩阵要为$n$维的方阵，若$A$不是方阵，那么上面没办法了，于是SVD闪亮登场</p>
+<h1 id="2-SVD-Singular-Value-Decomposition"><a href="#2-SVD-Singular-Value-Decomposition" class="headerlink" title="2.SVD(Singular  Value  Decomposition)"></a>2.SVD(Singular  Value  Decomposition)</h1><p>任何一个矩阵可以分解为如下形式：</p>
+<script type="math/tex; mode=display">
+A = U\Sigma V^T</script><p>其中$U$是一个$m×m$的矩阵，$Σ$是一个$m×n$的矩阵，除了主对角线上的元素以外全为0，主对角线上的每个元素都称为奇异值，$V$是一个$n×n$的矩阵。$U$和$V$都是酉矩阵，即满足$U^TU=I,V^TV=I$。下图是关于SVD的维度理解：</p>
+<p><img src="/2019/05/09/SVD/1.png" alt="1"></p>
+<p><strong>如何求$U、\Sigma 、V$三个矩阵？</strong></p>
+<p>（1）求矩阵$V$ </p>
+<p>如果我们将$A$的转置和$A$做矩阵乘法，那么会得到$n×n$的一个方阵$A^TA$。既然$A^TA$是方阵，那么我们就可以进行特征分解，得到的特征值和特征向量满足下式：</p>
+<script type="math/tex; mode=display">
+(A^TA)v_i = \lambda_i v_i</script><p>这样我们就可以得到矩阵$A^TA$的$n$个特征值和对应的$n$个特征向量$v$了。<strong>将$A^TA$的所有特征向量张成一个$n×n$的矩阵$V$，就是我们SVD公式里面的$V$矩阵了</strong>。一般我们将$V$中的每个特征向量叫做A的右奇异向量。</p>
+<p>（2）求矩阵$U$</p>
+<p>如果我们将$A$和$A$的转置做矩阵乘法，那么会得到$m×m$的一个方阵$AA^T$。既然$AA^T$是方阵，那么我们就可以进行特征分解，得到的特征值和特征向量满足下式：</p>
+<script type="math/tex; mode=display">
+(AA^T)u_i = \lambda_i u_i</script><p>得到矩阵$AA^T$的$m$个特征值和对应的$m$个特征向量$u_i$了。<strong>将$AA^T$的所有特征向量$u_i$张成一个$m×m$的矩阵$U$，就是我们SVD公式里面的$U$矩阵了</strong>。一般我们将$U$中的每个特征向量叫做$A$的左奇异向量。</p>
+<p>（3）求矩阵$\Sigma$</p>
+<p>由于$Σ$除了对角线上是奇异值其他位置都是0，那我们只需要求出每个奇异值$σ$就可以了。如下：</p>
+<script type="math/tex; mode=display">
+A=U\Sigma V^T \Rightarrow AV=U\Sigma V^TV \Rightarrow AV=U\Sigma \Rightarrow  Av_i = \sigma_i u_i  \Rightarrow  \sigma_i =  Av_i / u_i</script><p>那就求出奇异值矩阵$Σ$。</p>
+<p>此外，特征值和奇异值满足如下关系：</p>
+<script type="math/tex; mode=display">
+\sigma_i = \sqrt{\lambda_i}</script><p>这样也就是说，我们可以不用$σi=Avi/ui$来计算奇异值，也可以通过求出$A^TA$的特征值$\lambda_i$取平方根来求奇异值。</p>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/SVD/" rel="tag"># SVD</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/05/Matrix-derivatives/" rel="next" title="矩阵求导简述">
+                <i class="fa fa-chevron-left"></i> 矩阵求导简述
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -354,6 +491,13 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
 
         </div>
         
@@ -374,8 +518,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -449,6 +602,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-SVD前奏"><span class="nav-text">1.SVD前奏</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1奇异值分解-SVD-优缺点"><span class="nav-text">1.1奇异值分解(SVD)优缺点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-特征值和特征向量的定义回顾"><span class="nav-text">1.2 特征值和特征向量的定义回顾</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-SVD-Singular-Value-Decomposition"><span class="nav-text">2.SVD(Singular  Value  Decomposition)</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -622,6 +791,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
