@@ -82,15 +82,17 @@
 <meta name="description" content="1.SVD前奏1.1奇异值分解(SVD)优缺点 优点：简化数据，去除噪声点，提高算法的结果； 缺点：数据的转换可能难以理解； 适用于数据类型：数值型。  1.2 特征值和特征向量的定义回顾特征值和特征向量的定义如下：  Ax=\lambda x其中矩阵$A$是一个$n×n$的实对称矩阵，$x$是一个$n$维向量，则我们说$λ$是矩阵$A$的一个特征值，而$x$是矩阵$A$的特征值$λ$所对应的特征">
 <meta name="keywords" content="SVD">
 <meta property="og:type" content="article">
-<meta property="og:title" content="SVD">
+<meta property="og:title" content="SVD简介">
 <meta property="og:url" content="http://yoursite.com/2019/05/09/SVD/index.html">
 <meta property="og:site_name" content="Hello,Armigo!">
 <meta property="og:description" content="1.SVD前奏1.1奇异值分解(SVD)优缺点 优点：简化数据，去除噪声点，提高算法的结果； 缺点：数据的转换可能难以理解； 适用于数据类型：数值型。  1.2 特征值和特征向量的定义回顾特征值和特征向量的定义如下：  Ax=\lambda x其中矩阵$A$是一个$n×n$的实对称矩阵，$x$是一个$n$维向量，则我们说$λ$是矩阵$A$的一个特征值，而$x$是矩阵$A$的特征值$λ$所对应的特征">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2019/05/09/SVD/1.png">
-<meta property="og:updated_time" content="2019-05-09T10:19:20.705Z">
+<meta property="og:image" content="http://yoursite.com/2019/05/09/SVD/2.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/09/SVD/3.png">
+<meta property="og:updated_time" content="2019-05-09T11:50:44.347Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="SVD">
+<meta name="twitter:title" content="SVD简介">
 <meta name="twitter:description" content="1.SVD前奏1.1奇异值分解(SVD)优缺点 优点：简化数据，去除噪声点，提高算法的结果； 缺点：数据的转换可能难以理解； 适用于数据类型：数值型。  1.2 特征值和特征向量的定义回顾特征值和特征向量的定义如下：  Ax=\lambda x其中矩阵$A$是一个$n×n$的实对称矩阵，$x$是一个$n$维向量，则我们说$λ$是矩阵$A$的一个特征值，而$x$是矩阵$A$的特征值$λ$所对应的特征">
 <meta name="twitter:image" content="http://yoursite.com/2019/05/09/SVD/1.png">
 
@@ -128,7 +130,7 @@
 
 
 
-  <title>SVD | Hello,Armigo!</title>
+  <title>SVD简介 | Hello,Armigo!</title>
   
 
 
@@ -306,7 +308,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">SVD</h1>
+          <h1 class="post-title" itemprop="name headline">SVD简介</h1>
         
 
         <div class="post-meta">
@@ -410,21 +412,28 @@ A=W\Sigma W^T</script><p>BUT，这个分解对矩阵$A$有要求，就是矩阵�
 A = U\Sigma V^T</script><p>其中$U$是一个$m×m$的矩阵，$Σ$是一个$m×n$的矩阵，除了主对角线上的元素以外全为0，主对角线上的每个元素都称为奇异值，$V$是一个$n×n$的矩阵。$U$和$V$都是酉矩阵，即满足$U^TU=I,V^TV=I$。下图是关于SVD的维度理解：</p>
 <p><img src="/2019/05/09/SVD/1.png" alt="1"></p>
 <p><strong>如何求$U、\Sigma 、V$三个矩阵？</strong></p>
-<p>（1）求矩阵$V$ </p>
-<p>如果我们将$A$的转置和$A$做矩阵乘法，那么会得到$n×n$的一个方阵$A^TA$。既然$A^TA$是方阵，那么我们就可以进行特征分解，得到的特征值和特征向量满足下式：</p>
+<h2 id="（1）求矩阵-V"><a href="#（1）求矩阵-V" class="headerlink" title="（1）求矩阵$V$"></a>（1）求矩阵$V$</h2><p>如果我们将$A$的转置和$A$做矩阵乘法，那么会得到$n×n$的一个方阵$A^TA$。既然$A^TA$是方阵，那么我们就可以进行特征分解，得到的特征值和特征向量满足下式：</p>
 <script type="math/tex; mode=display">
 (A^TA)v_i = \lambda_i v_i</script><p>这样我们就可以得到矩阵$A^TA$的$n$个特征值和对应的$n$个特征向量$v$了。<strong>将$A^TA$的所有特征向量张成一个$n×n$的矩阵$V$，就是我们SVD公式里面的$V$矩阵了</strong>。一般我们将$V$中的每个特征向量叫做A的右奇异向量。</p>
-<p>（2）求矩阵$U$</p>
-<p>如果我们将$A$和$A$的转置做矩阵乘法，那么会得到$m×m$的一个方阵$AA^T$。既然$AA^T$是方阵，那么我们就可以进行特征分解，得到的特征值和特征向量满足下式：</p>
+<h2 id="（2）求矩阵-U"><a href="#（2）求矩阵-U" class="headerlink" title="（2）求矩阵$U$"></a>（2）求矩阵$U$</h2><p>如果我们将$A$和$A$的转置做矩阵乘法，那么会得到$m×m$的一个方阵$AA^T$。既然$AA^T$是方阵，那么我们就可以进行特征分解，得到的特征值和特征向量满足下式：</p>
 <script type="math/tex; mode=display">
 (AA^T)u_i = \lambda_i u_i</script><p>得到矩阵$AA^T$的$m$个特征值和对应的$m$个特征向量$u_i$了。<strong>将$AA^T$的所有特征向量$u_i$张成一个$m×m$的矩阵$U$，就是我们SVD公式里面的$U$矩阵了</strong>。一般我们将$U$中的每个特征向量叫做$A$的左奇异向量。</p>
-<p>（3）求矩阵$\Sigma$</p>
-<p>由于$Σ$除了对角线上是奇异值其他位置都是0，那我们只需要求出每个奇异值$σ$就可以了。如下：</p>
+<h2 id="（3）求矩阵-Sigma"><a href="#（3）求矩阵-Sigma" class="headerlink" title="（3）求矩阵$\Sigma$"></a>（3）求矩阵$\Sigma$</h2><p>由于$Σ$除了对角线上是奇异值其他位置都是0，那我们只需要求出每个奇异值$σ$就可以了。如下：</p>
 <script type="math/tex; mode=display">
 A=U\Sigma V^T \Rightarrow AV=U\Sigma V^TV \Rightarrow AV=U\Sigma \Rightarrow  Av_i = \sigma_i u_i  \Rightarrow  \sigma_i =  Av_i / u_i</script><p>那就求出奇异值矩阵$Σ$。</p>
 <p>此外，特征值和奇异值满足如下关系：</p>
 <script type="math/tex; mode=display">
 \sigma_i = \sqrt{\lambda_i}</script><p>这样也就是说，我们可以不用$σi=Avi/ui$来计算奇异值，也可以通过求出$A^TA$的特征值$\lambda_i$取平方根来求奇异值。</p>
+<h2 id="（4）例子"><a href="#（4）例子" class="headerlink" title="（4）例子"></a>（4）例子</h2><p>关于例子请直接看<a href="https://www.cnblogs.com/pinard/p/6251584.html#!comments" target="_blank" rel="noopener">参考1里面的例子</a>，写的好的，这篇这样此博客的复制。</p>
+<h1 id="3-应用"><a href="#3-应用" class="headerlink" title="3.应用"></a>3.应用</h1><p>SVD可以简化计算量，比如一幅图50000个像素点，用SVD处理过后的矩阵表示可以缩到10000个点就可以表示出来。可以<a href="https://yihui.shinyapps.io/imgsvd/" target="_blank" rel="noopener">点击此网站</a>把玩。下图是参考2的部分解释，就是把所有的特征从大到小排列，然后可以选取前几个重要的特征来近似表示原始特征。</p>
+<p><img src="/2019/05/09/SVD/2.png" alt="2"></p>
+<p>图像压缩前后的对比效果图如下，代码<a href="http://redstonewill.com/1529/" target="_blank" rel="noopener">请阅读参考3</a>：</p>
+<p><img src="/2019/05/09/SVD/3.png" alt="3"></p>
+<h1 id="4-参考"><a href="#4-参考" class="headerlink" title="4.参考"></a>4.参考</h1><ol>
+<li>摘自：  <a href="https://www.cnblogs.com/pinard/p/6251584.html#!comments" target="_blank" rel="noopener">https://www.cnblogs.com/pinard/p/6251584.html#!comments</a></li>
+<li>统计网站：  <a href="https://cosx.org/2014/02/svd-and-image-compression" target="_blank" rel="noopener">https://cosx.org/2014/02/svd-and-image-compression</a></li>
+<li>博客参考：  <a href="http://redstonewill.com/1529/" target="_blank" rel="noopener">http://redstonewill.com/1529/</a></li>
+</ol>
 
       
     </div>
@@ -612,7 +621,7 @@ A=U\Sigma V^T \Rightarrow AV=U\Sigma V^TV \Rightarrow AV=U\Sigma \Rightarrow  Av
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-SVD前奏"><span class="nav-text">1.SVD前奏</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1奇异值分解-SVD-优缺点"><span class="nav-text">1.1奇异值分解(SVD)优缺点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-特征值和特征向量的定义回顾"><span class="nav-text">1.2 特征值和特征向量的定义回顾</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-SVD-Singular-Value-Decomposition"><span class="nav-text">2.SVD(Singular  Value  Decomposition)</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-SVD前奏"><span class="nav-text">1.SVD前奏</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1奇异值分解-SVD-优缺点"><span class="nav-text">1.1奇异值分解(SVD)优缺点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-特征值和特征向量的定义回顾"><span class="nav-text">1.2 特征值和特征向量的定义回顾</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-SVD-Singular-Value-Decomposition"><span class="nav-text">2.SVD(Singular  Value  Decomposition)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#（1）求矩阵-V"><span class="nav-text">（1）求矩阵$V$</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#（2）求矩阵-U"><span class="nav-text">（2）求矩阵$U$</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#（3）求矩阵-Sigma"><span class="nav-text">（3）求矩阵$\Sigma$</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#（4）例子"><span class="nav-text">（4）例子</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-应用"><span class="nav-text">3.应用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-参考"><span class="nav-text">4.参考</span></a></li></ol></div>
             
 
           </div>
