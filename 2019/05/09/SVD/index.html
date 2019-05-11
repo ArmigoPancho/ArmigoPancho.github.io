@@ -90,7 +90,9 @@
 <meta property="og:image" content="http://yoursite.com/2019/05/09/SVD/1.png">
 <meta property="og:image" content="http://yoursite.com/2019/05/09/SVD/2.png">
 <meta property="og:image" content="http://yoursite.com/2019/05/09/SVD/3.png">
-<meta property="og:updated_time" content="2019-05-09T11:50:44.347Z">
+<meta property="og:image" content="http://yoursite.com/2019/05/09/SVD/svd/p.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/09/SVD/svd/a1.png">
+<meta property="og:updated_time" content="2019-05-11T03:29:48.423Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SVD简介">
 <meta name="twitter:description" content="1.SVD前奏1.1奇异值分解(SVD)优缺点 优点：简化数据，去除噪声点，提高算法的结果； 缺点：数据的转换可能难以理解； 适用于数据类型：数值型。  1.2 特征值和特征向量的定义回顾特征值和特征向量的定义如下：  Ax=\lambda x其中矩阵$A$是一个$n×n$的实对称矩阵，$x$是一个$n$维向量，则我们说$λ$是矩阵$A$的一个特征值，而$x$是矩阵$A$的特征值$λ$所对应的特征">
@@ -425,14 +427,29 @@ A=U\Sigma V^T \Rightarrow AV=U\Sigma V^TV \Rightarrow AV=U\Sigma \Rightarrow  Av
 <script type="math/tex; mode=display">
 \sigma_i = \sqrt{\lambda_i}</script><p>这样也就是说，我们可以不用$σi=Avi/ui$来计算奇异值，也可以通过求出$A^TA$的特征值$\lambda_i$取平方根来求奇异值。</p>
 <h2 id="（4）例子"><a href="#（4）例子" class="headerlink" title="（4）例子"></a>（4）例子</h2><p>关于例子请直接看<a href="https://www.cnblogs.com/pinard/p/6251584.html#!comments" target="_blank" rel="noopener">参考1里面的例子</a>，写的好的，这篇这样此博客的复制。</p>
-<h1 id="3-应用"><a href="#3-应用" class="headerlink" title="3.应用"></a>3.应用</h1><p>SVD可以简化计算量，比如一幅图50000个像素点，用SVD处理过后的矩阵表示可以缩到10000个点就可以表示出来。可以<a href="https://yihui.shinyapps.io/imgsvd/" target="_blank" rel="noopener">点击此网站</a>把玩。下图是参考2的部分解释，就是把所有的特征从大到小排列，然后可以选取前几个重要的特征来近似表示原始特征。</p>
+<h1 id="3-应用"><a href="#3-应用" class="headerlink" title="3.应用"></a>3.应用</h1><p>SVD可以简化计算量，比如一幅图50000个像素点，用SVD处理过后的矩阵表示可以缩到10000个点就可以表示出来。可以<a href="https://yihui.shinyapps.io/imgsvd/" target="_blank" rel="noopener">点击此网站</a>把玩。下图是参考2的部分解释，<strong>就是把所有的特征从大到小排列，然后可以选取前几个重要的特征来近似表示原始特征。</strong></p>
 <p><img src="/2019/05/09/SVD/2.png" alt="2"></p>
 <p>图像压缩前后的对比效果图如下，代码<a href="http://redstonewill.com/1529/" target="_blank" rel="noopener">请阅读参考3</a>：</p>
 <p><img src="/2019/05/09/SVD/3.png" alt="3"></p>
-<h1 id="4-参考"><a href="#4-参考" class="headerlink" title="4.参考"></a>4.参考</h1><ol>
+<h1 id="4-SVD和聚类的思考"><a href="#4-SVD和聚类的思考" class="headerlink" title="4.SVD和聚类的思考"></a>4.SVD和聚类的思考</h1><h2 id="4-1-a-i-到-b-j-的转移概率"><a href="#4-1-a-i-到-b-j-的转移概率" class="headerlink" title="4.1 $a_i$到$b_j$的转移概率"></a>4.1 $a_i$到$b_j$的转移概率</h2><p>今天又遇到了一篇有趣的博客，是苏剑林的博客，<a href="https://kexue.fm/archives/4216/comment-page-1#comment-11133" target="_blank" rel="noopener">点击此处链接</a>。SVD除了简化计算量、减少特征表示，还有其他的神奇作用？是的，在自然语言处理中，也有作用。可见其简单的数学工具在各个领域都可以广泛的应用，比如1+1=2在任何领域都会用到，O(∩_∩)O哈哈~。看下图：</p>
+<p><img src="/2019/05/09/SVD/svd/p.png" alt="15541926"></p>
+<p>把公式转化为图模式来解释可能更加清晰，如下：</p>
+<p><img src="/2019/05/09/SVD/svd/a1.png" alt=""></p>
+<p>一共是3个步骤，如上图中的标号所示：</p>
+<p>（1）红色标号1表示$p(c_l|a_i)$是$a_i$表现为类别$c_l$的概率；</p>
+<p>（2）黄色标号2表示$p(d_k|c_l)$是类别$c_l$后接类别$d_k$概率；</p>
+<p>（3）红色标号3表示$p(b_j|d_k)$是已知类别$d_k$时，元素为$b_j$的概率。</p>
+<p><strong>但是元素$a_i—&gt;b_j$可以在多个类别中依不同概率实现，于是有了示意图的下半部分，即公式：</strong></p>
+<script type="math/tex; mode=display">
+p(b_j|a_i) = \sum_{k,l}p(b_j|d_k)p(d_k|c_l)p(c_l|a_i)</script><h2 id="4-2-这和自然语言处理有什么关系？"><a href="#4-2-这和自然语言处理有什么关系？" class="headerlink" title="4.2 这和自然语言处理有什么关系？"></a>4.2 这和自然语言处理有什么关系？</h2><p>上文解释了$a_i$到$b_j$的转移概率如何表示，其实这已经把词给聚类好了。比如动词+名词在英语里面是一条规则。动词和名词就是要聚的类别。<strong>在计算某个动词$a_i$到名词$b_j$的时候，需要分解为三个矩阵相乘：</strong></p>
+<script type="math/tex; mode=display">
+P(B|A)=P(B|D)\times P(D|C)\times P(C|A)</script><p><strong>$P(B|A)$是语料中所有动词后面接名词的概率，$P(C|A)$其实就是已经自动聚类好的一个，表示所有词$a_i$组成的词A属于动词类别$C$的概率；$P(D|C)$是动词类别$C$后面接名词类别$D$的概率；$P(B|D)$是名词类别D中包涵词B的概率。显然，左、右奇异向量即$P(B|D)、P(C|A)$已经把类别聚好了，不过前者是某类别下有哪些词，后者是哪些词在某类里面。</strong> 本章节是自己的思考，可能不严谨 ==。</p>
+<p>$Pas \ à \ pas，on\  va\  loin $</p>
+<h1 id="5-参考"><a href="#5-参考" class="headerlink" title="5.参考"></a>5.参考</h1><ol>
 <li>摘自：  <a href="https://www.cnblogs.com/pinard/p/6251584.html#!comments" target="_blank" rel="noopener">https://www.cnblogs.com/pinard/p/6251584.html#!comments</a></li>
 <li>统计网站：  <a href="https://cosx.org/2014/02/svd-and-image-compression" target="_blank" rel="noopener">https://cosx.org/2014/02/svd-and-image-compression</a></li>
-<li>博客参考：  <a href="http://redstonewill.com/1529/" target="_blank" rel="noopener">http://redstonewill.com/1529/</a></li>
+<li>SVD博客参考：  <a href="http://redstonewill.com/1529/" target="_blank" rel="noopener">http://redstonewill.com/1529/</a></li>
+<li>SVD分解是怎么聚类的：  <a href="https://kexue.fm/archives/4216/comment-page-1#comment-11133" target="_blank" rel="noopener">https://kexue.fm/archives/4216/comment-page-1#comment-11133</a></li>
 </ol>
 
       
@@ -621,7 +638,7 @@ A=U\Sigma V^T \Rightarrow AV=U\Sigma V^TV \Rightarrow AV=U\Sigma \Rightarrow  Av
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-SVD前奏"><span class="nav-text">1.SVD前奏</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1奇异值分解-SVD-优缺点"><span class="nav-text">1.1奇异值分解(SVD)优缺点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-特征值和特征向量的定义回顾"><span class="nav-text">1.2 特征值和特征向量的定义回顾</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-SVD-Singular-Value-Decomposition"><span class="nav-text">2.SVD(Singular  Value  Decomposition)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#（1）求矩阵-V"><span class="nav-text">（1）求矩阵$V$</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#（2）求矩阵-U"><span class="nav-text">（2）求矩阵$U$</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#（3）求矩阵-Sigma"><span class="nav-text">（3）求矩阵$\Sigma$</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#（4）例子"><span class="nav-text">（4）例子</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-应用"><span class="nav-text">3.应用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-参考"><span class="nav-text">4.参考</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-SVD前奏"><span class="nav-text">1.SVD前奏</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1奇异值分解-SVD-优缺点"><span class="nav-text">1.1奇异值分解(SVD)优缺点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-特征值和特征向量的定义回顾"><span class="nav-text">1.2 特征值和特征向量的定义回顾</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-SVD-Singular-Value-Decomposition"><span class="nav-text">2.SVD(Singular  Value  Decomposition)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#（1）求矩阵-V"><span class="nav-text">（1）求矩阵$V$</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#（2）求矩阵-U"><span class="nav-text">（2）求矩阵$U$</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#（3）求矩阵-Sigma"><span class="nav-text">（3）求矩阵$\Sigma$</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#（4）例子"><span class="nav-text">（4）例子</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-应用"><span class="nav-text">3.应用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-SVD和聚类的思考"><span class="nav-text">4.SVD和聚类的思考</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#4-1-a-i-到-b-j-的转移概率"><span class="nav-text">4.1 $a_i$到$b_j$的转移概率</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-2-这和自然语言处理有什么关系？"><span class="nav-text">4.2 这和自然语言处理有什么关系？</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-参考"><span class="nav-text">5.参考</span></a></li></ol></div>
             
 
           </div>
