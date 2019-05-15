@@ -92,7 +92,7 @@
 <meta property="og:image" content="http://yoursite.com/2019/05/09/SVD/3.png">
 <meta property="og:image" content="http://yoursite.com/2019/05/09/SVD/p.png">
 <meta property="og:image" content="http://yoursite.com/2019/05/09/SVD/a1.png">
-<meta property="og:updated_time" content="2019-05-11T05:11:01.881Z">
+<meta property="og:updated_time" content="2019-05-11T05:11:48.589Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SVD简介">
 <meta name="twitter:description" content="1.SVD前奏1.1奇异值分解(SVD)优缺点 优点：简化数据，去除噪声点，提高算法的结果； 缺点：数据的转换可能难以理解； 适用于数据类型：数值型。  1.2 特征值和特征向量的定义回顾特征值和特征向量的定义如下：  Ax=\lambda x其中矩阵$A$是一个$n×n$的实对称矩阵，$x$是一个$n$维向量，则我们说$λ$是矩阵$A$的一个特征值，而$x$是矩阵$A$的特征值$λ$所对应的特征">
@@ -444,7 +444,7 @@ A=U\Sigma V^T \Rightarrow AV=U\Sigma V^TV \Rightarrow AV=U\Sigma \Rightarrow  Av
 p(b_j|a_i) = \sum_{k,l}p(b_j|d_k)p(d_k|c_l)p(c_l|a_i)</script><h2 id="4-2-这和自然语言处理有什么关系？"><a href="#4-2-这和自然语言处理有什么关系？" class="headerlink" title="4.2 这和自然语言处理有什么关系？"></a>4.2 这和自然语言处理有什么关系？</h2><p>上文解释了$a_i$到$b_j$的转移概率如何表示，其实这已经把词给聚类好了。比如动词+名词在英语里面是一条规则。动词和名词就是要聚的类别。<strong>在计算某个动词$a_i$到名词$b_j$的时候，需要分解为三个矩阵相乘：</strong></p>
 <script type="math/tex; mode=display">
 P(B|A)=P(B|D)\times P(D|C)\times P(C|A)</script><p><strong>$P(B|A)$是语料中所有动词后面接名词的概率，$P(C|A)$其实就是已经自动聚类好的一个，表示所有词$a_i$组成的词A属于动词类别$C$的概率；$P(D|C)$是动词类别$C$后面接名词类别$D$的概率；$P(B|D)$是名词类别D中包涵词B的概率。显然，左、右奇异向量即$P(B|D)、P(C|A)$已经把类别聚好了，不过前者是某类别下有哪些词，后者是哪些词在某类里面。</strong> 本章节是自己的思考，可能不严谨 ==。</p>
-<p>$Pas \ à \ pas，on\  va\  loin $</p>
+<p>$Pas \ à \ pas，on\  va\  loin. $</p>
 <h1 id="5-参考"><a href="#5-参考" class="headerlink" title="5.参考"></a>5.参考</h1><ol>
 <li>摘自：  <a href="https://www.cnblogs.com/pinard/p/6251584.html#!comments" target="_blank" rel="noopener">https://www.cnblogs.com/pinard/p/6251584.html#!comments</a></li>
 <li>统计网站：  <a href="https://cosx.org/2014/02/svd-and-image-compression" target="_blank" rel="noopener">https://cosx.org/2014/02/svd-and-image-compression</a></li>
@@ -490,6 +490,10 @@ P(B|A)=P(B|D)\times P(D|C)\times P(C|A)</script><p><strong>$P(B|A)$是语料中�
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/05/14/A1-3/" rel="prev" title="assignment1-3">
+                assignment1-3 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -573,7 +577,7 @@ P(B|A)=P(B|D)\times P(D|C)\times P(C|A)</script><p><strong>$P(B|A)$是语料中�
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-count">21</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -584,7 +588,7 @@ P(B|A)=P(B|D)\times P(D|C)\times P(C|A)</script><p><strong>$P(B|A)$是语料中�
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -595,7 +599,7 @@ P(B|A)=P(B|D)\times P(D|C)\times P(C|A)</script><p><strong>$P(B|A)$是语料中�
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-count">24</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
