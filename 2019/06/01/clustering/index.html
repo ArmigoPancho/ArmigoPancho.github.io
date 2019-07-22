@@ -87,24 +87,24 @@
 <meta property="og:site_name" content="Hello,Armigo!">
 <meta property="og:description" content="1.距离的计算方式（1）距离有什么特性？ \begin{alignat}{2} 非负性：dist(x_i,x_j) &amp;\ge 0\tag{1}\\ 同一性：dist(x_i,x_j) &amp;= 0当且仅当x_i=x_j\tag{2}\\ 对称性：dist(x_i,x_j) &amp;= dist(x_j,x_i)\tag{3}\\ 直递性：dist(x_i,x_j) &amp;\leq dist(x_i,x_k)+d">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://images2017.cnblogs.com/blog/1101696/201801/1101696-20180109202515004-864010195.png">
-<meta property="og:image" content="https://images2017.cnblogs.com/blog/1101696/201801/1101696-20180109202740597-6266485.png">
-<meta property="og:image" content="http://yoursite.com/2019/06/01/clustering/LVQ.png">
-<meta property="og:image" content="http://yoursite.com/2019/06/01/clustering/C:/Users/asus1/AppData/Roaming/Typora/typora-user-images/1563090806596.png">
-<meta property="og:image" content="http://yoursite.com/2019/06/01/clustering/C:/Users/asus1/AppData/Roaming/Typora/typora-user-images/1563104680549.png">
-<meta property="og:image" content="http://yoursite.com/2019/06/01/clustering/C:/Users/asus1/AppData/Roaming/Typora/typora-user-images/1563280725137.png">
-<meta property="og:image" content="http://yoursite.com/2019/06/01/clustering/C:/Users/asus1/AppData/Roaming/Typora/typora-user-images/1563326026792.png">
+<meta property="og:image" content="http://yoursite.com/2019/06/01/clustering/6.png">
+<meta property="og:image" content="http://yoursite.com/2019/06/01/clustering/7.png">
+<meta property="og:image" content="http://yoursite.com/2019/06/01/clustering/LVQ.PNG">
+<meta property="og:image" content="http://yoursite.com/2019/06/01/clustering/8.png">
+<meta property="og:image" content="http://yoursite.com/2019/06/01/clustering/9.png">
+<meta property="og:image" content="http://yoursite.com/2019/06/01/clustering/10.png">
+<meta property="og:image" content="http://yoursite.com/2019/06/01/clustering/11.png">
 <meta property="og:image" content="http://yoursite.com/2019/06/01/clustering/1.png">
 <meta property="og:image" content="http://yoursite.com/2019/06/01/clustering/2.png">
 <meta property="og:image" content="http://yoursite.com/2019/06/01/clustering/3.png">
 <meta property="og:image" content="http://yoursite.com/2019/06/01/clustering/4.png">
-<meta property="og:image" content="http://yoursite.com/2019/06/01/clustering/C:/Users/asus1/AppData/Roaming/Typora/typora-user-images/1563413797468.png">
-<meta property="og:image" content="http://yoursite.com/2019/06/01/clustering/C:/Users/asus1/AppData/Roaming/Typora/typora-user-images/1563417090781.png">
-<meta property="og:updated_time" content="2019-07-18T02:32:47.771Z">
+<meta property="og:image" content="http://yoursite.com/2019/06/01/clustering/12.png">
+<meta property="og:image" content="http://yoursite.com/2019/06/01/clustering/13.png">
+<meta property="og:updated_time" content="2019-07-22T09:20:23.144Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="聚类算法">
 <meta name="twitter:description" content="1.距离的计算方式（1）距离有什么特性？ \begin{alignat}{2} 非负性：dist(x_i,x_j) &amp;\ge 0\tag{1}\\ 同一性：dist(x_i,x_j) &amp;= 0当且仅当x_i=x_j\tag{2}\\ 对称性：dist(x_i,x_j) &amp;= dist(x_j,x_i)\tag{3}\\ 直递性：dist(x_i,x_j) &amp;\leq dist(x_i,x_k)+d">
-<meta name="twitter:image" content="https://images2017.cnblogs.com/blog/1101696/201801/1101696-20180109202515004-864010195.png">
+<meta name="twitter:image" content="http://yoursite.com/2019/06/01/clustering/6.png">
 
 
 
@@ -417,12 +417,12 @@
 <h3 id="B-曼哈顿距离（Manhattan-distance）"><a href="#B-曼哈顿距离（Manhattan-distance）" class="headerlink" title="B.曼哈顿距离（Manhattan distance）"></a>B.曼哈顿距离（Manhattan distance）</h3><p>公式（5）中P=1时候，即为曼哈顿距离，也叫作”街区距离”。</p>
 <script type="math/tex; mode=display">
 \operatorname{dist}_{\operatorname{man}}\left(\boldsymbol{x}_{i}, \boldsymbol{x}_{j}\right)=\left\|\boldsymbol{x}_{i}-\boldsymbol{x}_{j}\right\|_{1}=\sum_{u=1}^{n}\left|x_{i u}-x_{j u}\right|\tag6</script><p>如下图就是A和B坐标的横坐标之差的和，这图曼哈顿距离为7。</p>
-<p><img src="https://images2017.cnblogs.com/blog/1101696/201801/1101696-20180109202515004-864010195.png" alt="img"></p>
+<p><img src="/2019/06/01/clustering/6.png" alt="img"></p>
 <h3 id="C-欧氏距离（Euclidean-distance）"><a href="#C-欧氏距离（Euclidean-distance）" class="headerlink" title="C.欧氏距离（Euclidean  distance）"></a>C.欧氏距离（Euclidean  distance）</h3><p>这个较为熟悉了，就是绝对值的平方和开2倍根。最简单例子就是2点之间在平面间的距离公式。</p>
 <script type="math/tex; mode=display">
 \operatorname{dist}_{\mathrm{ed}}\left(\boldsymbol{x}_{i}, \boldsymbol{x}_{j}\right)=\left\|\boldsymbol{x}_{i}-\boldsymbol{x}_{j}\right\|_{2}=\sqrt{\sum_{u=1}^{n}\left|x_{i u}-x_{j u}\right|^{2}}\tag7</script><h3 id="D-切比雪夫距离（Chebyshev-distance）"><a href="#D-切比雪夫距离（Chebyshev-distance）" class="headerlink" title="D.切比雪夫距离（Chebyshev  distance）"></a>D.切比雪夫距离（Chebyshev  distance）</h3><script type="math/tex; mode=display">
 dist（A,B）=max(|X_A-X_B|,|Y_A-Y_B|)\tag8</script><p>即两点横纵坐标差的最大值，如下图$dis=max(AC,BC)=AC=4$。</p>
-<p><img src="https://images2017.cnblogs.com/blog/1101696/201801/1101696-20180109202740597-6266485.png" alt="img"></p>
+<p><img src="/2019/06/01/clustering/7.png" alt="img"></p>
 <h1 id="2-原型聚类"><a href="#2-原型聚类" class="headerlink" title="2.原型聚类"></a>2.原型聚类</h1><p>什么叫原型，介个词有些科幻的意思。本文的原型指的是样本空间中具有代表性的点。基于原型的聚类是假设聚类结构可以通过一组原型刻画，较为常用。</p>
 <h2 id="（1）K-Means和KNN算法"><a href="#（1）K-Means和KNN算法" class="headerlink" title="（1）K-Means和KNN算法"></a>（1）K-Means和KNN算法</h2><h3 id="A-K均值算法"><a href="#A-K均值算法" class="headerlink" title="A. K均值算法"></a>A. K均值算法</h3><p>K均值的算法原理较简单，首先它是一个<strong>无监督的算法</strong>，它的思想是先人为确定法要估计的类别数量k，然后从样本中随机指定k个类别中心点，然后计算所以点到这k个点的欧式距离，距离哪个中心点最近，样本就是哪一类，然后计算某类内均值作为新的中心点。一直到中心点不变为止。如下：</p>
 <blockquote>
@@ -442,9 +442,9 @@ dist（A,B）=max(|X_A-X_B|,|Y_A-Y_B|)\tag8</script><p>即两点横纵坐标差�
 </blockquote>
 <p>一句话概括就是”物以类聚”，身边哪个类标出现的多，自己就是哪一个类。KNN和K-Means是不同类型的算法，但是都以欧式距离为出发点做文章。</p>
 <h2 id="（2）学习向量量化-Learning-Vector-Quantization"><a href="#（2）学习向量量化-Learning-Vector-Quantization" class="headerlink" title="（2）学习向量量化(Learning  Vector  Quantization)"></a>（2）学习向量量化(Learning  Vector  Quantization)</h2><p><strong>核心思想：人工确定要聚类的簇，找出1个原型向量，使得周围样本X与此向量最近，则分好1簇，其它簇类似。</strong>其实和K均值想法类似，只不过LVQ算法是生成原型向量，找的方式都用到了最小距离，但是更新方式不同，Kmeans是求均值。LVQ算法如何找？看下图：</p>
-<p><img src="/2019/06/01/clustering/LVQ.png" alt="1"></p>
+<p><img src="/2019/06/01/clustering/LVQ.PNG" alt="21"></p>
 <p><strong>注意：(1) 原型向量初始化直接是样本中随机选择的，初始化原型向量的类标也是随机的</strong></p>
-<p><strong>(2)然后计算所有原型向量与随机抽取的Xj之间的距离，找出最小的原型向量，若原型向量的类标与$X_j$原始类标一样，就把原型向量$P_i^<em>$靠近$X_j$，若原型向量的类标与$X_j$原始类标不一样，则把原型向量$P_i^</em>$远离$X_j$。然后再随机选中一个$X_j$，计算原型向量与$X_j$的距离，再根据公式更新P’。</strong></p>
+<p><strong>(2)然后计算所有原型向量与随机抽取的$X_j$之间的距离，找出最小的原型向量，若原型向量的类标与$X_j$原始类标一样，就把原型向量$P_i^<em>$靠近$X_j$，若原型向量的类标与$X_j$原始类标不一样，则把原型向量$P_i^{</em>}$远离$X_j$。然后再随机选中一个$X_j$，计算原型向量与$X_j$的距离，再根据公式更新P’。</strong></p>
 <p><strong>(3) 满足条件是循环次数到预设值，或者原型向量更新很小，甚至不再更新。由于样本随机选择，不是所有的样本都会用到。</strong></p>
 <h2 id="（3）高斯混合聚类-Mixture-of-Gaussian"><a href="#（3）高斯混合聚类-Mixture-of-Gaussian" class="headerlink" title="（3）高斯混合聚类(Mixture of  Gaussian)"></a>（3）高斯混合聚类(Mixture of  Gaussian)</h2><h3 id="A-多元高斯分布"><a href="#A-多元高斯分布" class="headerlink" title="A. 多元高斯分布"></a>A. 多元高斯分布</h3><script type="math/tex; mode=display">
 p(\boldsymbol{x})=\frac{1}{(2 \pi)^{\frac{n}{2}}|\mathbf{\Sigma}|^{\frac{1}{2}}} e^{-\frac{1}{2}(\boldsymbol{x}-\boldsymbol{\mu})^{\mathrm{T}} \mathbf{\Sigma}^{-1}(\boldsymbol{x}-\boldsymbol{\mu})}\tag9</script><p>这里的$x$是样本空间$X$中含有n维的某样本，$μ$是$n$维均值向量，$Σ$是$n\times n$的协方差矩阵，高斯分布由$μ$和$Σ$这两个参数决定。</p>
@@ -457,13 +457,13 @@ p_{\mathcal{M}}(\boldsymbol{x})=\sum_{i=1}^{k} \alpha_{i} \cdot p\left(\boldsymb
 <script type="math/tex; mode=display">
 \begin{aligned} p_{\mathcal{M}}\left(z_{j}=i | \boldsymbol{x}_{j}\right) &=\frac{P\left(z_{j}=i\right) \cdot p_{\mathcal{M}}\left(\boldsymbol{x}_{j} | z_{j}=i\right)}{p_{\mathcal{M}}\left(\boldsymbol{x}_{j}\right)} \\ &=\frac{\alpha_{i} \cdot p\left(\boldsymbol{x}_{j} | \boldsymbol{\mu}_{i}, \boldsymbol{\Sigma}_{i}\right)}{\sum_{l=1}^{k} \alpha_{l} \cdot p\left(\boldsymbol{x}_{j} | \boldsymbol{\mu}_{l}, \mathbf{\Sigma}_{l}\right)} \end{aligned}\tag{11}</script><p><strong>所以样本的生成过程可以看作是：首先根据先验分布$α_1,α_2,α_3,…,α_k$选择高斯混合成分($α_i$就是每个混合成分的抽中概率)，然后根据该混合成分的概率密度函数来采样，生成新样本。</strong></p>
 <p>（iii）算法过程</p>
-<p><img src="/2019/06/01/clustering/C:/Users\asus1\AppData\Roaming\Typora\typora-user-images\1563090806596.png" alt="1563090806596"></p>
+<p><img src="/2019/06/01/clustering/8.png" alt="1563090806596"></p>
 <p>EM算法中，其中隐变量对应模型的高斯混合成分，表示观测数据$x_j$具体是来自第k个分模型的数据是未知的，<strong>即对于给定的数据$x_j$，计算该数据属于第k个高斯混合分布生成的后验概率$γ_ji$是未知的隐变量。$γ_ji$也可以看作是第j个样本所对应的第i个高斯分布的概率。</strong>而观测数据$x_j$是已知变量。</p>
 <p><strong>EM算法的E步骤：</strong>利用当前估计的参数值计算对数似然的期望值。混合高斯模型这里是计算隐变量—-&gt;根据本文公式（11）计算后验概率，然后有了后验概率$γ_ji$；</p>
 <p><strong>EM算法的M步骤：</strong>寻找能使E步似然期望（这里是后验概率）最大化的参数值—-&gt;根据导数为0求得公式迭代参数；</p>
 <p>循环E步和M步，直到收敛。收敛条件可以是最大迭代次数或参数(μ，Σ，α)几乎不变。然后更新参数，最后划分样本的簇。具体划分规定如下图：</p>
 <p>​      可以根据最终参数计算k个高斯分布，直接从最大的后验分布概率中选一个作为最终划分的簇。</p>
-<p><img src="/2019/06/01/clustering/C:/Users\asus1\AppData\Roaming\Typora\typora-user-images\1563104680549.png" alt="156310549"></p>
+<p><img src="/2019/06/01/clustering/9.png" alt="156310549"></p>
 <p><strong>西瓜书具体公式推导参考南瓜书： <a href="https://datawhalechina.github.io/pumpkin-book/#/chapter9/chapter9" target="_blank" rel="noopener">https://datawhalechina.github.io/pumpkin-book/#/chapter9/chapter9</a> ，这里有几乎所有细致的公式推导。</strong></p>
 <h3 id="C-GMM和K-means的异同点"><a href="#C-GMM和K-means的异同点" class="headerlink" title="C. GMM和K-means的异同点"></a>C. GMM和K-means的异同点</h3><p>可以看出GMM和K-means还是有很大的相同点的。GMM中数据对高斯分量的响应度就相当于K-means中的距离计算，GMM中的根据响应度计算高斯分量参数就相当于K-means中计算分类点的位置。然后它们都通过不断迭代达到最优。不同的是：<strong>GMM模型给出的是每一个观测点由哪个高斯分量生成的概率，而K-means直接给出一个观测点属于哪一类</strong>。</p>
 <h1 id="3-密度聚类"><a href="#3-密度聚类" class="headerlink" title="3.密度聚类"></a>3.密度聚类</h1><h2 id="（1）DBSCAN算法"><a href="#（1）DBSCAN算法" class="headerlink" title="（1）DBSCAN算法"></a>（1）DBSCAN算法</h2><p>此类算法假设数据可以通过样本分布的紧密程度来聚类。了解一个著名的密度聚类算法DBSCAN算法（DBSCAN，Density-Based Spatial Clustering of Applications with Noise），<strong>其中有一对参数(ε，MinPts)，ε表示到核心样本的距离（即样本集D中所有其它样本到某个样本$x_j$的距离不大于ε），MinPts表示ε-邻域中最低包含的样本个数。</strong></p>
@@ -474,8 +474,8 @@ p_{\mathcal{M}}(\boldsymbol{x})=\sum_{i=1}^{k} \alpha_{i} \cdot p\left(\boldsymb
 <li><strong>密度可达：通过其它核心对象间接访问。(有向)</strong></li>
 <li><strong>密度相连：样本之间只能通过其它核心样本分别访问。（无向）</strong></li>
 </ol>
-<p><img src="/2019/06/01/clustering/C:/Users\asus1\AppData\Roaming\Typora\typora-user-images\1563280725137.png" alt="337"></p>
-<h2 id="（2）DBSCAN算法伪代码"><a href="#（2）DBSCAN算法伪代码" class="headerlink" title="（2）DBSCAN算法伪代码"></a>（2）DBSCAN算法伪代码</h2><p><img src="/2019/06/01/clustering/C:/Users\asus1\AppData\Roaming\Typora\typora-user-images\1563326026792.png" alt="15"></p>
+<p><img src="/2019/06/01/clustering/10.png" alt="337"></p>
+<h2 id="（2）DBSCAN算法伪代码"><a href="#（2）DBSCAN算法伪代码" class="headerlink" title="（2）DBSCAN算法伪代码"></a>（2）DBSCAN算法伪代码</h2><p><img src="/2019/06/01/clustering/11.png" alt="15"></p>
 <p>1-7行就是找出所有核心对象，10-24行是以随机一个核心对象开始，找出可以都其密度可达的样本组合成聚类簇，直到所有核心对象被访问过。</p>
 <h3 id="A-找出所有核心对象"><a href="#A-找出所有核心对象" class="headerlink" title="A. 找出所有核心对象"></a>A. 找出所有核心对象</h3><p>首先确定ε-邻域中ε的大小，就是ε-邻域内其他样本到核心对象的距离，这里默认是欧氏距离，然后统计ε-邻域内样本个数（即其它样本到核心对象的距离小于等于ε的样本个数），符合大于等于MinPts的话就添加该样本到核心对象集合Ω中，如此找出所有核心对象。</p>
 <h3 id="B-找出聚类簇"><a href="#B-找出聚类簇" class="headerlink" title="B. 找出聚类簇"></a>B. 找出聚类簇</h3><h4 id="（i）初始化"><a href="#（i）初始化" class="headerlink" title="（i）初始化"></a>（i）初始化</h4><p>初始化聚类数量k、未访问的样本集合Γ。<strong>第10行伪代码当核心对象集合Ω不为空的时候，说明能以ε-邻域为范围的、符合样本个数MinPts限制的样本仍可以访问到，所以反过来思考：若核心对象集合Ω为空，说明当前已经聚完一个簇了（即说明能以ε-邻域为范围的、符合样本个数MinPts限制的样本都被访问到了）</strong>。</p>
@@ -540,9 +540,9 @@ N_ε(q) &=  N_ε(x_1) = \{x_1,x_2,x_3,x_4,x_5\}
 <p><img src="/2019/06/01/clustering/4.png" alt="4"></p>
 <h2 id="（2）AGNES算法"><a href="#（2）AGNES算法" class="headerlink" title="（2）AGNES算法"></a>（2）AGNES算法</h2><p><strong>核心思想就是采用自底向上的层次聚类方式，将样本中的每一个样本看作是初始聚类簇，然后找出距离最近的聚类簇进行合并，重复此过程，达到预定的聚类簇个数。</strong></p>
 <p><strong>距离计算方式：</strong></p>
-<p><img src="/2019/06/01/clustering/C:/Users\asus1\AppData\Roaming\Typora\typora-user-images\1563413797468.png" alt="1563413797468"></p>
+<p><img src="/2019/06/01/clustering/12.png" alt="1563413797468"></p>
 <p><strong>算法伪代码：</strong></p>
-<p><img src="/2019/06/01/clustering/C:/Users\asus1\AppData\Roaming\Typora\typora-user-images\1563417090781.png" alt="1563417090781"></p>
+<p><img src="/2019/06/01/clustering/13.png" alt="1563417090781"></p>
 <p>例子不举了，懒。</p>
 <h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p>1.GMM介绍：<a href="https://blog.csdn.net/xmu_jupiter/article/details/50889023" target="_blank" rel="noopener">https://blog.csdn.net/xmu_jupiter/article/details/50889023</a> </p>
 <p>2.西瓜书第九章</p>
@@ -683,7 +683,7 @@ N_ε(q) &=  N_ε(x_1) = \{x_1,x_2,x_3,x_4,x_5\}
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
