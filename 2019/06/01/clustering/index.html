@@ -100,7 +100,7 @@
 <meta property="og:image" content="http://yoursite.com/2019/06/01/clustering/4.png">
 <meta property="og:image" content="http://yoursite.com/2019/06/01/clustering/12.png">
 <meta property="og:image" content="http://yoursite.com/2019/06/01/clustering/13.png">
-<meta property="og:updated_time" content="2019-07-22T09:20:23.144Z">
+<meta property="og:updated_time" content="2019-07-22T09:40:36.182Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="聚类算法">
 <meta name="twitter:description" content="1.距离的计算方式（1）距离有什么特性？ \begin{alignat}{2} 非负性：dist(x_i,x_j) &amp;\ge 0\tag{1}\\ 同一性：dist(x_i,x_j) &amp;= 0当且仅当x_i=x_j\tag{2}\\ 对称性：dist(x_i,x_j) &amp;= dist(x_j,x_i)\tag{3}\\ 直递性：dist(x_i,x_j) &amp;\leq dist(x_i,x_k)+d">
@@ -444,7 +444,7 @@ dist（A,B）=max(|X_A-X_B|,|Y_A-Y_B|)\tag8</script><p>即两点横纵坐标差�
 <h2 id="（2）学习向量量化-Learning-Vector-Quantization"><a href="#（2）学习向量量化-Learning-Vector-Quantization" class="headerlink" title="（2）学习向量量化(Learning  Vector  Quantization)"></a>（2）学习向量量化(Learning  Vector  Quantization)</h2><p><strong>核心思想：人工确定要聚类的簇，找出1个原型向量，使得周围样本X与此向量最近，则分好1簇，其它簇类似。</strong>其实和K均值想法类似，只不过LVQ算法是生成原型向量，找的方式都用到了最小距离，但是更新方式不同，Kmeans是求均值。LVQ算法如何找？看下图：</p>
 <p><img src="/2019/06/01/clustering/LVQ.PNG" alt="21"></p>
 <p><strong>注意：(1) 原型向量初始化直接是样本中随机选择的，初始化原型向量的类标也是随机的</strong></p>
-<p><strong>(2)然后计算所有原型向量与随机抽取的$X_j$之间的距离，找出最小的原型向量，若原型向量的类标与$X_j$原始类标一样，就把原型向量$P_i^<em>$靠近$X_j$，若原型向量的类标与$X_j$原始类标不一样，则把原型向量$P_i^{</em>}$远离$X_j$。然后再随机选中一个$X_j$，计算原型向量与$X_j$的距离，再根据公式更新P’。</strong></p>
+<p>(2)然后计算所有原型向量与随机抽取的$X_j$之间的距离，找出最小的原型向量，<strong>若原型向量的类标与$X_j$原始类标一样，就把原型向量$P_i^*$靠近$X_j$，若原型向量的类标与$X_j$原始类标不一样</strong>，则把原型向量$P_i^*$远离$X_j$。然后再随机选中一个$X_j$，计算原型向量与$X_j$的距离，再根据公式更新P’ 。</p>
 <p><strong>(3) 满足条件是循环次数到预设值，或者原型向量更新很小，甚至不再更新。由于样本随机选择，不是所有的样本都会用到。</strong></p>
 <h2 id="（3）高斯混合聚类-Mixture-of-Gaussian"><a href="#（3）高斯混合聚类-Mixture-of-Gaussian" class="headerlink" title="（3）高斯混合聚类(Mixture of  Gaussian)"></a>（3）高斯混合聚类(Mixture of  Gaussian)</h2><h3 id="A-多元高斯分布"><a href="#A-多元高斯分布" class="headerlink" title="A. 多元高斯分布"></a>A. 多元高斯分布</h3><script type="math/tex; mode=display">
 p(\boldsymbol{x})=\frac{1}{(2 \pi)^{\frac{n}{2}}|\mathbf{\Sigma}|^{\frac{1}{2}}} e^{-\frac{1}{2}(\boldsymbol{x}-\boldsymbol{\mu})^{\mathrm{T}} \mathbf{\Sigma}^{-1}(\boldsymbol{x}-\boldsymbol{\mu})}\tag9</script><p>这里的$x$是样本空间$X$中含有n维的某样本，$μ$是$n$维均值向量，$Σ$是$n\times n$的协方差矩阵，高斯分布由$μ$和$Σ$这两个参数决定。</p>
@@ -459,9 +459,9 @@ p_{\mathcal{M}}(\boldsymbol{x})=\sum_{i=1}^{k} \alpha_{i} \cdot p\left(\boldsymb
 <p>（iii）算法过程</p>
 <p><img src="/2019/06/01/clustering/8.png" alt="1563090806596"></p>
 <p>EM算法中，其中隐变量对应模型的高斯混合成分，表示观测数据$x_j$具体是来自第k个分模型的数据是未知的，<strong>即对于给定的数据$x_j$，计算该数据属于第k个高斯混合分布生成的后验概率$γ_ji$是未知的隐变量。$γ_ji$也可以看作是第j个样本所对应的第i个高斯分布的概率。</strong>而观测数据$x_j$是已知变量。</p>
-<p><strong>EM算法的E步骤：</strong>利用当前估计的参数值计算对数似然的期望值。混合高斯模型这里是计算隐变量—-&gt;根据本文公式（11）计算后验概率，然后有了后验概率$γ_ji$；</p>
-<p><strong>EM算法的M步骤：</strong>寻找能使E步似然期望（这里是后验概率）最大化的参数值—-&gt;根据导数为0求得公式迭代参数；</p>
-<p>循环E步和M步，直到收敛。收敛条件可以是最大迭代次数或参数(μ，Σ，α)几乎不变。然后更新参数，最后划分样本的簇。具体划分规定如下图：</p>
+<p><strong>EM算法的E步骤：利用当前估计的参数值计算对数似然的期望值。混合高斯模型这里是计算隐变量—-&gt;根据本文公式（11）计算后验概率，然后有了后验概率$γ_ji$；</strong></p>
+<p><strong>EM算法的M步骤：寻找能使E步似然期望（这里是后验概率）最大化的参数值—-&gt;根据导数为0求得公式迭代参数；</strong></p>
+<p>循环E步和M步，直到收敛。<strong>收敛条件可以是最大迭代次数或参数(μ，Σ，α)几乎不变。</strong>然后更新参数，最后划分样本的簇。具体划分规定如下图：</p>
 <p>​      可以根据最终参数计算k个高斯分布，直接从最大的后验分布概率中选一个作为最终划分的簇。</p>
 <p><img src="/2019/06/01/clustering/9.png" alt="156310549"></p>
 <p><strong>西瓜书具体公式推导参考南瓜书： <a href="https://datawhalechina.github.io/pumpkin-book/#/chapter9/chapter9" target="_blank" rel="noopener">https://datawhalechina.github.io/pumpkin-book/#/chapter9/chapter9</a> ，这里有几乎所有细致的公式推导。</strong></p>
@@ -522,8 +522,8 @@ N_ε(q) &=  N_ε(x_1) = \{x_1,x_2,x_3,x_4,x_5\}
 </ul>
 <p>  ​    更新Q：将领域$N_ε(x_1)$内的未被访问的样本即交集$\Delta=\{x_2,x_3,x_4,x_5\}$加入到队列Q中，此时$Q=\{x_1,x_2,x_3,x_4,x_5\}$</p>
 <p>  ​        更新Γ：去掉已经访问的样本集：$Γ = \{x_6,x_7,x_8\}$；</p>
-<p>  判别Q中下一个 样本$x_2$，$x_2$是核心对象，所以再求领域内未被访问的样本集$\Delta=\{\}$，发现是空集合，则后面两个操作等于没操作。然后继续往后判断样本$x_3$，不更新$\Delta 、Q、Γ$；判断样本$x_4$，不更新$\Delta 、Q、Γ$；再判断Q中的样本$x_5$，不更新$\Delta 、Q、Γ$。最后Q为空，结束本次循环。</p>
-<p>多了一个簇：k+1，新簇$C_1=Γ_{old} \backslash Γ= \{x_1,x_2,x_3,x_4,x_5,x_6,x_7,x_8\}-\{x_6,x_7,x_8\}=\{x_1,x_2,x_3,x_4,x_5\}$，更新核心对象Ω，把当前簇中所有核心对象都去掉；</p>
+<p>判别Q中下一个 样本$x_2$，$x_2$是核心对象，所以再求领域内未被访问的样本集$\Delta=\{\}$，发现是空集合，则后面两个操作等于没操作。然后继续往后判断样本$x_3$，不更新$\Delta 、Q、Γ$；判断样本$x_4$，不更新$\Delta 、Q、Γ$；再判断Q中的样本$x_5$，不更新$\Delta 、Q、Γ$。最后Q为空，结束本次循环。</p>
+<p>然后得到一个新簇，簇的数量要更新：k+1，新簇$C_1=Γ_{old} \backslash Γ= \{x_1,x_2,x_3,x_4,x_5,x_6,x_7,x_8\}-\{x_6,x_7,x_8\}=\{x_1,x_2,x_3,x_4,x_5\}$，更新核心对象Ω，把当前簇中所有核心对象都去掉；</p>
 <p>继续最外层的循环，寻找新乐子，不是 ，是新簇 = =，这里显然是簇$C_2=\{x_6,x_7,x_8\}$。</p>
 <p>对于此例子来说，最终结果是划分为2个簇，如下图所示：</p>
 <p><img src="/2019/06/01/clustering/3.png" alt="3"></p>
