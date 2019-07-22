@@ -87,17 +87,17 @@
 <meta property="og:site_name" content="Hello,Armigo!">
 <meta property="og:description" content="1.KD树的构建KD树本质上是一颗平衡二叉树，人狠话不多，直接上渣图： 看完以后，这啥！不管，其中红色的L = j mod k +1 ，L是表示从K个维度中选择某一个维度$x^{(L)}$作为中位数选择的范围，把所有$x^{(L)}$的值从小到大排序后，选择中位数的数字进行划分。 2.KD树的构建例子由于愚蠢和缺乏想象力，看不懂上面的伪代码。举例说明，由于深度j初始化从0开始，直接计算第一个维度选">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2019/07/21/KD-Tree/C:/Users/asus1/AppData/Roaming/Typora/typora-user-images/1563675775047.png">
-<meta property="og:image" content="http://yoursite.com/2019/07/21/KD-Tree/C:/Users/asus1/AppData/Roaming/Typora/typora-user-images/1563676240477.png">
-<meta property="og:image" content="http://yoursite.com/2019/07/21/KD-Tree/C:/Users/asus1/AppData/Roaming/Typora/typora-user-images/1563711575619.png">
-<meta property="og:image" content="http://yoursite.com/2019/07/21/KD-Tree/C:/Users/asus1/AppData/Roaming/Typora/typora-user-images/1563711593508.png">
-<meta property="og:image" content="http://yoursite.com/2019/07/21/KD-Tree/C:/Users/asus1/AppData/Roaming/Typora/typora-user-images/1563711835714.png">
-<meta property="og:image" content="http://yoursite.com/2019/07/21/KD-Tree/C:/Users/asus1/AppData/Roaming/Typora/typora-user-images/1563711867215.png">
-<meta property="og:updated_time" content="2019-07-21T13:21:37.538Z">
+<meta property="og:image" content="http://yoursite.com/2019/07/21/KD-Tree/1.png">
+<meta property="og:image" content="http://yoursite.com/2019/07/21/KD-Tree/3.png">
+<meta property="og:image" content="http://yoursite.com/2019/07/21/KD-Tree/4.png">
+<meta property="og:image" content="http://yoursite.com/2019/07/21/KD-Tree/5.png">
+<meta property="og:image" content="http://yoursite.com/2019/07/21/KD-Tree/6.png">
+<meta property="og:image" content="http://yoursite.com/2019/07/21/KD-Tree/7.png">
+<meta property="og:updated_time" content="2019-07-22T08:19:28.902Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="KD树的构建">
 <meta name="twitter:description" content="1.KD树的构建KD树本质上是一颗平衡二叉树，人狠话不多，直接上渣图： 看完以后，这啥！不管，其中红色的L = j mod k +1 ，L是表示从K个维度中选择某一个维度$x^{(L)}$作为中位数选择的范围，把所有$x^{(L)}$的值从小到大排序后，选择中位数的数字进行划分。 2.KD树的构建例子由于愚蠢和缺乏想象力，看不懂上面的伪代码。举例说明，由于深度j初始化从0开始，直接计算第一个维度选">
-<meta name="twitter:image" content="http://yoursite.com/2019/07/21/KD-Tree/C:/Users/asus1/AppData/Roaming/Typora/typora-user-images/1563675775047.png">
+<meta name="twitter:image" content="http://yoursite.com/2019/07/21/KD-Tree/1.png">
 
 
 
@@ -376,17 +376,17 @@
       
 
       
-        <h1 id="1-KD树的构建"><a href="#1-KD树的构建" class="headerlink" title="1.KD树的构建"></a>1.KD树的构建</h1><p>KD树本质上是一颗平衡二叉树，人狠话不多，直接上渣图：<img src="/2019/07/21/KD-Tree/C:/Users\asus1\AppData\Roaming\Typora\typora-user-images\1563675775047.png" alt="1563675775047"></p>
+        <h1 id="1-KD树的构建"><a href="#1-KD树的构建" class="headerlink" title="1.KD树的构建"></a>1.KD树的构建</h1><p>KD树本质上是一颗平衡二叉树，人狠话不多，直接上渣图：<img src="/2019/07/21/KD-Tree/1.png" alt="1"></p>
 <p>看完以后，这啥！不管，其中红色的L = j mod k +1 ，L是表示从K个维度中选择某一个维度$x^{(L)}$作为中位数选择的范围，把所有$x^{(L)}$的值从小到大排序后，选择中位数的数字进行划分。</p>
 <h1 id="2-KD树的构建例子"><a href="#2-KD树的构建例子" class="headerlink" title="2.KD树的构建例子"></a>2.KD树的构建例子</h1><p><strong>由于愚蠢和缺乏想象力，看不懂上面的伪代码。举例说明，由于深度j初始化从0开始，直接计算第一个维度选取L=0 mod 2 + 1 = 1，所以选择第一个维度属性$x^{(L)}$，即所有数据点的第一列值：2,5,9,4,8,7；排序后为2,4,5,7,8,9；选择中位数是7，然后在图中左边是二维表示，7是横坐标，故竖着划分数据点，左边是比中位数小的数据（2,3）、（4,7），（5,4），右边是（8,1）、（9,6）。接着把上一轮的L赋值给深度j，再计算L = 1 mod 2 + 1 = 2，所以考虑维度$x^{(2)}$，对于左边三个点来说，排序后是3,4,7，中位数是4，于是在平面中纵坐标y=4分割左侧3个数据点，上面大，下面小。对于右侧1,6，中位数选择6，于是纵坐标y=6分割右侧2个数据点，此时点（9,6）在线y=6上，下面是（8,1）。继续划分，L = 2 mod 2 + 1 = 1，于是又选择第一个维度作为划分属性，看左上角只有（4,7），直接选择x=4作为分割线；左下角只有（2,3），x=2为划分线；右下角只有（8,1）未划分，就一个数，中位数自然是本身了，故x=8为划分线；发现所有数据点都在线上，没有未划分的点在超矩形中；分割完毕。</strong></p>
-<p><img src="/2019/07/21/KD-Tree/C:/Users\asus1\AppData\Roaming\Typora\typora-user-images\1563676240477.png" alt="156367624477"></p>
+<p><img src="/2019/07/21/KD-Tree/3.png" alt="156367624477"></p>
 <p>树的排列：划分完以后，左子树的根结点是（5,4）,右结点的根结点是（9,6）。左侧上面数值大对应右子树，下面小对应左子树。右侧上面（9,6）大，放在右子树，下面(8,1)小，放在左子树。总的来说在2维下，就是”上右下左，左左右右”。瞎编的==，即上面数据大放右侧，下面数据小放左侧，左边数据小放左侧，右边数据大放右侧。</p>
-<h1 id="3-KD树的搜索"><a href="#3-KD树的搜索" class="headerlink" title="3.KD树的搜索"></a>3.KD树的搜索</h1><h2 id="（1）伪代码"><a href="#（1）伪代码" class="headerlink" title="（1）伪代码"></a>（1）伪代码</h2><p><img src="/2019/07/21/KD-Tree/C:/Users\asus1\AppData\Roaming\Typora\typora-user-images\1563711575619.png" alt="156371157619"></p>
-<p><img src="/2019/07/21/KD-Tree/C:/Users\asus1\AppData\Roaming\Typora\typora-user-images\1563711593508.png" alt="156371508"></p>
+<h1 id="3-KD树的搜索"><a href="#3-KD树的搜索" class="headerlink" title="3.KD树的搜索"></a>3.KD树的搜索</h1><h2 id="（1）伪代码"><a href="#（1）伪代码" class="headerlink" title="（1）伪代码"></a>（1）伪代码</h2><p><img src="/2019/07/21/KD-Tree/4.png" alt="15"></p>
+<p><img src="/2019/07/21/KD-Tree/5.png" alt="8"></p>
 <p><strong>KD树的平均计算复杂度是$O(logN)$，$N$是实例总数。</strong></p>
-<p><img src="/2019/07/21/KD-Tree/C:/Users\asus1\AppData\Roaming\Typora\typora-user-images\1563711835714.png" alt="1563711835714"></p>
+<p><img src="/2019/07/21/KD-Tree/6.png" alt="1563711835714"></p>
 <h2 id="（2）KD搜索的例子"><a href="#（2）KD搜索的例子" class="headerlink" title="（2）KD搜索的例子"></a>（2）KD搜索的例子</h2><p>我那愚蠢的弟弟丫 ==，还是看不懂。举个栗子？？先看看这个前序遍历，中序遍历，后序遍历：<a href="https://blog.csdn.net/qq_33243189/article/details/80222629。" target="_blank" rel="noopener">https://blog.csdn.net/qq_33243189/article/details/80222629。</a></p>
-<p><img src="/2019/07/21/KD-Tree/C:/Users\asus1\AppData\Roaming\Typora\typora-user-images\1563711867215.png" alt="1563711867215"></p>
+<p><img src="/2019/07/21/KD-Tree/7.png" alt="1563711867215"></p>
 <p>上面图中红色就是由第2节中例子划分好的KD树，<strong>假设求(2.1,3.1)的最近邻结点，怎么做？</strong>首先判别第一维变量2.1小于根结点的7，故（2.1,3.1）划分到左子树；接着判别第二个维度变量值3.1发现小于4，于是划分到（2,3），（2,3）是叶结点即终端结点，所以（2,3）是(2.1,3.1)的一个临时的近邻结点，以(2.1,3.1)为圆心，（2,3）到(2.1,3.1)的距离为半径作一个圆圈，检查右子树的结点是否在圈中，若在还需要再到右子树检查是否有最近邻结点，若没有就回溯。这里显然（4,7）不在上面那个圈内，所以回溯到上一层的结点(5,4)，判别(5,4)和当前最近结点(2,3)哪一个距离(2.1,3.1)近？显然是(2,3)，所以当前最近邻结点不变还是(2,3)。还需要判别上面那个圈与结点(5,4)相交？不相交，该(5,4)结点右侧不再搜索，因为距离肯定大。往上回溯到根结点（7,2），以（2.1,3.1）为圆心，以0.1414为半径的圆更不会与x = 7超平面交割，因此不用进入（7,2）右子空间进行查找。至此，搜索路径中的节点已经全部回溯完，<strong>结束整个搜索，返回最近邻点（2,3），最近距离为0.1414。</strong></p>
 <h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p>1.前序遍历，中序遍历，后序遍历：<a href="https://blog.csdn.net/qq_33243189/article/details/80222629" target="_blank" rel="noopener">https://blog.csdn.net/qq_33243189/article/details/80222629</a></p>
 <p>2.KD树：<a href="https://www.cnblogs.com/earendil/p/8135074.html" target="_blank" rel="noopener">https://www.cnblogs.com/earendil/p/8135074.html</a></p>
