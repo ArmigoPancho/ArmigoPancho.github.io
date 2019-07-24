@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="PCA," />
 
 
 
@@ -79,16 +79,22 @@
 
 
 
-<meta name="description" content="Pour un poisson salé, le plus important est heureux!">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Hello,Armigo!">
-<meta property="og:url" content="http://yoursite.com/tags/SVD/index.html">
+<meta name="description" content="1.PCA介绍1.1概念基础对样本降维，较为简单的做法就是对原始高纬空间进行线性变换。比如给定样本$X=(x_1,x2,…,x_m)∈R^{d\times m}$；降低到$d\ ^{‘}$后：  Z = W^TX$z_i=W^Tx_i$即看作每一个原始样本与变换矩阵W做内积而得，且新空间的属性是原空间中的属性的线性组合。 1.2 PCA算法（Principal Component Analysis">
+<meta name="keywords" content="PCA">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PCA算法简介">
+<meta property="og:url" content="http://yoursite.com/2019/07/23/PCA/index.html">
 <meta property="og:site_name" content="Hello,Armigo!">
-<meta property="og:description" content="Pour un poisson salé, le plus important est heureux!">
+<meta property="og:description" content="1.PCA介绍1.1概念基础对样本降维，较为简单的做法就是对原始高纬空间进行线性变换。比如给定样本$X=(x_1,x2,…,x_m)∈R^{d\times m}$；降低到$d\ ^{‘}$后：  Z = W^TX$z_i=W^Tx_i$即看作每一个原始样本与变换矩阵W做内积而得，且新空间的属性是原空间中的属性的线性组合。 1.2 PCA算法（Principal Component Analysis">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/2019/07/23/PCA/3.png">
+<meta property="og:image" content="http://yoursite.com/2019/07/23/PCA/2.png">
+<meta property="og:image" content="http://yoursite.com/2019/07/23/PCA/4.png">
+<meta property="og:updated_time" content="2019-07-24T02:06:35.822Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello,Armigo!">
-<meta name="twitter:description" content="Pour un poisson salé, le plus important est heureux!">
+<meta name="twitter:title" content="PCA算法简介">
+<meta name="twitter:description" content="1.PCA介绍1.1概念基础对样本降维，较为简单的做法就是对原始高纬空间进行线性变换。比如给定样本$X=(x_1,x2,…,x_m)∈R^{d\times m}$；降低到$d\ ^{‘}$后：  Z = W^TX$z_i=W^Tx_i$即看作每一个原始样本与变换矩阵W做内积而得，且新空间的属性是原空间中的属性的线性组合。 1.2 PCA算法（Principal Component Analysis">
+<meta name="twitter:image" content="http://yoursite.com/2019/07/23/PCA/3.png">
 
 
 
@@ -118,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/tags/SVD/"/>
+  <link rel="canonical" href="http://yoursite.com/2019/07/23/PCA/"/>
 
 
 
 
 
-  <title>标签: SVD | Hello,Armigo!</title>
+  <title>PCA算法简介 | Hello,Armigo!</title>
   
 
 
@@ -143,7 +149,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -271,54 +277,209 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>SVD<small>标签</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/23/PCA/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Armigo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/0.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hello,Armigo!">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2019/05/09/SVD/" itemprop="url">
-              
-                <span itemprop="name">SVD简介</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">PCA算法简介</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-05-09T14:48:01+08:00"
-              content="2019-05-09" >
-          05-09
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-23T20:44:35+08:00">
+                2019-07-23
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/机器学习/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/07/23/PCA/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/07/23/PCA/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次阅读
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="1-PCA介绍"><a href="#1-PCA介绍" class="headerlink" title="1.PCA介绍"></a>1.PCA介绍</h1><h2 id="1-1概念基础"><a href="#1-1概念基础" class="headerlink" title="1.1概念基础"></a>1.1概念基础</h2><p>对样本降维，较为简单的做法就是对原始高纬空间进行线性变换。比如给定样本$X=(x_1,x2,…,x_m)∈R^{d\times m}$；<strong>降低到$d\ ^{‘}$</strong>后：</p>
+<script type="math/tex; mode=display">
+Z = W^TX</script><p><strong>$z_i=W^Tx_i$即看作每一个原始样本与变换矩阵W做内积而得，且新空间的属性是原空间中的属性的线性组合。</strong></p>
+<h2 id="1-2-PCA算法（Principal-Component-Analysis）"><a href="#1-2-PCA算法（Principal-Component-Analysis）" class="headerlink" title="1.2 PCA算法（Principal Component Analysis）"></a>1.2 PCA算法（Principal Component Analysis）</h2><p>主成分分析（PCA）是常用的降维方法之一。</p>
+<p><img src="/2019/07/23/PCA/3.png" alt="2"></p>
+<p><strong>原样本点$x_i$和降维后样本点$\hat{x}_i$的距离为：</strong></p>
+<script type="math/tex; mode=display">
+\begin{aligned} \sum_{i=1}^{m}\left\|\sum_{j=1}^{d^{\prime}} z_{i j} \boldsymbol{w}_{j}-\boldsymbol{x}_{i}\right\|^{2} &=\sum_{i=1}^{m} \boldsymbol{z}_{i}^{\mathrm{T}} \boldsymbol{z}_{i}-2 \sum_{i=1}^{m} \boldsymbol{z}_{i}^{\mathrm{T}} \mathbf{W}^{\mathrm{T}} \boldsymbol{x}_{i}+\text { const } \\ & \propto-\operatorname{tr}\left(\mathbf{W}^{\mathrm{T}}\left(\sum_{i=1}^{m} \boldsymbol{x}_{i} \boldsymbol{x}_{i}^{\mathrm{T}}\right) \mathbf{W}\right) \end{aligned}</script><p>上面式子如何推导？由式子$z_i=W^Tx_i，W^TW=I$代入上式：</p>
+<script type="math/tex; mode=display">
+\begin{aligned} \sum_{i=1}^{m}\left\|\sum_{j=1}^{d^{\prime}} z_{i j} \boldsymbol{w}_{j}-\boldsymbol{x}_{i}\right\|_{2}^{2} &=\sum_{i=1}^{m}\left\|\boldsymbol{W} \boldsymbol{z}_{i}-\boldsymbol{x}_{i}\right\|_{2}^{2} \\ &=\sum_{i=1}^{m}\left(\boldsymbol{W} \boldsymbol{z}_{i}\right)^{T}\left(\boldsymbol{W} \boldsymbol{z}_{i}\right)-2 \sum_{i=1}^{m}\left(\boldsymbol{W} \boldsymbol{z}_{i}\right)^{T} \boldsymbol{x}_{i}+\sum_{i=1}^{m} \boldsymbol{x}_{i}^{T} \boldsymbol{x}_{i} \\ &=\sum_{i=1}^{m} \boldsymbol{z}_{i}^{T} \boldsymbol{z}_{i}-2 \sum_{i=1}^{m} \boldsymbol{z}_{i}^{T} \boldsymbol{W}^{T} \boldsymbol{x}_{i}+\sum_{i=1}^{m} \boldsymbol{x}_{i}^{T} \boldsymbol{x}_{i} \\
+&=\sum_{i=1}^{m} \boldsymbol{z}_{i}^{T} \boldsymbol{z}_{i}-2 \sum_{i=1}^{m} \boldsymbol{z}_{i}^{T} \boldsymbol{z}_{i}+\sum_{i=1}^{m} \boldsymbol{x}_{i}^{T} \boldsymbol{x}_{i} \\
+
+ &=-\sum_{i=1}^{m} \boldsymbol{z}_{i}^{T} \boldsymbol{z}_{i}+\sum_{i=1}^{m} \boldsymbol{x}_{i}^{T} \boldsymbol{x}_{i} \\
+
+&=-\operatorname{tr}\left(\boldsymbol{W}^{T}\left(\sum_{i=1}^{m} \boldsymbol{x}_{i} \boldsymbol{x}_{i}^{T}\right) \boldsymbol{W}\right)+\sum_{i=1}^{m} \boldsymbol{x}_{i}^{T} \boldsymbol{x}_{i} \\ 
+
+&\propto -\operatorname{tr}\left(\boldsymbol{W}^{T}\left(\sum_{i=1}^{m} \boldsymbol{x}_{i} \boldsymbol{x}_{i}^{T}\right) \boldsymbol{W}\right) \quad\quad（公式1） \\ 
+&其中，\sum_{i=1}^{m}x_i^Tx_i是常数，不影响优化。
+\end{aligned}</script><p><strong>由上面公式1可知，最小化公式1即为优化目标：</strong></p>
+<p><img src="/2019/07/23/PCA/2.png" alt="2"></p>
+<h2 id="1-3-PCA伪代码"><a href="#1-3-PCA伪代码" class="headerlink" title="1.3 PCA伪代码"></a>1.3 PCA伪代码</h2><p><img src="/2019/07/23/PCA/4.png" alt=""></p>
+<p>2.</p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ol>
+<li>公式参考： <a href="https://datawhalechina.github.io/pumpkin-book/#/chapter10/chapter10" target="_blank" rel="noopener">https://datawhalechina.github.io/pumpkin-book/#/chapter10/chapter10</a></li>
+<li>西瓜书第10章节</li>
+</ol>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/PCA/" rel="tag"># PCA</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/07/21/KD-Tree/" rel="next" title="KD树的构建">
+                <i class="fa fa-chevron-left"></i> KD树的构建
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -326,6 +487,13 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
 
         </div>
         
@@ -346,8 +514,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -421,6 +598,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-PCA介绍"><span class="nav-text">1.PCA介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1概念基础"><span class="nav-text">1.1概念基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-PCA算法（Principal-Component-Analysis）"><span class="nav-text">1.2 PCA算法（Principal Component Analysis）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-PCA伪代码"><span class="nav-text">1.3 PCA伪代码</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-text">参考</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -594,6 +787,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
