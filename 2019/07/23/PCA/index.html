@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="PCA," />
+  <meta name="keywords" content="PCA,Isomap算法,LLE算法," />
 
 
 
@@ -80,9 +80,9 @@
 
 
 <meta name="description" content="1.PCA介绍1.1概念基础对样本降维，较为简单的做法就是对原始高纬空间进行线性变换。比如给定样本$X=(x_1,x2,…,x_m)∈R^{d\times m}$；降低到$d\ ^{‘}$后：  Z = W^TX$z_i=W^Tx_i$即看作每一个原始样本与变换矩阵W做内积而得，且新空间的属性是原空间中的属性的线性组合。 1.2 PCA算法（Principal Component Analysis">
-<meta name="keywords" content="PCA">
+<meta name="keywords" content="PCA,Isomap算法,LLE算法">
 <meta property="og:type" content="article">
-<meta property="og:title" content="PCA算法简介">
+<meta property="og:title" content="降维算法简介">
 <meta property="og:url" content="http://yoursite.com/2019/07/23/PCA/index.html">
 <meta property="og:site_name" content="Hello,Armigo!">
 <meta property="og:description" content="1.PCA介绍1.1概念基础对样本降维，较为简单的做法就是对原始高纬空间进行线性变换。比如给定样本$X=(x_1,x2,…,x_m)∈R^{d\times m}$；降低到$d\ ^{‘}$后：  Z = W^TX$z_i=W^Tx_i$即看作每一个原始样本与变换矩阵W做内积而得，且新空间的属性是原空间中的属性的线性组合。 1.2 PCA算法（Principal Component Analysis">
@@ -90,9 +90,12 @@
 <meta property="og:image" content="http://yoursite.com/2019/07/23/PCA/3.png">
 <meta property="og:image" content="http://yoursite.com/2019/07/23/PCA/2.png">
 <meta property="og:image" content="http://yoursite.com/2019/07/23/PCA/4.png">
-<meta property="og:updated_time" content="2019-07-24T02:06:35.822Z">
+<meta property="og:image" content="http://yoursite.com/2019/07/23/PCA/5.png">
+<meta property="og:image" content="http://yoursite.com/2019/07/23/PCA/6.png">
+<meta property="og:image" content="http://yoursite.com/2019/07/23/PCA/7.PNG">
+<meta property="og:updated_time" content="2019-07-27T09:29:15.672Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="PCA算法简介">
+<meta name="twitter:title" content="降维算法简介">
 <meta name="twitter:description" content="1.PCA介绍1.1概念基础对样本降维，较为简单的做法就是对原始高纬空间进行线性变换。比如给定样本$X=(x_1,x2,…,x_m)∈R^{d\times m}$；降低到$d\ ^{‘}$后：  Z = W^TX$z_i=W^Tx_i$即看作每一个原始样本与变换矩阵W做内积而得，且新空间的属性是原空间中的属性的线性组合。 1.2 PCA算法（Principal Component Analysis">
 <meta name="twitter:image" content="http://yoursite.com/2019/07/23/PCA/3.png">
 
@@ -130,7 +133,7 @@
 
 
 
-  <title>PCA算法简介 | Hello,Armigo!</title>
+  <title>降维算法简介 | Hello,Armigo!</title>
   
 
 
@@ -308,7 +311,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">PCA算法简介</h1>
+          <h1 class="post-title" itemprop="name headline">降维算法简介</h1>
         
 
         <div class="post-meta">
@@ -402,7 +405,7 @@ Z = W^TX</script><p><strong>$z_i=W^Tx_i$即看作每一个原始样本与变换�
 <p><img src="/2019/07/23/PCA/3.png" alt="2"></p>
 <p><strong>原样本点$x_i$和降维后样本点$\hat{x}_i$的距离为：</strong></p>
 <script type="math/tex; mode=display">
-\begin{aligned} \sum_{i=1}^{m}\left\|\sum_{j=1}^{d^{\prime}} z_{i j} \boldsymbol{w}_{j}-\boldsymbol{x}_{i}\right\|^{2} &=\sum_{i=1}^{m} \boldsymbol{z}_{i}^{\mathrm{T}} \boldsymbol{z}_{i}-2 \sum_{i=1}^{m} \boldsymbol{z}_{i}^{\mathrm{T}} \mathbf{W}^{\mathrm{T}} \boldsymbol{x}_{i}+\text { const } \\ & \propto-\operatorname{tr}\left(\mathbf{W}^{\mathrm{T}}\left(\sum_{i=1}^{m} \boldsymbol{x}_{i} \boldsymbol{x}_{i}^{\mathrm{T}}\right) \mathbf{W}\right) \end{aligned}</script><p>上面式子如何推导？由式子$z_i=W^Tx_i，W^TW=I$代入上式：</p>
+\begin{aligned} \sum_{i=1}^{m}\left\|\sum_{j=1}^{d^{\prime}} z_{i j} \boldsymbol{w}_{j}-\boldsymbol{x}_{i}\right\|^{2} &=\sum_{i=1}^{m} \boldsymbol{z}_{i}^{\mathrm{T}} \boldsymbol{z}_{i}-2 \sum_{i=1}^{m} \boldsymbol{z}_{i}^{\mathrm{T}} \mathbf{W}^{\mathrm{T}} \boldsymbol{x}_{i}+\text { const } \\ & \propto-\operatorname{tr}\left(\mathbf{W}^{\mathrm{T}}\left(\sum_{i=1}^{m} \boldsymbol{x}_{i} \boldsymbol{x}_{i}^{\mathrm{T}}\right) \mathbf{W}\right) \end{aligned}</script><p>上面式子如何推导？由式子$z_i=W^Tx_i，W^TW=I$代入上式，其中$\sum_{j=1}^{d^{\prime}} z_{i j} \boldsymbol{w}_{j}$就是降维后样本$\hat{x}_i$的对应特性向量$z_i$，$z_i^Tz_i$就是内积，也就是二范数的平方第1项${(\sum_{j=1}^{d^{\prime}} z_{i j} \boldsymbol{w}_{j})}^2$：</p>
 <script type="math/tex; mode=display">
 \begin{aligned} \sum_{i=1}^{m}\left\|\sum_{j=1}^{d^{\prime}} z_{i j} \boldsymbol{w}_{j}-\boldsymbol{x}_{i}\right\|_{2}^{2} &=\sum_{i=1}^{m}\left\|\boldsymbol{W} \boldsymbol{z}_{i}-\boldsymbol{x}_{i}\right\|_{2}^{2} \\ &=\sum_{i=1}^{m}\left(\boldsymbol{W} \boldsymbol{z}_{i}\right)^{T}\left(\boldsymbol{W} \boldsymbol{z}_{i}\right)-2 \sum_{i=1}^{m}\left(\boldsymbol{W} \boldsymbol{z}_{i}\right)^{T} \boldsymbol{x}_{i}+\sum_{i=1}^{m} \boldsymbol{x}_{i}^{T} \boldsymbol{x}_{i} \\ &=\sum_{i=1}^{m} \boldsymbol{z}_{i}^{T} \boldsymbol{z}_{i}-2 \sum_{i=1}^{m} \boldsymbol{z}_{i}^{T} \boldsymbol{W}^{T} \boldsymbol{x}_{i}+\sum_{i=1}^{m} \boldsymbol{x}_{i}^{T} \boldsymbol{x}_{i} \\
 &=\sum_{i=1}^{m} \boldsymbol{z}_{i}^{T} \boldsymbol{z}_{i}-2 \sum_{i=1}^{m} \boldsymbol{z}_{i}^{T} \boldsymbol{z}_{i}+\sum_{i=1}^{m} \boldsymbol{x}_{i}^{T} \boldsymbol{x}_{i} \\
@@ -416,10 +419,40 @@ Z = W^TX</script><p><strong>$z_i=W^Tx_i$即看作每一个原始样本与变换�
 \end{aligned}</script><p><strong>由上面公式1可知，最小化公式1即为优化目标：</strong></p>
 <p><img src="/2019/07/23/PCA/2.png" alt="2"></p>
 <h2 id="1-3-PCA伪代码"><a href="#1-3-PCA伪代码" class="headerlink" title="1.3 PCA伪代码"></a>1.3 PCA伪代码</h2><p><img src="/2019/07/23/PCA/4.png" alt=""></p>
-<p>2.</p>
+<h1 id="2-Isomap算法"><a href="#2-Isomap算法" class="headerlink" title="2. Isomap算法"></a>2. Isomap算法</h1><h2 id="2-1啥是流形？"><a href="#2-1啥是流形？" class="headerlink" title="2.1啥是流形？"></a>2.1啥是流形？</h2><p><strong>流形</strong>的定义是”在局部与欧式距离同胚的空间。”即它在<strong>局部具有欧式空间的性质，能用欧氏距离来进行距离计算</strong>。感觉这是数学家的定义。欧几里得空间如下图：</p>
+<p><img src="/2019/07/23/PCA/5.png" alt="23"></p>
+<p>好抽象，再看另一组解释：流形是指连接在一起的区域。数学上，它是指一组点，且每个点都有其领域。<strong>一般的流形可以通过把许多平直的片折弯并粘连而成。</strong></p>
+<h2 id="2-2测地距离"><a href="#2-2测地距离" class="headerlink" title="2.2测地距离"></a>2.2测地距离</h2><p>测地线：表示在流形上连接两个点的最短距离。比如球面上的测地线就是球面上的大圆弧。</p>
+<p>测地距离：测地线的长度。</p>
+<p>由于在低纬度的流形上的测地距离不能用高纬空间的直线距离计算，比如地球表面上中国到美国的测地距离远远大于中国到美国在立体球面的直线距离（穿过地球的高纬直线距离）。<strong>但是根据流形在欧氏距离上面与欧式空间是同胚，即每个点基于欧氏距离找出其近邻点，然后建立一个近邻连接图，近邻点之间存在连接，非近邻点不存在连接，于是两点之间的测地线距离可以转化为近邻连接图之间的最短路径问题。就是用近邻点在欧式空间可计算的性质来近似测地线距离。</strong></p>
+<h2 id="3-3Isomap算法伪代码"><a href="#3-3Isomap算法伪代码" class="headerlink" title="3.3Isomap算法伪代码"></a>3.3Isomap算法伪代码</h2><p><img src="/2019/07/23/PCA/6.png" alt="1564194088892"></p>
+<p><strong>注意到Isomap算法只对训练样本降维，但是遇到新的样本怎么办？通常是把训练样本的高纬坐标作为输入，低维空间的坐标作为输出，训练一个回归算法对新样本进行预测。</strong></p>
+<h1 id="3-LLE算法"><a href="#3-LLE算法" class="headerlink" title="3.LLE算法"></a>3.LLE算法</h1><h2 id="3-1-概念"><a href="#3-1-概念" class="headerlink" title="3.1 概念"></a>3.1 概念</h2><p>局部线性嵌入（LLE，Locally Linear Embedding）试图保持近邻样本之间的线性关系。<strong>假设样本之间的$x_i$的坐标可以通过其近邻样本$x_j、x_k、x_l$之间的线性组合重构而得：</strong></p>
+<script type="math/tex; mode=display">
+\boldsymbol{x}_{i}=w_{i j} \boldsymbol{x}_{j}+w_{i k} \boldsymbol{x}_{k}+w_{i l} \boldsymbol{x}_{l}\tag{10.26}</script><p><strong>那LLE希望这种线性关系在低维空间也继续保持。</strong></p>
+<p>LLE先为每个样本$x_i$找到其近邻样本$Q_i$，然后计算基于$Q_i$中的样本点对$x_i$进行线性重构的系数$w_i$:</p>
+<script type="math/tex; mode=display">
+\begin{aligned} \min _{\boldsymbol{w}_{1}, \boldsymbol{w}_{2}, \ldots, \boldsymbol{w}_{m}} & \sum_{i=1}^{m}\left\|\boldsymbol{x}_{i}-\sum_{j \in Q_{i}} w_{i j} \boldsymbol{x}_{j}\right\|_{2}^{2} \\ \text { s.t. } & \sum_{j \in Q_{i}} w_{i j}=1 
+\end{aligned}\tag{10.27}</script><p>其中$x_j$是$x_i$的近邻样本，目的就是最小化近邻样本之间的距离，约束条件为权值$w_{ij}$和为1。<strong>每一个原始样本$x_i$与若干个邻域样本$x_j$线性表示出的另一个近似的$x_i$，同时减小它们之际的距离即为优化目标。</strong>这样的样本有m个，把m个样本都最小化即可。</p>
+<p>其$x_i$和$x_j$都是已知条件，令$C_{j k}=\left(\boldsymbol{x}_{i}-\boldsymbol{x}_{j}\right)^{\mathrm{T}}\left(\boldsymbol{x}_{i}-\boldsymbol{x}_{k}\right), w_{i j}$有闭式解：</p>
+<script type="math/tex; mode=display">
+w_{i j}=\frac{\sum_{k \in Q_{i}} C_{j k}^{-1}}{\sum_{l, s \in Q_{i}} C_{l s}^{-1}}\tag{10.28}</script><p>公式（10.28）参考链接：<a href="https://datawhalechina.github.io/pumpkin-book/#/chapter10/chapter10；" target="_blank" rel="noopener">https://datawhalechina.github.io/pumpkin-book/#/chapter10/chapter10；</a></p>
+<p>Isomap算法与LLE算法的不同是：Isomap算法试图保持近邻样本之间的距离不变，而LLE算法试图保持近邻样本之间的线性关系不变。**</p>
+<p><strong>由于LLE保证在低维空间中权重$w_i$不变，所以$x_i$对应低纬空间坐标$z_i$可通过如下求解</strong>：</p>
+<script type="math/tex; mode=display">
+\min _{\boldsymbol{z}_{1}, \boldsymbol{z}_{2}, \ldots, \boldsymbol{z}_{m}} \sum_{i=1}^{m}\left\|\boldsymbol{z}_{i}-\sum_{j \in Q_{i}} w_{i j} \boldsymbol{z}_{j}\right\|^{2}\tag{10.29}</script><p>利用令$\mathbf{Z}=\left(z_{1}, \boldsymbol{z}_{2}, \ldots, \boldsymbol{z}_{m}\right) \in \mathbb{R}^{d^{\prime} \times m},(\mathbf{W})_{i j}=w_{i j}$:</p>
+<script type="math/tex; mode=display">
+\mathbf{M}=(\mathbf{I}-\mathbf{W})^{\mathrm{T}}(\mathbf{I}-\mathbf{W})\tag{10.30}</script><p>优化目标重新写为：</p>
+<script type="math/tex; mode=display">
+\begin{array}{l}{\min _{\mathbf{Z}} \operatorname{tr}\left(\mathbf{Z} \mathbf{M} \mathbf{Z}^{\mathrm{T}}\right)} \\ {\text { s.t. } \mathbf{Z Z}^{\mathrm{T}}=\mathbf{I}}\end{array}\tag{10.31}</script><h2 id="3-2LLE算法伪代码"><a href="#3-2LLE算法伪代码" class="headerlink" title="3.2LLE算法伪代码"></a>3.2LLE算法伪代码</h2><p><img src="/2019/07/23/PCA/7.PNG" alt="1564213015966"></p>
+<h1 id="4-度量学习"><a href="#4-度量学习" class="headerlink" title="4.度量学习"></a>4.度量学习</h1><h2 id="4-1距离"><a href="#4-1距离" class="headerlink" title="4.1距离"></a>4.1距离</h2><p>看这个：<a href="https://www.hotheat.top/archives/af94264b.html" target="_blank" rel="noopener">https://www.hotheat.top/archives/af94264b.html</a>  或者  <a href="https://www.cnblogs.com/daniel-D/p/3244718.html" target="_blank" rel="noopener">https://www.cnblogs.com/daniel-D/p/3244718.html</a></p>
+<h2 id="4-2相关性"><a href="#4-2相关性" class="headerlink" title="4.2相关性"></a>4.2相关性</h2><p>皮尔森Pearson相关系数 VS 斯皮尔曼Spearman相关系数请参考：<a href="https://blog.csdn.net/lambsnow/article/details/79972145" target="_blank" rel="noopener">https://blog.csdn.net/lambsnow/article/details/79972145</a></p>
 <h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ol>
-<li>公式参考： <a href="https://datawhalechina.github.io/pumpkin-book/#/chapter10/chapter10" target="_blank" rel="noopener">https://datawhalechina.github.io/pumpkin-book/#/chapter10/chapter10</a></li>
 <li>西瓜书第10章节</li>
+<li>PCA参考博客： <a href="https://www.cnblogs.com/wj-1314/p/8032780.html" target="_blank" rel="noopener">https://www.cnblogs.com/wj-1314/p/8032780.html</a></li>
+<li>流形介绍与深度学习：<a href="https://yifdu.github.io/2018/11/25/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E4%B8%8E%E6%B5%81%E5%BD%A2%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%B8%80%EF%BC%89/" target="_blank" rel="noopener">https://yifdu.github.io/2018/11/25/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E4%B8%8E%E6%B5%81%E5%BD%A2%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%B8%80%EF%BC%89/</a></li>
+<li>本章节公式推导链接：<a href="https://datawhalechina.github.io/pumpkin-book/#/chapter10/chapter10" target="_blank" rel="noopener">https://datawhalechina.github.io/pumpkin-book/#/chapter10/chapter10</a></li>
+<li>各种度量： <a href="https://www.hotheat.top/archives/af94264b.html" target="_blank" rel="noopener">https://www.hotheat.top/archives/af94264b.html</a></li>
 </ol>
 
       
@@ -439,6 +472,10 @@ Z = W^TX</script><p><strong>$z_i=W^Tx_i$即看作每一个原始样本与变换�
         <div class="post-tags">
           
             <a href="/tags/PCA/" rel="tag"># PCA</a>
+          
+            <a href="/tags/Isomap算法/" rel="tag"># Isomap算法</a>
+          
+            <a href="/tags/LLE算法/" rel="tag"># LLE算法</a>
           
         </div>
       
@@ -565,7 +602,7 @@ Z = W^TX</script><p><strong>$z_i=W^Tx_i$即看作每一个原始样本与变换�
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">30</span>
+                  <span class="site-state-item-count">32</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -608,7 +645,7 @@ Z = W^TX</script><p><strong>$z_i=W^Tx_i$即看作每一个原始样本与变换�
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-PCA介绍"><span class="nav-text">1.PCA介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1概念基础"><span class="nav-text">1.1概念基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-PCA算法（Principal-Component-Analysis）"><span class="nav-text">1.2 PCA算法（Principal Component Analysis）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-PCA伪代码"><span class="nav-text">1.3 PCA伪代码</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-text">参考</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-PCA介绍"><span class="nav-text">1.PCA介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1概念基础"><span class="nav-text">1.1概念基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-PCA算法（Principal-Component-Analysis）"><span class="nav-text">1.2 PCA算法（Principal Component Analysis）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-PCA伪代码"><span class="nav-text">1.3 PCA伪代码</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-Isomap算法"><span class="nav-text">2. Isomap算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1啥是流形？"><span class="nav-text">2.1啥是流形？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2测地距离"><span class="nav-text">2.2测地距离</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-3Isomap算法伪代码"><span class="nav-text">3.3Isomap算法伪代码</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-LLE算法"><span class="nav-text">3.LLE算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-概念"><span class="nav-text">3.1 概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2LLE算法伪代码"><span class="nav-text">3.2LLE算法伪代码</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-度量学习"><span class="nav-text">4.度量学习</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#4-1距离"><span class="nav-text">4.1距离</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-2相关性"><span class="nav-text">4.2相关性</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-text">参考</span></a></li></ol></div>
             
 
           </div>
