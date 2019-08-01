@@ -1,0 +1,1286 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="BP算法实现," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="这里发布的是大神Andrew Ng第一门课—神经网络和深度学习的作业，网上下载请点击此处，里面已经包含第一课的所有四周的编程作业，里面是Jupyter Notebook文件。其他答案请参考：  https://github.com/HuangCongQing/deeplearning.ai-note ，这个更加全面，有选择题测验。下面仅仅是第三周的作业展示，由于此周原始答案没有对隐层网络个数更新导">
+<meta name="keywords" content="BP算法实现">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Andrew Ng的深度学习作业1">
+<meta property="og:url" content="http://yoursite.com/2019/05/14/Assignment1/index.html">
+<meta property="og:site_name" content="Hello,Armigo!">
+<meta property="og:description" content="这里发布的是大神Andrew Ng第一门课—神经网络和深度学习的作业，网上下载请点击此处，里面已经包含第一课的所有四周的编程作业，里面是Jupyter Notebook文件。其他答案请参考：  https://github.com/HuangCongQing/deeplearning.ai-note ，这个更加全面，有选择题测验。下面仅仅是第三周的作业展示，由于此周原始答案没有对隐层网络个数更新导">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/2019/05/14/Assignment1/output_6_1.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/14/Assignment1/output_13_1.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/14/Assignment1/classification_kiank.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/14/Assignment1/BP.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/05/14/Assignment1/BP_model.jpg">
+<meta property="og:updated_time" content="2019-08-01T08:20:40.876Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Andrew Ng的深度学习作业1">
+<meta name="twitter:description" content="这里发布的是大神Andrew Ng第一门课—神经网络和深度学习的作业，网上下载请点击此处，里面已经包含第一课的所有四周的编程作业，里面是Jupyter Notebook文件。其他答案请参考：  https://github.com/HuangCongQing/deeplearning.ai-note ，这个更加全面，有选择题测验。下面仅仅是第三周的作业展示，由于此周原始答案没有对隐层网络个数更新导">
+<meta name="twitter:image" content="http://yoursite.com/2019/05/14/Assignment1/output_6_1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/05/14/Assignment1/"/>
+
+
+
+
+
+  <title>Andrew Ng的深度学习作业1 | Hello,Armigo!</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hello,Armigo!</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/14/Assignment1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Armigo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/0.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hello,Armigo!">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Andrew Ng的深度学习作业1</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-14T21:04:57+08:00">
+                2019-05-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/深度学习/" itemprop="url" rel="index">
+                    <span itemprop="name">深度学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/05/14/Assignment1/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/14/Assignment1/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次阅读
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><strong>这里发布的是大神Andrew Ng<a href="https://mooc.study.163.com/smartSpec/detail/1001319001.htm" target="_blank" rel="noopener">第一门课—神经网络和深度学习</a>的作业，<a href="https://github.com/ArmigoPancho/Assignments-of-DeepLearning" target="_blank" rel="noopener">网上下载请点击此处</a>，里面已经包含第一课的所有四周的编程作业，里面是Jupyter Notebook文件。其他答案请参考：  <a href="https://github.com/HuangCongQing/deeplearning.ai-note" target="_blank" rel="noopener">https://github.com/HuangCongQing/deeplearning.ai-note</a> ，这个更加全面，有选择题测验。下面仅仅是第三周的作业展示，由于此周原始答案没有对隐层网络个数更新导致的错误，已经在下面更正。注意下面直接运行是不能有结果的，需要到我上传的作业地址里面下载其他辅助函数和文件。</strong></p>
+<h1 id="Planar-data-classification-with-one-hidden-layer"><a href="#Planar-data-classification-with-one-hidden-layer" class="headerlink" title="Planar data classification with one hidden layer"></a>Planar data classification with one hidden layer</h1><p>Welcome to your week 3 programming assignment. It’s time to build your first neural network, which will have a hidden layer. You will see a big difference between this model and the one you implemented using logistic regression. </p>
+<p><strong>You will learn how to:</strong></p>
+<ul>
+<li>Implement a 2-class classification neural network with a single hidden layer</li>
+<li>Use units with a non-linear activation function, such as tanh </li>
+<li>Compute the cross entropy loss </li>
+<li>Implement forward and backward propagation</li>
+</ul>
+<h2 id="1-Packages"><a href="#1-Packages" class="headerlink" title="1 - Packages"></a>1 - Packages</h2><p>Let’s first import all the packages that you will need during this assignment.</p>
+<ul>
+<li><a href="www.numpy.org">numpy</a> is the fundamental package for scientific computing with Python.</li>
+<li><a href="http://scikit-learn.org/stable/" target="_blank" rel="noopener">sklearn</a> provides simple and efficient tools for data mining and data analysis. </li>
+<li><a href="http://matplotlib.org" target="_blank" rel="noopener">matplotlib</a> is a library for plotting graphs in Python.</li>
+<li>testCases provides some test examples to assess the correctness of your functions</li>
+<li>planar_utils provide various useful functions used in this assignment</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Package imports</span></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">from</span> testCases <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">import</span> sklearn</span><br><span class="line"><span class="keyword">import</span> sklearn.datasets</span><br><span class="line"><span class="keyword">import</span> sklearn.linear_model</span><br><span class="line"><span class="keyword">from</span> planar_utils <span class="keyword">import</span> plot_decision_boundary, sigmoid, load_planar_dataset, load_extra_datasets</span><br><span class="line"></span><br><span class="line">%matplotlib inline</span><br><span class="line">np.random.seed(<span class="number">1</span>) <span class="comment"># set a seed so that the results are consistent</span></span><br><span class="line"></span><br><span class="line"><span class="string">'''原始答案不对，由于直接赋值n_h=4导致n_h一直没有更新，所以决策图像一直是4个节点的结果，本答案已经更新准确！</span></span><br><span class="line"><span class="string">注意到最后一个边界有一个弯曲边界，证明神经网络可以拟合非线性的模型（其实本来就可以，感知机(Perceptron)</span></span><br><span class="line"><span class="string">不能计算非线性问题，BP算法训练的单层神经网络就已经可以解决非线性问题了。</span></span><br><span class="line"><span class="string">参考blog： https://blog.csdn.net/liuzhongkai123/article/details/78775744 '''</span></span><br></pre></td></tr></table></figure>
+<h2 id="2-Dataset"><a href="#2-Dataset" class="headerlink" title="2 - Dataset"></a>2 - Dataset</h2><p>First, let’s get the dataset you will work on. The following code will load a “flower” 2-class dataset into variables <code>X</code> and <code>Y</code>.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">X,Y = load_planar_dataset()</span><br></pre></td></tr></table></figure>
+<p>Visualize the dataset using matplotlib. The data looks like a “flower” with some red (label y=0) and some blue (y=1) points. Your goal is to build a model to fit this data. </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Visualize the data:</span></span><br><span class="line"><span class="comment"># scatter参数： https://www.cnblogs.com/shanlizi/p/6850318.html</span></span><br><span class="line">plt.scatter(X[<span class="number">0</span>, :], X[<span class="number">1</span>, :], c=np.squeeze(Y), s=<span class="number">40</span>, cmap=plt.cm.Spectral)<span class="comment">#此处要squeeze一下，否则可能报错</span></span><br></pre></td></tr></table></figure>
+<p><img src="/2019/05/14/Assignment1/output_6_1.png" alt=""></p>
+<p>You have:<br>​    - a numpy-array (matrix) X that contains your features (x1, x2)<br>​    - a numpy-array (vector) Y that contains your labels (red:0, blue:1).</p>
+<p>Lets first get a better sense of what our data is like. </p>
+<p><strong>Exercise</strong>: How many training examples do you have? In addition, what is the <code>shape</code> of the variables <code>X</code> and <code>Y</code>? </p>
+<p><strong>Hint</strong>: How do you get the shape of a numpy array? <a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.shape.html" target="_blank" rel="noopener">(help)</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">### START CODE HERE ### (≈ 3 lines of code)</span></span><br><span class="line">shape_X = X.shape</span><br><span class="line">shape_Y = Y.shape</span><br><span class="line">m = np.shape(X[<span class="number">0</span>,:]) <span class="comment"># training set size</span></span><br><span class="line"><span class="comment">### END CODE HERE ###</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">print</span> (<span class="string">'The shape of X is: '</span> + str(shape_X))</span><br><span class="line"><span class="keyword">print</span> (<span class="string">'The shape of Y is: '</span> + str(shape_Y))</span><br><span class="line"><span class="keyword">print</span> (<span class="string">'I have m = %d training examples!'</span> % (m))</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">The shape of X <span class="keyword">is</span>: (<span class="number">2</span>, <span class="number">400</span>)</span><br><span class="line">The shape of Y <span class="keyword">is</span>: (<span class="number">1</span>, <span class="number">400</span>)</span><br><span class="line">I have m = <span class="number">400</span> training examples!</span><br></pre></td></tr></table></figure>
+<h2 id="3-Simple-Logistic-Regression"><a href="#3-Simple-Logistic-Regression" class="headerlink" title="3 - Simple Logistic Regression"></a>3 - Simple Logistic Regression</h2><p>Before building a full neural network, lets first see how logistic regression performs on this problem. You can use sklearn’s built-in functions to do that. Run the code below to train a logistic regression classifier on the dataset.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Train the logistic regression classifier</span></span><br><span class="line">clf = sklearn.linear_model.LogisticRegressionCV()</span><br><span class="line">clf.fit(X.T, Y.T.ravel());   <span class="comment">#将多维数组降位一维</span></span><br></pre></td></tr></table></figure>
+<p>You can now plot the decision boundary of these models. Run the code below.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Plot the decision boundary for logistic regression</span></span><br><span class="line">print(<span class="string">'Y.ravel()='</span>,Y.ravel())</span><br><span class="line">plot_decision_boundary(<span class="keyword">lambda</span> x: clf.predict(x), X, Y.ravel())   <span class="comment">#Y要降维度</span></span><br><span class="line">plt.title(<span class="string">"Logistic Regression"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Print accuracy</span></span><br><span class="line">LR_predictions = clf.predict(X.T)</span><br><span class="line"><span class="keyword">print</span> (<span class="string">'Accuracy of logistic regression: %d '</span> % float((np.dot(Y,LR_predictions) + np.dot(<span class="number">1</span>-Y,<span class="number">1</span>-LR_predictions))/float(Y.size)*<span class="number">100</span>) +</span><br><span class="line">       <span class="string">'% '</span> + <span class="string">"(percentage of correctly labelled datapoints)"</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Y.ravel()= [<span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span></span><br><span class="line"> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span></span><br><span class="line"> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span></span><br><span class="line"> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span></span><br><span class="line"> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span></span><br><span class="line"> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span></span><br><span class="line"> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span></span><br><span class="line"> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span></span><br><span class="line"> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span></span><br><span class="line"> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span></span><br><span class="line"> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span>]</span><br><span class="line">Accuracy of logistic regression: <span class="number">47</span> % (percentage of correctly labelled datapoints)</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/05/14/Assignment1/output_13_1.png" alt="p1ng"></p>
+<p><strong>Interpretation</strong>: The dataset is not linearly separable, so logistic regression doesn’t perform well. Hopefully a neural network will do better. Let’s try this now! </p>
+<h2 id="4-Neural-Network-model"><a href="#4-Neural-Network-model" class="headerlink" title="4 - Neural Network model"></a>4 - Neural Network model</h2><p>Logistic regression did not work well on the “flower dataset”. You are going to train a Neural Network with a single hidden layer.</p>
+<p><strong>Here is our model</strong>:<br><img src="/2019/05/14/Assignment1/classification_kiank.png" alt="pn2g"></p>
+<p><strong>Mathematically</strong>:</p>
+<p>For one example $x^{(i)}$:</p>
+<script type="math/tex; mode=display">
+\begin{eqnarray*}
+z^{[1] (i)} &=&  W^{[1]} x^{(i)} + b^{[1] (i)}\tag{1} \\
+a^{[1] (i)} &=& \tanh(z^{[1] (i)})\tag{2}\\
+z^{[2] (i)} &=& W^{[2]} a^{[1] (i)} + b^{[2] (i)}\tag{3}\\
+\hat{y}^{(i)} &=& a^{[2] (i)} = \sigma(z^{ [2] (i)})\tag{4}\\
+y^{(i)}_{prediction} &=& \begin{cases} 1 & \mbox{if } a^{[2](i)} > 0.5 \\ 0 & \mbox{otherwise } \end{cases}\tag{5}
+\end{eqnarray*}</script><p>上面公式的维度如下图所示：<br><img src="/2019/05/14/Assignment1/BP.jpg" alt="222"></p>
+<p>Given the predictions on all the examples, you can also <strong>compute the cost $J$ as follows:</strong> </p>
+<script type="math/tex; mode=display">J = - \frac{1}{m} \sum\limits_{i = 0}^{m} \large\left(\small y^{(i)}\log\left(a^{[2] (i)}\right) + (1-y^{(i)})\log\left(1- a^{[2] (i)}\right)  \large  \right) \small \tag{6}</script><p><strong>Reminder</strong>: The general methodology to build a Neural Network is to:<br>​    1. Define the neural network structure ( # of input units,  # of hidden units, etc).<br>​    2. Initialize the model’s parameters<br>​    3. Loop:<br>​        - Implement forward propagation<br>​        - Compute loss<br>​        - Implement backward propagation to get the gradients<br>​        - Update parameters (gradient descent)</p>
+<p>You often build helper functions to compute steps 1-3 and then merge them into one function we call <code>nn_model()</code>. Once you’ve built <code>nn_model()</code> and learnt the right parameters, you can make predictions on new data.</p>
+<p><strong>一张A4纸讲清楚BP算法：</strong>：<br><img src="/2019/05/14/Assignment1/BP_model.jpg" alt="12"><strong>其中tanh(z)以及其导数</strong>:</p>
+<script type="math/tex; mode=display">
+\begin{eqnarray*}
+ \tanh (z)    &=& \frac{\sinh (z)}{\cosh (z)}=\frac{e^{z}-e^{-z}}{e^{z}+e^{-z}} \\
+ \tanh ^{\prime}(z) &=&\frac{\left(e^{z}+e^{-z}\right)\left(e^{z}+e^{-z}\right)-\left(e^{z}-e^{-z}\right)\left(e^{z}-e^{-z}\right)}{\left(e^{z}+e^{-z}\right)^{2}}\\
+ &=& \frac{\left(e^{z}+e^{-z}\right)^{2}-\left(e^{z}-e^{-z}\right)^{2}}{\left(e^{z}+e^{-z}\right)^{2}}\\
+&=& 1-\left(\frac{e^{z}-e^{-z}}{e^{z}+e^{-z}}\right)^{2} \\ 
+&=&1-\tanh ^{2}(z)
+\end{eqnarray*}</script><h3 id="4-1-Defining-the-neural-network-structure"><a href="#4-1-Defining-the-neural-network-structure" class="headerlink" title="4.1 - Defining the neural network structure"></a>4.1 - Defining the neural network structure</h3><p><strong>Exercise</strong>: Define three variables:<br>​    - n_x: the size of the input layer<br>​    - n_h: the size of the hidden layer (set this to 4)<br>​    - n_y: the size of the output layer</p>
+<p><strong>Hint</strong>: Use shapes of X and Y to find n_x and n_y. Also, hard code the hidden layer size to be 4.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># GRADED FUNCTION: layer_sizes</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">layer_sizes</span><span class="params">(X, Y,n_hiden)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    初始化输入层、隐藏层、输出层的参数</span></span><br><span class="line"><span class="string">    Arguments:</span></span><br><span class="line"><span class="string">    X -- input dataset of shape (input size, number of examples)</span></span><br><span class="line"><span class="string">    Y -- labels of shape (output size, number of examples)</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">    Returns:</span></span><br><span class="line"><span class="string">    n_x -- the size of the input layer</span></span><br><span class="line"><span class="string">    n_h -- the size of the hidden layer</span></span><br><span class="line"><span class="string">    n_y -- the size of the output layer</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    <span class="comment">### START CODE HERE ### (≈ 3 lines of code)</span></span><br><span class="line">    n_x = X.shape[<span class="number">0</span>] <span class="comment"># size of input layer</span></span><br><span class="line">    n_h = n_hiden    <span class="comment">#隐层就直接定4个结点</span></span><br><span class="line">    n_y = Y.shape[<span class="number">0</span>] <span class="comment"># size of output layer</span></span><br><span class="line">    <span class="comment">### END CODE HERE ###</span></span><br><span class="line">    <span class="keyword">return</span> (n_x, n_h, n_y)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">X_assess, Y_assess = layer_sizes_test_case()</span><br><span class="line">(n_x, n_h, n_y) = layer_sizes(X_assess, Y_assess,<span class="number">4</span>)</span><br><span class="line">print(<span class="string">"The size of the input layer is: n_x = "</span> + str(n_x))</span><br><span class="line">print(<span class="string">"The size of the hidden layer is: n_h = "</span> + str(n_h))</span><br><span class="line">print(<span class="string">"The size of the output layer is: n_y = "</span> + str(n_y))</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">The size of the input layer <span class="keyword">is</span>: n_x = <span class="number">5</span></span><br><span class="line">The size of the hidden layer <span class="keyword">is</span>: n_h = <span class="number">4</span></span><br><span class="line">The size of the output layer <span class="keyword">is</span>: n_y = <span class="number">2</span></span><br></pre></td></tr></table></figure>
+<h3 id="4-2-Initialize-the-model’s-parameters"><a href="#4-2-Initialize-the-model’s-parameters" class="headerlink" title="4.2 - Initialize the model’s parameters"></a>4.2 - Initialize the model’s parameters</h3><p><strong>Exercise</strong>: Implement the function <code>initialize_parameters()</code>.</p>
+<p><strong>Instructions</strong>:</p>
+<ul>
+<li>Make sure your parameters’ sizes are right. Refer to the neural network figure above if needed.</li>
+<li>You will initialize the weights matrices with random values. <ul>
+<li>Use: <code>np.random.randn(a,b) * 0.01</code> to randomly initialize a matrix of shape (a,b).</li>
+</ul>
+</li>
+<li>You will initialize the bias vectors as zeros. <ul>
+<li>Use: <code>np.zeros((a,b))</code> to initialize a matrix of shape (a,b) with zeros.</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># GRADED FUNCTION: initialize_parameters</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">initialize_parameters</span><span class="params">(n_x, n_h, n_y)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    Argument:</span></span><br><span class="line"><span class="string">    n_x -- size of the input layer</span></span><br><span class="line"><span class="string">    n_h -- size of the hidden layer</span></span><br><span class="line"><span class="string">    n_y -- size of the output layer</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">    Returns:</span></span><br><span class="line"><span class="string">    params -- python dictionary containing your parameters:</span></span><br><span class="line"><span class="string">                    W1 -- weight matrix of shape (n_h, n_x)</span></span><br><span class="line"><span class="string">                    b1 -- bias vector of shape (n_h, 1)</span></span><br><span class="line"><span class="string">                    W2 -- weight matrix of shape (n_y, n_h)</span></span><br><span class="line"><span class="string">                    b2 -- bias vector of shape (n_y, 1)</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    </span><br><span class="line">    np.random.seed(<span class="number">2</span>) <span class="comment"># we set up a seed so that your output matches ours although the initialization is random.</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">### START CODE HERE ### (≈ 4 lines of code)</span></span><br><span class="line">    W1 = np.random.randn(n_h,n_x) * <span class="number">0.01</span></span><br><span class="line">    b1 = np.zeros((n_h,<span class="number">1</span>))</span><br><span class="line">    W2 = np.random.randn(n_y,n_h) * <span class="number">0.01</span>    <span class="comment"># 大小是输出层个数*隐层个数</span></span><br><span class="line">    b2 = np.zeros((n_y,<span class="number">1</span>))   <span class="comment">#b2是输出层的阈值</span></span><br><span class="line">    <span class="comment">### END CODE HERE ###</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">assert</span> (W1.shape == (n_h, n_x))</span><br><span class="line">    <span class="keyword">assert</span> (b1.shape == (n_h, <span class="number">1</span>))</span><br><span class="line">    <span class="keyword">assert</span> (W2.shape == (n_y, n_h))</span><br><span class="line">    <span class="keyword">assert</span> (b2.shape == (n_y, <span class="number">1</span>))</span><br><span class="line">    </span><br><span class="line">    parameters = &#123;<span class="string">"W1"</span>: W1,</span><br><span class="line">                  <span class="string">"b1"</span>: b1,</span><br><span class="line">                  <span class="string">"W2"</span>: W2,</span><br><span class="line">                  <span class="string">"b2"</span>: b2&#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> parameters</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">n_x, n_h, n_y = initialize_parameters_test_case()</span><br><span class="line"></span><br><span class="line">parameters = initialize_parameters(n_x, n_h, n_y)</span><br><span class="line">print(<span class="string">"W1 = "</span> + str(parameters[<span class="string">"W1"</span>]))</span><br><span class="line">print(<span class="string">"b1 = "</span> + str(parameters[<span class="string">"b1"</span>]))</span><br><span class="line">print(<span class="string">"W2 = "</span> + str(parameters[<span class="string">"W2"</span>]))</span><br><span class="line">print(<span class="string">"b2 = "</span> + str(parameters[<span class="string">"b2"</span>]))</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">输出：</span><br><span class="line">W1 = [[<span class="number">-0.00416758</span> <span class="number">-0.00056267</span>]</span><br><span class="line"> [<span class="number">-0.02136196</span>  <span class="number">0.01640271</span>]</span><br><span class="line"> [<span class="number">-0.01793436</span> <span class="number">-0.00841747</span>]</span><br><span class="line"> [ <span class="number">0.00502881</span> <span class="number">-0.01245288</span>]]</span><br><span class="line">b1 = [[<span class="number">0.</span>]</span><br><span class="line"> [<span class="number">0.</span>]</span><br><span class="line"> [<span class="number">0.</span>]</span><br><span class="line"> [<span class="number">0.</span>]]</span><br><span class="line">W2 = [[<span class="number">-0.01057952</span> <span class="number">-0.00909008</span>  <span class="number">0.00551454</span>  <span class="number">0.02292208</span>]]</span><br><span class="line">b2 = [[<span class="number">0.</span>]]</span><br></pre></td></tr></table></figure>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ol>
+<li>吴恩达深度学习第一课第三周课后作业blog： <a href="https://blog.csdn.net/liuzhongkai123/article/details/78775744" target="_blank" rel="noopener">https://blog.csdn.net/liuzhongkai123/article/details/78775744</a></li>
+<li>DL笔记以及代码： <a href="https://github.com/HuangCongQing/deeplearning.ai-note" target="_blank" rel="noopener">https://github.com/HuangCongQing/deeplearning.ai-note</a></li>
+<li>子图绘制参考： <a href="https://blog.csdn.net/gatieme/article/details/61416645" target="_blank" rel="noopener">https://blog.csdn.net/gatieme/article/details/61416645</a></li>
+<li>Markdown下LaTeX公式、编号、对齐:  <a href="https://www.zybuluo.com/fyywy520/note/82980" target="_blank" rel="noopener">https://www.zybuluo.com/fyywy520/note/82980</a></li>
+<li><a href="http://scs.ryerson.ca/~aharley/neural-networks/" target="_blank" rel="noopener">http://scs.ryerson.ca/~aharley/neural-networks/</a></li>
+<li><a href="http://cs231n.github.io/neural-networks-case-study/" target="_blank" rel="noopener">http://cs231n.github.io/neural-networks-case-study/</a></li>
+</ol>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/BP算法实现/" rel="tag"># BP算法实现</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/09/SVD/" rel="next" title="SVD简介">
+                <i class="fa fa-chevron-left"></i> SVD简介
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/06/01/clustering/" rel="prev" title="聚类算法">
+                聚类算法 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/0.png"
+                alt="Armigo" />
+            
+              <p class="site-author-name" itemprop="name">Armigo</p>
+              <p class="site-description motion-element" itemprop="description">Pour un poisson salé, le plus important est heureux!</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">33</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.zhihu.com/people/mou-mou-mou-49-9/activities" target="_blank" title="ZhiHu">
+                      
+                        <i class="fa fa-fw fa-globe"></i>ZhiHu</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Planar-data-classification-with-one-hidden-layer"><span class="nav-text">Planar data classification with one hidden layer</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Packages"><span class="nav-text">1 - Packages</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Dataset"><span class="nav-text">2 - Dataset</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-Simple-Logistic-Regression"><span class="nav-text">3 - Simple Logistic Regression</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-Neural-Network-model"><span class="nav-text">4 - Neural Network model</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-Defining-the-neural-network-structure"><span class="nav-text">4.1 - Defining the neural network structure</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-Initialize-the-model’s-parameters"><span class="nav-text">4.2 - Initialize the model’s parameters</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-text">参考</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Armigo</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      访问人次
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three-waves.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'uLg1tJlQxJ5XwsDvzjI3tdRl-gzGzoHsz',
+        appKey: 'IttKXBNG1WAsU13RknBgeRrP',
+        placeholder: '来呀，快活呀≧∀≦',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.staticfile.org/MathJax/MathJax-2.6-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
