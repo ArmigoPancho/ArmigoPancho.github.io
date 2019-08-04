@@ -2,8 +2,8 @@
 <search>
   <entry>
     <title><![CDATA[L1正则为什么比L2稀疏？]]></title>
-    <url>%2F2019%2F08%2F04%2FL1-2regularization%2F</url>
-    <content type="text"><![CDATA[知乎上看到的，直接贴出来： https://www.zhihu.com/question/37096933/answer/70507353 ；解释了为什么L1正则要比L2正则稀疏。 图直接上来，分别从优化角度、梯度角度、概率的角度思考： 若侵权则删除。 其他正则讲解的参考： https://blog.csdn.net/red_stone1/article/details/80755144]]></content>
+    <url>%2F2019%2F08%2F04%2Fregularization%2F</url>
+    <content type="text"><![CDATA[知乎上看到的，直接贴出来： https://www.zhihu.com/question/37096933/answer/70507353 ；解释了为什么L1正则要比L2正则稀疏。 图直接上来，分别从优化角度、梯度角度、概率的角度思考： 其他正则讲解的参考： https://blog.csdn.net/red_stone1/article/details/80755144；若侵权则删除。]]></content>
       <categories>
         <category>机器学习</category>
       </categories>
