@@ -3,12 +3,23 @@
   <entry>
     <title><![CDATA[L1正则为什么比L2稀疏？]]></title>
     <url>%2F2019%2F08%2F04%2Fregularization%2F</url>
-    <content type="text"><![CDATA[知乎上看到的，直接贴出来： https://www.zhihu.com/question/37096933/answer/70507353 ；解释了为什么L1正则要比L2正则稀疏。 图直接上来，分别从优化角度、梯度角度、概率的角度思考： 其他正则讲解的参考： https://blog.csdn.net/red_stone1/article/details/80755144；若侵权则删除。]]></content>
+    <content type="text"><![CDATA[知乎上看到的，直接贴出来： https://www.zhihu.com/question/37096933/answer/70507353 ；解释了为什么L1正则要比L2正则稀疏。 图直接上来，分别从优化角度、梯度角度、概率的角度思考： 其他正则讲解的参考： 点击此处；若侵权则删除。]]></content>
       <categories>
         <category>机器学习</category>
       </categories>
       <tags>
         <tag>L1、L2正则</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[GAN模型简介]]></title>
+    <url>%2F2019%2F08%2F01%2FGAN%2F</url>
+    <content type="text"><![CDATA[1.GAN模型半监督学习里面提到GAN（Generative Adversarial Network）模型了，如下图所示，通俗滴说就是一个生成模型一个判别模型在对抗，比如生成模型是学习一幅蒙娜丽莎的画作，生成模型就生成一幅类似蒙娜丽莎的画，然后判别模型就去判别此画像不像原画，若不像再重新学习，一直到判别模型说：嗯，你画的够像了，我已经分不清真画假画了，才停止训练。生成模型和判别模型都是在成长的。 2.最大似然估计（Maximum Likelihood Estimation）最大似然估计（MLE）假设样本之间都是独立同分布的，并且最大似然估计假设模型已定、参数未知。 参考 李宏毅GAN视频：https://www.youtube.com/watch?v=0CKeqXl5IY0&amp;feature=youtu.be]]></content>
+      <categories>
+        <category>深度学习</category>
+      </categories>
+      <tags>
+        <tag>GAN模型</tag>
       </tags>
   </entry>
   <entry>
