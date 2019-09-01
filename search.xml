@@ -14,7 +14,7 @@
   <entry>
     <title><![CDATA[GAN模型简介]]></title>
     <url>%2F2019%2F08%2F01%2FGAN%2F</url>
-    <content type="text"><![CDATA[1.GAN模型半监督学习里面提到GAN（Generative Adversarial Network）模型了，如下图所示，通俗滴说就是一个生成模型一个判别模型在对抗，比如生成模型是学习一幅蒙娜丽莎的画作，生成模型就生成一幅类似蒙娜丽莎的画，然后判别模型就去判别此画像不像原画，若不像再重新学习，一直到判别模型说：嗯，你画的够像了，我已经分不清真画假画了，才停止训练。生成模型和判别模型都是在成长的。 2.最大似然估计（Maximum Likelihood Estimation）最大似然估计（MLE）假设样本之间都是独立同分布的，并且最大似然估计假设模型已定、参数未知。 参考 李宏毅GAN视频：https://www.youtube.com/watch?v=0CKeqXl5IY0&amp;feature=youtu.be]]></content>
+    <content type="text"><![CDATA[1.GAN模型半监督学习里面提到GAN（Generative Adversarial Network）模型了，如下图所示，通俗滴说就是一个生成模型一个判别模型在对抗，比如生成模型是学习一幅蒙娜丽莎的画作，生成模型就生成一幅类似蒙娜丽莎的画，然后判别模型就去判别此画像不像原画，若不像再重新学习，一直到判别模型说：嗯，你画的够像了，我已经分不清真画假画了，才停止训练。生成模型和判别模型都是在成长的。 2.最大似然估计（Maximum Likelihood Estimation）最大似然估计（MLE）假设样本之间都是独立同分布的，并且最大似然估计假设模型已定、参数未知。 3.GAN的损失函数其中,x 是真实样本,G(z) 是 G 生成样本。我们希望 D(x) 越大越好,D(G(z)) 越小越好。损失函数的前红色部分是判别模型D判别x为真画中样本的概率（判别为真画的期望，越大越好），后面绿色线部分是生成模型G把数据z生成的期望，即伪造噪音数据z而产生的损失，越小越好。总的来说就是生成模型的伪造数据z判别为真画的概率越大越好。 参考 李宏毅GAN视频：https://www.youtube.com/watch?v=0CKeqXl5IY0&amp;feature=youtu.be]]></content>
       <categories>
         <category>深度学习</category>
       </categories>
