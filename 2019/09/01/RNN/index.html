@@ -91,9 +91,9 @@
 <meta property="og:image" content="http://yoursite.com/2019/09/01/RNN/2.png">
 <meta property="og:image" content="http://yoursite.com/2019/09/01/RNN/3.png">
 <meta property="og:image" content="http://yoursite.com/2019/09/01/RNN/4.png">
-<meta property="og:image" content="http://yoursite.com/2019/09/01/RNN/5.PNG">
+<meta property="og:image" content="http://yoursite.com/2019/09/01/RNN/5.png">
 <meta property="og:image" content="http://yoursite.com/2019/09/01/RNN/6.png">
-<meta property="og:updated_time" content="2019-09-02T00:36:28.704Z">
+<meta property="og:updated_time" content="2019-09-02T01:00:39.912Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="RNN简介">
 <meta name="twitter:description" content="1.输入的数据和输出的数据如输入的数据和输出的数据是类似下图带有序列性质的数据，则标准的神经网络不好处理此类数据，因为输入数据和输出数据的长度不固定（填补0的方式不高效），而且并不共享从文本的不同位置上学到的特征。比如从位置1学到的Harry可能是人名的一部分，那么如果Harry出现在其他位置，比如位置t时，它也能够自动识别其为人名的一部分的话，这就是共享特征了。  2.RNN简图下图左右边都是循">
@@ -407,7 +407,7 @@
 <h2 id="2-1-向前传播"><a href="#2-1-向前传播" class="headerlink" title="2.1 向前传播"></a>2.1 向前传播</h2><p><img src="/2019/09/01/RNN/4.png" alt="4"></p>
 <p>g函数可以是S型函数或者tanh函数或者softmax函数，因需求而定。</p>
 <p>下图是Andrew Ng展示简化RNN的过程，就是矩阵相乘，不过是矩阵拼凑起来的，简化矩阵个数，并且Wa，ba下标a表示用来计算变量a，第2个公式Wy、by的下标y表示这些参数是计算y的：</p>
-<p><img src="/2019/09/01/RNN/5.PNG" alt=""></p>
+<p><img src="/2019/09/01/RNN/5.png" alt="17"></p>
 <h2 id="2-2向后传播"><a href="#2-2向后传播" class="headerlink" title="2.2向后传播"></a>2.2向后传播</h2><p><img src="/2019/09/01/RNN/6.png" alt="1567343490655"></p>
 <p>绿色的线是向前传播，红色的线就是反向传播的方向。每个对时间段t的损失函数是：</p>
 <script type="math/tex; mode=display">
@@ -1180,6 +1180,26 @@ L(\hat{y},y)= \sum_{t=1}^{T_x}L^{<t>}(\hat{y}^{<t>},y^{<t>})</script><p>而图�
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.staticfile.org/MathJax/MathJax-2.6-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
 
