@@ -100,7 +100,7 @@
 <meta property="og:image" content="http://yoursite.com/2019/09/01/RNN/11.png">
 <meta property="og:image" content="http://yoursite.com/2019/09/01/RNN/12.png">
 <meta property="og:image" content="http://yoursite.com/2019/09/01/RNN/13.jpg">
-<meta property="og:updated_time" content="2019-09-02T13:49:27.705Z">
+<meta property="og:updated_time" content="2019-09-03T01:20:46.175Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="RNN简介">
 <meta name="twitter:description" content="1.输入的数据和输出的数据如输入的数据和输出的数据是类似下图带有序列性质的数据，则标准的神经网络不好处理此类数据，因为输入数据和输出数据的长度不固定（填补0的方式不高效），而且并不共享从文本的不同位置上学到的特征。比如从位置1学到的Harry可能是人名的一部分，那么如果Harry出现在其他位置，比如位置t时，它也能够自动识别其为人名的一部分的话，这就是共享特征了。  2.RNN简图下图左右边都是循">
@@ -451,17 +451,18 @@ L(\hat{y},y)= \sum_{t=1}^{T_x}L^{<t>}(\hat{y}^{<t>},y^{<t>})</script><p><strong>
 <p>下图是RNN单元的简图：</p>
 <p><img src="/2019/09/01/RNN/11.png" alt="157"></p>
 <p><strong>GRU简介：</strong></p>
-<p>比如在句子：”The cat , which already ate …, was full”，为了记住话语中cat是单数还是复数，在时间T上需要使用记忆细胞memory cell 记住cat这个单词，并且$c^{<t>}=a^{<t>}$。</t></t></p>
+<p>比如在句子：”The cat , which already ate …, was full”，为了记住话语中cat是单数还是复数，在时间T上需要使用记忆细胞memory cell 记住cat这个单词，并且$c^{\ <t>\ }=a^{\ <t>\ }$。</t></t></p>
 <ul>
 <li><p>在每一个时间步t,都将用一个候选值$\breve{c}^{<t>}$重写记忆细胞的值</t></p>
 </li>
-<li><p>而$\breve{c}^{<t>}=Tanh(W_{c}[c^{<t-1>},x^{<t>}]+b_{c})  \tag1$</t></t-1></t></p>
-</li>
+<li><p>而：</p>
+<script type="math/tex; mode=display">
+\breve{c}^{}=Tanh(W_{c}[c^{},x^{}]+b_{c})  \tag1</script></li>
 <li><p>GRU中有一个门Gate($\Gamma_u$) 这是一个0到1之间的值：</p>
 <script type="math/tex; mode=display">
 \Gamma_u=\sigma(W_{u}[c^{},x^{}]+b_{u}) \tag2</script><p><strong>(1)式是$\breve{c}^{<t>}$的更新公式，比如记录了复数为1，单数为0；(2)式计算的值用以控制是否采用(1)式进行更新</t></strong></p>
 </li>
-<li><p>在此例中如果cat变为cats ，$\breve{c}^{<t>}$用以控制was和were的值，而$\Gamma_u$用以控制 <strong>在何时将was变为were，即$\Gamma_u=1$就使用公式(1)更新值C，否则C值不变:</strong></t></p>
+<li><p>在此例中如果cat变为cats ，$\breve{c}^{<t>}​$用以控制was和were的值，而$\Gamma_u​$用以控制 <strong>在何时将was变为were，即$\Gamma_u=1​$就使用公式(1)更新值C，否则C值不变:</strong></t></p>
 <script type="math/tex; mode=display">
 C^{<t>}=\Gamma_u * \breve{C}^{<t>}+(1-\Gamma_u) * C^{<t-1>}\tag3</script><p><img src="/2019/09/01/RNN/12.png" alt="1567428665320"></p>
 </li>
