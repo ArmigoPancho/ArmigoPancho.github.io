@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="RNN," />
+  <meta name="keywords" content="RNN,GRU," />
 
 
 
@@ -80,7 +80,7 @@
 
 
 <meta name="description" content="1.输入的数据和输出的数据如输入的数据和输出的数据是类似下图带有序列性质的数据，则标准的神经网络不好处理此类数据，因为输入数据和输出数据的长度不固定（填补0的方式不高效），而且并不共享从文本的不同位置上学到的特征。比如从位置1学到的Harry可能是人名的一部分，那么如果Harry出现在其他位置，比如位置t时，它也能够自动识别其为人名的一部分的话，这就是共享特征了。  2.RNN简图下图左右边都是循">
-<meta name="keywords" content="RNN">
+<meta name="keywords" content="RNN,GRU">
 <meta property="og:type" content="article">
 <meta property="og:title" content="RNN简介">
 <meta property="og:url" content="http://yoursite.com/2019/09/01/RNN/index.html">
@@ -100,7 +100,7 @@
 <meta property="og:image" content="http://yoursite.com/2019/09/01/RNN/11.png">
 <meta property="og:image" content="http://yoursite.com/2019/09/01/RNN/12.png">
 <meta property="og:image" content="http://yoursite.com/2019/09/01/RNN/13.jpg">
-<meta property="og:updated_time" content="2019-09-03T01:28:21.747Z">
+<meta property="og:updated_time" content="2019-09-03T04:05:42.853Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="RNN简介">
 <meta name="twitter:description" content="1.输入的数据和输出的数据如输入的数据和输出的数据是类似下图带有序列性质的数据，则标准的神经网络不好处理此类数据，因为输入数据和输出数据的长度不固定（填补0的方式不高效），而且并不共享从文本的不同位置上学到的特征。比如从位置1学到的Harry可能是人名的一部分，那么如果Harry出现在其他位置，比如位置t时，它也能够自动识别其为人名的一部分的话，这就是共享特征了。  2.RNN简图下图左右边都是循">
@@ -353,8 +353,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/NLP/" itemprop="url" rel="index">
-                    <span itemprop="name">NLP</span>
+                  <a href="/categories/深度学习/" itemprop="url" rel="index">
+                    <span itemprop="name">深度学习</span>
                   </a>
                 </span>
 
@@ -451,7 +451,7 @@ L(\hat{y},y)= \sum_{t=1}^{T_x}L^{<t>}(\hat{y}^{<t>},y^{<t>})</script><p><strong>
 <p>下图是RNN单元的简图：</p>
 <p><img src="/2019/09/01/RNN/11.png" alt="157"></p>
 <p><strong>GRU简介：</strong></p>
-<p>比如在句子：”The cat , which already ate …, was full”，为了记住话语中cat是单数还是复数，在时间T上需要使用记忆细胞memory cell 记住cat这个单词，并且$c^{<t>}=a^{<t>}$。</t></t></p>
+<p>比如在句子：”The cat , which already ate …, was full”，为了记住话语中cat是单数还是复数，在时间T上需要使用记忆细胞memory cell 记住cat这个单词，<strong>并且同一个时序的C和a都是相等的。</strong></p>
 <ul>
 <li><p>在每一个时间步t,都将用一个候选值$\breve{c}^{<t>}$重写记忆细胞的值</t></p>
 </li>
@@ -460,17 +460,17 @@ L(\hat{y},y)= \sum_{t=1}^{T_x}L^{<t>}(\hat{y}^{<t>},y^{<t>})</script><p><strong>
 \breve{c}^{}=Tanh(W_{c}[c^{},x^{}]+b_{c})  \tag1</script></li>
 <li><p>GRU中有一个门Gate($\Gamma_u$) 这是一个0到1之间的值：</p>
 <script type="math/tex; mode=display">
-\Gamma_u=\sigma(W_{u}[c^{},x^{}]+b_{u}) \tag2</script><p><strong>(1)式是$\breve{c}^{<t>}$的更新公式，比如记录了复数为1，单数为0；(2)式计算的值用以控制是否采用(1)式进行更新</t></strong></p>
+\Gamma_u=\sigma(W_{u}[c^{},x^{}]+b_{u}) \tag2</script><p><strong>(1)式是记忆细胞C的候选值，比如记录了复数为1，单数为0；(2)式计算的值用以控制是否采用(1)式进行更新</strong></p>
 </li>
-<li><p>在此例中如果cat变为cats ，$\breve{c}^{<t>}​$用以控制was和were的值，而$\Gamma_u​$用以控制 <strong>在何时将was变为were，即$\Gamma_u=1​$就使用公式(1)更新值C，否则C值不变:</strong></t></p>
+<li><p>在此例中如果cat变为cats ，$\breve{c}^{<t>}$用以控制was和were的值，而$\Gamma_u$用以控制 <strong>在何时将was变为were，即$\Gamma_u=1$就使用公式(1)更新值C，否则C值不变:</strong></t></p>
 <script type="math/tex; mode=display">
 C^{<t>}=\Gamma_u * \breve{C}^{<t>}+(1-\Gamma_u) * C^{<t-1>}\tag3</script><p><img src="/2019/09/01/RNN/12.png" alt="1567428665320"></p>
 </li>
 </ul>
-<p><strong>当时间步没有扫到was时，$\Gamma_u$一直=0，此时C一直等于旧的值1，即$\Gamma_u$一直=0，此时$C^{<t>}=c^{<t-1>}$；当而当时间步扫到”was”时，$\Gamma_u=1$，此时需要更新C值为$\breve{c}^{<t>}$，即$C^{<t>}=\breve{C}^{<t>}$。</t></t></t></t-1></t></strong>GRU的计算顺序其实就是公式（1）、（2)、（3）的计算顺序。</p>
-<p><strong>优点：</strong>左上的就是GRU单元但简图，和RNN有些类似。优点是有利于除去梯度消失的缺点，因为隔了很开的特征也可以有联系，即把隔开多层的神经元信息联系了起来。因为门介于0-1之间，而且非常非常非常接近0，这样C就和之前的C值一样即$C^{<t>}=\breve{C}^{<t>}$，这样有利于维持$C^{<t>}$。</t></t></t></p>
-<p><strong>维度：</strong>$C^{<t>},\breve{C}^{<t>},\Gamma_u$是具有一样的维度的向量，其中<strong>维度和隐藏层的激活值的个数相等.</strong></t></t></p>
-<p><strong>完整的GRU计算过程，比上面多了一个之前的C和之后的C之间的联系公式$\Gamma_c$：</strong></p>
+<p><strong>当时间步没有扫到was时，$\Gamma_u$一直=0，此时C一直等于旧的值1，即$C^{<t>}=c^{<t-1>}$；当而当时间步扫到”was”时，$\Gamma_u=1$，此时需要更新C值为$\breve{c}^{<t>}$，即$C^{<t>}=\breve{C}^{<t>}$。</t></t></t></t-1></t></strong>GRU的计算顺序其实就是公式（1）、（2)、（3）的计算顺序。</p>
+<p><strong>优点：</strong>左上的就是GRU单元但简图，和RNN有些类似。优点是有利于除去梯度消失的缺点，因为隔了很开的特征也可以有联系，即把隔开多层的神经元信息联系了起来。因为门介于0-1之间，而且非常非常非常接近0，这样C就和之前的C值一样即$C^{<t>}=\breve{C}^{<t>} $，这样有利于维持$ C^{<t>}$。</t></t></t></p>
+<p><strong>维度：</strong>$C^{<t>}, \breve{C}^{<t>}, \Gamma_u$是具有一样的维度的向量，其中<strong>维度和隐藏层的激活值的个数相等.</strong></t></t></p>
+<p><strong>完整的GRU计算过程，比上面多了一个之前的C和之后的C之间的相关程度即相关门$\Gamma_r$：</strong></p>
 <p><img src="/2019/09/01/RNN/13.jpg" alt=""></p>
 
       
@@ -490,6 +490,8 @@ C^{<t>}=\Gamma_u * \breve{C}^{<t>}+(1-\Gamma_u) * C^{<t-1>}\tag3</script><p><img
         <div class="post-tags">
           
             <a href="/tags/RNN/" rel="tag"># RNN</a>
+          
+            <a href="/tags/GRU/" rel="tag"># GRU</a>
           
         </div>
       
@@ -620,7 +622,7 @@ C^{<t>}=\Gamma_u * \breve{C}^{<t>}+(1-\Gamma_u) * C^{<t-1>}\tag3</script><p><img
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-count">38</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
