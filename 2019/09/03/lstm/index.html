@@ -90,7 +90,7 @@
 <meta property="og:image" content="http://yoursite.com/2019/09/03/lstm/1.png">
 <meta property="og:image" content="http://yoursite.com/2019/09/03/lstm/2.png">
 <meta property="og:image" content="http://yoursite.com/2019/09/03/lstm/3.png">
-<meta property="og:updated_time" content="2019-09-03T06:25:14.990Z">
+<meta property="og:updated_time" content="2019-09-03T06:31:11.481Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LSTM简介">
 <meta name="twitter:description" content="1.LSTM简图在在序列中学习非常深的连接，LSTM（Long Short Term Memory）即长短时记忆网络，甚至比GRU更加有效。其实和GRU不同的是，LSTM是使用单独的更新门（update gate）、遗忘门（forget gate）、输出门（output gate），C和a也分开表示，不再一样。具体看下图。  下图是图形化的LSTM解释，发现LSTM在不同时序上会传递下去，比如更新">
@@ -398,10 +398,11 @@
         <h1 id="1-LSTM简图"><a href="#1-LSTM简图" class="headerlink" title="1.LSTM简图"></a>1.LSTM简图</h1><p><strong>在在序列中学习非常深的连接，LSTM（Long Short Term Memory）</strong>即长短时记忆网络，甚至比<strong>GRU</strong>更加有效。其实和GRU不同的是，LSTM是使用单独的更新门（update gate）、遗忘门（forget gate）、输出门（output gate），C和a也分开表示，不再一样。具体看下图。</p>
 <p><img src="/2019/09/03/lstm/1.png" alt="1"></p>
 <p><strong>下图是图形化的LSTM解释，发现LSTM在不同时序上会传递下去，比如更新门一直是0且遗忘门一直是1，那C的值和上一个时序的C值是一样的，即记忆细胞一直延续下去。</strong>LSTM与GRU的区别是使用了3个门来控制网络，更加复杂、性能也更好。</p>
-<p>“<strong>窥视孔连接</strong>”（peephole connection）。虽然不是个好听的名字，“<strong>偷窥孔连接</strong>”其实意思就是门值不仅取决于上个时序t-1时候的a和$x^{<t>}$，也取决于上一个记忆细胞的值$c^{<t-1>}​$。</t-1></t></p>
+<p>“<strong>窥视孔连接</strong>”（peephole connection）。虽然不是个好听的名字，“<strong>偷窥孔连接</strong>”其实意思就是门值不仅取决于上个时序t-1时候的a和t时刻的x，也取决于t-1时刻的记忆细胞值c。</p>
 <p><img src="/2019/09/03/lstm/2.png" alt="2"></p>
 <h1 id="2-双向神经网络简图（Bidirectional-RNN）"><a href="#2-双向神经网络简图（Bidirectional-RNN）" class="headerlink" title="2.双向神经网络简图（Bidirectional RNN）"></a>2.双向神经网络简图（Bidirectional RNN）</h1><p>如下图所示，双向RNN中紫色的就是从做到右的传递信息，绿色部分就是从右到左的信息传递，期间还有向后传播（求偏导部分）的信息传递。比如在预测某个输出$\widetilde{y}^{<3>}$时，前面X1、X2、X3和向右的三个a都传递到了第三个单元做预测，并且为了利用未来的信息，X4到向左的a4，再到向左的a3；这些未来的信息也传递给第三单元；再加上反向传播（求偏导部分），则最终预测出我们的$\widetilde{y}^{<3>}$。</3></3></p>
 <p><img src="/2019/09/03/lstm/3.png" alt="1"></p>
+<p>这些基本单元不仅仅是标准<strong>RNN</strong>单元，也可以是<strong>GRU</strong>单元或者<strong>LSTM</strong>单元。事实上，很多的<strong>NLP</strong>问题，对于大量有自然语言处理问题的文本，有<strong>LSTM</strong>单元的双向<strong>RNN</strong>模型是用的最多的。</p>
 
       
     </div>
