@@ -97,11 +97,12 @@
 <meta property="og:image" content="http://yoursite.com/2019/09/01/RNN/7.png">
 <meta property="og:image" content="http://yoursite.com/2019/09/01/RNN/9.png">
 <meta property="og:image" content="http://yoursite.com/2019/09/01/RNN/10.png">
+<meta property="og:image" content="http://yoursite.com/2019/09/01/RNN/15.png">
 <meta property="og:image" content="http://yoursite.com/2019/09/01/RNN/11.png">
 <meta property="og:image" content="http://yoursite.com/2019/09/01/RNN/12.png">
 <meta property="og:image" content="http://yoursite.com/2019/09/01/RNN/14.png">
 <meta property="og:image" content="http://yoursite.com/2019/09/01/RNN/13.jpg">
-<meta property="og:updated_time" content="2019-09-03T06:28:56.752Z">
+<meta property="og:updated_time" content="2019-09-05T01:39:26.511Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="RNN简介">
 <meta name="twitter:description" content="1.输入的数据和输出的数据如输入的数据和输出的数据是类似下图带有序列性质的数据，则标准的神经网络不好处理此类数据，因为输入数据和输出数据的长度不固定（填补0的方式不高效），而且并不共享从文本的不同位置上学到的特征。比如从位置1学到的Harry可能是人名的一部分，那么如果Harry出现在其他位置，比如位置t时，它也能够自动识别其为人名的一部分的话，这就是共享特征了。  2.RNN简图下图左右边都是循">
@@ -448,6 +449,8 @@ L(\hat{y},y)= \sum_{t=1}^{T_x}L^{<t>}(\hat{y}^{<t>},y^{<t>})</script><p><strong>
 <p>梯度不仅仅会指数级别的下降，也会指数级别的上升–即梯度爆炸(exploding gradients),导致参数的数量级及其巨大会看见许多NaN或者不是数字的情况–这意味着网络的计算出现了数值溢出。</p>
 <p>如果出现了梯度爆炸的问题，一个解决方法就是使用梯度修剪(gradient clipping).即–设置一个梯度的天花板，梯度不能超过这个阈值，并对梯度进行缩放。</p>
 </blockquote>
+<p><strong>对于梯度消失和梯度爆炸比较好的理解如下图：</strong></p>
+<p><img src="/2019/09/01/RNN/15.png" alt=""></p>
 <h1 id="3-门控循环神经网络（GRU）"><a href="#3-门控循环神经网络（GRU）" class="headerlink" title="3.门控循环神经网络（GRU）"></a>3.门控循环神经网络（GRU）</h1><p> Gate Recurrent Unit即GRU网络改变了RNN的隐层结构，可以捕捉深层连接，并改善了梯度消失问题。<strong>简单的讲就是根据门值和记忆细胞的值来判断是否更新记忆细胞的值，以此来优化梯度消失的问题。</strong></p>
 <p>下图是RNN单元的简图：</p>
 <p><img src="/2019/09/01/RNN/11.png" alt="157"></p>
