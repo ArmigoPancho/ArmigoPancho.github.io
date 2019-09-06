@@ -79,21 +79,29 @@
 
 
 
-<meta name="description" content="1.词汇表征（1）概念  最简单的是one-hot即独热码表示，但是缺点是向量之间没有关联性，因为每个向量之间的内积都是0，所以我们用词嵌入的表示来解决这个问题。设定每个词有300个特征，然后每个词对应的特征有一个相关度的衡量，这样每个词都有300维的一个特征向量来表示，并且，可以方便的计算每个向量之间的相关性等等，下图简单的不是词嵌入。  （2）可视化和为什么叫词嵌入？ 首先若把这些300维度的">
+<meta name="description" content="1.词汇表征（1）概念 最简单的是one-hot即独热码表示，但是缺点是向量之间没有关联性，因为每个向量之间的内积都是0，所以我们用词嵌入的表示来解决这个问题。设定每个词有300个特征，然后每个词对应的特征有一个相关度的衡量，这样每个词都有300维的一个特征向量来表示，并且，可以方便的计算每个向量之间的相关性等等，下图简单的不是词嵌入。  （2）可视化和为什么叫词嵌入？首先若把这些300维度的向量">
 <meta name="keywords" content="词嵌入">
 <meta property="og:type" content="article">
 <meta property="og:title" content="embedding">
 <meta property="og:url" content="http://yoursite.com/2019/09/05/embedding/index.html">
 <meta property="og:site_name" content="Hello,Armigo!">
-<meta property="og:description" content="1.词汇表征（1）概念  最简单的是one-hot即独热码表示，但是缺点是向量之间没有关联性，因为每个向量之间的内积都是0，所以我们用词嵌入的表示来解决这个问题。设定每个词有300个特征，然后每个词对应的特征有一个相关度的衡量，这样每个词都有300维的一个特征向量来表示，并且，可以方便的计算每个向量之间的相关性等等，下图简单的不是词嵌入。  （2）可视化和为什么叫词嵌入？ 首先若把这些300维度的">
+<meta property="og:description" content="1.词汇表征（1）概念 最简单的是one-hot即独热码表示，但是缺点是向量之间没有关联性，因为每个向量之间的内积都是0，所以我们用词嵌入的表示来解决这个问题。设定每个词有300个特征，然后每个词对应的特征有一个相关度的衡量，这样每个词都有300维的一个特征向量来表示，并且，可以方便的计算每个向量之间的相关性等等，下图简单的不是词嵌入。  （2）可视化和为什么叫词嵌入？首先若把这些300维度的向量">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2019/09/05/embedding/1.png">
 <meta property="og:image" content="http://yoursite.com/2019/09/05/embedding/2.png">
 <meta property="og:image" content="http://yoursite.com/2019/09/05/embedding/3.png">
-<meta property="og:updated_time" content="2019-09-05T03:16:52.079Z">
+<meta property="og:image" content="http://yoursite.com/2019/09/05/embedding/4.png">
+<meta property="og:image" content="http://yoursite.com/2019/09/05/embedding/5.png">
+<meta property="og:image" content="http://yoursite.com/2019/09/05/embedding/6.png">
+<meta property="og:image" content="http://yoursite.com/2019/09/05/embedding/7.png">
+<meta property="og:image" content="http://yoursite.com/2019/09/05/embedding/8.png">
+<meta property="og:image" content="http://yoursite.com/2019/09/05/embedding/9.png">
+<meta property="og:image" content="http://yoursite.com/2019/09/05/embedding/10.png">
+<meta property="og:image" content="http://yoursite.com/2019/09/05/embedding/11.png">
+<meta property="og:updated_time" content="2019-09-06T13:20:46.958Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="embedding">
-<meta name="twitter:description" content="1.词汇表征（1）概念  最简单的是one-hot即独热码表示，但是缺点是向量之间没有关联性，因为每个向量之间的内积都是0，所以我们用词嵌入的表示来解决这个问题。设定每个词有300个特征，然后每个词对应的特征有一个相关度的衡量，这样每个词都有300维的一个特征向量来表示，并且，可以方便的计算每个向量之间的相关性等等，下图简单的不是词嵌入。  （2）可视化和为什么叫词嵌入？ 首先若把这些300维度的">
+<meta name="twitter:description" content="1.词汇表征（1）概念 最简单的是one-hot即独热码表示，但是缺点是向量之间没有关联性，因为每个向量之间的内积都是0，所以我们用词嵌入的表示来解决这个问题。设定每个词有300个特征，然后每个词对应的特征有一个相关度的衡量，这样每个词都有300维的一个特征向量来表示，并且，可以方便的计算每个向量之间的相关性等等，下图简单的不是词嵌入。  （2）可视化和为什么叫词嵌入？首先若把这些300维度的向量">
 <meta name="twitter:image" content="http://yoursite.com/2019/09/05/embedding/1.png">
 
 
@@ -395,14 +403,34 @@
       
 
       
-        <h1 id="1-词汇表征"><a href="#1-词汇表征" class="headerlink" title="1.词汇表征"></a>1.词汇表征</h1><p><strong>（1）概念</strong></p>
-<p><img src="/2019/09/05/embedding/1.png" alt="1567650269516"></p>
+        <h1 id="1-词汇表征"><a href="#1-词汇表征" class="headerlink" title="1.词汇表征"></a>1.词汇表征</h1><h2 id="（1）概念"><a href="#（1）概念" class="headerlink" title="（1）概念"></a><strong>（1）概念</strong></h2><p><img src="/2019/09/05/embedding/1.png" alt="1567650269516"></p>
 <p><strong>最简单的是one-hot即独热码表示，但是缺点是向量之间没有关联性，因为每个向量之间的内积都是0，所以我们用词嵌入的表示来解决这个问题。设定每个词有300个特征，然后每个词对应的特征有一个相关度的衡量，这样每个词都有300维的一个特征向量来表示，并且，可以方便的计算每个向量之间的相关性等等，下图简单的不是词嵌入。</strong></p>
 <p><img src="/2019/09/05/embedding/2.png" alt="1567650899344"></p>
-<p><strong>（2）可视化和为什么叫词嵌入？</strong></p>
-<p>首先若把这些300维度的向量映射到2维，则可以看到向量在平面上的位置标示，看到下图的人、动物可以看作一个聚集，数字是在一起的，水果之间的更加相近，聚在一起，简单的可视化效果好点。</p>
+<h2 id="（2）可视化和为什么叫词嵌入？"><a href="#（2）可视化和为什么叫词嵌入？" class="headerlink" title="（2）可视化和为什么叫词嵌入？"></a><strong>（2）可视化和为什么叫词嵌入？</strong></h2><p>首先若把这些300维度的向量映射到2维，则可以看到向量在平面上的位置标示，看到下图的人、动物可以看作一个聚集，数字是在一起的，水果之间的更加相近，聚在一起，简单的可视化效果好点。</p>
 <p>对于为什么叫词嵌入？很简单，若把300维度的看作是个高纬的空间，词就是镶嵌在这里面而已。</p>
+<p><strong>词嵌入还有一个优点是：当我们输入一个训练集中遇到一个未知的词“durian”（榴莲），词嵌入可以比较好的知道这个词和“orange”都是水果一类的词。这即是使用词嵌入的好处之一。</strong></p>
 <p><img src="/2019/09/05/embedding/3.png" alt="1567651252814"></p>
+<h2 id="（3）词嵌入的特性"><a href="#（3）词嵌入的特性" class="headerlink" title="（3）词嵌入的特性"></a>（3）词嵌入的特性</h2><p>如下图，有意思的是比如man-woman之间的值和king-queen之间的差值是一样的，或者是类似的。那当我们已知man - woman = king - ? ；去求解”?”处的时候就可以反着推导出来了。</p>
+<p><img src="/2019/09/05/embedding/4.png" alt="1567670613384"></p>
+<p>再仔细思考下，其实问好处的向量，也可以等价于求下图中最下面最大化的式子，通过降到2维度可以比较好的展示出其实是2个可以平移后的重合或者非常相近的向量，但t-SNE的非线性映射这些方法中这种平行四边形的关系不会成立，维度太高。</p>
+<p><img src="/2019/09/05/embedding/5.png" alt="77307"></p>
+<p>SO，我们可以使用余弦相似度来表示这种相似性的关系：其实即向量之间的内积/各自向量的模的乘积</p>
+<p><img src="/2019/09/05/embedding/6.png" alt="1567672391713"></p>
+<h2 id="（4）嵌入矩阵"><a href="#（4）嵌入矩阵" class="headerlink" title="（4）嵌入矩阵"></a>（4）嵌入矩阵</h2><p>我们要做的就是学习一个嵌入矩阵，它将是一个300×10,000的矩阵，如果你的词汇表里有10,000个，或者加上未知词就是10,001维。即下图中左上角的大矩阵。</p>
+<p><img src="/2019/09/05/embedding/7.png" alt="153"></p>
+<p>假设这个嵌入矩阵叫做E矩阵，注意如果用E去乘以右边的<strong>one-hot</strong>向量（上图编号3所示），也就是O_6257，那么就会得到一个300维的向量，E是300×10,000的，O_6257是10,000×1的，所以它们的积是300×1的，即300维的向量。由于O_6257是独热码，所以乘积的结果就是orange那一列的向量。这样就把orange这个词用向量的形式表征了出来。</p>
+<p><strong>总的来说，就是嵌入矩阵E乘以一个独热码得到某个词的向量表征，实际操作的时候会有专门的函数提取E中的每个列，因为每次乘以独热码中的0计算慢且无效。</strong></p>
+<h2 id="（5）学习词嵌入"><a href="#（5）学习词嵌入" class="headerlink" title="（5）学习词嵌入"></a>（5）学习词嵌入</h2><p>那词嵌入可以干什么？比如下面，可以先把句子词后编号，然后构造E得到对应的词向量输入神经网络，最后使用softmax预测，可以输入不同个数的词向量，得到多次预测结果，比如输入红色的2个向量预测的结果和下面黄色部分的预测结果，来选出概率最大的预测结果。</p>
+<p><img src="/2019/09/05/embedding/8.png" alt="22"></p>
+<h2 id="（6）WordtoVec的简单铺垫"><a href="#（6）WordtoVec的简单铺垫" class="headerlink" title="（6）WordtoVec的简单铺垫"></a>（6）WordtoVec的简单铺垫</h2><p><a href="http://www.armigo.fun/2019/03/04/word2vec/" target="_blank" rel="noopener">之前的文章</a>也有介绍WordtoVec，写的有缺点。把上面的模型简化为下图的方式：就是根据一个词c来推预测某一个词t的概率是多少？</p>
+<p>这里θ是一个与输出词 t 有关的参数（就是输出矩阵的参数，列向量转制），即某个词 t 和标签相符的概率是多少。我省略了<strong>softmax</strong>中的偏差项，想要加上的话也可以加上。然后分母是所有词的概率和，即输出当前预测词t的概率。</p>
+<p><img src="/2019/09/05/embedding/9.png" alt="1567739388912"></p>
+<p>此优化对象的损失函数是：</p>
+<script type="math/tex; mode=display">
+L(\hat{y}, y)=-\sum_{i=1}^{10,000} y_{i} \log \hat{y}_{i}</script><p>$y_i$是只有一个1其他都是0的<strong>one-hot</strong>向量，类似的$\hat{y}$是一个从<strong>softmax</strong>单元输出的10,000维的向量，这个向量是所有可能目标词的概率。乘积就是每个单词的损失值，负号是log函数在底数大于1、x为0-1之间时候值是复数，加负号利于惯性思维（即损失值越小越好）和优化。<strong>正好和红色的log函数相符，$\hat{y}$值越大，L损失值越小。</strong>这里应该是y的转制乘以列向量log$\hat{y}$，否则不是数字了。</p>
+<p><img src="/2019/09/05/embedding/10.png" alt="1567772251121"></p>
+<p>注意，这里由于分母很多向量求和导致计算量巨大，so采用一种分级（<strong>hierarchical</strong>）的<strong>softmax</strong>分类器和<strong>负采样</strong>（<strong>Negative Sampling</strong>），来加速优化。<strong>前面的大致就是说每一个结点都是一个softmax函数，把常见的高频词越放上面放置，目标词t在5k前面，还是在5k后面，若在5k前面，继续判别，发现目标词在2500后面…，二分法一直下去直到到达对应的目标词所在的softmax分类器，这样就遍历的快很多。</strong></p>
+<p><strong>第二个负采样大致是对于我们的中心词c来说，常见词反而是我们不想要的，比如”the、of 、and、that”等等，你不会想要你的训练集都是这些出现得很频繁的词，因为这会导致你花大部分的力气来更新这些频繁出现的单词的、反而无意义。所以在采样中心词的时候，我们采用了不同的分级来平衡更常见的词和不那么常见的词。</strong><img src="/2019/09/05/embedding/11.png" alt="33"></p>
 
       
     </div>
@@ -590,7 +618,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-词汇表征"><span class="nav-text">1.词汇表征</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-词汇表征"><span class="nav-text">1.词汇表征</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#（1）概念"><span class="nav-text">（1）概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#（2）可视化和为什么叫词嵌入？"><span class="nav-text">（2）可视化和为什么叫词嵌入？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#（3）词嵌入的特性"><span class="nav-text">（3）词嵌入的特性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#（4）嵌入矩阵"><span class="nav-text">（4）嵌入矩阵</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#（5）学习词嵌入"><span class="nav-text">（5）学习词嵌入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#（6）WordtoVec的简单铺垫"><span class="nav-text">（6）WordtoVec的简单铺垫</span></a></li></ol></li></ol></div>
             
 
           </div>
