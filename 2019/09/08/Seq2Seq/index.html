@@ -91,7 +91,8 @@
 <meta property="og:image" content="http://yoursite.com/2019/09/08/Seq2Seq/2.png">
 <meta property="og:image" content="http://yoursite.com/2019/09/08/Seq2Seq/3.png">
 <meta property="og:image" content="http://yoursite.com/2019/09/08/Seq2Seq/4.png">
-<meta property="og:updated_time" content="2019-09-08T04:26:00.975Z">
+<meta property="og:image" content="http://yoursite.com/2019/09/08/Seq2Seq/5.png">
+<meta property="og:updated_time" content="2019-09-09T01:25:29.789Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Seq2Seq简介">
 <meta name="twitter:description" content="1.Seq2Seq（1）简介sequence to sequence模型是一类End-to-End的算法框架，也就是从序列到序列的转换模型框架，应用在机器翻译，自动应答等场景。 基本思想就是利用两个RNN，一个RNN作为encoder，另一个RNN作为decoder。encoder负责将输入序列压缩成指定长度的向量，这个向量就可以看成是这个序列的语义，这个过程称为编码，如下图，获取语义向量最简单的">
@@ -410,6 +411,10 @@ p\left(y^{(1)}, y^{(2)} | x\right)=p\left(y^{(1)} | x\right) p\left(y^{(2)} | x,
 <p>这样最大化公式（1）即可，对于每一个词都这样做，就有3个RNN网络分别预测第二个词，对于维度，第二步有3*10000个单词，就是3万个概率值如图左显示，从这3万个组合中选出最大的3个概率值，假设分别是”in september”、”jane is”、”jane visits”，那”september”就会删除，只保留最大的三个词；接着就第三个词的预测，如下图所示，把前面已经确定的2个词作为输入，并且预测第三个词，就这样一直遇到终止符号”EOS”，就不再预测词。</p>
 <p><img src="/2019/09/08/Seq2Seq/4.png" alt="3"></p>
 <p>当B即集束宽度为1时，算法性能约等于贪心算法。</p>
+<h2 id="（3）改进的集束搜索"><a href="#（3）改进的集束搜索" class="headerlink" title="（3）改进的集束搜索"></a>（3）改进的集束搜索</h2><p>由于原始优化目标是每个词的连乘积，这样乘起来的数字是[0,1]，小数点会很大，对计算机来说会产生浮点数的下溢，不利于大规模词的计算，所以改成log就是每个词的概率相加，但是也会造成都是负数相加，数字就是一个很大的负数，<strong>所以把它归一化，通过除以翻译结果的单词数量。这样就是取每个单词的概率对数值的平均了，这样很明显地减少了对输出长的结果的惩罚。</strong></p>
+<p><img src="/2019/09/08/Seq2Seq/5.png" alt="5"></p>
+<p>其中长度T的次方α=0.7是一个超参，如果α等于1，就相当于完全用长度来归一化，如果α等于0，T_y的0次幂就是1，就相当于完全没有归一化，上图中的T_y就是在完全归一化和没有归一化之间。</p>
+<p>关于B：<strong>B越大，你考虑的选择越多，你找到的句子可能越好，但是B越大，你的算法的计算代价越大</strong>，因为你要把很多的可能选择保存起来。<strong>B越小，效果越差，但是计算越快。一般对于产品系统来说，B=10的效果不错，100以上就太大了。</strong></p>
 <h1 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h1><p>1.Seq2Seq简介：<a href="https://www.jianshu.com/p/b2b95f945a98" target="_blank" rel="noopener">https://www.jianshu.com/p/b2b95f945a98</a></p>
 <p>2.吴恩达视频：<a href="https://mooc.study.163.com/learn/2001280005?tid=2001391038#/learn/content?type=detail&amp;id=2001771063" target="_blank" rel="noopener">https://mooc.study.163.com/learn/2001280005?tid=2001391038#/learn/content?type=detail&amp;id=2001771063</a></p>
 
@@ -599,7 +604,7 @@ p\left(y^{(1)}, y^{(2)} | x\right)=p\left(y^{(1)} | x\right) p\left(y^{(2)} | x,
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-Seq2Seq"><span class="nav-text">1.Seq2Seq</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#（1）简介"><span class="nav-text">（1）简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#（2）集束搜索（Bean-Search）"><span class="nav-text">（2）集束搜索（Bean Search）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考："><span class="nav-text">参考：</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-Seq2Seq"><span class="nav-text">1.Seq2Seq</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#（1）简介"><span class="nav-text">（1）简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#（2）集束搜索（Bean-Search）"><span class="nav-text">（2）集束搜索（Bean Search）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#（3）改进的集束搜索"><span class="nav-text">（3）改进的集束搜索</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考："><span class="nav-text">参考：</span></a></li></ol></div>
             
 
           </div>
