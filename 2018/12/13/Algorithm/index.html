@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Hello,Armigo!">
 <meta property="og:description" content="1.冒泡排序对一些常见的排序刷一下,可以参考  https://blog.csdn.net/sgn132/article/details/47279511 ，https://blog.csdn.net/wfq784967698/article/details/79551476  等博客。冒泡排序就是每一趟都通过两两比较相邻的值，逆序就调整顺序，遍历整个list找到最大值放到最后一个，然后list长">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-13T02:42:06.383Z">
+<meta property="og:updated_time" content="2019-09-13T03:31:12.459Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="排序算法代码">
 <meta name="twitter:description" content="1.冒泡排序对一些常见的排序刷一下,可以参考  https://blog.csdn.net/sgn132/article/details/47279511 ，https://blog.csdn.net/wfq784967698/article/details/79551476  等博客。冒泡排序就是每一趟都通过两两比较相邻的值，逆序就调整顺序，遍历整个list找到最大值放到最后一个，然后list长">
@@ -397,8 +397,10 @@
 <p>一般来说，插入排序都采用in-place在数组上实现。具体算法描述如下：</p>
 <p>（1）从第一个元素开始，该元素可以认为已经被排序；<br>（2）取出下一个元素，在已经排序的元素序列中从后向前扫描；<br>（3）如果该元素（已排序）大于新元素，将该元素移到下一位置；<br>（4）重复步骤3，直到找到已排序的元素小于或者等于新元素的位置；<br>（5）将新元素插入到该位置后；<br>（6）重复步骤2~5。</p>
 </blockquote>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">iframe</span> <span class="attr">height</span>=<span class="string">100</span> <span class="attr">width</span>=<span class="string">100</span> <span class="attr">src</span>=<span class="string">"https://blog.csdn.net/wfq784967698/article/details/79551476"</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h2 id="2-2代码"><a href="#2-2代码" class="headerlink" title="2.2代码"></a>2.2代码</h2>
+<p>动态图如下：</p>
+<iframe height="500" width="200" src="https://img-blog.csdn.net/20180611101342725" ##="" 2.2代码="" <figure="" class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">Insertion_Sort</span><span class="params">(L)</span>:</span></span><br><span class="line">    <span class="string">'''思想： 每次的待插入值temp和已排序区的每个值去比较大小，直到找到temp&gt;当前值，就在当前值的后一个位置插入。'''</span></span><br><span class="line">    <span class="comment"># 等待插入位置 i</span></span><br><span class="line">    <span class="comment"># 已排序的最后一个位置j</span></span><br><span class="line">    <span class="comment"># 哨兵：这里用来存储待排序的元素值temp</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(L)):</span><br><span class="line">        j = i - <span class="number">1</span> <span class="comment"># 已排序的最后一个位置j就是待插入元素位置的前一个</span></span><br><span class="line">        temp = L[i]</span><br><span class="line">        <span class="keyword">while</span>(j &gt;= <span class="number">0</span> <span class="keyword">and</span> temp &lt; L[j]):</span><br><span class="line">            L[j+<span class="number">1</span>] = L[j]    <span class="comment"># 待插入值比当前值小，已排序的当前值就往后移动</span></span><br><span class="line">            j -= <span class="number">1</span>          <span class="comment"># 一个个往前遍历已排序的每个值</span></span><br><span class="line">        <span class="comment"># 都比完了或者 temp值比当前值要大：则插入当前值的后一个位置</span></span><br><span class="line">        L[j+<span class="number">1</span>] = temp</span><br><span class="line">    print(L)</span><br><span class="line">    <span class="keyword">return</span> L</span><br><span class="line"></span><br><span class="line">L = [<span class="number">23</span>,<span class="number">4</span>,<span class="number">10</span>,<span class="number">90</span>,<span class="number">-9</span>]</span><br><span class="line">Insertion_Sort(L)</span><br></pre></td></tr></table>
+
+</iframe>
       
     </div>
     
@@ -589,7 +591,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-冒泡排序"><span class="nav-text">1.冒泡排序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-直接插入排序"><span class="nav-text">2.直接插入排序</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-算法伪代码"><span class="nav-text">2.1 算法伪代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2代码"><span class="nav-text">2.2代码</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-冒泡排序"><span class="nav-text">1.冒泡排序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-直接插入排序"><span class="nav-text">2.直接插入排序</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-算法伪代码"><span class="nav-text">2.1 算法伪代码</span></a></li></ol></li></ol></div>
             
 
           </div>
