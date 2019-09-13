@@ -92,7 +92,8 @@
 <meta property="og:image" content="http://yoursite.com/2019/09/08/Seq2Seq/3.png">
 <meta property="og:image" content="http://yoursite.com/2019/09/08/Seq2Seq/4.png">
 <meta property="og:image" content="http://yoursite.com/2019/09/08/Seq2Seq/5.png">
-<meta property="og:updated_time" content="2019-09-09T01:25:29.789Z">
+<meta property="og:image" content="http://yoursite.com/2019/09/08/Seq2Seq/6.png">
+<meta property="og:updated_time" content="2019-09-12T01:40:35.879Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Seq2Seq简介">
 <meta name="twitter:description" content="1.Seq2Seq（1）简介sequence to sequence模型是一类End-to-End的算法框架，也就是从序列到序列的转换模型框架，应用在机器翻译，自动应答等场景。 基本思想就是利用两个RNN，一个RNN作为encoder，另一个RNN作为decoder。encoder负责将输入序列压缩成指定长度的向量，这个向量就可以看成是这个序列的语义，这个过程称为编码，如下图，获取语义向量最简单的">
@@ -415,6 +416,9 @@ p\left(y^{(1)}, y^{(2)} | x\right)=p\left(y^{(1)} | x\right) p\left(y^{(2)} | x,
 <p><img src="/2019/09/08/Seq2Seq/5.png" alt="5"></p>
 <p>其中长度T的次方α=0.7是一个超参，如果α等于1，就相当于完全用长度来归一化，如果α等于0，T_y的0次幂就是1，就相当于完全没有归一化，上图中的T_y就是在完全归一化和没有归一化之间。</p>
 <p>关于B：<strong>B越大，你考虑的选择越多，你找到的句子可能越好，但是B越大，你的算法的计算代价越大</strong>，因为你要把很多的可能选择保存起来。<strong>B越小，效果越差，但是计算越快。一般对于产品系统来说，B=10的效果不错，100以上就太大了。</strong></p>
+<h2 id="（4）集束搜索的误差分析"><a href="#（4）集束搜索的误差分析" class="headerlink" title="（4）集束搜索的误差分析"></a>（4）集束搜索的误差分析</h2><p>大致是2种误差，一种是RNN选对了预测值，但是集束搜索没有找到它，反而选了更小的值。比如下图的Case 1，还有一种是Case 2：就是情况是$P（y^<em>|x）$小于或等于$P（\hat{y}|x）$，case1和2中总有一个是真的。此例子中假设$y^</em>$是比$\hat{y}$更好的翻译结果，不过case 2中根据RNN模型的结果反而搞反了，所以这就是RNN出现了问题，集束搜索没有问题。</p>
+<p><img src="/2019/09/08/Seq2Seq/6.png" alt="6"></p>
+<p>统计这2类的错误情况，得出束搜索算法和<strong>RNN</strong>模型出错的比例是多少的一张表。<strong>当你发现是束搜索算法造成了大部分错误时，才值得花费努力增大集束宽度。如果你发现是RNN模型出了更多错，那么你可以进行更深层次的分析，来决定是需要增加正则化还是获取更多的训练数据，抑或是尝试一个不同的网络结构，或是其他方案。</strong></p>
 <h1 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h1><p>1.Seq2Seq简介：<a href="https://www.jianshu.com/p/b2b95f945a98" target="_blank" rel="noopener">https://www.jianshu.com/p/b2b95f945a98</a></p>
 <p>2.吴恩达视频：<a href="https://mooc.study.163.com/learn/2001280005?tid=2001391038#/learn/content?type=detail&amp;id=2001771063" target="_blank" rel="noopener">https://mooc.study.163.com/learn/2001280005?tid=2001391038#/learn/content?type=detail&amp;id=2001771063</a></p>
 
@@ -604,7 +608,7 @@ p\left(y^{(1)}, y^{(2)} | x\right)=p\left(y^{(1)} | x\right) p\left(y^{(2)} | x,
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-Seq2Seq"><span class="nav-text">1.Seq2Seq</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#（1）简介"><span class="nav-text">（1）简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#（2）集束搜索（Bean-Search）"><span class="nav-text">（2）集束搜索（Bean Search）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#（3）改进的集束搜索"><span class="nav-text">（3）改进的集束搜索</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考："><span class="nav-text">参考：</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-Seq2Seq"><span class="nav-text">1.Seq2Seq</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#（1）简介"><span class="nav-text">（1）简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#（2）集束搜索（Bean-Search）"><span class="nav-text">（2）集束搜索（Bean Search）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#（3）改进的集束搜索"><span class="nav-text">（3）改进的集束搜索</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#（4）集束搜索的误差分析"><span class="nav-text">（4）集束搜索的误差分析</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考："><span class="nav-text">参考：</span></a></li></ol></div>
             
 
           </div>
