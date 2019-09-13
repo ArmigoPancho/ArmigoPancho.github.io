@@ -79,18 +79,20 @@
 
 
 
-<meta name="description" content="1.冒泡排序对一些常见的排序刷一下,可以参考  https://blog.csdn.net/sgn132/article/details/47279511 ，https://blog.csdn.net/wfq784967698/article/details/79551476  等博客。冒泡排序就是每一趟都通过两两比较相邻的值，逆序就调整顺序，遍历整个list找到最大值放到最后一个，然后list长">
+<meta name="description" content="排序算法的总结图：  1.冒泡排序对一些常见的排序刷一下,可以参考  https://blog.csdn.net/sgn132/article/details/47279511 ，https://blog.csdn.net/wfq784967698/article/details/79551476  等博客。冒泡排序就是每一趟都通过两两比较相邻的值，逆序就调整顺序，遍历整个list找到最大值放到最">
 <meta name="keywords" content="冒泡排序">
 <meta property="og:type" content="article">
 <meta property="og:title" content="排序算法代码">
 <meta property="og:url" content="http://yoursite.com/2018/12/13/Algorithm/index.html">
 <meta property="og:site_name" content="Hello,Armigo!">
-<meta property="og:description" content="1.冒泡排序对一些常见的排序刷一下,可以参考  https://blog.csdn.net/sgn132/article/details/47279511 ，https://blog.csdn.net/wfq784967698/article/details/79551476  等博客。冒泡排序就是每一趟都通过两两比较相邻的值，逆序就调整顺序，遍历整个list找到最大值放到最后一个，然后list长">
+<meta property="og:description" content="排序算法的总结图：  1.冒泡排序对一些常见的排序刷一下,可以参考  https://blog.csdn.net/sgn132/article/details/47279511 ，https://blog.csdn.net/wfq784967698/article/details/79551476  等博客。冒泡排序就是每一趟都通过两两比较相邻的值，逆序就调整顺序，遍历整个list找到最大值放到最">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-13T06:36:33.404Z">
+<meta property="og:image" content="http://yoursite.com/2018/12/13/Algorithm/3.png">
+<meta property="og:updated_time" content="2019-09-13T06:45:51.364Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="排序算法代码">
-<meta name="twitter:description" content="1.冒泡排序对一些常见的排序刷一下,可以参考  https://blog.csdn.net/sgn132/article/details/47279511 ，https://blog.csdn.net/wfq784967698/article/details/79551476  等博客。冒泡排序就是每一趟都通过两两比较相邻的值，逆序就调整顺序，遍历整个list找到最大值放到最后一个，然后list长">
+<meta name="twitter:description" content="排序算法的总结图：  1.冒泡排序对一些常见的排序刷一下,可以参考  https://blog.csdn.net/sgn132/article/details/47279511 ，https://blog.csdn.net/wfq784967698/article/details/79551476  等博客。冒泡排序就是每一趟都通过两两比较相邻的值，逆序就调整顺序，遍历整个list找到最大值放到最">
+<meta name="twitter:image" content="http://yoursite.com/2018/12/13/Algorithm/3.png">
 
 
 
@@ -391,7 +393,9 @@
       
 
       
-        <h1 id="1-冒泡排序"><a href="#1-冒泡排序" class="headerlink" title="1.冒泡排序"></a>1.冒泡排序</h1><p>对一些常见的排序刷一下,可以参考  <a href="https://blog.csdn.net/sgn132/article/details/47279511" target="_blank" rel="noopener">https://blog.csdn.net/sgn132/article/details/47279511</a> ，<a href="https://blog.csdn.net/wfq784967698/article/details/79551476" target="_blank" rel="noopener">https://blog.csdn.net/wfq784967698/article/details/79551476</a>  等博客。冒泡排序就是每一趟都通过两两比较相邻的值，逆序就调整顺序，遍历整个list找到最大值放到最后一个，然后list长度减1；再次遍历直到最后一个值是最大值，如此循环。计算复杂度最好时为$O（n）$,最差是$O（n^2）$，故计算复杂度为$O(n^2)$，是稳定排序。</p>
+        <p>排序算法的总结图：</p>
+<p><img src="/2018/12/13/Algorithm/3.png" alt="3"></p>
+<h1 id="1-冒泡排序"><a href="#1-冒泡排序" class="headerlink" title="1.冒泡排序"></a>1.冒泡排序</h1><p>对一些常见的排序刷一下,可以参考  <a href="https://blog.csdn.net/sgn132/article/details/47279511" target="_blank" rel="noopener">https://blog.csdn.net/sgn132/article/details/47279511</a> ，<a href="https://blog.csdn.net/wfq784967698/article/details/79551476" target="_blank" rel="noopener">https://blog.csdn.net/wfq784967698/article/details/79551476</a>  等博客。冒泡排序就是每一趟都通过两两比较相邻的值，逆序就调整顺序，遍历整个list找到最大值放到最后一个，然后list长度减1；再次遍历直到最后一个值是最大值，如此循环。计算复杂度最好时为$O（n）$,最差是$O（n^2）$，故计算复杂度为$O(n^2)$，是稳定排序。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 冒泡排序</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">bubble_sort</span><span class="params">(l)</span>:</span></span><br><span class="line">    <span class="comment"># 外层循环 len(l)遍，内层循环少一遍</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(l)<span class="number">-1</span>):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(len(l) - <span class="number">1</span>):</span><br><span class="line">            <span class="comment"># 找出最大值，然后交换位置到最后</span></span><br><span class="line">            <span class="keyword">if</span> l[j] &gt; l[j+<span class="number">1</span>]:</span><br><span class="line">                l[j], l[j+ <span class="number">1</span>] = l[j+<span class="number">1</span>], l[j]</span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    l = [<span class="number">5</span>, <span class="number">1</span>, <span class="number">91</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">7</span>]</span><br><span class="line">    bubble_sort(l)</span><br><span class="line">    print(l)</span><br></pre></td></tr></table></figure>
 <h1 id="2-直接插入排序"><a href="#2-直接插入排序" class="headerlink" title="2.直接插入排序"></a>2.直接插入排序</h1><h2 id="2-1-算法伪代码"><a href="#2-1-算法伪代码" class="headerlink" title="2.1 算法伪代码"></a>2.1 算法伪代码</h2><blockquote>
 <p>一般来说，插入排序都采用in-place在数组上实现。具体算法描述如下：</p>

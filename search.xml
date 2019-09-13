@@ -272,7 +272,7 @@
   <entry>
     <title><![CDATA[排序算法代码]]></title>
     <url>%2F2018%2F12%2F13%2FAlgorithm%2F</url>
-    <content type="text"><![CDATA[1.冒泡排序对一些常见的排序刷一下,可以参考 https://blog.csdn.net/sgn132/article/details/47279511 ，https://blog.csdn.net/wfq784967698/article/details/79551476 等博客。冒泡排序就是每一趟都通过两两比较相邻的值，逆序就调整顺序，遍历整个list找到最大值放到最后一个，然后list长度减1；再次遍历直到最后一个值是最大值，如此循环。计算复杂度最好时为$O（n）$,最差是$O（n^2）$，故计算复杂度为$O(n^2)$，是稳定排序。 123456789101112# 冒泡排序def bubble_sort(l): # 外层循环 len(l)遍，内层循环少一遍 for i in range(len(l)-1): for j in range(len(l) - 1): # 找出最大值，然后交换位置到最后 if l[j] &gt; l[j+1]: l[j], l[j+ 1] = l[j+1], l[j]if __name__ == "__main__": l = [5, 1, 91, 3, 2, 7] bubble_sort(l) print(l) 2.直接插入排序2.1 算法伪代码 一般来说，插入排序都采用in-place在数组上实现。具体算法描述如下： （1）从第一个元素开始，该元素可以认为已经被排序；（2）取出下一个元素，在已经排序的元素序列中从后向前扫描；（3）如果该元素（已排序）大于新元素，将该元素移到下一位置；（4）重复步骤3，直到找到已排序的元素小于或者等于新元素的位置；（5）将新元素插入到该位置后；（6）重复步骤2~5。 动态图如下：]]></content>
+    <content type="text"><![CDATA[排序算法的总结图： 1.冒泡排序对一些常见的排序刷一下,可以参考 https://blog.csdn.net/sgn132/article/details/47279511 ，https://blog.csdn.net/wfq784967698/article/details/79551476 等博客。冒泡排序就是每一趟都通过两两比较相邻的值，逆序就调整顺序，遍历整个list找到最大值放到最后一个，然后list长度减1；再次遍历直到最后一个值是最大值，如此循环。计算复杂度最好时为$O（n）$,最差是$O（n^2）$，故计算复杂度为$O(n^2)$，是稳定排序。 123456789101112# 冒泡排序def bubble_sort(l): # 外层循环 len(l)遍，内层循环少一遍 for i in range(len(l)-1): for j in range(len(l) - 1): # 找出最大值，然后交换位置到最后 if l[j] &gt; l[j+1]: l[j], l[j+ 1] = l[j+1], l[j]if __name__ == "__main__": l = [5, 1, 91, 3, 2, 7] bubble_sort(l) print(l) 2.直接插入排序2.1 算法伪代码 一般来说，插入排序都采用in-place在数组上实现。具体算法描述如下： （1）从第一个元素开始，该元素可以认为已经被排序；（2）取出下一个元素，在已经排序的元素序列中从后向前扫描；（3）如果该元素（已排序）大于新元素，将该元素移到下一位置；（4）重复步骤3，直到找到已排序的元素小于或者等于新元素的位置；（5）将新元素插入到该位置后；（6）重复步骤2~5。 动态图如下：]]></content>
       <categories>
         <category>Algorithm</category>
       </categories>
