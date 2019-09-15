@@ -87,13 +87,14 @@
 <meta property="og:site_name" content="Hello,Armigo!">
 <meta property="og:description" content="1.词袋模型(BOW)​    简单理解下词带模型，顾名思义就是一个袋里装了很多单词，可知特点：（1）假设词语无序  （2）假设词与词之间独立。Bag-of-words模型是信息检索领域常用的文档表示方法。忽略了它的单词顺序和语法、句法等要素，将其仅仅看作是若干个词汇的集合。 它具体是如何表示的？如下有一个句子： I  have a pear and a strawberry.   于是可以构建一">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/2018/11/28/向量空间模型/1.webp">
 <meta property="og:image" content="http://yoursite.com/2018/11/28/向量空间模型/条件熵.png">
 <meta property="og:image" content="http://yoursite.com/2018/11/28/向量空间模型/证明.png">
-<meta property="og:updated_time" content="2019-08-06T02:08:56.643Z">
+<meta property="og:updated_time" content="2019-09-15T02:31:36.239Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="向量空间模型（VSM）">
 <meta name="twitter:description" content="1.词袋模型(BOW)​    简单理解下词带模型，顾名思义就是一个袋里装了很多单词，可知特点：（1）假设词语无序  （2）假设词与词之间独立。Bag-of-words模型是信息检索领域常用的文档表示方法。忽略了它的单词顺序和语法、句法等要素，将其仅仅看作是若干个词汇的集合。 它具体是如何表示的？如下有一个句子： I  have a pear and a strawberry.   于是可以构建一">
-<meta name="twitter:image" content="http://yoursite.com/2018/11/28/向量空间模型/条件熵.png">
+<meta name="twitter:image" content="http://yoursite.com/2018/11/28/向量空间模型/1.webp">
 
 
 
@@ -414,7 +415,8 @@ TF-IDF =\frac{N_i}{M}*log(\frac{K}{L+1})=\frac{N_i}{M}*log(\frac{1}{D_i}),D_i是
 <p>比如语料库中共有10篇文档，每篇800词。某一篇文档中的”战斗机” 和 “的”都出现了20次，但是”战斗机” 在2篇文档中出现，而”的”在9篇文档中出现，”的”字符的IDF=TF*log1=0，这样算下来”战斗机” 的TF-IDF的值肯定比0大，故”战斗机” 这个词更加重要。然后排序后，可以取前n个重要的词放入分类器做分类也可，计算相似度也可。其实，TF-IDF计算方法类似于交叉熵，贡献度的计算法子还有很多，按下不表。</p>
 <p>补充一下我在weka包中遇到的问题：weka里面的TF和IDF可以分开来设置，若两者都是True,则表示TF-IDF=log（1+某文档中某个词的频次） x log（逆文档率），按照这种计算出来得值可以大于1，之前一直没想明白，因为我把TF的频次算成了频率所以一直小于1。</p>
 <p>BOW和VSM两者的区别其实很小，我自己看来，就在于贡献度不一。</p>
-<h2 id="2-3熵的计算方法"><a href="#2-3熵的计算方法" class="headerlink" title="2.3熵的计算方法"></a>2.3熵的计算方法</h2><p>这里其实也算是特征选择，本文只给出了特征选择的计算方法。特征选择是一个系统的工程，有自己的方法和技术。本文特指章节2.1里面第2步骤中贡献度的计算方法。</p>
+<h2 id="2-3熵的计算方法"><a href="#2-3熵的计算方法" class="headerlink" title="2.3熵的计算方法"></a>2.3熵的计算方法</h2><p>这里其实也算是特征选择，本文只给出了特征选择的计算方法。特征选择是一个系统的工程，有自己的方法和技术。本文特指章节2.1里面第2步骤中贡献度的计算方法。<strong>熵、联合熵、条件熵、交叉熵与相对熵的意义？如下图：</strong></p>
+<p><img src="/2018/11/28/向量空间模型/1.webp" alt="11"></p>
 <p>（1）<strong>信息熵</strong></p>
 <p>前面提到了交叉熵，先理解什么是熵。熵是由香农提出的，记得有位科学家说：若自己余生也发明一个类似“熵”这样的概念，这一生也值了。可见其重要程度，后来证实熵在计算机领域，通信领域，信息论等等都是举足轻重的。到底什么是熵？直接给出离散变量x的<strong>熵公式</strong>：</p>
 <script type="math/tex; mode=display">
