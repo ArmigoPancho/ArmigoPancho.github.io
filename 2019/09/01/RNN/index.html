@@ -103,7 +103,7 @@
 <meta property="og:image" content="http://yoursite.com/2019/09/01/RNN/14.png">
 <meta property="og:image" content="http://yoursite.com/2019/09/01/RNN/16.png">
 <meta property="og:image" content="http://yoursite.com/2019/09/01/RNN/13.jpg">
-<meta property="og:updated_time" content="2019-09-08T02:20:34.795Z">
+<meta property="og:updated_time" content="2019-09-22T02:51:57.996Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="RNN简介">
 <meta name="twitter:description" content="1.输入的数据和输出的数据如输入的数据和输出的数据是类似下图带有序列性质的数据，则标准的神经网络不好处理此类数据，因为输入数据和输出数据的长度不固定（填补0的方式不高效），而且并不共享从文本的不同位置上学到的特征。比如从位置1学到的Harry可能是人名的一部分，那么如果Harry出现在其他位置，比如位置t时，它也能够自动识别其为人名的一部分的话，这就是共享特征了。  2.RNN简图下图左右边都是循">
@@ -426,7 +426,7 @@ L^{<t>}(\hat{y},y)= -y^{<t>}log\hat{y}^{<t>}-(1-y^{<t>})log(1-\hat{y}^{<t>})</sc
 L(\hat{y},y)= \sum_{t=1}^{T_x}L^{<t>}(\hat{y}^{<t>},y^{<t>})</script><p><strong>RNN</strong>反向传播示意图：</p>
 <p><img src="/2019/09/01/RNN/8.png" alt=""></p>
 <p>而图中最有趣的向后传播是叫做”时光倒流”的红色圈圈部分，因为这部分可以看作是顺序时间的逆向传播，正如吴恩达所说，就像是乘着一艘时光倒流的Machine穿梭于各个奇妙之间。真的很酷，这名字，我也喜欢，写到这里，我想我真的有点喜欢ML，但是自己基础薄弱，缺乏毅力，渐渐地失去自我，也想乘着这艘Machine时光倒流，可是，不会了，永远也不会了。不忏悔了，回忆录、忏悔录这世界上还少吗，不，只多不少。所以，Make your hands dirty.</p>
-<h2 id="2-3RNN的例子"><a href="#2-3RNN的例子" class="headerlink" title="2.3RNN的例子"></a>2.3RNN的例子</h2><p>RNN可以有多对多，即输入输出都是多个但是下图中的多对多的输入和输出是一样的长度常用在命名实体识别中，也有多对1是情感分类，1对1是当去掉$a^{<0>}$时它就是一种标准类型的神经网络，1对多是音乐生成或者序列生成，还有多对多的不同长度，常用在机器翻译，如下图：</0></p>
+<h2 id="2-3RNN的例子"><a href="#2-3RNN的例子" class="headerlink" title="2.3RNN的例子"></a>2.3RNN的例子</h2><p><strong>RNN可以有多对多，即输入输出都是多个但是下图中的多对多的输入和输出是一样的长度常用在命名实体识别中，也有多对1是情感分类，1对1是当去掉$a^{<0>}$时它就是一种标准类型的神经网络，1对多是音乐生成或者序列生成，还有多对多的不同长度，常用在机器翻译，如下图：</0></strong></p>
 <p><img src="/2019/09/01/RNN/7.png" alt="1567388343784"></p>
 <h2 id="2-4语言模型的例子"><a href="#2-4语言模型的例子" class="headerlink" title="2.4语言模型的例子"></a>2.4语言模型的例子</h2><p>语言模型可以计算某种句子的概率，比如下图输入初始化的a0=0和X1=0，然后第一个单词”Cats”，作为第二个输入得到预测概率$P(average|Cats)$，然后继续输入第二个单词”average”，得到一个输出概率$P(15|”Cats\ average”)$，然后依次计算后面的预测概率。把所有预测的概率相乘即为句子的总体概率，也可以根据L求出损失值。具体如下：</p>
 <p><img src="/2019/09/01/RNN/9.png" alt="1567391010850"></p>
@@ -507,8 +507,8 @@ C^{<t>}=\Gamma_u * \breve{C}^{<t>}+(1-\Gamma_u) * C^{<t-1>}\tag3</script><p><img
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/08/04/regularization/" rel="next" title="L1正则为什么比L2稀疏？">
-                <i class="fa fa-chevron-left"></i> L1正则为什么比L2稀疏？
+              <a href="/2019/08/09/stack/" rel="next" title="栈和堆">
+                <i class="fa fa-chevron-left"></i> 栈和堆
               </a>
             
           </div>
@@ -625,7 +625,7 @@ C^{<t>}=\Gamma_u * \breve{C}^{<t>}+(1-\Gamma_u) * C^{<t-1>}\tag3</script><p><img
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">40</span>
+                  <span class="site-state-item-count">41</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
