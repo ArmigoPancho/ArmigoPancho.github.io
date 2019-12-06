@@ -89,9 +89,9 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2019/12/06/svm/1.png">
 <meta property="og:image" content="http://yoursite.com/2019/12/06/svm/1.jpg">
-<meta property="og:image" content="http://yoursite.com/2019/12/06/svm/SVM/SMO3.JPG">
-<meta property="og:image" content="http://yoursite.com/2019/12/06/svm/SVM/SMO2.JPG">
-<meta property="og:updated_time" content="2019-12-06T12:55:01.350Z">
+<meta property="og:image" content="http://yoursite.com/2019/12/06/svm/SMO3.JPG">
+<meta property="og:image" content="http://yoursite.com/2019/12/06/svm/SMO2.JPG">
+<meta property="og:updated_time" content="2019-12-06T12:58:10.951Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SVM">
 <meta name="twitter:description" content="1.SVM总体简单介绍首先，分类的时候我们通常有时候遇到一个分类情况是，多类数据交融，无法通过简单的线性分类器区分。那SVM（Support Vector Machine）就是把数据映射到高维，然后根据支持向量找出一个最佳分类面，使得数据可以分开。这就是支持向量机干的事情。 2.硬间隔SVM首先清楚四个概念：超平面，函数间隔，几何间隔，支持向量。 （1）超平面在二维空间里面是：Ax+By+C=0">
@@ -513,10 +513,10 @@ k(x,z)=φ(x)φ(z)</script><p><strong>常见的核函数有：</strong></p>
      s.t.\quad&\sum_{i=1}^mα_iy_i=0\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad(7)\\
      & 0\leα_i\le C,i=1,2,...,m
     \end{align}</script><p>SVM的“核“是什么呢？就是<strong>SMO（Sequential Minimal Optimization</strong>）算法，他是用来求α的，前面说过：求出了α，就可以求出W和b,接着超平面也就找到了。它的主要思想就是：α有m个变量，但是直接根据优化问题来求解很困难。所以，SMO算法每次只对2个变量更新，其他变量看成是常数，而常数项可以在优化目标中省略。</p>
-<p><img src="/2019/12/06/svm/SVM/SMO3.JPG" alt="SMO3"></p>
+<p><img src="/2019/12/06/svm/SMO3.JPG" alt="SMO3"></p>
 <p>上面的是具体α求解步骤，稍微讲解一下，公式展开来自公式（7）。min后面优化目标这么长，不要吓坏了，只是把α1和α2变量部分展开来，其余看作常数。下面的限制条件原本是$\sum_{i=1}^mα_iy_i=0$，因为$y_i$只能取-1和1，所以就看作是m个正负$α_i$相加=0，拿出2个变量：α1和α2出来玩玩，其余的和为常数-k。<strong>需要注意的是2个相同$y_i$的乘积为1，这里都会用到以简化计算。</strong>然后得到第1部分的优化目标和约束条件。(图中的$α_2^{new,uncut}$不对，应该是$α_2^{new,unc}$，后面的其实是unclip)</p>
 <p>第2部分，是讲解的α的整个迭代过程。过程上面图片有，讲一下L和H的范围是怎么来的。以左边双红线图为例：α本身就有限制[0,C]，故有图中的正方形。坐标轴的横坐标是α1，纵坐标是α2,由α1-α2=K可得2条红色的线，因为已经限制了α1和α2的范围，只能在方框中。可得到线①、线②。可知线①的α2范围是[-K,C]，线②的α2范围是[0,C-K]，再把α1-α2=K代入即可得到L，H的范围。另一种情况也一样可得。</p>
-<p><img src="/2019/12/06/svm/SVM/SMO2.JPG" alt="SMO2"></p>
+<p><img src="/2019/12/06/svm/SMO2.JPG" alt="SMO2"></p>
 <p>这一步主要是求解未经剪辑的α2，思路是先简化优化目标函数W(α1，α2)，然后代入α1和α2的关系式消去α1，使得表达式全部是关于α2。接着W（α2）对α2求导=0即可。最后可以得到迭代式子：</p>
 <script type="math/tex; mode=display">
 α_2^{new,unc} = α_2^{old} + \frac{y_2(E_1-E_2)}{k_{11}+k_{22}+k_{12}}</script><h3 id="6-2求解b"><a href="#6-2求解b" class="headerlink" title="6.2求解b"></a>6.2求解b</h3><p>当$0&lt;α_1^{new}&lt;C$时,根据KKT条件$y_i(W^TX_i+b)=1$:</p>
