@@ -91,7 +91,7 @@
 <meta property="og:image" content="http://yoursite.com/2019/12/06/svm/1.jpg">
 <meta property="og:image" content="http://yoursite.com/2019/12/06/svm/SVM/SMO3.JPG">
 <meta property="og:image" content="http://yoursite.com/2019/12/06/svm/SVM/SMO2.JPG">
-<meta property="og:updated_time" content="2019-12-06T12:47:29.647Z">
+<meta property="og:updated_time" content="2019-12-06T12:55:01.350Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SVM">
 <meta name="twitter:description" content="1.SVM总体简单介绍首先，分类的时候我们通常有时候遇到一个分类情况是，多类数据交融，无法通过简单的线性分类器区分。那SVM（Support Vector Machine）就是把数据映射到高维，然后根据支持向量找出一个最佳分类面，使得数据可以分开。这就是支持向量机干的事情。 2.硬间隔SVM首先清楚四个概念：超平面，函数间隔，几何间隔，支持向量。 （1）超平面在二维空间里面是：Ax+By+C=0">
@@ -496,7 +496,7 @@ f(X_1,X_2，X_3，X_4，X_5，X_6) = A_0+A_1X_1+A_2X_2+A_3X_3+A_4X_4+A_5X_5+A_6X
 
 <p>下面的核函数就是干的这个事情，就是有核函数k(x,z)把低维度的φ(xi)和φ(zj)之间的内积在低纬度计算掉：</p>
 <script type="math/tex; mode=display">
-k(x,z)=φ(x)φ(z)</script><p>常见的核函数有：</p>
+k(x,z)=φ(x)φ(z)</script><p><strong>常见的核函数有：</strong></p>
 <p>（1）高斯核函数（Gaussian Kernel）</p>
 <script type="math/tex; mode=display">
 \kappa(x, x_i) = exp(-\frac{||x - x_i||^2}{\delta^2})</script><p>高斯径向基函数是一种局部性强的核函数，其可以将一个样本映射到一个更高维的空间内，该核函数是应用最广的一个，无论大样本还是小样本都有比较好的性能，而且其相对于多项式核函数参数要少。</p>
