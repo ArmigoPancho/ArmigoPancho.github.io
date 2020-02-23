@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="L1、L2正则," />
+  <meta name="keywords" content="HMM、隐马尔科夫模型," />
 
 
 
@@ -79,22 +79,18 @@
 
 
 
-<meta name="description" content="知乎上看到的，直接贴出来： https://www.zhihu.com/question/37096933/answer/70507353 ；解释了为什么L1正则要比L2正则稀疏。 图直接上来，分别从优化角度、梯度角度、概率的角度思考：    其他正则讲解的参考： 点击此处；若侵权则删除。">
-<meta name="keywords" content="L1、L2正则">
+<meta name="description" content="1.前向算法、后向算法简介HMM模型的三个基本问题：  1.评估观察序列概率问题—&amp;gt;前向后向算法：计算在观测序列O={o1,o2,…oT}和估计模型λ=(A,B,π)下观测序列O出现的概率，即计算P(O|λ)的概率。  2.模型参数学习问题—&amp;gt;鲍姆-韦尔奇算法：即给定观测序列O={o1,o2,…oT}和估计模型λ=(A,B,π)的参数值，使该模型下观测序列的条件概率P(O|λ)最大。">
+<meta name="keywords" content="HMM、隐马尔科夫模型">
 <meta property="og:type" content="article">
-<meta property="og:title" content="L1正则为什么比L2稀疏？">
-<meta property="og:url" content="http://yoursite.com/2019/08/04/regularization/index.html">
+<meta property="og:title" content="HMM模型">
+<meta property="og:url" content="http://yoursite.com/2020/02/23/HMM/index.html">
 <meta property="og:site_name" content="Hello,Armigo!">
-<meta property="og:description" content="知乎上看到的，直接贴出来： https://www.zhihu.com/question/37096933/answer/70507353 ；解释了为什么L1正则要比L2正则稀疏。 图直接上来，分别从优化角度、梯度角度、概率的角度思考：    其他正则讲解的参考： 点击此处；若侵权则删除。">
+<meta property="og:description" content="1.前向算法、后向算法简介HMM模型的三个基本问题：  1.评估观察序列概率问题—&amp;gt;前向后向算法：计算在观测序列O={o1,o2,…oT}和估计模型λ=(A,B,π)下观测序列O出现的概率，即计算P(O|λ)的概率。  2.模型参数学习问题—&amp;gt;鲍姆-韦尔奇算法：即给定观测序列O={o1,o2,…oT}和估计模型λ=(A,B,π)的参数值，使该模型下观测序列的条件概率P(O|λ)最大。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2019/08/04/regularization/1.jpg">
-<meta property="og:image" content="http://yoursite.com/2019/08/04/regularization/2.jpg">
-<meta property="og:image" content="http://yoursite.com/2019/08/04/regularization/3.jpg">
-<meta property="og:updated_time" content="2019-08-04T06:46:07.009Z">
+<meta property="og:updated_time" content="2020-02-23T08:32:44.575Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="L1正则为什么比L2稀疏？">
-<meta name="twitter:description" content="知乎上看到的，直接贴出来： https://www.zhihu.com/question/37096933/answer/70507353 ；解释了为什么L1正则要比L2正则稀疏。 图直接上来，分别从优化角度、梯度角度、概率的角度思考：    其他正则讲解的参考： 点击此处；若侵权则删除。">
-<meta name="twitter:image" content="http://yoursite.com/2019/08/04/regularization/1.jpg">
+<meta name="twitter:title" content="HMM模型">
+<meta name="twitter:description" content="1.前向算法、后向算法简介HMM模型的三个基本问题：  1.评估观察序列概率问题—&amp;gt;前向后向算法：计算在观测序列O={o1,o2,…oT}和估计模型λ=(A,B,π)下观测序列O出现的概率，即计算P(O|λ)的概率。  2.模型参数学习问题—&amp;gt;鲍姆-韦尔奇算法：即给定观测序列O={o1,o2,…oT}和估计模型λ=(A,B,π)的参数值，使该模型下观测序列的条件概率P(O|λ)最大。">
 
 
 
@@ -124,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/08/04/regularization/"/>
+  <link rel="canonical" href="http://yoursite.com/2020/02/23/HMM/"/>
 
 
 
 
 
-  <title>L1正则为什么比L2稀疏？ | Hello,Armigo!</title>
+  <title>HMM模型 | Hello,Armigo!</title>
   
 
 
@@ -291,7 +287,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/04/regularization/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/23/HMM/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Armigo">
@@ -308,7 +304,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">L1正则为什么比L2稀疏？</h1>
+          <h1 class="post-title" itemprop="name headline">HMM模型</h1>
         
 
         <div class="post-meta">
@@ -320,8 +316,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-04T14:37:42+08:00">
-                2019-08-04
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-23T15:00:20+08:00">
+                2020-02-23
               </time>
             
 
@@ -361,8 +357,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/08/04/regularization/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/08/04/regularization/" itemprop="commentCount"></span>
+                <a href="/2020/02/23/HMM/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/02/23/HMM/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -395,12 +391,37 @@
       
 
       
-        <p>知乎上看到的，直接贴出来： <a href="https://www.zhihu.com/question/37096933/answer/70507353" target="_blank" rel="noopener">https://www.zhihu.com/question/37096933/answer/70507353</a> ；<strong>解释了为什么L1正则要比L2正则稀疏。</strong></p>
-<p>图直接上来，分别从优化角度、梯度角度、概率的角度思考：</p>
-<p><img src="/2019/08/04/regularization/1.jpg" alt="1"></p>
-<p><img src="/2019/08/04/regularization/2.jpg" alt="2"></p>
-<p><img src="/2019/08/04/regularization/3.jpg" alt="3"></p>
-<p>其他正则讲解的参考： <a href="https://blog.csdn.net/red_stone1/article/details/80755144" target="_blank" rel="noopener">点击此处</a>；若侵权则删除。</p>
+        <h1 id="1-前向算法、后向算法简介"><a href="#1-前向算法、后向算法简介" class="headerlink" title="1.前向算法、后向算法简介"></a>1.前向算法、后向算法简介</h1><p>HMM模型的三个基本问题： </p>
+<p><strong>1.评估观察序列概率问题—&gt;前向后向算法</strong>：计算在观测序列O={o1,o2,…oT}和估计模型λ=(A,B,π)下观测序列O出现的概率，即计算P(O|λ)的概率。 </p>
+<p><strong>2.模型参数学习问题—&gt;鲍姆-韦尔奇算法</strong>：即给定观测序列O={o1,o2,…oT}和估计模型λ=(A,B,π)的参数值，使该模型下观测序列的条件概率P(O|λ)最大。 </p>
+<p><strong>3.解码问题—&gt;维特比算法</strong>：用来求给定观测序列O={o1,o2,…oT}和估计模型λ=(A,B,π)的参数值下，最可能出现的对应的状态序列。 </p>
+<p>下面是One Note生成的pdf版本笔记，后向算法可能出错，暂时搁置。</p>
+
+
+	<div class="row">
+    <embed src="hmm.pdf" width="100%" height="550" type="application/pdf">
+	</div>
+
+
+
+<p>网络资料推算后向算法公式：</p>
+<script type="math/tex; mode=display">
+\begin{align*}
+\beta_{t}(i) &= P(o_{t+1}, o_{t+2},\cdots,o_T|i_t=q_i,\lambda) \\
+&=\sum_{j=1}^N{P(o_{t+1}, o_{t+2},\cdots,o_T, i_{t+1}=q_j|i_t=q_i,\lambda)} \\
+&=\sum_{j=1}^N{P(o_{t+1}, o_{t+2},\cdots,o_T|i_{t+1}=q_j, i_t=q_i,\lambda)} \cdot P(i_{t+1}=q_j|i_t=q_i,\lambda)\\
+&=\sum_{j=1}^N{P(o_{t+1}, o_{t+2},\cdots,o_T|i_{t+1}=q_j, i_t=q_i,\lambda)} \cdot a_{ij}\\
+&=\sum_{j=1}^N{P(o_{t+1}, o_{t+2},\cdots,o_T|i_{t+1}=q_j,\lambda)} \cdot a_{ij}\quad  \leftarrow 假设1 \\
+&=\sum_{j=1}^N{P(o_{t+1}| o_{t+2},\cdots,o_T,i_{t+1}=q_j,\lambda)\cdot P(o_{t+2},\cdots,o_T|i_{t+1}=q_j,\lambda)} \cdot a_{ij}\quad \\
+&=\sum_{j=1}^N{P(o_{t+1}|i_{t+1}=q_j,\lambda)\cdot P(o_{t+2},\cdots,o_T|i_{t+1}=q_j,\lambda)} \cdot a_{ij}\quad \leftarrow 假设2\\
+&=\sum_{j=1}^N a_{ij}\cdot b_j(o_{t+1})\cdot \beta_{t+1}(j) \quad 
+\end{align*}</script><p><strong>前向算法、后向算法代码已上传到github，<a href="https://github.com/ArmigoPancho/mechine-learning-codes/blob/master/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0python%E4%BB%A3%E7%A0%81/%E5%89%8D%E5%90%91%E5%90%8E%E5%90%91%E7%AE%97%E6%B3%95.py" target="_blank" rel="noopener">点击此处获取</a>，已验证种结果相等。</strong></p>
+<h1 id="2-Baum-Welch算法"><a href="#2-Baum-Welch算法" class="headerlink" title="2.Baum-Welch算法"></a>2.Baum-Welch算法</h1><p>Baum-Welch算法是用来估计模型的参数，是EM算法的一种特例。</p>
+<p>参考链接： </p>
+<p>1.简书： <a href="https://www.jianshu.com/p/7152f4b65cc3" target="_blank" rel="noopener">https://www.jianshu.com/p/7152f4b65cc3</a></p>
+<p>2.刘建平HMM： <a href="https://www.cnblogs.com/pinard/p/6955871.html" target="_blank" rel="noopener">https://www.cnblogs.com/pinard/p/6955871.html</a></p>
+<p>3.前向后向算法代码：<a href="https://zhuanlan.zhihu.com/p/27056207" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/27056207</a></p>
+<p>4.李航的《统计学习方法》</p>
 
       
     </div>
@@ -418,7 +439,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/L1、L2正则/" rel="tag"># L1、L2正则</a>
+            <a href="/tags/HMM、隐马尔科夫模型/" rel="tag"># HMM、隐马尔科夫模型</a>
           
         </div>
       
@@ -431,8 +452,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/08/01/GAN/" rel="next" title="GAN模型简介">
-                <i class="fa fa-chevron-left"></i> GAN模型简介
+              <a href="/2020/02/07/linear-model/" rel="next" title="线性模型">
+                <i class="fa fa-chevron-left"></i> 线性模型
               </a>
             
           </div>
@@ -440,10 +461,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/08/09/stack/" rel="prev" title="栈和堆">
-                栈和堆 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -498,8 +515,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -573,6 +599,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-前向算法、后向算法简介"><span class="nav-text">1.前向算法、后向算法简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-Baum-Welch算法"><span class="nav-text">2.Baum-Welch算法</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -1146,6 +1188,26 @@
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.staticfile.org/MathJax/MathJax-2.6-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
 
