@@ -89,7 +89,9 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2020/02/23/HMM/V1.PNG">
 <meta property="og:image" content="http://yoursite.com/2020/02/23/HMM/v2.png">
-<meta property="og:updated_time" content="2020-02-23T11:40:49.425Z">
+<meta property="og:image" content="http://yoursite.com/2020/02/23/HMM/2.png">
+<meta property="og:image" content="http://yoursite.com/2020/02/23/HMM/1.png">
+<meta property="og:updated_time" content="2020-02-26T11:49:26.624Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HMM模型">
 <meta name="twitter:description" content="1.前向算法、后向算法简介HMM模型的三个基本问题：  1.评估观察序列概率问题—&amp;gt;前向后向算法：计算在观测序列O={o1,o2,…oT}和估计模型λ=(A,B,π)下观测序列O出现的概率，即计算P(O|λ)的概率。  2.模型参数学习问题—&amp;gt;鲍姆-韦尔奇算法：即给定观测序列O={o1,o2,…oT}和估计模型λ=(A,B,π)的参数值，使该模型下观测序列的条件概率P(O|λ)最大。">
@@ -437,7 +439,7 @@ b_{j}(k) = \frac{\sum\limits_{d=1}^D\sum\limits_{t=1, o_t^{(d)}=v_k}^{T}\gamma_t
 <h1 id="3-维特比算法"><a href="#3-维特比算法" class="headerlink" title="3.维特比算法"></a>3.维特比算法</h1><p>viterbi 算法是用来解码观测状态序列的算法，<strong>大致的意思是在所以可能输出的路径中存在一条最优的路径，计算出每个时刻观测状态的概率值，按照时刻选出最大值即可生成最优路径。</strong>算法伪代码如下：</p>
 <p><img src="/2020/02/23/HMM/V1.PNG" alt="1"></p>
 <p><img src="/2020/02/23/HMM/v2.png" alt="2"></p>
-<p>李航博士知道我等凡人看不懂伪代码，举例一个栗子O(∩_∩)O哈哈~，如下。</p>
+<p>李航博士知道我等凡人看不懂伪代码，举了一个栗子O(∩_∩)O哈哈~，如下。</p>
 <p>三个隐藏状态在时刻1时对应的各自两个局部状态，此时观测状态为1：</p>
 <script type="math/tex; mode=display">
 \delta_1(1) = \pi_1b_1(o_1) = 0.2 \times 0.5 = 0.1\\
@@ -457,8 +459,15 @@ b_{j}(k) = \frac{\sum\limits_{d=1}^D\sum\limits_{t=1, o_t^{(d)}=v_k}^{T}\gamma_t
 \delta_3(2) = \max_{1\leq j \leq 3}[\delta_2(j)a_{j2}]b_2(o_3) = \max_{1\leq j \leq 3}[0.028  \times 0.2, 0.0504\times 0.5, 0.042\times 0.3] \times 0.4 = 0.01008\\
 \Psi_3(2)=2\\
 \delta_3(3) = \max_{1\leq j \leq 3}[\delta_2(j)a_{j3}]b_3(o_3) = \max_{1\leq j \leq 3}[0.028  \times 0.3, 0.0504 \times 0.2, 0.042\times 0.5] \times 0.7 = 0.0147\\
-\Psi_3(3)=3</script><p>计算完毕，开始回溯。t3时刻时$\delta_3(3)​$是最大的概率，所以$i_3^<em> =3​$，且根据$\Psi_3(3)=3​$，t2时刻隐层最大概率是抽到盒子3即$i_2^</em> =3​$，再根据$\Psi_2(3)=3​$，所以$i_1^* =3​$；所以做有可能的隐层状态是$\{3,3,3\}​$，即三次抽到的都是第三个盒子。</p>
-<h1 id="参考链接："><a href="#参考链接：" class="headerlink" title="参考链接："></a>参考链接：</h1><p>1.简书： <a href="https://www.jianshu.com/p/7152f4b65cc3" target="_blank" rel="noopener">https://www.jianshu.com/p/7152f4b65cc3</a></p>
+\Psi_3(3)=3</script><p>计算完毕，开始回溯。t3时刻时$\delta_3(3)$是最大的概率，所以$i_3^<em> =3$，且根据$\Psi_3(3)=3$，t2时刻隐层最大概率是抽到盒子3即$i_2^</em> =3$，再根据$\Psi_2(3)=3$，所以$i_1^* =3$；所以最有可能的隐层状态是$\{3,3,3\}$，即三次抽到的都是第三个盒子。</p>
+<h1 id="4-HMM模型应用例子：词性标注"><a href="#4-HMM模型应用例子：词性标注" class="headerlink" title="4.HMM模型应用例子：词性标注"></a>4.HMM模型应用例子：词性标注</h1><p>下面是HMM模型用于词性标注的例子，用到了贝叶斯模型公式，要求某个句子对应词性的概率就正比于求这个句子所有词性的先验分布$P(t_1….t_N)$和已知词性序列下对应句子单词排序的概率$P(w-1…w_N|t_1…t_N)$的乘积：</p>
+<p><img src="/2020/02/23/HMM/2.png" alt="2"></p>
+<p>为了简化模型，先验分布和似然函数分别简写为：</p>
+<script type="math/tex; mode=display">
+P(t_1....t_N)=\prod_{i-0}^{N}P(t_i|t_i-1)，即状态转移概率\\
+P(w-1...w_N|t_1...t_N)=\prod_{i-0}^{N}P(w_i|t_i)，即观测输出概率</script><p><img src="/2020/02/23/HMM/1.png" alt="3"></p>
+<p>网上代码参考：<a href="https://pan.baidu.com/s/11ZY4gPn8Oqoh5Rlgn4JqiQ" target="_blank" rel="noopener">https://pan.baidu.com/s/11ZY4gPn8Oqoh5Rlgn4JqiQ</a> 密码：f95d ，在课程资料文件夹里面。</p>
+<h1 id="5-参考链接"><a href="#5-参考链接" class="headerlink" title="5.参考链接"></a>5.参考链接</h1><p>1.简书： <a href="https://www.jianshu.com/p/7152f4b65cc3" target="_blank" rel="noopener">https://www.jianshu.com/p/7152f4b65cc3</a></p>
 <p>2.刘建平HMM： <a href="https://www.cnblogs.com/pinard/p/6955871.html" target="_blank" rel="noopener">https://www.cnblogs.com/pinard/p/6955871.html</a></p>
 <p>3.前向后向算法代码：<a href="https://zhuanlan.zhihu.com/p/27056207" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/27056207</a></p>
 <p>4.李航的《统计学习方法》</p>
@@ -649,7 +658,7 @@ b_{j}(k) = \frac{\sum\limits_{d=1}^D\sum\limits_{t=1, o_t^{(d)}=v_k}^{T}\gamma_t
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-前向算法、后向算法简介"><span class="nav-text">1.前向算法、后向算法简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-Baum-Welch算法"><span class="nav-text">2.Baum-Welch算法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-维特比算法"><span class="nav-text">3.维特比算法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考链接："><span class="nav-text">参考链接：</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-前向算法、后向算法简介"><span class="nav-text">1.前向算法、后向算法简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-Baum-Welch算法"><span class="nav-text">2.Baum-Welch算法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-维特比算法"><span class="nav-text">3.维特比算法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-HMM模型应用例子：词性标注"><span class="nav-text">4.HMM模型应用例子：词性标注</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-参考链接"><span class="nav-text">5.参考链接</span></a></li></ol></div>
             
 
           </div>
