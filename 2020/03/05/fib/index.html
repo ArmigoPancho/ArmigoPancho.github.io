@@ -87,13 +87,13 @@
 <meta property="og:site_name" content="Hello,Armigo!">
 <meta property="og:description" content="1.递归版斐波那契数列老规矩，直接讲。斐波那契数列（Fibonacci）如下：  1，1，2，3，5，8，13…… 发现：后面的数是前两个数之和  即有递推公式：  F_{n}=F_{n-1}+F_{n-2},n&amp;gt;=3程序自己调用自己就叫做递归，上面显然也可以用递归思想去理解。 1234567# 递归实现Fibonacci#时间复杂度O(2^n),空间复杂度O(n)def Fib(n):    i">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2020/03/05/fib/Fib/1.png">
-<meta property="og:image" content="http://yoursite.com/2020/03/05/fib/Fib/2.png">
-<meta property="og:updated_time" content="2020-03-07T10:23:42.085Z">
+<meta property="og:image" content="http://yoursite.com/2020/03/05/fib/1.png">
+<meta property="og:image" content="http://yoursite.com/2020/03/05/fib/2.png">
+<meta property="og:updated_time" content="2020-03-08T02:41:37.369Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="斐波那契函数">
 <meta name="twitter:description" content="1.递归版斐波那契数列老规矩，直接讲。斐波那契数列（Fibonacci）如下：  1，1，2，3，5，8，13…… 发现：后面的数是前两个数之和  即有递推公式：  F_{n}=F_{n-1}+F_{n-2},n&amp;gt;=3程序自己调用自己就叫做递归，上面显然也可以用递归思想去理解。 1234567# 递归实现Fibonacci#时间复杂度O(2^n),空间复杂度O(n)def Fib(n):    i">
-<meta name="twitter:image" content="http://yoursite.com/2020/03/05/fib/Fib/1.png">
+<meta name="twitter:image" content="http://yoursite.com/2020/03/05/fib/1.png">
 
 
 
@@ -404,11 +404,11 @@
 F_{n}=F_{n-1}+F_{n-2},n>=3</script><p>程序自己调用自己就叫做递归，上面显然也可以用递归思想去理解。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 递归实现Fibonacci</span></span><br><span class="line"><span class="comment">#时间复杂度O(2^n),空间复杂度O(n)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">Fib</span><span class="params">(n)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> n&lt;<span class="number">3</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> Fib(n<span class="number">-1</span>) + Fib(n<span class="number">-2</span>)</span><br><span class="line">print(Fib(<span class="number">5</span>))</span><br></pre></td></tr></table></figure>
 <p>上面算法时间复杂度是$O(2^n)$，因为每层展开都是$2^n$，除去最后一个是要计算的结果总共有$2^n-1$次计算的函数值：</p>
-<p><img src="/2020/03/05/fib/Fib/1.png" alt="1"></p>
+<p><img src="/2020/03/05/fib/1.png" alt="1"></p>
 <p>空间复杂度是多少，为啥？</p>
 <p>答：O(n)</p>
 <p>在内存中它是以栈的形式来存储每个函数值，每次最多只用到了n+1个空间。比如入栈main、f(4)；要计算f(4)，需要入栈(3)、f(2)，f(2)的值已知=1则出栈；下面要计算f(3)，则f(2)、f(1)入栈；因为f(3)=f(1)+f(2)=2，计算完f(1)、f(2)出栈，f(3)=2也已知则出栈；遇到f(4)需要f(3)、f(2)入栈，计算完f(4)=3，f(4)也出栈了，到底遇到main函数结束，弹出main函数。大致如下图所示。</p>
-<p><img src="/2020/03/05/fib/Fib/2.png" alt="2"></p>
+<p><img src="/2020/03/05/fib/2.png" alt="2"></p>
 <h1 id="2-改进版Fibonacci"><a href="#2-改进版Fibonacci" class="headerlink" title="2.改进版Fibonacci"></a>2.改进版Fibonacci</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#改进版时间复杂度：O(n),空间复杂度O(n)</span></span><br><span class="line"><span class="comment">#其实就是计算出前两个数就存在数组里，一直往后算到目标n</span></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">Fib</span><span class="params">(n)</span>:</span></span><br><span class="line">    tmp = np.zeros(n)</span><br><span class="line">    tmp[<span class="number">0</span>] = <span class="number">1</span></span><br><span class="line">    tmp[<span class="number">1</span>] = <span class="number">1</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">2</span>,n):</span><br><span class="line">        tmp[i] = tmp[i<span class="number">-2</span>] + tmp[i<span class="number">-1</span>]</span><br><span class="line">    <span class="keyword">return</span> tmp[n<span class="number">-1</span>]</span><br><span class="line">print(Fib(<span class="number">5</span>))</span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#时间:O(n),空间：O(1)</span></span><br><span class="line"><span class="comment">#可以理解为c是F(n)的值，a是F(n-2),b是F(n-1)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">Fib</span><span class="params">(n)</span>:</span></span><br><span class="line">    a,b = <span class="number">1</span>,<span class="number">1</span></span><br><span class="line">    c = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">2</span>,n):</span><br><span class="line">        c = a + b   </span><br><span class="line">        a = b</span><br><span class="line">        b = c</span><br><span class="line">    <span class="keyword">return</span> c</span><br><span class="line">print(Fib(<span class="number">5</span>))</span><br></pre></td></tr></table></figure>
 <p>据说还有时间复杂度为O(1)的版本。。。</p>
