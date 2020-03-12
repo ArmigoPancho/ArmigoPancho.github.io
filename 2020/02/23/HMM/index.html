@@ -87,15 +87,15 @@
 <meta property="og:site_name" content="Hello,Armigo!">
 <meta property="og:description" content="1.前向算法、后向算法简介HMM模型的三个基本问题：  1.评估观察序列概率问题—&amp;gt;前向后向算法：计算在观测序列O={o1,o2,…oT}和估计模型λ=(A,B,π)下观测序列O出现的概率，即计算P(O|λ)的概率。  2.模型参数学习问题—&amp;gt;鲍姆-韦尔奇算法：即给定观测序列O={o1,o2,…oT}和估计模型λ=(A,B,π)的参数值，使该模型下观测序列的条件概率P(O|λ)最大。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2020/02/23/HMM/v1.PNG">
+<meta property="og:image" content="http://yoursite.com/2020/02/23/HMM/v1.png">
 <meta property="og:image" content="http://yoursite.com/2020/02/23/HMM/v2.png">
 <meta property="og:image" content="http://yoursite.com/2020/02/23/HMM/2.png">
 <meta property="og:image" content="http://yoursite.com/2020/02/23/HMM/1.png">
-<meta property="og:updated_time" content="2020-02-28T12:02:23.448Z">
+<meta property="og:updated_time" content="2020-03-12T09:14:02.469Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HMM模型">
 <meta name="twitter:description" content="1.前向算法、后向算法简介HMM模型的三个基本问题：  1.评估观察序列概率问题—&amp;gt;前向后向算法：计算在观测序列O={o1,o2,…oT}和估计模型λ=(A,B,π)下观测序列O出现的概率，即计算P(O|λ)的概率。  2.模型参数学习问题—&amp;gt;鲍姆-韦尔奇算法：即给定观测序列O={o1,o2,…oT}和估计模型λ=(A,B,π)的参数值，使该模型下观测序列的条件概率P(O|λ)最大。">
-<meta name="twitter:image" content="http://yoursite.com/2020/02/23/HMM/v1.PNG">
+<meta name="twitter:image" content="http://yoursite.com/2020/02/23/HMM/v1.png">
 
 
 
@@ -437,7 +437,7 @@ b_{j}(k) = \frac{\sum\limits_{d=1}^D\sum\limits_{t=1, o_t^{(d)}=v_k}^{T}\gamma_t
 \xi_t(i,j)表示在\lambda、O参数下，时刻t处于状态q_i且时刻t+1处于状态q_j的概率；
 \gamma_t(i)表示在\lambda、O参数下，时刻t处于状态q_i的概率</script><p>4) 如果$\pi_i, a_{ij},b_{j}(k)$的值已经收敛，则算法结束，否则回到第2步继续迭代。</p>
 <h1 id="3-维特比算法"><a href="#3-维特比算法" class="headerlink" title="3.维特比算法"></a>3.维特比算法</h1><p>viterbi 算法是用来解码观测状态序列的算法，<strong>大致的意思是在所以可能输出的路径中存在一条最优的路径，计算出每个时刻观测状态的概率值，按照时刻选出最大值即可生成最优路径。</strong>算法伪代码如下：</p>
-<p><img src="/2020/02/23/HMM/v1.PNG" alt="1"></p>
+<p><img src="/2020/02/23/HMM/v1.png" alt="1"></p>
 <p><img src="/2020/02/23/HMM/v2.png" alt="2"></p>
 <p>李航博士知道我等凡人看不懂伪代码，举了一个栗子O(∩_∩)O哈哈~，如下。</p>
 <p>三个隐藏状态在时刻1时对应的各自两个局部状态，此时观测状态为1：</p>
