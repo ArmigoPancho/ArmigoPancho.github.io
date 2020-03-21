@@ -97,7 +97,8 @@
 <meta property="og:image" content="http://yoursite.com/2020/03/18/transformer/8.png">
 <meta property="og:image" content="http://yoursite.com/2020/03/18/transformer/9.png">
 <meta property="og:image" content="http://yoursite.com/2020/03/18/transformer/1.gif">
-<meta property="og:updated_time" content="2020-03-18T13:22:56.329Z">
+<meta property="og:image" content="http://yoursite.com/2020/03/18/transformer/11.png">
+<meta property="og:updated_time" content="2020-03-19T10:00:11.261Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="transformer模型介绍">
 <meta name="twitter:description" content="1.Treansformer模型Bert模型之前要先了解Transformer模型，下面是李宏毅讲解的笔记。 1.1 self-attention 先解释self-attention：如上图，有一个已知数据X序列，比如做英文句子翻译成中文的例子。这里首先隐层输出是a_i，每个a_i=wx_i，然后由对应权重矩阵的W得到三个向量q、k、v。q表示每次去匹配其他单词的对象，k表示每次被q匹配的对象，v">
@@ -425,8 +426,12 @@ b^{1}=\sum_{i} \hat{\alpha}_{1, i} v^{i}\\</script><p>首先$q^1$和每一个$k^
 <h2 id="1-4Seq2Seq的Attention应用"><a href="#1-4Seq2Seq的Attention应用" class="headerlink" title="1.4Seq2Seq的Attention应用"></a>1.4Seq2Seq的Attention应用</h2><p>就是中间rnn换成attention的模式，这里encoding的时两两相互计算，每一层都做self-attention；然后在decoding阶段，不仅要计算前面词的decoding信息，还要加入之前encoding输出的部分信息。</p>
 <p><img src="/2020/03/18/transformer/9.png" alt="9"></p>
 <p><img src="/2020/03/18/transformer/1.gif" alt="10"></p>
+<h2 id="1-5-transformer总体介绍"><a href="#1-5-transformer总体介绍" class="headerlink" title="1.5 transformer总体介绍"></a>1.5 transformer总体介绍</h2><p>下图就是一个整体的Transformer流程，左边是encoding部分，右边是decoding部分，灰色部分是重复N次计算操作的部分。imput输入向量，然后添加位置信息，然后多头self-attention，然后做Add：把a+b矩阵拼接起来成为b‘，接着做Norm，这里是做layer Norm，即对一批数据的不同维度做均值为0，方差为1的归一化，然后做feed forward，然后再Add+Norm。<a href="https://blog.csdn.net/weixin_37947156/article/details/90112176" target="_blank" rel="noopener">feed forward就是做2次卷积</a>。decoding部分输入是上一个张量，先编码位置信息，然后掩盖multi-head attention，就是把矩阵前面已知词的信息是标记为有效值，后面未用到的词，矩阵对应位置为负极大值（用0标记）。然后Add+Norm，集合前面encoding部分的矩阵再做multi-head attention，再Add+Norm，feed forward，再Add+Norm；往复多次后linear+softmax，最后输出对应概率。具体看最下面的参考链接4。</p>
+<p><img src="/2020/03/18/transformer/11.png" alt="11"></p>
 <h1 id="2-参考"><a href="#2-参考" class="headerlink" title="2.参考"></a>2.参考</h1><p>1.李宏毅YouTube视频：<a href="https://www.youtube.com/watch?v=ugWDIIOHtPA" target="_blank" rel="noopener">https://www.youtube.com/watch?v=ugWDIIOHtPA</a></p>
-<p>2.动图博客：<a href="https://ai.googleblog.com/2017/08" target="_blank" rel="noopener">https://ai.googleblog.com/2017/08</a></p>
+<p>2.B站李宏毅视频：<a href="https://www.bilibili.com/video/av56239558?from=search&amp;seid=10302368033402140481" target="_blank" rel="noopener">https://www.bilibili.com/video/av56239558?from=search&amp;seid=10302368033402140481</a></p>
+<p>3.动图博客：<a href="https://ai.googleblog.com/2017/08" target="_blank" rel="noopener">https://ai.googleblog.com/2017/08</a></p>
+<p>4.transformer介绍：<a href="https://blog.csdn.net/weixin_37947156/article/details/90112176" target="_blank" rel="noopener">https://blog.csdn.net/weixin_37947156/article/details/90112176</a></p>
 
       
     </div>
@@ -614,7 +619,7 @@ b^{1}=\sum_{i} \hat{\alpha}_{1, i} v^{i}\\</script><p>首先$q^1$和每一个$k^
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-Treansformer模型"><span class="nav-text">1.Treansformer模型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-self-attention"><span class="nav-text">1.1 self-attention</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-multi-head-Self-attention"><span class="nav-text">1.2 multi-head Self-attention</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-Positional-Encoding（位置编码）"><span class="nav-text">1.3 Positional Encoding（位置编码）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-4Seq2Seq的Attention应用"><span class="nav-text">1.4Seq2Seq的Attention应用</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-参考"><span class="nav-text">2.参考</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-Treansformer模型"><span class="nav-text">1.Treansformer模型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-self-attention"><span class="nav-text">1.1 self-attention</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-multi-head-Self-attention"><span class="nav-text">1.2 multi-head Self-attention</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-Positional-Encoding（位置编码）"><span class="nav-text">1.3 Positional Encoding（位置编码）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-4Seq2Seq的Attention应用"><span class="nav-text">1.4Seq2Seq的Attention应用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-5-transformer总体介绍"><span class="nav-text">1.5 transformer总体介绍</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-参考"><span class="nav-text">2.参考</span></a></li></ol></div>
             
 
           </div>
