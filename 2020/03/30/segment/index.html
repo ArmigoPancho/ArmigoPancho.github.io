@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="分词," />
 
 
 
@@ -79,16 +79,20 @@
 
 
 
-<meta name="description" content="Pour un poisson salé, le plus important est heureux!">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Hello,Armigo!">
-<meta property="og:url" content="http://yoursite.com/tags/斐波那契数列/index.html">
+<meta name="description" content="1.分词算法目标是找到一句话的最佳分割顺序，主体使用的是N-gram模型，然后用维特比算法去做优化。比如下图，已得到一句话、每个分割词的概率，取log是为了防止计算值时溢出。每组分割顺序这么来的？这里简单的搜索字典库来匹配。比如”经常有意见分歧”，可以分为”经常/有/意见/分歧”、”经常/有/意见分歧”等其他情况。那概率怎么计算？比如：  P(&apos;经常&apos;) = \frac{frequency(&quot;经常">
+<meta name="keywords" content="分词">
+<meta property="og:type" content="article">
+<meta property="og:title" content="一个简单的分词算法">
+<meta property="og:url" content="http://yoursite.com/2020/03/30/segment/index.html">
 <meta property="og:site_name" content="Hello,Armigo!">
-<meta property="og:description" content="Pour un poisson salé, le plus important est heureux!">
+<meta property="og:description" content="1.分词算法目标是找到一句话的最佳分割顺序，主体使用的是N-gram模型，然后用维特比算法去做优化。比如下图，已得到一句话、每个分割词的概率，取log是为了防止计算值时溢出。每组分割顺序这么来的？这里简单的搜索字典库来匹配。比如”经常有意见分歧”，可以分为”经常/有/意见/分歧”、”经常/有/意见分歧”等其他情况。那概率怎么计算？比如：  P(&apos;经常&apos;) = \frac{frequency(&quot;经常">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/2020/03/30/segment/1.png">
+<meta property="og:updated_time" content="2020-03-30T09:29:07.502Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello,Armigo!">
-<meta name="twitter:description" content="Pour un poisson salé, le plus important est heureux!">
+<meta name="twitter:title" content="一个简单的分词算法">
+<meta name="twitter:description" content="1.分词算法目标是找到一句话的最佳分割顺序，主体使用的是N-gram模型，然后用维特比算法去做优化。比如下图，已得到一句话、每个分割词的概率，取log是为了防止计算值时溢出。每组分割顺序这么来的？这里简单的搜索字典库来匹配。比如”经常有意见分歧”，可以分为”经常/有/意见/分歧”、”经常/有/意见分歧”等其他情况。那概率怎么计算？比如：  P(&apos;经常&apos;) = \frac{frequency(&quot;经常">
+<meta name="twitter:image" content="http://yoursite.com/2020/03/30/segment/1.png">
 
 
 
@@ -118,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/tags/斐波那契数列/"/>
+  <link rel="canonical" href="http://yoursite.com/2020/03/30/segment/"/>
 
 
 
 
 
-  <title>标签: 斐波那契数列 | Hello,Armigo!</title>
+  <title>一个简单的分词算法 | Hello,Armigo!</title>
   
 
 
@@ -143,7 +147,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -271,54 +275,193 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>斐波那契数列<small>标签</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/30/segment/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Armigo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/0.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hello,Armigo!">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2020/03/10/fibonacci/" itemprop="url">
-              
-                <span itemprop="name">斐波那契数列</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">一个简单的分词算法</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2020-03-10T20:17:16+08:00"
-              content="2020-03-10" >
-          03-10
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-30T16:12:12+08:00">
+                2020-03-30
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/NLP/" itemprop="url" rel="index">
+                    <span itemprop="name">NLP</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/03/30/segment/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/03/30/segment/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次阅读
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="1-分词算法"><a href="#1-分词算法" class="headerlink" title="1.分词算法"></a>1.分词算法</h1><p><strong>目标是找到一句话的最佳分割顺序，主体使用的是N-gram模型，然后用维特比算法去做优化。</strong>比如下图，已得到一句话、每个分割词的概率，取log是为了防止计算值时溢出。每组分割顺序这么来的？这里简单的搜索字典库来匹配。比如”经常有意见分歧”，可以分为”经常/有/意见/分歧”、”经常/有/意见分歧”等其他情况。那概率怎么计算？比如：</p>
+<script type="math/tex; mode=display">
+P('经常') = \frac{frequency("经常")}{所有单词数量}。</script><p>就是”经常这个单词的数量除以文本中单词的数量。然后可以得每个分割项的概率，把每个概率乘起来即可。这样可以得到多条分割顺序。</p>
+<p><img src="/2020/03/30/segment/1.png" alt="1"></p>
+<p>按照顺序和概率，得到图中部路径：我们的目标就是找到最小路径对应下标就好了。为什么是找最小的了？本来是求某条分割顺序$P(item1) \times P(item2)\times P(item3)$最大化概率的，但是前面加了log，变成累加防止溢出，然后最前面再加了个负号，所以找最小的了。</p>
+<p>使用的是维特比算法（Viterbi Algorithm），这里直接讲下思路。一个用来存储每个单元的最短路径权重值，一个列表用来存储到当前单元值最小的前一个字的下标，然后回溯查找到达当前字最小值的下标即可。比如：先开辟n个单元，n是一句话中每个字的长度。刚开始f(1)=0（此时最小值的下标记为开始）；然后计算1-&gt;2的最短路径，因为只有一条路径到2结点，所以f(1)=3（此时最小值的下标记为1）；求f(3)：有2条路径：1-&gt;3和2-&gt;3，即2.3和f(3)=f(2)+20=23&gt;2.3，所以f(3)=2.3（此时最小值的下标记为1）；f(4)=f(3)+2.3=4.6（此时最小值的下标记为3）；f(5)=f(4)+3=7.6（此时最小值的下标记为4）；f(6)=f(4)+1.6=9.2或者f(6)=f(5)+2=9.6或者f(6)=f(3)+2.3=4.6，存储最小值4.6（此时最小值的下标记为3）…按照这样计算下去，可知f(7)=6.9，对应最小值的下标是6；f(8)=6.2，对应下标为6。</p>
+<p>好，开始回溯。到达第8个词最小值f(8)的下标是6，存到路径列表[8,6]里，再看f(6)，找到使得f(6)最小的下标是第3个字跳过来的，存到路径列表[8,6,3]；查看使得f(3)最小的下标是1，存到路径列表[8,6,3,1]；已经是第一个字了，无分割，结束，返回逆序路径列表既得[1,3,6,8]为最短路径，也是算法得到的分割处。</p>
+<p>小尾巴：Pytorch的教程<a href="https://colab.research.google.com/github/madewithml/lessons/blob/master/notebooks/01_Foundations/06_PyTorch.ipynb#scrollTo=RvwFrkzSPbw7" target="_blank" rel="noopener">小例子</a>，在线运行结果，随意。</p>
+<h1 id="2-参考"><a href="#2-参考" class="headerlink" title="2.参考"></a>2.参考</h1><p>1.本文分词视频：<a href="https://www.bilibili.com/video/BV1r7411H7gK?p=24" target="_blank" rel="noopener">https://www.bilibili.com/video/BV1r7411H7gK?p=24</a></p>
+<p>2.机器学习碎片化资源：<a href="https://mp.weixin.qq.com/s/KotcnbFY6up9KH9Bwa6N9A" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/KotcnbFY6up9KH9Bwa6N9A</a></p>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/分词/" rel="tag"># 分词</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/03/18/transformer/" rel="next" title="transformer模型介绍">
+                <i class="fa fa-chevron-left"></i> transformer模型介绍
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -326,6 +469,13 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
 
         </div>
         
@@ -346,8 +496,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -421,6 +580,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-分词算法"><span class="nav-text">1.分词算法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-参考"><span class="nav-text">2.参考</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -594,6 +769,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
