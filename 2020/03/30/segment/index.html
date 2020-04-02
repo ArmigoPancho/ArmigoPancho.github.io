@@ -91,7 +91,7 @@
 <meta property="og:image" content="http://yoursite.com/2020/03/30/segment/2.png">
 <meta property="og:image" content="http://yoursite.com/2020/03/30/segment/3.png">
 <meta property="og:image" content="http://yoursite.com/2020/03/30/segment/4.png">
-<meta property="og:updated_time" content="2020-04-02T09:05:05.697Z">
+<meta property="og:updated_time" content="2020-04-02T11:59:18.057Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="一个简单的分词算法">
 <meta name="twitter:description" content="1.分词算法目标是找到一句话的最佳分割顺序，主体使用的是N-gram模型，然后用维特比算法去做优化。比如下图，已得到一句话、每个分割词的概率，取log是为了防止计算值时溢出。每组分割顺序这么来的？这里简单的搜索字典库来匹配。比如”经常有意见分歧”，可以分为”经常/有/意见/分歧”、”经常/有/意见分歧”等其他情况。那概率怎么计算？比如：  P(&apos;经常&apos;) = \frac{frequency(&quot;经常">
@@ -412,7 +412,7 @@ Perplexity=2^{-(x)}</script><p>这里的Perplexity值越小说明似然值x越�
 <p>小尾巴：Pytorch的教程<a href="https://colab.research.google.com/github/madewithml/lessons/blob/master/notebooks/01_Foundations/06_PyTorch.ipynb#scrollTo=RvwFrkzSPbw7" target="_blank" rel="noopener">小例子</a>，在线运行结果，随意。</p>
 <h2 id="3-2Add-K-Smoothing"><a href="#3-2Add-K-Smoothing" class="headerlink" title="3.2Add-K Smoothing"></a>3.2Add-K Smoothing</h2><p>另一种是分子分母分别加k、kV，如下公式。找最佳k的话可以建立一个k的函数f(k)，函数f表征模型的复杂度，最小化函数f即可。</p>
 <script type="math/tex; mode=display">
-P_{Add-k}=\frac{c(W_{i-1},W_i)+k}{c(W_i)+kV}</script><h2 id="3-3插值法（interpolation）"><a href="#3-3插值法（interpolation）" class="headerlink" title="3.3插值法（interpolation）"></a>3.3插值法（interpolation）</h2><p>有些在3元模型里面没出现的子，可能在二元-一元模型里面可能出现，那把他们加权起来，可以使得模型更加健硕。</p>
+P_{Add-k}=\frac{c(W_{i-1},W_i)+k}{c(W_i)+kV}</script><h2 id="3-3插值法（interpolation）"><a href="#3-3插值法（interpolation）" class="headerlink" title="3.3插值法（interpolation）"></a>3.3插值法（interpolation）</h2><p>有些在3元模型里面没出现的字，在二元、一元模型里面可能出现，那把他们加权起来，可以使得模型更加健硕。</p>
 <p><img src="/2020/03/30/segment/4.png" alt="4"></p>
 <h1 id="4-参考"><a href="#4-参考" class="headerlink" title="4.参考"></a>4.参考</h1><p>1.本文分词视频：<a href="https://www.bilibili.com/video/BV1r7411H7gK?p=24" target="_blank" rel="noopener">https://www.bilibili.com/video/BV1r7411H7gK?p=24</a></p>
 <p>2.机器学习碎片化资源：<a href="https://mp.weixin.qq.com/s/KotcnbFY6up9KH9Bwa6N9A" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/KotcnbFY6up9KH9Bwa6N9A</a></p>
