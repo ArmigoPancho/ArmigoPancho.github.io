@@ -92,7 +92,7 @@
 <meta property="og:image" content="http://yoursite.com/2020/08/04/lstm1/lstm1/5.jpg">
 <meta property="og:image" content="http://yoursite.com/2020/08/04/lstm1/lstm1/6.jpg">
 <meta property="og:image" content="http://yoursite.com/2020/08/04/lstm1/lstm1/4.jpg">
-<meta property="og:updated_time" content="2020-08-04T14:44:19.516Z">
+<meta property="og:updated_time" content="2020-08-04T14:45:15.762Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LSTM二次简介">
 <meta name="twitter:description" content="1.RNN简介在lstm之前，先看它的老爸rnn，如下图，就是李宏毅教授的ppt，这里有2个输入，一个是上一层h的信息，另一个是x带来的信息，乘上对应的W加起来就是综合的信息，为什么这么做？因为RNN不仅想把当前的信息提取出有效的特征，还想从以前的信息提取有效特征，这样就有了所谓的记忆功能，无奈，这孩子天生记忆力不行，就是遇到特长的信息就挂了。才有了他儿子：LSTM模型。对这里的y、h’ 如何计算">
@@ -411,7 +411,7 @@
 c^t &= Z^f\times C^{t-1}+Z^i\times Z \tag{1}\\
 h^t &= Z^o\times tanh( C^{t}) \tag{2}\\
 y^t &= \sigma(W'h^t) \tag{3}
-\end{align}</script><p>说明下，上面的乘号”$\times$”是矩阵中对应的元素相乘，因此要求两个相乘矩阵是同型的。这里的$Z^f$就是对上一轮细胞值C要遗忘的概率，再加上这一时刻Z需要输入的信息就是当前细胞的状态。隐层h是$Z^o​$决定输出的概率乘以当前细胞值的tanh映射。最后套用softmax函数输出得到预测值。理解的非常浅显，暂时到这。</p>
+\end{align}</script><p>说明下，上面的乘号‘$\times$’是矩阵中对应的元素相乘，因此要求两个相乘矩阵是同型的。这里的$Z^f$就是对上一轮细胞值C要遗忘的概率，再加上这一时刻Z需要输入的信息就是当前细胞的状态。隐层h是$Z^o$决定输出的概率乘以当前细胞值的tanh映射。最后套用softmax函数输出得到预测值。理解的非常浅显，暂时到这。</p>
 <h1 id="3-参考"><a href="#3-参考" class="headerlink" title="3.参考"></a>3.参考</h1><p>1.RNN公式计算：<a href="https://blog.csdn.net/ustbfym/article/details/77970030" target="_blank" rel="noopener">https://blog.csdn.net/ustbfym/article/details/77970030</a></p>
 <p>2.lstm参考：<a href="https://mp.weixin.qq.com/s/8UkW5fEp3OcZlFzB-X5xkA" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/8UkW5fEp3OcZlFzB-X5xkA</a></p>
 
