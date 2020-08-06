@@ -88,11 +88,12 @@
 <meta property="og:description" content="1.RNN简介在lstm之前，先看它的老爸rnn，如下图，就是李宏毅教授的ppt，这里有2个输入，一个是上一层h的信息，另一个是x带来的信息，乘上对应的W加起来就是综合的信息，为什么这么做？因为RNN不仅想把当前的信息提取出有效的特征，还想从以前的信息提取有效特征，这样就有了所谓的记忆功能，无奈，这孩子天生记忆力不行，就是遇到特长的信息就挂了。才有了他儿子：LSTM模型。对这里的y、h’ 如何计算">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2020/08/04/lstm1/1.png">
-<meta property="og:image" content="http://yoursite.com/2020/08/04/lstm1/3.png">
+<meta property="og:image" content="http://yoursite.com/2020/08/04/lstm1/7.png">
 <meta property="og:image" content="http://yoursite.com/2020/08/04/lstm1/2.png">
 <meta property="og:image" content="http://yoursite.com/2020/08/04/lstm1/4.png">
 <meta property="og:image" content="http://yoursite.com/2020/08/04/lstm1/5.png">
-<meta property="og:updated_time" content="2020-08-06T13:13:21.452Z">
+<meta property="og:image" content="http://yoursite.com/2020/08/04/lstm1/6.png">
+<meta property="og:updated_time" content="2020-08-06T13:29:03.986Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LSTM二次简介">
 <meta name="twitter:description" content="1.RNN简介在lstm之前，先看它的老爸rnn，如下图，就是李宏毅教授的ppt，这里有2个输入，一个是上一层h的信息，另一个是x带来的信息，乘上对应的W加起来就是综合的信息，为什么这么做？因为RNN不仅想把当前的信息提取出有效的特征，还想从以前的信息提取有效特征，这样就有了所谓的记忆功能，无奈，这孩子天生记忆力不行，就是遇到特长的信息就挂了。才有了他儿子：LSTM模型。对这里的y、h’ 如何计算">
@@ -400,7 +401,7 @@
         <h1 id="1-RNN简介"><a href="#1-RNN简介" class="headerlink" title="1.RNN简介"></a>1.RNN简介</h1><p>在lstm之前，先看它的老爸rnn，如下图，就是李宏毅教授的ppt，这里有2个输入，一个是上一层h的信息，另一个是x带来的信息，乘上对应的W加起来就是综合的信息，为什么这么做？因为RNN不仅想把当前的信息提取出有效的特征，还想从以前的信息提取有效特征，这样就有了所谓的记忆功能，无奈，这孩子天生记忆力不行，就是遇到特长的信息就挂了。才有了他儿子：LSTM模型。对这里的y、h’ 如何计算往往看具体模型的使用方式。一般h’可以用tanh、sigmoid、relu、leaky-relu来计算，y用softmax计算。</p>
 <p><img src="/2020/08/04/lstm1/1.png" alt="11"></p>
 <p>下面关于反向传播的计算请<a href="https://blog.csdn.net/ustbfym/article/details/77970030" target="_blank" rel="noopener">参考链接1</a>。</p>
-<p><img src="/2020/08/04/lstm1/3.png" alt="1"></p>
+<p><img src="/2020/08/04/lstm1/7.png" alt="1"></p>
 <h1 id="2-LSTM简介"><a href="#2-LSTM简介" class="headerlink" title="2.LSTM简介"></a>2.LSTM简介</h1><h2 id="2-1LSTM是啥？"><a href="#2-1LSTM是啥？" class="headerlink" title="2.1LSTM是啥？"></a>2.1LSTM是啥？</h2><p>其实这个是第二次写LSTM了，之前看吴恩达视频写过。长短期记忆（Long short-term memory, LSTM）是一种特殊的RNN，主要是为了解决长序列训练过程中的梯度消失和梯度爆炸问题。简单来说，就是相比普通的RNN，LSTM能够在更长的序列中有更好的表现。</p>
 <p>记不住东西咋办：可能RNN在中间隔了很长无效词的句子效果不好。那LSTM就专门请人设计、聘用3个小伙伴来帮助RNN的健忘症。他们是输入门、遗忘门、输出门。细胞值信息$C^t$是由上一轮的 $C^{t-1}$加减一些值得到的，而$h^{t}$则在不同节点下往往会有很大的区别。就是让门信息来控制哪些需要记忆，哪些要遗忘，哪些作为输入信息，门的值即$Z^{i}、Z^{f}、Z^{o}$通过sigmoid函数控制在(0,1）来控制开和关。Z为什么用tanh，一个是为了把输入信息更好的映射：tanh是0均值的，一个是在0时梯度最大、加速收敛。</p>
 <p><img src="/2020/08/04/lstm1/2.png" alt="14"></p>
@@ -418,6 +419,8 @@ y^t &= \sigma(W'h^t) \tag{3}
 <p>映射到0均值、加速收敛速度。</p>
 <p>（3）LSTM为什么可以解决RNN梯度消失的问题？</p>
 <p>公式(1)中遗忘门控制细胞值状态携带的信息是通过“+”的操作<strong>直接加到Z上面的</strong>。不是通过乘积来附加信息的。而RNN是连乘积起来，在后向传播中的梯度是越来越小或者越来越大的。</p>
+<p>（4）sigmoid导数范围？</p>
+<p><img src="/2020/08/04/lstm1/6.png" alt="41"></p>
 <h1 id="3-参考"><a href="#3-参考" class="headerlink" title="3.参考"></a>3.参考</h1><p>1.RNN公式计算：<a href="https://blog.csdn.net/ustbfym/article/details/77970030" target="_blank" rel="noopener">https://blog.csdn.net/ustbfym/article/details/77970030</a></p>
 <p>2.lstm参考：<a href="https://mp.weixin.qq.com/s/8UkW5fEp3OcZlFzB-X5xkA" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/8UkW5fEp3OcZlFzB-X5xkA</a></p>
 <p>3.RNN梯度消失和爆炸的原因：<a href="https://zhuanlan.zhihu.com/p/28687529" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/28687529</a></p>
