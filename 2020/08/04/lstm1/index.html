@@ -95,7 +95,7 @@
 <meta property="og:image" content="http://yoursite.com/2020/08/04/lstm1/8.png">
 <meta property="og:image" content="http://yoursite.com/2020/08/04/lstm1/6.png">
 <meta property="og:image" content="http://yoursite.com/2020/08/04/lstm1/9.png">
-<meta property="og:updated_time" content="2020-08-11T15:21:14.579Z">
+<meta property="og:updated_time" content="2020-08-11T15:32:18.227Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LSTM二次简介">
 <meta name="twitter:description" content="1.RNN简介在lstm之前，先看它的老爸rnn，如下图，就是李宏毅教授的ppt，这里有2个输入，一个是上一层h的信息，另一个是x带来的信息，乘上对应的W加起来就是综合的信息，为什么这么做？因为RNN不仅想把当前的信息提取出有效的特征，还想从以前的信息提取有效特征，这样就有了所谓的记忆功能，无奈，这孩子天生记忆力不行，就是遇到特长的信息就挂了。才有了他儿子：LSTM模型。对这里的y、h’ 如何计算">
@@ -430,8 +430,8 @@ y^t &= \sigma(W'h^t) \tag{3}
 tanhx &= \frac{sinhx}{coshx}=\frac{e^x-e^{-x}}{e^x+e^{-x}}，值域:(-1,1) \\
 tanh^{'}(x) &= ((e^x-e^{-x})(e^x+e^{-x})^{-1})^{'} \\ &=(e^x+e^{-x})(e^x+e^{-x})^{-1}-(e^x-e^{-x})(e^x+e^{-x})^{-2}(e^x-e^{-x})\\ &=1-\frac{(e^x-e^{-x})^{2}}{(e^x+e^{-x})^{2}}\\
 &=1-tanh^2(x) 
-，导数值域：(0,1]
-\end{align*}</script><p><img src="/2020/08/04/lstm1/9.png" alt="12"></p>
+\end{align*}</script><p>tanh函数值域在(-1,1)，其导数值域：(0,1]。</p>
+<p><img src="/2020/08/04/lstm1/9.png" alt="12"></p>
 <h1 id="3-参考"><a href="#3-参考" class="headerlink" title="3.参考"></a>3.参考</h1><p>1.RNN公式计算：<a href="https://blog.csdn.net/ustbfym/article/details/77970030" target="_blank" rel="noopener">https://blog.csdn.net/ustbfym/article/details/77970030</a></p>
 <p>2.lstm参考：<a href="https://mp.weixin.qq.com/s/8UkW5fEp3OcZlFzB-X5xkA" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/8UkW5fEp3OcZlFzB-X5xkA</a></p>
 <p>3.RNN梯度消失和爆炸的原因：<a href="https://zhuanlan.zhihu.com/p/28687529" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/28687529</a></p>
