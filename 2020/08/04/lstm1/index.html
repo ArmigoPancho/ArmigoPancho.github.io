@@ -92,8 +92,10 @@
 <meta property="og:image" content="http://yoursite.com/2020/08/04/lstm1/2.png">
 <meta property="og:image" content="http://yoursite.com/2020/08/04/lstm1/4.png">
 <meta property="og:image" content="http://yoursite.com/2020/08/04/lstm1/5.png">
+<meta property="og:image" content="http://yoursite.com/2020/08/04/lstm1/8.png">
 <meta property="og:image" content="http://yoursite.com/2020/08/04/lstm1/6.png">
-<meta property="og:updated_time" content="2020-08-06T14:40:54.830Z">
+<meta property="og:image" content="http://yoursite.com/2020/08/04/lstm1/9.png">
+<meta property="og:updated_time" content="2020-08-11T15:21:14.579Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LSTM二次简介">
 <meta name="twitter:description" content="1.RNN简介在lstm之前，先看它的老爸rnn，如下图，就是李宏毅教授的ppt，这里有2个输入，一个是上一层h的信息，另一个是x带来的信息，乘上对应的W加起来就是综合的信息，为什么这么做？因为RNN不仅想把当前的信息提取出有效的特征，还想从以前的信息提取有效特征，这样就有了所谓的记忆功能，无奈，这孩子天生记忆力不行，就是遇到特长的信息就挂了。才有了他儿子：LSTM模型。对这里的y、h’ 如何计算">
@@ -413,14 +415,23 @@ c^t &= Z^f\times C^{t-1}+Z^i\times Z \tag{1}\\
 h^t &= Z^o\times tanh( C^{t}) \tag{2}\\
 y^t &= \sigma(W'h^t) \tag{3}
 \end{align}</script><p>说明下，上面的乘号‘$\times$’是矩阵中对应的元素相乘，因此要求两个相乘矩阵是同型的。这里的$Z^f$就是对上一轮细胞值C要遗忘的概率，再加上这一时刻Z需要输入的信息就是当前细胞的状态。隐层h是$Z^o$决定输出的概率乘以当前细胞值的tanh映射。最后套用softmax函数输出得到预测值。理解的非常浅显，暂时到这。</p>
-<h2 id="2-3Questions-And-Answers"><a href="#2-3Questions-And-Answers" class="headerlink" title="2.3Questions And Answers"></a>2.3Questions And Answers</h2><p>（1）上面的门为什么用sigmoid？</p>
+<h2 id="2-3Questions-And-Answers"><a href="#2-3Questions-And-Answers" class="headerlink" title="2.3Questions And Answers"></a>2.3Questions And Answers</h2><p><strong>（1）上面的门为什么用sigmoid？</strong></p>
 <p>是为了控制信息的传递与否，所以用sigmoid函数使得值在（0，1）之间。</p>
-<p>（2）为啥Z用tanh函数?</p>
+<p><strong>（2）为啥Z用tanh函数?</strong></p>
 <p>映射到0均值、加速收敛速度。</p>
-<p>（3）LSTM为什么可以解决RNN梯度消失的问题？</p>
-<p>公式(1)中遗忘门控制细胞值状态携带的信息是通过“+”的操作<strong>直接加到Z上面的</strong>。不是通过乘积来附加信息的。而RNN是连乘积起来，在后向传播中的梯度是越来越小或者越来越大的。</p>
-<p>（4）sigmoid导数范围？</p>
+<p><strong>（3）LSTM为什么可以解决RNN梯度消失的问题？</strong></p>
+<p><img src="/2020/08/04/lstm1/8.png" alt="41"></p>
+<p>推荐看<a href="https://weberna.github.io/blog/2017/11/15/LSTM-Vanishing-Gradients.html" target="_blank" rel="noopener">*参考链接中的4</a><em>，总结知，要注意2点：1.公式(1)中遗忘门控制细胞值状态携带的信息是通过“+”的操作<strong>直接加到Z上面的</strong>。这对理解为什么解决RNN剃度消失有帮助性。2.<em>*在上面蓝框中LSTM展开的梯度，不是通过乘积来求剃度是通过四项加起来才求得的。在上面蓝色矩形框的梯度展开中，模型通过学习习得哪些剃度要消失，哪些剃度需要保留。如何习得？是通过蓝色矩形框中四项的和决定的。可以去算下，前3项可以都大于1也可以近似0，最后一项$f_t$</em></em>是sigmoid函数，值    域是(0,1)，所以4项加起来可以是0也可以是大于1，这就是算法需要去”学习”的参数了。把W看做是参数，而剃度由W、X等算得，那剃度也可间接看作是习得的参数。所以去让模型决定哪些需要小的梯度，甚至消失，哪些需要大点的梯度。就我来看小的梯度是保持那些重要的信息不丢失，延续下去，大的梯度是需更新信息、甚至遗忘信息。此点尚不知对错，望读者思考。而RNN中梯度是连乘积起来，在后向传播中的梯度是越来越小或者越来越大的，故致剃度消失或爆炸。</p>
+<p><strong>（4）sigmoid导数范围？</strong></p>
 <p><img src="/2020/08/04/lstm1/6.png" alt="41"></p>
+<p><strong>（5）tanh函数值域、导数范围？</strong></p>
+<script type="math/tex; mode=display">
+\begin{align*} 
+tanhx &= \frac{sinhx}{coshx}=\frac{e^x-e^{-x}}{e^x+e^{-x}}，值域:(-1,1) \\
+tanh^{'}(x) &= ((e^x-e^{-x})(e^x+e^{-x})^{-1})^{'} \\ &=(e^x+e^{-x})(e^x+e^{-x})^{-1}-(e^x-e^{-x})(e^x+e^{-x})^{-2}(e^x-e^{-x})\\ &=1-\frac{(e^x-e^{-x})^{2}}{(e^x+e^{-x})^{2}}\\
+&=1-tanh^2(x) 
+，导数值域：(0,1]
+\end{align*}</script><p><img src="/2020/08/04/lstm1/9.png" alt="12"></p>
 <h1 id="3-参考"><a href="#3-参考" class="headerlink" title="3.参考"></a>3.参考</h1><p>1.RNN公式计算：<a href="https://blog.csdn.net/ustbfym/article/details/77970030" target="_blank" rel="noopener">https://blog.csdn.net/ustbfym/article/details/77970030</a></p>
 <p>2.lstm参考：<a href="https://mp.weixin.qq.com/s/8UkW5fEp3OcZlFzB-X5xkA" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/8UkW5fEp3OcZlFzB-X5xkA</a></p>
 <p>3.RNN梯度消失和爆炸的原因：<a href="https://zhuanlan.zhihu.com/p/28687529" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/28687529</a></p>
