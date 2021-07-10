@@ -14,7 +14,7 @@
   <entry>
     <title><![CDATA[CNN笔记]]></title>
     <url>%2F2021%2F05%2F24%2Fcnn%2F</url>
-    <content type="text"><![CDATA[1.卷积神经网络的部分笔记笔记是对吴恩达（Andrew Ng）网易云课堂的CNN部分笔记。目前是对卷积神经网络的1.4、1.5、1.6、1.7、1.9、1.11做记录。本周作业参考： https://www.heywhale.com/mw/project/5de0d28eca27f8002c4b2020 。 1.4padding是啥？1.6卷积为什么有效？存疑，后面1.11节会侧面反映为什么卷积有效，或者说优势在哪里。 1.9 符号定义和polling层 1.10 LeNet-5的简单介绍直接用公式(n+2p-f)/s + 1可以计算出卷积后的特征大小。第二张参数图片网上找的，也有人不对，暂时贴出来。 1.11卷积的优势？ 2.参考1.深度学习网易云课堂 2.cnn中权值共享理解 3.神经网络及CNN中的通道、共享权重、特征映射等的理解：https://blog.csdn.net/zhu_Lydia/article/details/88567648、 4.LeNet5详细介绍（推荐）：https://cuijiahua.com/blog/2018/01/dl_3.html?ivk_sa=1024320u 5.本周作业参考： https://www.heywhale.com/mw/project/5de0d28eca27f8002c4b2020]]></content>
+    <content type="text"><![CDATA[1.卷积神经网络的部分笔记笔记是对吴恩达（Andrew Ng）网易云课堂的CNN部分笔记。目前是对卷积神经网络的1.4、1.5、1.6、1.7、1.9、1.11做记录。本周作业参考： https://www.heywhale.com/mw/project/5de0d28eca27f8002c4b2020 。 1.4padding是啥？ 1.6卷积为什么有效？存疑，后面1.11节会侧面反映为什么卷积有效，或者说优势在哪里。 1.9 符号定义和polling层 1.10 LeNet-5的简单介绍直接用公式(n+2p-f)/s + 1可以计算出卷积后的特征大小。第二张参数图片网上找的，也有人不对，暂时贴出来。 1.11卷积的优势？ 2.参考1.深度学习网易云课堂 2.cnn中权值共享理解 3.神经网络及CNN中的通道、共享权重、特征映射等的理解：https://blog.csdn.net/zhu_Lydia/article/details/88567648、 4.LeNet5详细介绍（推荐）：https://cuijiahua.com/blog/2018/01/dl_3.html?ivk_sa=1024320u 5.本周作业参考： https://www.heywhale.com/mw/project/5de0d28eca27f8002c4b2020]]></content>
       <categories>
         <category>CV</category>
       </categories>
