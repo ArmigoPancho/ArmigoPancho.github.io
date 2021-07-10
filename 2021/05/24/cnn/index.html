@@ -79,13 +79,13 @@
 
 
 
-<meta name="description" content="1.卷积神经网络的部分笔记​     笔记是对吴恩达（Andrew Ng）网易云课堂的CNN部分笔记。目前是对卷积神经网络的1.4、1.5、1.6、1.7、1.9、1.11做记录。本周作业参考： https://www.heywhale.com/mw/project/5de0d28eca27f8002c4b2020 。 1.4padding是啥？1.6卷积为什么有效？存疑，后面1.11节会侧面反映">
+<meta name="description" content="1.卷积神经网络的部分笔记笔记是对吴恩达（Andrew Ng）网易云课堂的CNN部分笔记。目前是对卷积神经网络的1.4、1.5、1.6、1.7、1.9、1.11做记录。本周作业参考： https://www.heywhale.com/mw/project/5de0d28eca27f8002c4b2020 。 1.4padding是啥？1.6卷积为什么有效？存疑，后面1.11节会侧面反映为什么卷积有">
 <meta name="keywords" content="卷积、池化">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CNN笔记">
 <meta property="og:url" content="http://yoursite.com/2021/05/24/cnn/index.html">
 <meta property="og:site_name" content="Hello,Armigo!">
-<meta property="og:description" content="1.卷积神经网络的部分笔记​     笔记是对吴恩达（Andrew Ng）网易云课堂的CNN部分笔记。目前是对卷积神经网络的1.4、1.5、1.6、1.7、1.9、1.11做记录。本周作业参考： https://www.heywhale.com/mw/project/5de0d28eca27f8002c4b2020 。 1.4padding是啥？1.6卷积为什么有效？存疑，后面1.11节会侧面反映">
+<meta property="og:description" content="1.卷积神经网络的部分笔记笔记是对吴恩达（Andrew Ng）网易云课堂的CNN部分笔记。目前是对卷积神经网络的1.4、1.5、1.6、1.7、1.9、1.11做记录。本周作业参考： https://www.heywhale.com/mw/project/5de0d28eca27f8002c4b2020 。 1.4padding是啥？1.6卷积为什么有效？存疑，后面1.11节会侧面反映为什么卷积有">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2021/05/24/cnn/c1.jpg">
 <meta property="og:image" content="http://yoursite.com/2021/05/24/cnn/c2.png">
@@ -93,10 +93,10 @@
 <meta property="og:image" content="http://yoursite.com/2021/05/24/cnn/LeNet5.jpg">
 <meta property="og:image" content="http://yoursite.com/2021/05/24/cnn/para.jpg">
 <meta property="og:image" content="http://yoursite.com/2021/05/24/cnn/4.png">
-<meta property="og:updated_time" content="2021-07-10T13:06:47.786Z">
+<meta property="og:updated_time" content="2021-07-10T13:14:08.608Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CNN笔记">
-<meta name="twitter:description" content="1.卷积神经网络的部分笔记​     笔记是对吴恩达（Andrew Ng）网易云课堂的CNN部分笔记。目前是对卷积神经网络的1.4、1.5、1.6、1.7、1.9、1.11做记录。本周作业参考： https://www.heywhale.com/mw/project/5de0d28eca27f8002c4b2020 。 1.4padding是啥？1.6卷积为什么有效？存疑，后面1.11节会侧面反映">
+<meta name="twitter:description" content="1.卷积神经网络的部分笔记笔记是对吴恩达（Andrew Ng）网易云课堂的CNN部分笔记。目前是对卷积神经网络的1.4、1.5、1.6、1.7、1.9、1.11做记录。本周作业参考： https://www.heywhale.com/mw/project/5de0d28eca27f8002c4b2020 。 1.4padding是啥？1.6卷积为什么有效？存疑，后面1.11节会侧面反映为什么卷积有">
 <meta name="twitter:image" content="http://yoursite.com/2021/05/24/cnn/c1.jpg">
 
 
@@ -398,8 +398,7 @@
       
 
       
-        <h1 id="1-卷积神经网络的部分笔记"><a href="#1-卷积神经网络的部分笔记" class="headerlink" title="1.卷积神经网络的部分笔记"></a>1.卷积神经网络的部分笔记</h1><p>​    </p>
-<p>笔记是对吴恩达（<a href="https://www.coursera.org/instructor/andrewng" target="_blank" rel="noopener">Andrew Ng</a>）<a href="https://mooc.study.163.com/learn/2001281004?tid=2001392030#/learn/content?type=detail&amp;id=2001728690&amp;cid=2001725130" target="_blank" rel="noopener">网易云课堂</a>的CNN部分笔记。目前是对卷积神经网络的1.4、1.5、1.6、1.7、1.9、1.11做记录。本周作业参考： <a href="https://www.heywhale.com/mw/project/5de0d28eca27f8002c4b2020" target="_blank" rel="noopener">https://www.heywhale.com/mw/project/5de0d28eca27f8002c4b2020</a> 。</p>
+        <h1 id="1-卷积神经网络的部分笔记"><a href="#1-卷积神经网络的部分笔记" class="headerlink" title="1.卷积神经网络的部分笔记"></a>1.卷积神经网络的部分笔记</h1><p>笔记是对吴恩达（<a href="https://www.coursera.org/instructor/andrewng" target="_blank" rel="noopener">Andrew Ng</a>）<a href="https://mooc.study.163.com/learn/2001281004?tid=2001392030#/learn/content?type=detail&amp;id=2001728690&amp;cid=2001725130" target="_blank" rel="noopener">网易云课堂</a>的CNN部分笔记。目前是对卷积神经网络的1.4、1.5、1.6、1.7、1.9、1.11做记录。本周作业参考： <a href="https://www.heywhale.com/mw/project/5de0d28eca27f8002c4b2020" target="_blank" rel="noopener">https://www.heywhale.com/mw/project/5de0d28eca27f8002c4b2020</a> 。</p>
 <h2 id="1-4padding是啥？"><a href="#1-4padding是啥？" class="headerlink" title="1.4padding是啥？"></a>1.4padding是啥？</h2><h2 id=""><a href="#" class="headerlink" title=""></a><img src="/2021/05/24/cnn/c1.jpg" alt="1"></h2><h2 id="1-6卷积为什么有效？"><a href="#1-6卷积为什么有效？" class="headerlink" title="1.6卷积为什么有效？"></a>1.6卷积为什么有效？</h2><p>存疑，后面1.11节会侧面反映为什么卷积有效，或者说优势在哪里。</p>
 <p><img src="/2021/05/24/cnn/c2.png" alt="2"></p>
 <h2 id="1-9-符号定义和polling层"><a href="#1-9-符号定义和polling层" class="headerlink" title="1.9 符号定义和polling层"></a>1.9 符号定义和polling层</h2><p><img src="/2021/05/24/cnn/c3.png" alt="4"></p>
