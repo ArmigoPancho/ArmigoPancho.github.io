@@ -95,7 +95,7 @@
 <meta property="og:image" content="http://yoursite.com/2020/08/04/lstm1/8.png">
 <meta property="og:image" content="http://yoursite.com/2020/08/04/lstm1/6.png">
 <meta property="og:image" content="http://yoursite.com/2020/08/04/lstm1/9.png">
-<meta property="og:updated_time" content="2020-08-11T15:32:18.227Z">
+<meta property="og:updated_time" content="2020-08-11T15:45:54.571Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LSTM二次简介">
 <meta name="twitter:description" content="1.RNN简介在lstm之前，先看它的老爸rnn，如下图，就是李宏毅教授的ppt，这里有2个输入，一个是上一层h的信息，另一个是x带来的信息，乘上对应的W加起来就是综合的信息，为什么这么做？因为RNN不仅想把当前的信息提取出有效的特征，还想从以前的信息提取有效特征，这样就有了所谓的记忆功能，无奈，这孩子天生记忆力不行，就是遇到特长的信息就挂了。才有了他儿子：LSTM模型。对这里的y、h’ 如何计算">
@@ -421,7 +421,7 @@ y^t &= \sigma(W'h^t) \tag{3}
 <p>映射到0均值、加速收敛速度。</p>
 <p><strong>（3）LSTM为什么可以解决RNN梯度消失的问题？</strong></p>
 <p><img src="/2020/08/04/lstm1/8.png" alt="41"></p>
-<p>推荐看<a href="https://weberna.github.io/blog/2017/11/15/LSTM-Vanishing-Gradients.html" target="_blank" rel="noopener">*参考链接中的4</a><em>，总结知，要注意2点：1.公式(1)中遗忘门控制细胞值状态携带的信息是通过“+”的操作<strong>直接加到Z上面的</strong>。这对理解为什么解决RNN剃度消失有帮助性。2.<em>*在上面蓝框中LSTM展开的梯度，不是通过乘积来求剃度是通过四项加起来才求得的。在上面蓝色矩形框的梯度展开中，模型通过学习习得哪些剃度要消失，哪些剃度需要保留。如何习得？是通过蓝色矩形框中四项的和决定的。可以去算下，前3项可以都大于1也可以近似0，最后一项$f_t$</em></em>是sigmoid函数，值    域是(0,1)，所以4项加起来可以是0也可以是大于1，这就是算法需要去”学习”的参数了。把W看做是参数，而剃度由W、X等算得，那剃度也可间接看作是习得的参数。所以去让模型决定哪些需要小的梯度，甚至消失，哪些需要大点的梯度。就我来看小的梯度是保持那些重要的信息不丢失，延续下去，大的梯度是需更新信息、甚至遗忘信息。此点尚不知对错，望读者思考。而RNN中梯度是连乘积起来，在后向传播中的梯度是越来越小或者越来越大的，故致剃度消失或爆炸。</p>
+<p>推荐看<a href="https://weberna.github.io/blog/2017/11/15/LSTM-Vanishing-Gradients.html" target="_blank" rel="noopener">参考链接中的4</a>，总结知，要注意2点：1.公式(1)中遗忘门控制细胞值状态携带的信息是通过“+”的操作<strong>直接加到Z上面的</strong>。这对理解为什么解决RNN剃度消失有帮助性。2.<strong>在上面蓝框中LSTM展开的梯度，不是通过乘积来求剃度是通过四项加起来才求得的。在上面蓝色矩形框的梯度展开中，模型通过学习习得哪些剃度要消失，哪些剃度需要保留。如何习得？是通过蓝色矩形框中四项的和决定的。可以去算下，前3项可以都大于1也可以近似0，最后一项$f_t$</strong>是sigmoid函数，值    域是(0,1)，所以4项加起来可以是0也可以是大于1，这就是算法需要去”学习”的参数了。把W看做是参数，而剃度由W、X等算得，那剃度也可间接看作是习得的参数。所以去让模型决定哪些需要小的梯度，甚至消失，哪些需要大点的梯度。就我来看小的梯度是保持那些重要的信息不丢失，延续下去，大的梯度是需更新信息、甚至遗忘信息。此点尚不知对错，望读者思考。而RNN中梯度是连乘积起来，在后向传播中的梯度是越来越小或者越来越大的，故致剃度消失或爆炸。</p>
 <p><strong>（4）sigmoid导数范围？</strong></p>
 <p><img src="/2020/08/04/lstm1/6.png" alt="41"></p>
 <p><strong>（5）tanh函数值域、导数范围？</strong></p>
@@ -475,6 +475,10 @@ tanh^{'}(x) &= ((e^x-e^{-x})(e^x+e^{-x})^{-1})^{'} \\ &=(e^x+e^{-x})(e^x+e^{-x})
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/08/16/fasttext/" rel="prev" title="fasttext笔记">
+                fasttext笔记 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -558,7 +562,7 @@ tanh^{'}(x) &= ((e^x-e^{-x})(e^x+e^{-x})^{-1})^{'} \\ &=(e^x+e^{-x})(e^x+e^{-x})
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">39</span>
+                  <span class="site-state-item-count">41</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -569,7 +573,7 @@ tanh^{'}(x) &= ((e^x-e^{-x})(e^x+e^{-x})^{-1})^{'} \\ &=(e^x+e^{-x})(e^x+e^{-x})
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -580,7 +584,7 @@ tanh^{'}(x) &= ((e^x-e^{-x})(e^x+e^{-x})^{-1})^{'} \\ &=(e^x+e^{-x})(e^x+e^{-x})
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">47</span>
+                  <span class="site-state-item-count">49</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -643,7 +647,7 @@ tanh^{'}(x) &= ((e^x-e^{-x})(e^x+e^{-x})^{-1})^{'} \\ &=(e^x+e^{-x})(e^x+e^{-x})
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
