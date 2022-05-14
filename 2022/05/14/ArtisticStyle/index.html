@@ -93,7 +93,8 @@
 <meta property="og:image" content="http://yoursite.com/2022/05/14/ArtisticStyle/v1.png">
 <meta property="og:image" content="http://yoursite.com/2022/05/14/ArtisticStyle/vgg19.png">
 <meta property="og:image" content="http://yoursite.com/2022/05/14/ArtisticStyle/white_nose.jpg">
-<meta property="og:updated_time" content="2022-05-14T08:44:19.143Z">
+<meta property="og:image" content="http://yoursite.com/2022/05/14/ArtisticStyle/7.jpg">
+<meta property="og:updated_time" content="2022-05-14T08:53:44.206Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《A Neural Algorithm of Artistic Style》图像风格迁移论文翻译">
 <meta name="twitter:description" content="1.风格迁移概述​       《A Neural Algorithm of Artistic Style》论文地址：https://arxiv.org/pdf/1508.06576.pdf ，目标是把艺术风格的图片迁移到普通图片。比如把梵高的星月夜（The Starry Night）迁移到普通图片上。 ​       CNN每一层单元可以理解为图像滤波器的集合，每个滤波器从输入图像中提取某种特征">
@@ -443,7 +444,8 @@ E_{l}=\frac{1}{4 N_{l}^{2} M_{l}^{2}} \sum_{i, j}\left(G_{i j}^{l}-A_{i j}^{l}\r
 <script type="math/tex; mode=display">
 \frac{\partial E_{l}}{\partial F_{i j}^{l}}= \begin{cases}\frac{1}{N_{l}^{2} M_{l}^{2}}\left(\left(F^{l}\right)^{\mathrm{T}}\left(G^{l}-A^{l}\right)\right)_{j i} & \text { if } F_{i j}^{l}>0 \\ 0 & \text { if } F_{i j}^{l}<0\end{cases}\tag{6}</script><p>$E_l$对网络中较为浅层的激活值的偏导可以较为方便地由误差逆传播算法计算而得。图1中5种重塑的风格图片是在这些卷积层上捕捉到的风格特征矩阵而生成：a图片风格特征是VGG网络的卷积1_1生成的，风格b图对应卷积1_1、卷积2_1，风格c图对应卷积1_1、卷积2_1、卷积3_1，风格d图对应卷积1_1、卷积2_1、卷积3_1、卷积4_1，风格e图对应卷积1_1、卷积2_1、卷积3_1、卷积4_1、卷积5_1。看到这些风格矩阵生成的照片是由不同子层的卷积合成，并不是单一的，猜测是风格的特征是多样化的，那么前面说不同子层提取到不同的风格特征，所以最后用多个不同层的卷积合成的图像风格比较全，比较像艺术画的风格。</p>
 <p>公式6当$F$激活值小于0时候ReLU值一直为常数0，所以偏导为0。当$F$大于0时候，对$F_{ij}^l$偏导：</p>
-<p>​    这里考虑$F^l$是列向量，Gram矩阵$G^l$可以表示为$(F^l)^T*F$，这里根据<a href="https://wenku.baidu.com/view/f7fa307a580216fc700afdb9.html#" target="_blank" rel="noopener">参考10</a>，得到$G$对$F$的导数就是$2F$，这里的公式7和公式6结果其实一样，因为公式6最后是整体$ji$排序，只需要公式6进行转置即可：由于Gram矩阵的转置还是自己，再参考$(AB)^T=B^TA^T，(A-B)^T=A^T-B^T$，公式6大于0部分转置后和公式7是等价的。    </p>
+<p><img src="/2022/05/14/ArtisticStyle/7.jpg" alt="7"></p>
+<p>这里考虑$F^l$是列向量，Gram矩阵$G^l$可以表示为$(F^l)^T*F$，这里根据<a href="https://wenku.baidu.com/view/f7fa307a580216fc700afdb9.html#" target="_blank" rel="noopener">参考10</a>，得到$G$对$F$的导数就是$2F$，这里的公式7和公式6结果其实一样，因为公式6最后是整体$ji$排序，只需要公式6进行转置即可：由于Gram矩阵的转置还是自己，再参考$(AB)^T=B^TA^T，(A-B)^T=A^T-B^T$，公式6大于0部分转置后和公式7是等价的。    </p>
 <p>​    为了使得生成的图片混合油画的风格和照片的内容，我们对白噪点图像对某1层网络中照片内容矩阵的距离和对CNN网络多层网中油画风格特征矩阵的距离最小化。所以我们让$\vec{p}$是照片、$\vec{a}$是艺术画像，那么总的损失函数为：</p>
 <script type="math/tex; mode=display">
 \mathcal{L}_{\text {total }}(\vec{p}, \vec{a}, \vec{x})=\alpha \mathcal{L}_{\text {content }}(\vec{p}, \vec{x})+\beta \mathcal{L}_{\text {style }}(\vec{a}, \vec{x})\tag{8}</script><p>​    这里的$α​$和$β​$是内容和风格的重建比重。在图2中，我们用卷积4_2上面去抓取内容表征，而用卷积1_1、卷积2_1、卷积3_1、卷积4_1和卷积5_1来抓取风格表征（此时在这些卷积层上的比重$w_l=1/5​$，而其它层的$w_l=0​$，就是其它层的特征不用，所以乘以0消去，只用这5层特征来抓取风格特征，并且这些层的特征比重是均匀的，估计也可以不均，不均后某些风格肯定会有较大的比重，导致图像的风格会侧重某一些风格元素）。$α/β​$的值不是$1\times10^{-3}​$（图2中B，C，D）就是$1\times10^{-4}​$（比如图2中的E，F）。图3沿着列看的话，展示了损失函数中内容和风格在不同比重下的结果，并且风格表征仅仅限于：A图片风格特征是VGG网络的卷积1_1生成的，B图风格对应卷积1_1、卷积2_1，C图风格对应卷积1_1、卷积2_1、卷积3_1，D图风格对应卷积1_1、卷积2_1、卷积3_1、卷积4_1，E图风格对应卷积1_1、卷积2_1、卷积3_1、卷积4_1、卷积5_1生成。其中$w_l​$是1除以激活层的个数，是一个非0的损失权重。</p>
