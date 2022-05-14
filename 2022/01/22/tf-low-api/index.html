@@ -87,12 +87,12 @@
 <meta property="og:site_name" content="Hello,Armigo!">
 <meta property="og:description" content="1.tf2的整体架构最底层肯定是计算器形式硬件，没有硬件哪有软件依存。tf内核用c++写估计是效率高；往上面就是低阶的API：张量操作算子、计算图、自动微分；第四层为Python实现的模型组件，对低级API进行了函数封装，主要包括各种模型层，损失函数，优化器，数据管道，特征列等等；第五层为Python实现的模型成品，一般为按照OOP方式封装的高级API，主要为tf.keras.models提供的模">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2022/01/22/tf-low-api/tf-low-api/tensorflow_structure.jpg">
-<meta property="og:updated_time" content="2022-01-22T13:54:36.729Z">
+<meta property="og:image" content="http://yoursite.com/2022/01/22/tf-low-api/tensorflow_structure.jpg">
+<meta property="og:updated_time" content="2022-05-14T07:44:16.128Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="TF2低阶API笔记">
 <meta name="twitter:description" content="1.tf2的整体架构最底层肯定是计算器形式硬件，没有硬件哪有软件依存。tf内核用c++写估计是效率高；往上面就是低阶的API：张量操作算子、计算图、自动微分；第四层为Python实现的模型组件，对低级API进行了函数封装，主要包括各种模型层，损失函数，优化器，数据管道，特征列等等；第五层为Python实现的模型成品，一般为按照OOP方式封装的高级API，主要为tf.keras.models提供的模">
-<meta name="twitter:image" content="http://yoursite.com/2022/01/22/tf-low-api/tf-low-api/tensorflow_structure.jpg">
+<meta name="twitter:image" content="http://yoursite.com/2022/01/22/tf-low-api/tensorflow_structure.jpg">
 
 
 
@@ -394,7 +394,7 @@
 
       
         <h1 id="1-tf2的整体架构"><a href="#1-tf2的整体架构" class="headerlink" title="1.tf2的整体架构"></a>1.tf2的整体架构</h1><p>最底层肯定是计算器形式硬件，没有硬件哪有软件依存。tf内核用c++写估计是效率高；往上面就是低阶的API：张量操作算子、计算图、自动微分；第四层为Python实现的模型组件，对低级API进行了函数封装，主要包括各种模型层，损失函数，优化器，数据管道，特征列等等；第五层为Python实现的模型成品，一般为按照OOP方式封装的高级API，主要为tf.keras.models提供的模型的类接口。</p>
-<p><img src="/2022/01/22/tf-low-api/./tf-low-api/tensorflow_structure.jpg" alt="1"></p>
+<p><img src="/2022/01/22/tf-low-api/tensorflow_structure.jpg" alt="1"></p>
 <h1 id="2-TensorFlow的低阶API实现线性回归模型"><a href="#2-TensorFlow的低阶API实现线性回归模型" class="headerlink" title="2.TensorFlow的低阶API实现线性回归模型"></a>2.TensorFlow的低阶API实现线性回归模型</h1><p>关于线性回归模型，我这边还做了一个视频：<a href="https://www.bilibili.com/video/BV14741187nz?spm_id_from=333.999.0.0" target="_blank" rel="noopener">https://www.bilibili.com/video/BV14741187nz?spm_id_from=333.999.0.0</a> ，讲的不怎么好。</p>
 
       

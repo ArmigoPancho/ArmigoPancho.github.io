@@ -93,7 +93,7 @@
 <meta property="og:image" content="http://yoursite.com/2022/05/14/ArtisticStyle/v1.png">
 <meta property="og:image" content="http://yoursite.com/2022/05/14/ArtisticStyle/vgg19.png">
 <meta property="og:image" content="http://yoursite.com/2022/05/14/ArtisticStyle/white_nose.jpg">
-<meta property="og:updated_time" content="2022-05-14T07:18:34.364Z">
+<meta property="og:updated_time" content="2022-05-14T07:50:09.444Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ArtisticStyle">
 <meta name="twitter:description" content="1.风格迁移概述​       《A Neural Algorithm of Artistic Style》论文地址：https://arxiv.org/pdf/1508.06576.pdf ，目标是把艺术风格的图片迁移到普通图片。比如把梵高的星月夜（The Starry Night）迁移到普通图片上。 ​       CNN每一层单元可以理解为图像滤波器的集合，每个滤波器从输入图像中提取某种特征">
@@ -428,6 +428,24 @@
 <p>上图是VGG19网络框架，下图是白噪图像样例，本文作初始化图像矩阵用。</p>
 <p><img src="/2022/05/14/ArtisticStyle/white_nose.jpg" alt="4"></p>
 <p>通常，网络中的每一层都定义了一个非线性滤波器组，其复杂性随着层在网络中的位置而增加。因此给定一张输入图像$\vec{x}$，$\vec{x}$在CNN中的每一层编码是通过过滤器对图像的特征提取而得。某层网络若有$N_l$个不同过滤器就有$N_l$个不同的特征映射，每个特征映射大小为$M_l$。$M_l$的大小是特征映射的高乘以宽。所以这些第$l$层的特征映射可以存储在一个矩阵$F_l$，$F^{l} \in{R}^{N_{l} \times M_{l}}$，$F_{i j}^{l}$是在第$l$层在第$j$个神经元节点第$i^{th}$个过滤器的激活值。为了可视化在不同网络层次结构中被编码的图像信息（参考图1内容重建），我们对白噪声图像执行梯度下降以找到与原始图像的特征反馈相匹配的另一个图像。我们用$\vec{x}$表示输入图像，$\vec{p}$表示生成的图像矩阵，$F^l$、$P^l$是他们各自在$l$层对应的特征映射矩阵。我们然后可以用这2个特征的表征矩阵构造平方差损失函数，如下。</p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ol>
+<li>论文：<a href="https://arxiv.org/pdf/1508.06576.pdf" target="_blank" rel="noopener">https://arxiv.org/pdf/1508.06576.pdf</a></li>
+<li>本论文讲解、代码：<a href="https://blog.csdn.net/shenxiaolu1984/article/details/52090012" target="_blank" rel="noopener">https://blog.csdn.net/shenxiaolu1984/article/details/52090012</a></li>
+<li>Gram Matrix介绍：<a href="https://blog.csdn.net/bbbeoy/article/details/108195122" target="_blank" rel="noopener">https://blog.csdn.net/bbbeoy/article/details/108195122</a></li>
+<li>gram矩阵性质：<a href="https://zhuanlan.zhihu.com/p/105470826" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/105470826</a></li>
+<li>腹侧流图来源：<a href="https://www.researchgate.net/figure/The-dorsal-and-ventral-streams-of-the-visual-pathway-Beyond-area-V1-shown-at_fig1_274877087" target="_blank" rel="noopener">https://www.researchgate.net/figure/The-dorsal-and-ventral-streams-of-the-visual-pathway-Beyond-area-V1-shown-at_fig1_274877087</a></li>
+<li>VGGnet介绍：<a href="https://blog.csdn.net/zziahgf/article/details/79614822" target="_blank" rel="noopener">https://blog.csdn.net/zziahgf/article/details/79614822</a></li>
+<li>VGG19骨架：<a href="https://www.csdn.net/tags/OtDacg5sMzY3NzMtYmxvZwO0O0OO0O0O.html" target="_blank" rel="noopener">https://www.csdn.net/tags/OtDacg5sMzY3NzMtYmxvZwO0O0OO0O0O.html</a></li>
+<li>均方差损失与交叉熵损失函数介绍：<a href="https://blog.csdn.net/weixin_41888257/article/details/104894141" target="_blank" rel="noopener">https://blog.csdn.net/weixin_41888257/article/details/104894141</a></li>
+<li>吴恩达风格损失函数视频：<a href="https://mooc.study.163.com/learn/2001281004?tid=2001392030#/learn/content?type=detail&amp;id=2001728704" target="_blank" rel="noopener">https://mooc.study.163.com/learn/2001281004?tid=2001392030#/learn/content?type=detail&amp;id=2001728704</a></li>
+<li>求导公式：<a href="https://wenku.baidu.com/view/f7fa307a580216fc700afdb9.html" target="_blank" rel="noopener">https://wenku.baidu.com/view/f7fa307a580216fc700afdb9.html</a></li>
+<li>论文相关拓展新闻：<a href="https://www.jiemian.com/article/806628.html" target="_blank" rel="noopener">https://www.jiemian.com/article/806628.html</a></li>
+<li>拼图游戏：<a href="https://gallerix.ru/code/puzzle2/?f=16081&amp;cn" target="_blank" rel="noopener">https://gallerix.ru/code/puzzle2/?f=16081&amp;cn</a></li>
+</ol>
+<h1 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h1><p>​    抛去功利、志趣、功力不讲，更想把这几页看做是杂志的几页，世上有少量这么一批人，他们的工作和兴趣正好契合，想这样的人大概过得较为幸福，甚至更加幸福。在这个浮躁时代，能有时间翻几页杂志，已然感到欣慰，不再奢求其它。</p>
+<p>​    上面VGG19骨架去点点是不是有5个池化层、16个卷积层，至于为什么这么多？哈哈，我想做加减几层也可以有好的性能，至于能不能和VGG19一样，估计看功力了，我想肯定有很多改进版本的VGG。</p>
+<p>​    这些人最稀罕把其他人吐出来的再反刍，也不管原理，拿来就用，能水论文就行，可能能水论文本身就是一种能力吧，所谓厉害的人能水顶刊，但真正有价值的又有多少，经得起考验的又有多少？我也不以为那些水论文的都不想发有价值的东西，帽子实在是少，资源实在是不均，只能发点快消品踮起脚尖，只有这样才能看得更远，活的更潇洒吧，或者做的更多吧。也看到一些真正原创性的贡献，太少了。</p>
+<p>​    再看看这篇论文，不管3个作者是不是德国人，总之是在德国一些机构资助下搞得。我想这和欧洲在14-17世纪的文艺复兴是否有联系，看了下阿尔布雷希特·杜勒（Albrecht Durer）、马蒂亚斯·格鲁内瓦尔德（Matthias Grunewald）、小汉斯·霍尔拜因、卢卡斯·克拉纳赫、汉斯·穆尔彻（Hans Multscher）、 <a href="https://zh.wikipedia.org/zh-cn/%E8%92%82%E7%88%BE%E6%9B%BC%C2%B7%E9%87%8C%E9%96%80%E6%96%BD%E5%A5%88%E5%BE%B7" target="_blank" rel="noopener">蒂尔曼·里门施耐德</a>等等一批杰出画家、雕刻家的作品，哪怕是放到现在也是不可多得的佳作。在15和16世纪的德国大师擅长的一个专业领域就是 <a href="https://gallerix.asia/pedia/graphic-art/" target="_blank" rel="noopener">图形艺术 </a>。 当时的许多画家在这一领域都取得了卓越的成就，其绘画和版画的重要性常常超过其绘画的重要性。当然这只是马后炮的臆想。但现在科学在艺术、科技、云计算、医学、深度学习、企业生产、自动驾驶等多领域的融合下，也许能迸发一些新思考，幸运的话有意想不到的结果。本文就是最好的例子，用的深度学习是类脑神经网络，数学原理是用Gram矩阵去提取风格特征、凸优化理论等，图像风格是大师的油画，内容是成像技术生成的照片，再用高性能显卡加速计算后可以得到一些模型。</p>
 
       
     </div>
@@ -615,7 +633,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-风格迁移概述"><span class="nav-text">1.风格迁移概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-方法"><span class="nav-text">2.方法</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-风格迁移概述"><span class="nav-text">1.风格迁移概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-方法"><span class="nav-text">2.方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-text">参考</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#后记"><span class="nav-text">后记</span></a></li></ol></div>
             
 
           </div>
