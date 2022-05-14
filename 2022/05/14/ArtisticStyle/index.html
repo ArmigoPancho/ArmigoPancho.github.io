@@ -93,7 +93,7 @@
 <meta property="og:image" content="http://yoursite.com/2022/05/14/ArtisticStyle/v1.png">
 <meta property="og:image" content="http://yoursite.com/2022/05/14/ArtisticStyle/vgg19.png">
 <meta property="og:image" content="http://yoursite.com/2022/05/14/ArtisticStyle/white_nose.jpg">
-<meta property="og:updated_time" content="2022-05-14T08:14:44.164Z">
+<meta property="og:updated_time" content="2022-05-14T08:20:52.956Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ArtisticStyle">
 <meta name="twitter:description" content="1.风格迁移概述​       《A Neural Algorithm of Artistic Style》论文地址：https://arxiv.org/pdf/1508.06576.pdf ，目标是把艺术风格的图片迁移到普通图片。比如把梵高的星月夜（The Starry Night）迁移到普通图片上。 ​       CNN每一层单元可以理解为图像滤波器的集合，每个滤波器从输入图像中提取某种特征">
@@ -436,9 +436,7 @@
 <script type="math/tex; mode=display">
 G_{i j}^{l}=\sum_{k} F_{i k}^{l} F_{j k}^{l}\tag{3}</script><p>​    为了生成与给定图像的风格匹配的纹理（图 1，风格重建），我们使用白噪声图像的梯度下降来找到与原始图像的风格相匹配的另一张图像。这里是最小化原始图的Gram矩阵和生成图像的Gram矩阵的均方距离实现的。所以让矩阵$\vec{a}$和矩阵$\vec{x}$分别表示原始图像、生成图像，并且$A^l$、$G^l$是它们各自在$l$层的风格特征矩阵。该层对总损失的贡献是：</p>
 <script type="math/tex; mode=display">
-E_{l}=\frac{1}{4 N_{l}^{2} M_{l}^{2}} \sum_{i, j}\left(G_{i j}^{l}-A_{i j}^{l}\right)^{2}\tag{4}</script><p>​    </p>
-<script type="math/tex; mode=display">
-\mathcal{L}_{\text {total }}(\vec{p}, \vec{a}, \vec{x})=\alpha \mathcal{L}_{\text {content }}(\vec{p}, \vec{x})+\beta \mathcal{L}_{\text {style }}(\vec{a}, \vec{x})\tag{8}</script><p>​    这里的$α$和$β$是内容和风格的重建比重。在图2中，我们用卷积4_2上面去抓取内容表征，而用卷积1_1、卷积2_1、卷积3_1、卷积4_1和卷积5_1来抓取风格表征（此时在这些卷积层上的比重$w_l=1/5$，而其它层的$w_l=0$，就是其它层的特征不用，所以乘以0消去，只用这5层特征来抓取风格特征，并且这些层的特征比重是均匀的，估计也可以不均，不均后某些风格肯定会有较大的比重，导致图像的风格会侧重某一些风格元素）。$α/β$的值不是$1\times10^{-3}$（图2中B，C，D）就是$1\times10^{-4}$（比如图2中的E，F）。图3沿着列看的话，展示了损失函数中内容和风格在不同比重下的结果，并且风格表征仅仅限于：A图片风格特征是VGG网络的卷积1_1生成的，B图风格对应卷积1_1、卷积2_1，C图风格对应卷积1_1、卷积2_1、卷积3_1，D图风格对应卷积1_1、卷积2_1、卷积3_1、卷积4_1，E图风格对应卷积1_1、卷积2_1、卷积3_1、卷积4_1、卷积5_1生成。其中$w_l$是1除以激活层的个数，是一个非0的损失权重。</p>
+E_{l}=\frac{1}{4 N_{l}^{2} M_{l}^{2}} \sum_{i, j}\left(G_{i j}^{l}-A_{i j}^{l}\right)^{2}\tag{4}</script><p>​    这里的$α$和$β$是内容和风格的重建比重。在图2中，我们用卷积4_2上面去抓取内容表征，而用卷积1_1、卷积2_1、卷积3_1、卷积4_1和卷积5_1来抓取风格表征（此时在这些卷积层上的比重$w_l=1/5$，而其它层的$w_l=0$，就是其它层的特征不用，所以乘以0消去，只用这5层特征来抓取风格特征，并且这些层的特征比重是均匀的，估计也可以不均，不均后某些风格肯定会有较大的比重，导致图像的风格会侧重某一些风格元素）。$α/β$的值不是$1\times10^{-3}$（图2中B，C，D）就是$1\times10^{-4}$（比如图2中的E，F）。图3沿着列看的话，展示了损失函数中内容和风格在不同比重下的结果，并且风格表征仅仅限于：A图片风格特征是VGG网络的卷积1_1生成的，B图风格对应卷积1_1、卷积2_1，C图风格对应卷积1_1、卷积2_1、卷积3_1，D图风格对应卷积1_1、卷积2_1、卷积3_1、卷积4_1，E图风格对应卷积1_1、卷积2_1、卷积3_1、卷积4_1、卷积5_1生成。其中$w_l$是1除以激活层的个数，是一个非0的损失权重。</p>
 <p>​    鸣谢：这项工作由德国国家学术基金会（L.A.G.）、伯恩斯坦计算神经科学中心（(FKZ 01GQ1002）资助，并在德国图宾根综合神经科学中心获得优秀倡议（EXC307）（M.B.,A.S.E,L.A.G.）。</p>
 <h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ol>
 <li>论文：<a href="https://arxiv.org/pdf/1508.06576.pdf" target="_blank" rel="noopener">https://arxiv.org/pdf/1508.06576.pdf</a></li>
